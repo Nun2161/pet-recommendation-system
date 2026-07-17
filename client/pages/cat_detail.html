@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>รายละเอียดสายพันธุ์แมว — CatMatch</title>
+  <meta name="description" content="รายละเอียดสายพันธุ์แมว ลักษณะนิสัย การดูแล และความเหมาะสมในการเลี้ยง">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700;800&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/design-system.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/cat-detail.css">
+  <link rel="stylesheet" href="../css/sakura-background.css">
+</head>
+<body>
+  <div id="pageFallback" class="page-fallback" role="status">
+    <strong>กำลังเปิดข้อมูลสายพันธุ์แมว…</strong>
+    <span>หากหน้านี้ไม่เปลี่ยนภายในไม่กี่วินาที ให้กด <a href="./cat-breeds.html">กลับไปหน้าสายพันธุ์แมว</a></span>
+  </div>
+  <a class="skip-link" href="#main-content">ข้ามไปยังเนื้อหาหลัก</a>
+
+  <div class="sakura-scene" aria-hidden="true">
+    <div class="falling-petals">
+      <span class="falling-petal petal-1"></span><span class="falling-petal petal-2"></span>
+      <span class="falling-petal petal-3"></span><span class="falling-petal petal-4"></span>
+      <span class="falling-petal petal-5"></span><span class="falling-petal petal-6"></span>
+      <span class="falling-petal petal-7"></span><span class="falling-petal petal-8"></span>
+      <span class="falling-petal petal-9"></span><span class="falling-petal petal-10"></span>
+      <span class="falling-petal petal-11"></span><span class="falling-petal petal-12"></span>
+      <span class="falling-petal petal-13"></span><span class="falling-petal petal-14"></span>
+      <span class="falling-petal petal-15"></span><span class="falling-petal petal-16"></span>
+    </div>
+  </div>
+
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-shell">
+      <a class="brand" href="./index.html" aria-label="CatMatch หน้าแรก">
+        <span class="brand-logo" aria-hidden="true">
+          <svg viewBox="0 0 64 64">
+            <path d="M17 23 14 11l10 6c5-2 11-2 16 0l10-6-3 12c4 4 6 8 6 14 0 12-9 20-21 20S11 49 11 37c0-6 2-10 6-14Z"/>
+            <path d="M24 33h.01M40 33h.01M30 39c1.5 1 2.5 1 4 0"/>
+          </svg>
+        </span>
+        <span class="brand-text"><strong>CatMatch</strong><small>แมวที่ใช่ สำหรับคุณ</small></span>
+      </a>
+
+      <nav class="main-nav" aria-label="เมนูหลัก">
+        <a class="nav-link" href="./index.html">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 11 9-8 9 8M5 10v10h14V10M9 20v-6h6v6"/></svg>
+          <span>หน้าหลัก</span>
+        </a>
+        <a class="nav-link" href="./assessment.html">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h12v16H6z"/><path d="M9 8h6M9 12h6M9 16h4"/></svg>
+          <span>แบบประเมิน</span>
+        </a>
+        <a class="nav-link is-active" href="./cat-breeds.html" aria-current="page">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 9 5 4l4 2.5c2-.8 4-.8 6 0L19 4l-1.5 5c1.7 1.6 2.5 3.4 2.5 5.5C20 18 16.8 20 12 20s-8-2-8-5.5C4 12.4 4.8 10.6 6.5 9Z"/><path d="M9.5 13h.01M14.5 13h.01M10.5 16c1 .8 2.5.8 3.5 0"/></svg>
+          <span>แมวของเรา</span>
+        </a>
+        <a class="nav-link" href="./articles.html">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14v16H5z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+          <span>บทความ</span>
+        </a>
+        <a class="nav-link" href="./about.html">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="m20 20-4-4"/></svg>
+          <span>เกี่ยวกับเรา</span>
+        </a>
+      </nav>
+
+      <div class="nav-actions">
+        <a class="button button-secondary button-small" href="./login.html">เข้าสู่ระบบ</a>
+        <a class="button button-primary button-small" href="./register.html">สมัครสมาชิก</a>
+      </div>
+
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="เปิดเมนู" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main-content" class="detail-main">
+    <section class="detail-section">
+      <div class="container">
+        <a class="back-link" href="./cat-breeds.html">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg>
+          กลับไปหน้าสายพันธุ์แมว
+        </a>
+
+        <div id="detailLoading" class="detail-loading" role="status">
+          <div class="detail-loading-image"></div>
+          <div class="detail-loading-copy"><span></span><span></span><span></span><span></span></div>
+        </div>
+
+        <article id="breedDetail" class="breed-detail" hidden>
+          <div class="detail-hero-grid">
+            <div class="detail-image-column">
+              <div class="detail-image-frame" id="detailImageFrame">
+                <img id="detailBreedImage" src="" alt="" hidden>
+                <div class="detail-image-placeholder" id="detailImagePlaceholder">
+                  <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M17 23 14 11l10 6c5-2 11-2 16 0l10-6-3 12c4 4 6 8 6 14 0 12-9 20-21 20S11 49 11 37c0-6 2-10 6-14Z"/><path d="M24 33h.01M40 33h.01M30 39c1.5 1 2.5 1 4 0"/></svg>
+                  <span>กำลังตรวจสอบรูปสายพันธุ์</span>
+                </div>
+              </div>
+              <p class="image-source-note" id="imageSourceNote"></p>
+            </div>
+
+            <div class="detail-copy">
+              <p class="eyebrow">ข้อมูลสายพันธุ์แมว</p>
+              <h1 id="detailBreedName">—</h1>
+              <p class="detail-thai-name" id="detailThaiName"></p>
+              <p class="detail-description" id="detailDescription"></p>
+
+              <div class="detail-facts">
+                <div><span>แหล่งกำเนิด</span><strong id="detailOrigin">—</strong></div>
+                <div><span>ลักษณะขน</span><strong id="detailCoat">—</strong></div>
+                <div><span>ระดับกิจกรรม</span><strong id="detailActivity">—</strong></div>
+                <div><span>อายุเฉลี่ย</span><strong id="detailLifeSpan">—</strong></div>
+              </div>
+
+              <div class="detail-tags" id="detailTags"></div>
+
+              <div class="detail-actions">
+                <a class="button button-primary" href="./assessment.html">ทำแบบประเมินความเหมาะสม</a>
+                <button class="button button-secondary" id="favoriteDetailButton" type="button">บันทึกเป็นรายการโปรด</button>
+              </div>
+            </div>
+          </div>
+
+          <section class="detail-panel appearance-panel">
+            <div class="section-heading compact">
+              <p class="eyebrow">วิธีดูสายพันธุ์จากภายนอก</p>
+              <h2>ลักษณะเด่นที่ใช้สังเกต</h2>
+              <p id="observeSummary"></p>
+            </div>
+            <div class="feature-list" id="featureList"></div>
+          </section>
+
+          <section class="detail-panel similar-panel" id="similarBreedSection" hidden>
+            <div class="section-heading compact">
+              <p class="eyebrow">คล้ายกันแต่คนละสายพันธุ์</p>
+              <h2>วิธีแยกสายพันธุ์ที่หน้าตาใกล้เคียง</h2>
+              <p>ดูความแตกต่างจากความยาวและพื้นผิวขน รูปใบหู รูปหาง และสัดส่วนลำตัว ไม่ใช้สีเพียงอย่างเดียว</p>
+            </div>
+            <div class="similar-breed-grid" id="similarBreedGrid"></div>
+          </section>
+
+          <section class="detail-panel care-panel">
+            <div class="section-heading compact">
+              <p class="eyebrow">ก่อนตัดสินใจเลี้ยง</p>
+              <h2>สิ่งที่ควรพิจารณา</h2>
+            </div>
+            <div class="care-grid" id="careGrid"></div>
+          </section>
+
+          <section class="detail-panel score-panel">
+            <div class="section-heading compact">
+              <p class="eyebrow">ข้อมูลสำหรับการเปรียบเทียบ</p>
+              <h2>ระดับข้อมูลเพื่อการดูแล 1–5</h2>
+              <p>ตัวเลข 1–5 ใช้เปรียบเทียบความต้องการด้านกิจกรรม การเข้าสังคม การดูแล และสภาพแวดล้อมที่เหมาะสมของแต่ละสายพันธุ์ได้ง่ายขึ้น</p>
+            </div>
+            <div class="trait-detail-grid" id="traitDetailGrid"></div>
+          </section>
+        </article>
+
+        <section id="detailError" class="detail-error" hidden>
+          <h1>ไม่พบข้อมูลสายพันธุ์นี้</h1>
+          <p>รหัสสายพันธุ์อาจไม่ถูกต้อง หรือ Backend ยังไม่เปิดใช้งาน</p>
+          <a class="button button-primary" href="./cat-breeds.html">กลับไปดูสายพันธุ์ทั้งหมด</a>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer compact-footer">
+    <div class="container footer-line">
+      <a class="brand footer-mini-brand" href="./index.html">
+        <span class="brand-logo" aria-hidden="true">
+          <svg viewBox="0 0 64 64"><path d="M17 23 14 11l10 6c5-2 11-2 16 0l10-6-3 12c4 4 6 8 6 14 0 12-9 20-21 20S11 49 11 37c0-6 2-10 6-14Z"/><path d="M24 33h.01M40 33h.01M30 39c1.5 1 2.5 1 4 0"/></svg>
+        </span>
+        <span class="brand-text"><strong>CatMatch</strong><small>แมวที่ใช่ สำหรับคุณ</small></span>
+      </a>
+      <p>ข้อมูลเพื่อการเรียนรู้ ไม่ใช้แทนคำแนะนำจากสัตวแพทย์หรือผู้เพาะพันธุ์ที่เชี่ยวชาญ</p>
+    </div>
+  </footer>
+
+  <script defer src="../js/cat-breed-data.js"></script>
+  <script defer src="../js/breed-knowledge.js"></script>
+  <script defer src="../js/breed-image-resolver.js"></script>
+  <script defer src="../js/cat-detail.js"></script>
+</body>
+</html>

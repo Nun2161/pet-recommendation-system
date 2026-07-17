@@ -1,0 +1,1087 @@
+.sakura-scene {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  transform: translateY(var(--scene-shift, 0px));
+}
+
+.falling-petals {
+  position: absolute;
+  inset: 0;
+}
+
+.falling-petal {
+  position: absolute;
+  top: -12vh;
+  width: var(--petal-size, 15px);
+  height: calc(var(--petal-size, 15px) * 0.72);
+  opacity: calc(var(--petal-opacity, 0.78) + var(--petal-boost, 0));
+  border-radius: 75% 25% 70% 30%;
+  background: radial-gradient(circle at 38% 36%, #fff9fb 0 12%, #ffd9e3 35%, #f1b6c9 75%, #e8a0ba 100%);
+  box-shadow: 0 3px 10px rgba(217, 137, 154, 0.12);
+  transform-origin: center;
+  animation: petalFall var(--fall-duration, 14s) linear infinite, petalSway var(--sway-duration, 3.5s) ease-in-out infinite alternate;
+  animation-delay: var(--delay, 0s);
+}
+
+.falling-petal::after {
+  content: "";
+  position: absolute;
+  inset: 18% 22% 24% 24%;
+  border-radius: 70% 20% 70% 20%;
+  background: linear-gradient(135deg, rgba(255,255,255,0.4), rgba(255,255,255,0));
+}
+
+.petal-1 { left: 4%;  --petal-size: 14px; --fall-duration: 13s; --sway-duration: 3.6s; --delay: -2s;  --petal-opacity: 0.90; --drift: 72px; --spin: 160deg; }
+.petal-2 { left: 10%; --petal-size: 13px; --fall-duration: 16s; --sway-duration: 4.1s; --delay: -5s;  --petal-opacity: 0.82; --drift: 54px; --spin: 200deg; }
+.petal-3 { left: 18%; --petal-size: 18px; --fall-duration: 14s; --sway-duration: 3.8s; --delay: -8s;  --petal-opacity: 0.85; --drift: 80px; --spin: 220deg; }
+.petal-4 { left: 26%; --petal-size: 15px; --fall-duration: 17s; --sway-duration: 4.6s; --delay: -4s;  --petal-opacity: 0.78; --drift: 66px; --spin: 180deg; }
+.petal-5 { left: 34%; --petal-size: 19px; --fall-duration: 15s; --sway-duration: 3.7s; --delay: -10s; --petal-opacity: 0.86; --drift: 88px; --spin: 240deg; }
+.petal-6 { left: 42%; --petal-size: 14px; --fall-duration: 18s; --sway-duration: 4.4s; --delay: -7s;  --petal-opacity: 0.80; --drift: 58px; --spin: 170deg; }
+.petal-7 { left: 50%; --petal-size: 17px; --fall-duration: 14.5s; --sway-duration: 3.4s; --delay: -3s; --petal-opacity: 0.86; --drift: 78px; --spin: 210deg; }
+.petal-8 { left: 58%; --petal-size: 12px; --fall-duration: 16.5s; --sway-duration: 4.2s; --delay: -11s; --petal-opacity: 0.74; --drift: 48px; --spin: 190deg; }
+.petal-9 { left: 66%; --petal-size: 18px; --fall-duration: 15.5s; --sway-duration: 3.9s; --delay: -6s; --petal-opacity: 0.84; --drift: 74px; --spin: 250deg; }
+.petal-10 { left: 74%; --petal-size: 15px; --fall-duration: 17.5s; --sway-duration: 4.8s; --delay: -9s; --petal-opacity: 0.78; --drift: 64px; --spin: 180deg; }
+.petal-11 { left: 82%; --petal-size: 13px; --fall-duration: 19s; --sway-duration: 4.5s; --delay: -12s; --petal-opacity: 0.72; --drift: 52px; --spin: 210deg; }
+.petal-12 { left: 90%; --petal-size: 17px; --fall-duration: 13.8s; --sway-duration: 3.5s; --delay: -1s; --petal-opacity: 0.84; --drift: 70px; --spin: 230deg; }
+.petal-13 { left: 14%; --petal-size: 11px; --fall-duration: 18.8s; --sway-duration: 4.3s; --delay: -14s; --petal-opacity: 0.68; --drift: 42px; --spin: 150deg; }
+.petal-14 { left: 38%; --petal-size: 14px; --fall-duration: 16.8s; --sway-duration: 4.1s; --delay: -15s; --petal-opacity: 0.76; --drift: 60px; --spin: 180deg; }
+.petal-15 { left: 72%; --petal-size: 12px; --fall-duration: 18.2s; --sway-duration: 4.6s; --delay: -13s; --petal-opacity: 0.70; --drift: 44px; --spin: 170deg; }
+.petal-16 { left: 96%; --petal-size: 16px; --fall-duration: 15.9s; --sway-duration: 3.8s; --delay: -7s;  --petal-opacity: 0.82; --drift: 58px; --spin: 220deg; }
+
+@keyframes petalFall {
+  0% { top: -12vh; transform: translateX(0) rotate(0deg); }
+  100% { top: 110vh; transform: translateX(var(--drift, 70px)) rotate(var(--spin, 180deg)); }
+}
+
+@keyframes petalSway {
+  0% { margin-left: -16px; }
+  100% { margin-left: 20px; }
+}
+
+.site-header,
+.hero,
+.overview,
+.breeds,
+.content-zone,
+.site-footer {
+  position: relative;
+  z-index: 2;
+}
+
+.hero {
+  overflow: hidden;
+  padding-top: 52px;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 8% 0;
+  background:
+    linear-gradient(135deg, rgba(255, 250, 247, 0.95), rgba(235, 247, 255, 0.95)),
+    radial-gradient(circle at 18% 22%, rgba(247, 232, 168, 0.18), transparent 22%),
+    radial-gradient(circle at 82% 12%, rgba(191, 231, 234, 0.18), transparent 18%);
+  border-radius: 0 0 40px 40px;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  left: 6%;
+  right: 6%;
+  bottom: 18px;
+  height: 86px;
+  opacity: 0.22;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 12px 12px, transparent 10px, rgba(108, 158, 200, 0.32) 11px 12px, transparent 13px) repeat-x,
+    radial-gradient(circle at 40px 40px, transparent 10px, rgba(108, 158, 200, 0.20) 11px 12px, transparent 13px) repeat-x;
+  background-size: 56px 56px;
+}
+
+.hero-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  align-items: center;
+  gap: clamp(46px, 6vw, 92px);
+}
+
+.hero-copy {
+  position: relative;
+  z-index: 3;
+}
+
+.eyebrow-hero {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.paw-inline {
+  width: 22px;
+  height: 22px;
+}
+
+.hero-title-wrap {
+  position: relative;
+  width: fit-content;
+  margin-bottom: 24px;
+}
+
+.paw-title {
+  position: absolute;
+  right: -46px;
+  bottom: 8px;
+  width: 34px;
+  height: 34px;
+  transform: rotate(-8deg);
+}
+
+.hero-brush-line {
+  position: absolute;
+  left: -4px;
+  bottom: -18px;
+  width: min(420px, 86%);
+  height: 34px;
+  opacity: 0.8;
+}
+
+.hero-brush-line path {
+  fill: none;
+  stroke: var(--soft-sun);
+  stroke-width: 8;
+  stroke-linecap: round;
+}
+
+.hero-description {
+  max-width: 610px;
+  margin-bottom: 30px;
+  color: var(--color-text-soft);
+  font-size: clamp(1rem, 1.45vw, 1.16rem);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.dog-future-link {
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px;
+  border: 1px dashed var(--summer-blue);
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--summer-mint) 14%, transparent);
+  color: var(--color-text-soft);
+}
+
+.dog-future-icon {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(247, 232, 168, 0.44), rgba(191, 231, 234, 0.54));
+  font-size: 1.15rem;
+}
+
+.dog-future-link strong,
+.dog-future-link small {
+  display: block;
+}
+
+.dog-future-link small {
+  font-size: 0.78rem;
+}
+
+.hero-visual {
+  position: relative;
+  min-height: 620px;
+}
+
+.hero-paper-mat {
+  position: absolute;
+  top: -24px;
+  right: -20px;
+  bottom: 30px;
+  left: 2%;
+  border: 1px solid rgba(146, 189, 223, 0.18);
+  border-radius: 42% 16% 22% 34% / 16% 22% 20% 42%;
+  background: linear-gradient(135deg, rgba(255,255,255,0.76), rgba(245, 251, 255, 0.88));
+  box-shadow: 0 28px 80px rgba(86, 102, 116, 0.08);
+  transform: rotate(1.2deg);
+}
+
+.hero-arch {
+  position: absolute;
+  inset: 14px 0 0 8%;
+  overflow: hidden;
+  border: 8px solid rgba(255,255,255,0.88);
+  border-radius: 46% 18% 24% 36% / 18% 24% 22% 44%;
+  background: linear-gradient(135deg, rgba(249, 232, 162, 0.20), rgba(180, 225, 235, 0.22));
+  box-shadow: var(--shadow-md), 0 0 0 1px rgba(146, 189, 223, 0.16);
+}
+
+.hero-arch::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.0), rgba(255,255,255,0.08)),
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,0.12), transparent 22%);
+  z-index: 1;
+}
+
+.hero-arch img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(0.85) contrast(0.96) brightness(1.03) sepia(0.06);
+}
+
+.overview-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 24px;
+}
+
+.stats-card {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 34px 18px;
+  overflow: hidden;
+}
+
+.stats-card::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 7px;
+  background: linear-gradient(90deg, var(--soft-sun), var(--sakura-pink), var(--summer-blue));
+}
+
+.stats-decor {
+  position: absolute;
+  right: 18px;
+  top: 14px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  opacity: 0.52;
+}
+
+.mini-cat-branch {
+  width: 78px;
+  height: 38px;
+  position: relative;
+}
+
+.mini-cat-branch::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 14px;
+  width: 56px;
+  height: 3px;
+  background: rgba(143, 118, 108, 0.55);
+  border-radius: 999px;
+  transform: rotate(10deg);
+}
+
+.mini-cat-branch::after {
+  content: "";
+  position: absolute;
+  right: 8px;
+  top: 0;
+  width: 24px;
+  height: 24px;
+  border: 2px solid rgba(108, 158, 200, 0.65);
+  border-radius: 55% 55% 46% 46%;
+  border-top-left-radius: 38% 64%;
+  border-top-right-radius: 38% 64%;
+}
+
+.stat-item {
+  padding: 12px 22px;
+  text-align: center;
+  border-right: 1px solid var(--color-border);
+}
+
+.stat-item:last-child { border-right: 0; }
+
+.line-icon {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 14px;
+  color: var(--summer-blue-deep);
+}
+
+.line-icon svg {
+  width: 34px;
+  height: 34px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.stat-item strong {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 2.1rem;
+  line-height: 1;
+  font-family: var(--font-heading);
+}
+
+.stat-item span:last-child {
+  display: block;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.steps-card {
+  padding: 34px;
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, rgba(247, 232, 168, 0.16), rgba(255, 253, 251, 0.96)),
+    radial-gradient(circle at 92% 14%, rgba(247, 217, 228, 0.16), transparent 18%),
+    radial-gradient(circle at 8% 90%, rgba(191, 231, 234, 0.16), transparent 18%);
+}
+
+.steps-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 7px;
+  background: linear-gradient(90deg, var(--soft-sun), var(--sakura-pink), var(--summer-blue));
+}
+
+.steps-list {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  padding: 0;
+  margin: 32px 0 0;
+  list-style: none;
+}
+
+.steps-list::before {
+  content: "";
+  position: absolute;
+  top: 34px;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--summer-blue), var(--sakura-pink), var(--soft-sun), var(--summer-blue));
+  opacity: 0.66;
+}
+
+.steps-list li {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.step-icon {
+  width: 66px;
+  height: 66px;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 10px;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  background: var(--color-surface-strong);
+  color: var(--summer-blue-deep);
+  box-shadow: var(--shadow-sm);
+}
+
+.step-icon svg {
+  width: 30px;
+  height: 30px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.step-number {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--summer-blue-deep);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.steps-list strong,
+.steps-list small { display: block; }
+.steps-list small { margin-top: 4px; color: var(--color-text-soft); }
+
+.breed-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+
+.breed-card {
+  overflow: hidden;
+}
+
+.breed-card::after {
+  content: "";
+  position: absolute;
+  inset: auto 14px 14px auto;
+  width: 54px;
+  height: 54px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  background:
+    radial-gradient(circle at center, rgba(216, 121, 146, 0.62) 0 14%, transparent 15%),
+    radial-gradient(circle at 50% 18%, #fff3f7 0 30%, transparent 31%),
+    radial-gradient(circle at 82% 50%, #f6d1dc 0 30%, transparent 31%),
+    radial-gradient(circle at 50% 82%, #f4c3d2 0 30%, transparent 31%),
+    radial-gradient(circle at 18% 50%, #f9dce6 0 30%, transparent 31%),
+    radial-gradient(circle at 30% 28%, #f7d9e4 0 28%, transparent 29%);
+}
+
+.breed-card:hover::after {
+  opacity: 0.86;
+  transform: translateY(0);
+}
+
+.breed-card-image {
+  position: relative;
+  height: 245px;
+  overflow: hidden;
+  background: linear-gradient(145deg, rgba(247, 232, 168, 0.30), rgba(191, 231, 234, 0.26));
+}
+
+.breed-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.88) contrast(0.96) brightness(1.03);
+  transition: transform 0.35s ease;
+}
+
+.breed-card:hover .breed-card-image img {
+  transform: scale(1.035);
+}
+
+.favorite-button {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+}
+
+.breed-card-body {
+  padding: 20px;
+}
+
+.breed-card-body h3 {
+  margin-bottom: 12px;
+}
+
+.trait-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.trait-tag {
+  padding: 6px 10px;
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--summer-mint) 30%, transparent);
+  color: var(--color-text-soft);
+  font-size: 0.8rem;
+}
+
+.match-block {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-border);
+}
+
+.match-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.match-track {
+  height: 8px;
+  overflow: hidden;
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--summer-blue) 18%, var(--color-surface));
+}
+
+.match-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--sakura-pink-strong), var(--summer-blue-deep));
+}
+
+.match-placeholder {
+  color: var(--color-text-soft);
+  font-size: 0.9rem;
+}
+
+.breed-card-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: 0.78fr 1.22fr;
+  gap: 28px;
+}
+
+.map-promo {
+  display: grid;
+  grid-template-columns: 1fr 0.9fr;
+  gap: 20px;
+  padding: 34px;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(191, 231, 234, 0.28), rgba(255, 253, 251, 0.96));
+}
+
+.map-promo::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 7px;
+  background: linear-gradient(90deg, var(--soft-sun), var(--sakura-pink), var(--summer-blue));
+}
+
+.map-promo p { color: var(--color-text-soft); }
+
+.map-illustration {
+  position: relative;
+  min-height: 270px;
+  border-radius: var(--radius-md);
+  background:
+    radial-gradient(circle at 12px 12px, transparent 10px, rgba(108, 158, 200, 0.18) 11px 12px, transparent 13px) repeat,
+    linear-gradient(135deg, rgba(255,255,255,0.76), rgba(237, 247, 255, 0.92));
+  background-size: 40px 40px, auto;
+}
+
+.map-pin {
+  position: absolute;
+  color: var(--summer-blue-deep);
+  font-size: 2rem;
+}
+
+.pin-one { left: 22%; top: 18%; }
+.pin-two { right: 25%; top: 40%; }
+.pin-three { left: 46%; bottom: 20%; }
+
+.map-home {
+  position: absolute;
+  left: 48%;
+  top: 48%;
+  color: var(--soft-sun);
+  font-size: 4rem;
+}
+
+.article-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.article-card { overflow: hidden; }
+
+.article-card img {
+  width: 100%;
+  height: 154px;
+  object-fit: cover;
+  filter: saturate(0.86) contrast(0.96) brightness(1.03);
+}
+
+.article-card > div {
+  padding: 18px;
+}
+
+.article-card small {
+  color: var(--color-text-soft);
+}
+
+@media (max-width: 1120px) {
+  .hero-grid,
+  .overview-grid,
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-visual {
+    min-height: 500px;
+  }
+
+  .stats-card,
+  .breed-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stat-item:nth-child(2) { border-right: 0; }
+  .stat-item:nth-child(-n + 2) {
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .stat-item:nth-child(n + 3) { padding-top: 28px; }
+}
+
+@media (max-width: 780px) {
+  .hero {
+    padding-top: 30px;
+  }
+
+  .paw-title {
+    right: -34px;
+    width: 28px;
+    height: 28px;
+  }
+
+  .hero-visual {
+    min-height: 390px;
+  }
+
+  .steps-list,
+  .article-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .steps-list::before {
+    display: none;
+  }
+
+  .map-promo {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-paper-mat {
+    top: -14px;
+    right: -10px;
+    bottom: 18px;
+    left: -8px;
+    border-radius: 34px;
+  }
+
+  .hero-arch {
+    inset: 0;
+    border-width: 6px;
+  }
+}
+
+@media (max-width: 580px) {
+  .stats-card,
+  .breed-grid,
+  .steps-list,
+  .article-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-item {
+    padding-block: 24px;
+    border-right: 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .stat-item:last-child { border-bottom: 0; }
+
+  .section-heading.row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .hero-arch,
+  .hero-paper-mat {
+    border-radius: 34px;
+  }
+
+  .falling-petal:nth-child(n + 11) {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .falling-petal,
+  .reveal {
+    animation: none;
+    transition: none;
+  }
+}
+
+
+/* =========================================================
+   V20 — PROFESSIONAL HERO CLEANUP
+   ========================================================= */
+
+/* Restore the title proportions from the original layout. */
+.hero-title-wrap h1 {
+  line-height: 1.14;
+  letter-spacing: -0.03em;
+}
+
+/* Keep the image treatment clean and ensure custom illustration sits above it. */
+.hero-arch {
+  isolation: isolate;
+}
+
+.hero-arch > img {
+  position: relative;
+  z-index: 0;
+}
+
+.hero-arch::before {
+  z-index: 1;
+}
+
+.hero-sakura-line-art {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.sakura-line {
+  opacity: 0.62;
+}
+
+.sakura-line-bottom {
+  opacity: 0.52;
+}
+
+.sakura-branch-path,
+.sakura-twig-path {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.sakura-branch-path {
+  stroke: rgba(255, 249, 247, 0.72);
+  stroke-width: 5;
+}
+
+.sakura-twig-path {
+  stroke: rgba(255, 249, 247, 0.58);
+  stroke-width: 2.4;
+}
+
+.sakura-blossom circle:not(:last-child) {
+  fill: rgba(247, 217, 228, 0.62);
+  stroke: rgba(255, 255, 255, 0.48);
+  stroke-width: 0.8;
+}
+
+.sakura-blossom circle:last-child {
+  fill: rgba(215, 115, 107, 0.58);
+}
+
+.sakura-blossom.small {
+  opacity: 0.88;
+}
+
+.sakura-blossom.tiny {
+  opacity: 0.74;
+}
+
+/* Functional dog icon: custom SVG, no emoji/sticker. */
+.dog-future-icon {
+  color: var(--summer-blue-deep);
+  background: linear-gradient(135deg, rgba(247, 232, 168, 0.38), rgba(191, 231, 234, 0.44));
+}
+
+.dog-future-icon svg {
+  width: 26px;
+  height: 26px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@media (max-width: 780px) {
+  .hero-title-wrap h1 {
+    line-height: 1.12;
+  }
+
+  .hero-sakura-line-art {
+    opacity: 0.72;
+  }
+}
+
+@media (max-width: 580px) {
+  .hero-sakura-line-art {
+    display: none;
+  }
+}
+
+
+/* =========================================================
+   V21 — REFERENCE-ALIGNED POLISH
+   ========================================================= */
+
+/* Sakura line art now sits behind the photo frame, never over the cat. */
+.hero-visual {
+  isolation: isolate;
+  overflow: visible;
+}
+
+.hero-sakura-backdrop {
+  position: absolute;
+  inset: -34px -28px 8px -24px;
+  z-index: 0;
+  width: calc(100% + 52px);
+  height: calc(100% + 42px);
+  overflow: visible;
+  pointer-events: none;
+}
+
+.backdrop-main,
+.backdrop-twig {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.backdrop-main {
+  stroke: rgba(138, 112, 101, 0.38);
+  stroke-width: 4.5;
+}
+
+.backdrop-twig {
+  stroke: rgba(138, 112, 101, 0.30);
+  stroke-width: 2.2;
+}
+
+.backdrop-blossom circle:not(.blossom-center) {
+  fill: rgba(247, 217, 228, 0.76);
+  stroke: rgba(255, 255, 255, 0.82);
+  stroke-width: 0.8;
+}
+
+.backdrop-blossom .blossom-center {
+  fill: rgba(205, 111, 105, 0.60);
+}
+
+.backdrop-blossom.small {
+  opacity: 0.82;
+}
+
+.hero-paper-mat {
+  z-index: 1;
+}
+
+.hero-arch {
+  z-index: 2;
+}
+
+/* Old front decoration is intentionally disabled. */
+.hero-sakura-line-art,
+.hero-branch,
+.hero-sakura-cluster,
+.summer-mini-icons {
+  display: none !important;
+}
+
+/* More substantial dog icon, matching the line weight of the main UI icons. */
+.dog-future-link {
+  border-style: solid;
+  border-color: rgba(108, 158, 200, 0.34);
+  background: linear-gradient(135deg, rgba(255, 253, 249, 0.96), rgba(237, 247, 255, 0.88));
+  box-shadow: 0 10px 24px rgba(91, 111, 128, 0.08);
+}
+
+.dog-future-icon {
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  border: 1px solid rgba(108, 158, 200, 0.30);
+  background: linear-gradient(145deg, #fff7e7, #eaf6ff);
+  color: #4f7fa8;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.85), 0 6px 14px rgba(90, 112, 132, 0.10);
+}
+
+.dog-future-icon svg {
+  width: 30px;
+  height: 30px;
+  overflow: visible;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.dog-future-icon .dog-muzzle {
+  fill: rgba(255,255,255,0.52);
+  stroke: currentColor;
+}
+
+.dog-future-icon .dog-eye,
+.dog-future-icon .dog-nose {
+  fill: currentColor;
+  stroke: none;
+}
+
+.dog-future-icon .dog-mouth {
+  fill: none;
+  stroke: currentColor;
+}
+
+/* Remove the stray circle/line artifact from the statistics card. */
+.stats-decor,
+.mini-cat-branch {
+  display: none !important;
+}
+
+/* Premium, clearer separation from the page background. */
+.stats-card {
+  background: linear-gradient(145deg, #fffefb 0%, #f7fbff 100%);
+  border: 1px solid rgba(138, 166, 190, 0.30);
+  box-shadow: 0 18px 48px rgba(79, 105, 128, 0.12);
+}
+
+.stats-card::after {
+  height: 4px;
+  background: linear-gradient(90deg, #f2d993, #efbfd0 48%, #8db9dc);
+  opacity: 0.90;
+}
+
+.steps-card {
+  background:
+    radial-gradient(circle at 92% 10%, rgba(247, 217, 228, 0.18), transparent 24%),
+    linear-gradient(145deg, #fff7e9 0%, #fffdf9 76%);
+  border: 1px solid rgba(220, 190, 148, 0.38);
+  box-shadow: 0 18px 48px rgba(120, 97, 69, 0.10);
+}
+
+.steps-card::before {
+  height: 4px;
+  background: linear-gradient(90deg, #efd58a, #f0c6d3 58%, #9dc4df);
+  opacity: 0.92;
+}
+
+.stat-item {
+  position: relative;
+  z-index: 1;
+}
+
+/* Remove the broken flower hover asset. Keep only clean card/heart feedback. */
+.breed-card::after,
+.breed-card:hover::after {
+  content: none !important;
+  display: none !important;
+}
+
+.breed-card {
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+}
+
+.breed-card:hover {
+  border-color: rgba(108, 158, 200, 0.34);
+  box-shadow: 0 24px 58px rgba(76, 103, 127, 0.16);
+}
+
+.favorite-button {
+  z-index: 3;
+  color: #555d65;
+  background: rgba(255,255,255,0.90);
+  border-color: rgba(91, 111, 128, 0.18);
+  box-shadow: 0 8px 18px rgba(64, 82, 98, 0.10);
+  transition: transform 0.2s ease, color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.favorite-button:hover {
+  transform: translateY(-2px) scale(1.04);
+  color: #cf6f7d;
+  background: #fff7f8;
+  box-shadow: 0 10px 22px rgba(207, 111, 125, 0.16);
+}
+
+.favorite-button.is-active {
+  color: #ffffff;
+  background: #d87580;
+  border-color: #d87580;
+  box-shadow: 0 10px 22px rgba(216, 117, 128, 0.24);
+}
+
+@media (max-width: 780px) {
+  .hero-sakura-backdrop {
+    inset: -20px -12px 4px -12px;
+    width: calc(100% + 24px);
+    height: calc(100% + 24px);
+    opacity: 0.78;
+  }
+}
+
+@media (max-width: 580px) {
+  .hero-sakura-backdrop {
+    display: none;
+  }
+}
+
+/* =========================================================
+   V12 — MATCH HOMEPAGE SAKURA COLOR TO REGISTER PAGE
+   ใช้เฉดเดียวกับหน้าสมัครสมาชิก
+   ========================================================= */
+.falling-petal {
+  opacity: var(--petal-opacity, 0.94);
+  background:
+    radial-gradient(
+      circle at 36% 34%,
+      #fff1f6 0 8%,
+      #f7b2c8 32%,
+      #e985aa 70%,
+      #cf628e 100%
+    );
+  box-shadow:
+    0 5px 14px rgba(185, 74, 119, 0.28),
+    inset -1px -1px 0 rgba(255, 255, 255, 0.32);
+  filter: saturate(1.08) contrast(1.03);
+}
+
+.falling-petal::after {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.36),
+      rgba(255, 255, 255, 0)
+    );
+}
+
+.hero-sakura-backdrop { display: none; }

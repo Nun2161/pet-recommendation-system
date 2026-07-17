@@ -1,0 +1,129 @@
+/*
+ * Animated Sakura Background
+ * ใช้ร่วมกันในหน้าแมวของเราและหน้าข้อมูลสายพันธุ์
+ * สีอ้างอิงจากหน้า register.html: ชมพูเข้ม มองเห็นชัดบนพื้นขาว
+ */
+.sakura-scene {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+  contain: layout paint;
+}
+
+.sakura-scene .falling-petals {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.sakura-scene .falling-petal {
+  position: absolute;
+  top: -16vh;
+  left: var(--petal-left, 50%);
+  width: var(--petal-size, 16px);
+  height: calc(var(--petal-size, 16px) * 0.72);
+  opacity: var(--petal-opacity, 0.94);
+  border-radius: 76% 24% 72% 28%;
+  background:
+    radial-gradient(circle at 36% 30%, rgba(255,255,255,.96) 0 9%, transparent 10%),
+    linear-gradient(135deg, #fff1f6 0 8%, #f7b2c8 32%, #e985aa 70%, #cf628e 100%);
+  box-shadow:
+    0 4px 11px rgba(160, 58, 103, 0.22),
+    inset -1px -1px 2px rgba(142, 45, 86, 0.15);
+  transform-origin: 45% 55%;
+  will-change: transform, top, margin-left;
+  animation:
+    catmatchSakuraFall var(--fall-duration, 15s) linear infinite,
+    catmatchSakuraSway var(--sway-duration, 4s) ease-in-out infinite alternate;
+  animation-delay: var(--delay, 0s);
+}
+
+.sakura-scene .falling-petal::after {
+  content: "";
+  position: absolute;
+  inset: 17% 20% 23% 25%;
+  border-radius: 72% 24% 68% 28%;
+  background: linear-gradient(135deg, rgba(255,255,255,.48), rgba(255,255,255,0));
+}
+
+.sakura-scene .petal-1  { --petal-left: 3%;  --petal-size: 15px; --fall-duration: 13.4s; --sway-duration: 3.5s; --delay: -2s;  --petal-opacity: .98; --drift: 74px; --spin: 220deg; }
+.sakura-scene .petal-2  { --petal-left: 9%;  --petal-size: 13px; --fall-duration: 17.2s; --sway-duration: 4.4s; --delay: -9s;  --petal-opacity: .94; --drift: 48px; --spin: 170deg; }
+.sakura-scene .petal-3  { --petal-left: 16%; --petal-size: 19px; --fall-duration: 14.6s; --sway-duration: 3.8s; --delay: -6s;  --petal-opacity: .97; --drift: 88px; --spin: 250deg; }
+.sakura-scene .petal-4  { --petal-left: 24%; --petal-size: 15px; --fall-duration: 18.1s; --sway-duration: 4.7s; --delay: -13s; --petal-opacity: .92; --drift: 58px; --spin: 190deg; }
+.sakura-scene .petal-5  { --petal-left: 32%; --petal-size: 20px; --fall-duration: 15.2s; --sway-duration: 3.6s; --delay: -10s; --petal-opacity: .98; --drift: 82px; --spin: 235deg; }
+.sakura-scene .petal-6  { --petal-left: 40%; --petal-size: 13px; --fall-duration: 19.3s; --sway-duration: 4.9s; --delay: -4s;  --petal-opacity: .93; --drift: 44px; --spin: 155deg; }
+.sakura-scene .petal-7  { --petal-left: 48%; --petal-size: 18px; --fall-duration: 14.2s; --sway-duration: 3.4s; --delay: -8s;  --petal-opacity: .97; --drift: 78px; --spin: 225deg; }
+.sakura-scene .petal-8  { --petal-left: 56%; --petal-size: 14px; --fall-duration: 17.8s; --sway-duration: 4.5s; --delay: -15s; --petal-opacity: .90; --drift: 52px; --spin: 185deg; }
+.sakura-scene .petal-9  { --petal-left: 64%; --petal-size: 20px; --fall-duration: 15.8s; --sway-duration: 3.9s; --delay: -7s;  --petal-opacity: .96; --drift: 86px; --spin: 260deg; }
+.sakura-scene .petal-10 { --petal-left: 72%; --petal-size: 15px; --fall-duration: 18.6s; --sway-duration: 4.8s; --delay: -12s; --petal-opacity: .92; --drift: 56px; --spin: 195deg; }
+.sakura-scene .petal-11 { --petal-left: 80%; --petal-size: 17px; --fall-duration: 16.4s; --sway-duration: 4.1s; --delay: -3s;  --petal-opacity: .90; --drift: 70px; --spin: 215deg; }
+.sakura-scene .petal-12 { --petal-left: 88%; --petal-size: 13px; --fall-duration: 19.1s; --sway-duration: 4.6s; --delay: -14s; --petal-opacity: .96; --drift: 46px; --spin: 165deg; }
+.sakura-scene .petal-13 { --petal-left: 94%; --petal-size: 19px; --fall-duration: 14.9s; --sway-duration: 3.7s; --delay: -5s;  --petal-opacity: .89; --drift: 76px; --spin: 240deg; }
+.sakura-scene .petal-14 { --petal-left: 20%; --petal-size: 12px; --fall-duration: 20.2s; --sway-duration: 5.1s; --delay: -17s; --petal-opacity: .93; --drift: 38px; --spin: 145deg; }
+.sakura-scene .petal-15 { --petal-left: 52%; --petal-size: 13px; --fall-duration: 19.7s; --sway-duration: 4.9s; --delay: -18s; --petal-opacity: .90; --drift: 42px; --spin: 175deg; }
+.sakura-scene .petal-16 { --petal-left: 76%; --petal-size: 12px; --fall-duration: 20.8s; --sway-duration: 5.2s; --delay: -16s; --petal-opacity: .96; --drift: 36px; --spin: 150deg; }
+
+@keyframes catmatchSakuraFall {
+  0% {
+    top: -16vh;
+    transform: translate3d(0, 0, 0) rotate(0deg) rotateX(0deg);
+  }
+  50% {
+    transform: translate3d(28px, 0, 0) rotate(115deg) rotateX(145deg);
+  }
+  100% {
+    top: 112vh;
+    transform: translate3d(var(--drift, 70px), 0, 0) rotate(var(--spin, 210deg)) rotateX(300deg);
+  }
+}
+
+@keyframes catmatchSakuraSway {
+  from { margin-left: -22px; }
+  to   { margin-left: 26px; }
+}
+
+/*
+ * หน้า cat-breeds เดิมกำหนด main เป็น stacking context เหนือดอกซากุระทั้งหมด
+ * จึงยกเลิก stacking context เฉพาะหน้านี้ แล้ววางดอกไม้เหนือพื้นหลังแต่ใต้เนื้อหา
+ */
+body.cat-breeds-page {
+  isolation: isolate;
+}
+
+body.cat-breeds-page main {
+  z-index: auto !important;
+}
+
+body.cat-breeds-page .sakura-scene {
+  z-index: 1 !important;
+}
+
+body.cat-breeds-page .breed-hero,
+body.cat-breeds-page .breed-library {
+  position: relative;
+  z-index: auto;
+}
+
+body.cat-breeds-page .breed-hero > .container,
+body.cat-breeds-page .breed-library > .container {
+  position: relative;
+  z-index: 2;
+}
+
+body.cat-breeds-page .site-header,
+body.cat-breeds-page .site-footer {
+  position: relative;
+  z-index: 3 !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sakura-scene .falling-petal {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    opacity: .35;
+  }
+}

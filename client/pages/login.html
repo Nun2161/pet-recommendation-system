@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>เข้าสู่ระบบ — CatMatch</title>
+  <meta name="description" content="เข้าสู่ระบบ CatMatch เพื่อดูผลแบบประเมิน แมวที่สนใจ และข้อมูลบัญชีของคุณ">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700;800&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/design-system.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/login.css">
+  <link rel="stylesheet" href="../css/password-visibility.css">
+</head>
+<body class="login-page">
+  <a class="skip-link" href="#loginForm">ข้ามไปยังแบบฟอร์มเข้าสู่ระบบ</a>
+
+  <div class="login-sakura-scene" aria-hidden="true">
+    <div class="login-falling-petals">
+      <span class="login-falling-petal login-petal-1"></span>
+      <span class="login-falling-petal login-petal-2"></span>
+      <span class="login-falling-petal login-petal-3"></span>
+      <span class="login-falling-petal login-petal-4"></span>
+      <span class="login-falling-petal login-petal-5"></span>
+      <span class="login-falling-petal login-petal-6"></span>
+      <span class="login-falling-petal login-petal-7"></span>
+      <span class="login-falling-petal login-petal-8"></span>
+      <span class="login-falling-petal login-petal-9"></span>
+      <span class="login-falling-petal login-petal-10"></span>
+      <span class="login-falling-petal login-petal-11"></span>
+      <span class="login-falling-petal login-petal-12"></span>
+      <span class="login-falling-petal login-petal-13"></span>
+      <span class="login-falling-petal login-petal-14"></span>
+      <span class="login-falling-petal login-petal-15"></span>
+      <span class="login-falling-petal login-petal-16"></span>
+    </div>
+  </div>
+
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-shell login-nav-shell">
+      <a class="brand login-brand" href="./index.html" aria-label="CatMatch หน้าแรก">
+        <span class="brand-text">
+          <strong>CatMatch</strong>
+          <small>แมวที่ใช่ สำหรับคุณ</small>
+        </span>
+      </a>
+
+      <nav class="main-nav login-main-nav" aria-label="เมนูหลัก">
+        <a class="nav-link" href="./index.html"><span>หน้าหลัก</span></a>
+        <a class="nav-link" href="./assessment.html"><span>แบบประเมิน</span></a>
+        <a class="nav-link" href="./cat_detail.html"><span>แมวของเรา</span></a>
+        <a class="nav-link" href="./index.html#articles"><span>บทความ</span></a>
+        <a class="nav-link" href="./index.html#about"><span>เกี่ยวกับเรา</span></a>
+      </nav>
+
+      <div class="nav-actions">
+        <a class="button button-secondary button-small is-current" href="./login.html" aria-current="page">เข้าสู่ระบบ</a>
+        <a class="button button-primary button-small" href="./register.html">สมัครสมาชิก</a>
+      </div>
+
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="เปิดเมนู">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main class="login-main">
+    <div class="container login-layout">
+      <section class="login-intro" aria-labelledby="loginIntroTitle">
+        <div class="login-photo-frame">
+          <img
+            src="https://pet-health-content-media.chewy.com/wp-content/uploads/2026/05/12174042/black-american-curl-cat-scaled.jpg"
+            alt="แมว American Curl สีดำในบรรยากาศสว่าง"
+            loading="eager"
+            fetchpriority="high"
+            referrerpolicy="no-referrer"
+          >
+        </div>
+
+        <div class="login-intro-copy">
+          <p class="login-eyebrow">ยินดีต้อนรับกลับมา</p>
+          <h1 id="loginIntroTitle">กลับมาเจอแมว<br>ที่เข้ากับคุณ</h1>
+          <p>เข้าสู่ระบบเพื่อดูผลแบบประเมิน รายการที่บันทึกไว้ และข้อมูลบัญชีของคุณ</p>
+        </div>
+
+        <div class="login-feature-list" aria-label="สิ่งที่ทำได้หลังเข้าสู่ระบบ">
+          <span>ดูผลแบบประเมินย้อนหลัง</span>
+          <span>บันทึกสายพันธุ์ที่สนใจ</span>
+          <span>ค้นหาฟาร์มใกล้คุณ</span>
+        </div>
+      </section>
+
+      <section class="login-card" aria-labelledby="loginTitle">
+        <div class="login-card-heading">
+          <p>บัญชีผู้ใช้งาน</p>
+          <h2 id="loginTitle">เข้าสู่ระบบ</h2>
+          <span>กรอกอีเมลหรือชื่อผู้ใช้งาน พร้อมรหัสผ่านที่ใช้สมัครสมาชิก</span>
+        </div>
+
+        <form id="loginForm" novalidate>
+          <div class="login-field">
+            <label for="loginIdentifier">อีเมลหรือชื่อผู้ใช้งาน <span aria-hidden="true">*</span></label>
+            <input
+              id="loginIdentifier"
+              name="identifier"
+              type="text"
+              inputmode="text"
+              autocomplete="username"
+              placeholder="Example@gmail.com หรือ Munic2161"
+              maxlength="191"
+              required
+            >
+            <small class="field-error" id="identifierError" aria-live="polite"></small>
+          </div>
+
+          <div class="login-field">
+            <label for="loginPassword">รหัสผ่าน <span aria-hidden="true">*</span></label>
+            <div class="password-input-shell">
+              <input
+                id="loginPassword"
+                name="password"
+                type="password"
+                data-password-field="true"
+                autocomplete="current-password"
+                placeholder="รหัสผ่าน 10 ตัว"
+                minlength="10"
+                maxlength="10"
+                required
+              >
+              <button
+                class="password-visibility-toggle"
+                id="passwordToggle"
+                data-password-toggle="true"
+                type="button"
+                aria-controls="loginPassword"
+                aria-pressed="false"
+                aria-label="แสดงรหัสผ่าน"
+                title="แสดงรหัสผ่าน"
+              >
+              </button>
+            </div>
+            <small class="field-error" id="passwordError" aria-live="polite"></small>
+          </div>
+
+          <div class="login-options-row">
+            <label class="remember-option">
+              <input id="rememberMe" name="remember" type="checkbox">
+              <span>จดจำอีเมลหรือชื่อผู้ใช้งานในอุปกรณ์นี้</span>
+            </label>
+            <a class="forgot-password-link" href="./forgot-password.html">ลืมรหัสผ่าน?</a>
+          </div>
+
+          <div class="login-message" id="loginMessage" role="alert" aria-live="polite" hidden></div>
+
+          <button class="login-submit" id="loginSubmit" type="submit">
+            <span class="submit-label">เข้าสู่ระบบ</span>
+            <span class="submit-loading" hidden>กำลังตรวจสอบข้อมูล...</span>
+          </button>
+        </form>
+
+        <div class="login-divider"><span>หรือ</span></div>
+
+        <p class="register-prompt">
+          ยังไม่มีบัญชี?
+          <a href="./register.html">สมัครสมาชิก</a>
+        </p>
+
+        <div class="login-security-note">
+          CatMatch จะไม่ขอรหัสผ่านของคุณผ่านข้อความหรือช่องทางภายนอกเว็บไซต์
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="login-footer">
+    <div class="container">
+      <span>© 2026 CatMatch</span>
+      <div>
+        <a href="./terms.html">ข้อกำหนดการใช้งาน</a>
+        <a href="./privacy.html">นโยบายความเป็นส่วนตัว</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/password-visibility.js"></script>
+  <script src="../js/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CatMatch — แมวที่ใช่สำหรับคุณ</title>
+  <meta name="description" content="ระบบแนะนำสายพันธุ์แมวที่เหมาะกับไลฟ์สไตล์ พร้อมข้อมูลสายพันธุ์และฟาร์มใกล้คุณ">
+
+  <link rel="preconnect" href="https://cdn2.thecatapi.com" crossorigin>
+  <link rel="dns-prefetch" href="//cdn2.thecatapi.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700;800&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/design-system.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/home.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">ข้ามไปยังเนื้อหาหลัก</a>
+
+  <div class="sakura-scene" aria-hidden="true">
+    <div class="falling-petals">
+      <span class="falling-petal petal-1"></span>
+      <span class="falling-petal petal-2"></span>
+      <span class="falling-petal petal-3"></span>
+      <span class="falling-petal petal-4"></span>
+      <span class="falling-petal petal-5"></span>
+      <span class="falling-petal petal-6"></span>
+      <span class="falling-petal petal-7"></span>
+      <span class="falling-petal petal-8"></span>
+      <span class="falling-petal petal-9"></span>
+      <span class="falling-petal petal-10"></span>
+      <span class="falling-petal petal-11"></span>
+      <span class="falling-petal petal-12"></span>
+      <span class="falling-petal petal-13"></span>
+      <span class="falling-petal petal-14"></span>
+      <span class="falling-petal petal-15"></span>
+      <span class="falling-petal petal-16"></span>
+    </div>
+  </div>
+
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-shell">
+      <a class="brand" href="./index.html" aria-label="CatMatch หน้าแรก">
+        <span class="brand-logo" aria-hidden="true">
+          <svg viewBox="0 0 64 64" class="cute-cat-icon">
+            <path d="M17 23 14 11l10 6c5-2 11-2 16 0l10-6-3 12c4 4 6 8 6 14 0 12-9 20-21 20S11 49 11 37c0-6 2-10 6-14Z"/>
+            <path d="M24 33c0 .6-.4 1-1 1s-1-.4-1-1 .4-1 1-1 1 .4 1 1Zm18 0c0 .6-.4 1-1 1s-1-.4-1-1 .4-1 1-1 1 .4 1 1Z"/>
+            <path d="M30 39c1.5 1 2.5 1 4 0M32 35v2M24 40l-7 1M40 40l7 1M23 45l-6 4M41 45l6 4"/>
+          </svg>
+        </span>
+        <span class="brand-text">
+          <strong>CatMatch</strong>
+          <small>แมวที่ใช่ สำหรับคุณ</small>
+        </span>
+      </a>
+
+      <nav class="main-nav" aria-label="เมนูหลัก">
+        <a class="nav-link is-active" href="./index.html">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 11 9-8 9 8M5 10v10h14V10M9 20v-6h6v6"/></svg>
+          <span>หน้าหลัก</span>
+        </a>
+        <a class="nav-link" href="./assessment.html">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h12v16H6z"/><path d="M9 8h6M9 12h6M9 16h4"/><path d="m16 15 1.5 1.5L20 13.5"/></svg>
+          <span>แบบประเมิน</span>
+        </a>
+        <a class="nav-link" href="./cat_detail.html">
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="cute-cat-nav"><path d="M6.5 9 5 4l4 2.5c2-.8 4-.8 6 0L19 4l-1.5 5c1.7 1.6 2.5 3.4 2.5 5.5C20 18 16.8 20 12 20s-8-2-8-5.5C4 12.4 4.8 10.6 6.5 9Z"/><path d="M9.5 13h.01M14.5 13h.01M10.5 16c1 .8 2.5.8 3.5 0"/></svg>
+          <span>แมวของเรา</span>
+        </a>
+        <a class="nav-link" href="#articles">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14v16H5z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+          <span>บทความ</span>
+        </a>
+        <a class="nav-link" href="#about">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="m20 20-4-4"/></svg>
+          <span>เกี่ยวกับเรา</span>
+        </a>
+      </nav>
+
+      <div class="nav-actions auth-nav" id="authNav">
+        <div class="guest-nav-actions" id="guestNavActions">
+          <a class="button button-secondary button-small" href="./login.html">เข้าสู่ระบบ</a>
+          <a class="button button-primary button-small" href="./register.html?fresh=1">สมัครสมาชิก</a>
+        </div>
+
+        <div class="user-nav-actions" id="userNavActions" hidden>
+          <button
+            class="user-menu-trigger"
+            id="userMenuTrigger"
+            type="button"
+            aria-expanded="false"
+            aria-controls="userMenuPanel"
+          >
+            <span class="user-avatar" id="userAvatar" aria-hidden="true">U</span>
+            <span class="user-summary">
+              <strong id="userDisplayName">ผู้ใช้งาน</strong>
+              <small>บัญชีของฉัน</small>
+            </span>
+            <svg class="user-menu-chevron" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="m7 10 5 5 5-5"/>
+            </svg>
+          </button>
+
+          <div class="user-menu-panel" id="userMenuPanel" hidden>
+            <div class="user-menu-account">
+              <span class="user-menu-avatar" id="userMenuAvatar" aria-hidden="true">U</span>
+              <span>
+                <strong id="userMenuName">ผู้ใช้งาน</strong>
+                <small id="userMenuEmail"></small>
+              </span>
+            </div>
+
+            <a href="./assessment.html">ทำแบบประเมิน</a>
+            <a href="./cat_detail.html">แมวที่สนใจ</a>
+            <button class="account-menu-button" id="accountInfoButton" type="button">ข้อมูลบัญชี</button>
+            <button class="account-menu-button" id="accountSettingsButton" type="button">การตั้งค่า</button>
+            <button class="logout-button" id="logoutButton" type="button">ออกจากระบบ</button>
+          </div>
+        </div>
+      </div>
+
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="เปิดเมนู">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="hero section section-shell">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <p class="eyebrow eyebrow-hero">
+            <span class="paw-inline" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="6" cy="7" r="2"/><circle cx="12" cy="4.5" r="2"/><circle cx="18" cy="7" r="2"/><circle cx="4.5" cy="12.5" r="2"/><path d="M7 16c0-3 2-5 5-5s5 2 5 5c0 2-2 4-5 4s-5-2-5-4Z"/></svg>
+            </span>
+            เริ่มต้นการเดินทางค้นหาแมวที่เข้ากับคุณ
+          </p>
+
+          <div class="hero-title-wrap">
+            <h1>
+              แมวและความสุข<br>
+              เริ่มต้นได้ที่นี่
+            </h1>
+            <span class="paw-title" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="6" cy="7" r="2"/><circle cx="12" cy="4.5" r="2"/><circle cx="18" cy="7" r="2"/><circle cx="4.5" cy="12.5" r="2"/><path d="M7 16c0-3 2-5 5-5s5 2 5 5c0 2-2 4-5 4s-5-2-5-4Z"/></svg>
+            </span>
+            <svg class="hero-brush-line" viewBox="0 0 420 34" aria-hidden="true"><path d="M8 22C84 7 162 9 237 17c56 6 113 8 175-2"/></svg>
+          </div>
+
+          <p class="hero-description">
+            ค้นหาแมวที่เหมาะกับไลฟ์สไตล์และนิสัยของคุณ
+            เพื่อการใช้ชีวิตร่วมกันอย่างอบอุ่นและมีความสุขในทุกวัน
+          </p>
+
+          <div class="hero-actions">
+            <a class="button button-accent button-large" href="./assessment.html">
+              <span class="button-icon button-paw" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><circle cx="6" cy="7" r="2"/><circle cx="12" cy="4.5" r="2"/><circle cx="18" cy="7" r="2"/><circle cx="4.5" cy="12.5" r="2"/><path d="M7 16c0-3 2-5 5-5s5 2 5 5c0 2-2 4-5 4s-5-2-5-4Z"/></svg>
+              </span>
+              เริ่มค้นหาแมวที่ใช่
+              <span aria-hidden="true">→</span>
+            </a>
+
+            <a class="button button-ghost button-large" href="./cat_detail.html">ดูแมวทั้งหมด</a>
+          </div>
+
+          <a class="dog-future-link" href="#" aria-label="โหมดสำหรับสุนัขในอนาคต">
+            <span class="dog-future-icon" aria-hidden="true">
+              <svg viewBox="0 0 56 56">
+                <path class="dog-ear" d="M18 21 10 11c-3 9 0 18 8 23"/>
+                <path class="dog-ear" d="m38 21 8-10c3 9 0 18-8 23"/>
+                <path class="dog-head" d="M17 23c2.5-8 7-12 11-12s8.5 4 11 12c3.5 11-.5 22-11 27-10.5-5-14.5-16-11-27Z"/>
+                <path class="dog-muzzle" d="M20 35c2.5-4 13.5-4 16 0 1.5 4-2.5 9-8 9s-9.5-5-8-9Z"/>
+                <circle class="dog-eye" cx="22" cy="28" r="1.7"/>
+                <circle class="dog-eye" cx="34" cy="28" r="1.7"/>
+                <path class="dog-nose" d="M25.5 35c1.5-1.5 3.5-1.5 5 0-.7 1.8-1.7 2.6-2.5 2.6s-1.8-.8-2.5-2.6Z"/>
+                <path class="dog-mouth" d="M28 38v2.5m0 0c-2 1.5-4.2 1.2-5.4-.4m5.4.4c2 1.5 4.2 1.2 5.4-.4"/>
+              </svg>
+            </span>
+            <span>
+              <strong>สำหรับคนรักหมา</strong>
+              <small>กำลังพัฒนาในอนาคต</small>
+            </span>
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+
+        <div class="hero-visual reveal">
+          
+          <div class="hero-paper-mat" aria-hidden="true"></div>
+          <div class="hero-arch">
+<img src="https://images.unsplash.com/photo-1574158622682-e40e69881006?auto=format&fit=crop&w=1400&q=90" alt="แมวลายสีน้ำตาลนั่งในห้องโทนอุ่น">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="overview section section-shell">
+      <div class="container overview-grid">
+        <div class="card stats-card reveal">
+<div class="stat-item">
+            <span class="stat-icon line-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m3 11 9-8 9 8M5 10v10h14V10M9 20v-6h6v6"/></svg></span>
+            <strong data-stat="farms">0</strong>
+            <span>ฟาร์มที่เข้าร่วม</span>
+          </div>
+
+          <div class="stat-item">
+            <span class="stat-icon line-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 5 3 8 7 10 4-2 7-5 7-10V6l-7-3Z"/><path d="m9 12 2 2 4-5"/></svg></span>
+            <strong data-stat="breeds">0</strong>
+            <span>สายพันธุ์ในระบบ</span>
+          </div>
+
+          <div class="stat-item">
+            <span class="stat-icon line-icon" aria-hidden="true"><svg viewBox="0 0 24 24" class="cute-cat-nav"><path d="M6.5 9 5 4l4 2.5c2-.8 4-.8 6 0L19 4l-1.5 5c1.7 1.6 2.5 3.4 2.5 5.5C20 18 16.8 20 12 20s-8-2-8-5.5C4 12.4 4.8 10.6 6.5 9Z"/><path d="M9.5 13h.01M14.5 13h.01M10.5 16c1 .8 2.5.8 3.5 0"/></svg></span>
+            <strong data-stat="available">0</strong>
+            <span>แมวที่พร้อมให้ข้อมูล</span>
+          </div>
+
+          <div class="stat-item">
+            <span class="stat-icon line-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 4h10l3 3v13H7z"/><path d="M17 4v4h4M10 11h7M10 15h5M10 8h3"/></svg></span>
+            <strong data-stat="assessments">0</strong>
+            <span>ผลแบบประเมิน</span>
+          </div>
+        </div>
+
+        <div class="card steps-card reveal">
+          <div class="section-heading compact">
+            <p class="eyebrow">ใช้งานง่ายใน 4 ขั้นตอน</p>
+            <h2>ค้นหาแมวที่ใช่สำหรับคุณ</h2>
+          </div>
+
+          <ol class="steps-list">
+            <li>
+              <span class="step-icon"><svg viewBox="0 0 24 24"><path d="M5 4h14v16H5z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span>
+              <span class="step-number">01</span>
+              <strong>กรอกข้อมูล</strong>
+              <small>ตอบคำถามไลฟ์สไตล์และนิสัย</small>
+            </li>
+            <li>
+              <span class="step-icon"><svg viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><circle cx="12" cy="12" r="4"/></svg></span>
+              <span class="step-number">02</span>
+              <strong>ระบบจับคู่</strong>
+              <small>วิเคราะห์ความเหมาะสม</small>
+            </li>
+            <li>
+              <span class="step-icon"><svg viewBox="0 0 24 24"><path d="M7 4h10l3 3v13H7z"/><path d="M17 4v4h4M10 11h7M10 15h5M10 8h3"/></svg></span>
+              <span class="step-number">03</span>
+              <strong>ดูผลแนะนำ</strong>
+              <small>เปิดผลอันดับ 3 ถึง 1</small>
+            </li>
+            <li>
+              <span class="step-icon"><svg viewBox="0 0 24 24"><path d="M12 21s6-5 6-11a6 6 0 1 0-12 0c0 6 6 11 6 11Z"/><circle cx="12" cy="10" r="2"/></svg></span>
+              <span class="step-number">04</span>
+              <strong>ค้นหาฟาร์ม</strong>
+              <small>เลือกดูฟาร์มใกล้คุณ</small>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="breeds section section-shell">
+      <div class="container">
+        <div class="section-heading row reveal">
+          <div>
+            <p class="eyebrow">เรียนรู้สายพันธุ์แมว</p>
+            <h2>แมวที่น่าสนใจ</h2>
+          </div>
+          <a class="text-link" href="./cat_detail.html">ดูทั้งหมด <span aria-hidden="true">→</span></a>
+        </div>
+
+        <div class="breed-grid" id="breedGrid" aria-live="polite">
+          <article class="card breed-card skeleton-card"><div class="skeleton skeleton-image"></div><div class="breed-card-body"><div class="skeleton skeleton-line medium"></div><div class="skeleton skeleton-line short"></div><div class="skeleton skeleton-line"></div></div></article>
+          <article class="card breed-card skeleton-card"><div class="skeleton skeleton-image"></div><div class="breed-card-body"><div class="skeleton skeleton-line medium"></div><div class="skeleton skeleton-line short"></div><div class="skeleton skeleton-line"></div></div></article>
+          <article class="card breed-card skeleton-card"><div class="skeleton skeleton-image"></div><div class="breed-card-body"><div class="skeleton skeleton-line medium"></div><div class="skeleton skeleton-line short"></div><div class="skeleton skeleton-line"></div></div></article>
+          <article class="card breed-card skeleton-card"><div class="skeleton skeleton-image"></div><div class="breed-card-body"><div class="skeleton skeleton-line medium"></div><div class="skeleton skeleton-line short"></div><div class="skeleton skeleton-line"></div></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-zone section section-shell" id="articles">
+      <div class="container content-grid">
+        <article class="card map-promo reveal">
+          <div>
+            <p class="eyebrow">แผนที่ฟาร์ม</p>
+            <h2>ค้นหาฟาร์มใกล้คุณ</h2>
+            <p>เลือกดูตำแหน่งฟาร์มที่ผ่านการอนุมัติ พร้อมรายละเอียดสายพันธุ์และข้อมูลติดต่อ</p>
+            <a class="text-link" href="./farm.html">ดูแผนที่ <span aria-hidden="true">→</span></a>
+          </div>
+          <div class="map-illustration" aria-hidden="true">
+            <span class="map-pin pin-one">●</span>
+            <span class="map-pin pin-two">●</span>
+            <span class="map-pin pin-three">●</span>
+            <span class="map-home">⌂</span>
+          </div>
+        </article>
+
+        <div class="articles-wrap">
+          <div class="section-heading row reveal">
+            <div>
+              <p class="eyebrow">ความรู้สำหรับคนรักแมว</p>
+              <h2>บทความและเคล็ดลับ</h2>
+            </div>
+            <a class="text-link" href="#">ดูทั้งหมด <span aria-hidden="true">→</span></a>
+          </div>
+
+          <div class="article-grid">
+            <article class="card article-card reveal">
+              <img src="https://images.unsplash.com/photo-1495360010541-f48722b34f7d?auto=format&fit=crop&w=900&q=80" alt="แมวนั่งอยู่ในบ้าน">
+              <div><small>การดูแล</small><h3>จัดบ้านอย่างไรให้เหมาะกับแมว</h3><a class="text-link" href="#">อ่านต่อ →</a></div>
+            </article>
+            <article class="card article-card reveal">
+              <img src="https://images.unsplash.com/photo-1533743983669-94fa5c4338ec?auto=format&fit=crop&w=900&q=80" alt="แมวกำลังเล่นบนคอนโดแมว">
+              <div><small>พฤติกรรม</small><h3>เข้าใจพฤติกรรมแมวในแต่ละช่วงวัย</h3><a class="text-link" href="#">อ่านต่อ →</a></div>
+            </article>
+            <article class="card article-card reveal">
+              <img src="https://images.unsplash.com/photo-1589924691995-400dc9ecc119?auto=format&fit=crop&w=900&q=80" alt="อาหารเม็ดสำหรับแมว">
+              <div><small>โภชนาการ</small><h3>เลือกอาหารแมวอย่างไรให้เหมาะสม</h3><a class="text-link" href="#">อ่านต่อ →</a></div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="about">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="./index.html">
+          <span class="brand-logo" aria-hidden="true">
+            <svg viewBox="0 0 64 64" class="cute-cat-icon">
+              <path d="M17 23 14 11l10 6c5-2 11-2 16 0l10-6-3 12c4 4 6 8 6 14 0 12-9 20-21 20S11 49 11 37c0-6 2-10 6-14Z"/>
+              <path d="M24 33c0 .6-.4 1-1 1s-1-.4-1-1 .4-1 1-1 1 .4 1 1Zm18 0c0 .6-.4 1-1 1s-1-.4-1-1 .4-1 1-1 1 .4 1 1Z"/>
+              <path d="M30 39c1.5 1 2.5 1 4 0M32 35v2M24 40l-7 1M40 40l7 1M23 45l-6 4M41 45l6 4"/>
+            </svg>
+          </span>
+          <span class="brand-text"><strong>CatMatch</strong><small>แมวที่ใช่ สำหรับคุณ</small></span>
+        </a>
+        <p>เราช่วยให้การค้นหาแมวที่เข้ากับไลฟ์สไตล์ของคุณ เป็นเรื่องง่ายและเป็นระบบ</p>
+      </div>
+
+      <div>
+        <h3>บริการ</h3>
+        <a href="./assessment.html">แบบประเมิน</a>
+        <a href="./cat_detail.html">แมวของเรา</a>
+        <a href="./farm.html">ค้นหาฟาร์ม</a>
+        <a href="#articles">บทความ</a>
+      </div>
+
+      <div>
+        <h3>ช่วยเหลือ</h3>
+        <a href="#">คำถามที่พบบ่อย</a>
+        <a href="#">นโยบายความเป็นส่วนตัว</a>
+        <a href="#">ข้อกำหนดการใช้งาน</a>
+      </div>
+
+      <div>
+        <h3>อัปเดตข้อมูล</h3>
+        <p>รับข่าวสารเกี่ยวกับแมวและการดูแลที่เหมาะสม</p>
+        <form class="newsletter-form">
+          <label class="visually-hidden" for="newsletterEmail">อีเมล</label>
+          <input id="newsletterEmail" type="email" placeholder="Example@gmail.com">
+          <button class="icon-button submit" type="submit" aria-label="สมัครรับข่าวสาร">→</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <span>© 2026 CatMatch</span>
+      <span>โครงการแนะนำสายพันธุ์แมวและค้นหาฟาร์ม</span>
+    </div>
+  </footer>
+
+  <script src="../js/cat-breed-data.js"></script>
+  <script src="../js/breed-knowledge.js"></script>
+  <script src="../js/index.js"></script>
+</body>
+</html>

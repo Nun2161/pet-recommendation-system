@@ -1,0 +1,233 @@
+:root {
+  --font-family: "Noto Sans Thai", sans-serif;
+  --font-heading: "Zen Maru Gothic", "Noto Sans Thai", sans-serif;
+
+  --color-bg: #fffaf7;
+  --color-bg-2: #f4fbff;
+  --color-surface: #fffdfb;
+  --color-surface-strong: #ffffff;
+  --color-text: #2d2b2a;
+  --color-text-soft: #6f6a65;
+  --color-border: rgba(114, 126, 144, 0.18);
+  --color-shadow: rgba(97, 110, 126, 0.12);
+
+  --sakura-white: #fff8f7;
+  --sakura-pink: #f7d9e4;
+  --sakura-pink-strong: #efbfd0;
+  --summer-mint: #bfe7ea;
+  --summer-sky: #d9f0ff;
+  --summer-blue: #92bddf;
+  --summer-blue-deep: #6c9ec8;
+  --soft-sun: #f7e8a8;
+  --hanko-red: #d7736b;
+  --branch: #8f766c;
+
+  --radius-sm: 14px;
+  --radius-md: 24px;
+  --radius-lg: 32px;
+  --radius-xl: 40px;
+  --radius-pill: 999px;
+
+  --shadow-sm: 0 14px 30px var(--color-shadow);
+  --shadow-md: 0 24px 70px rgba(101, 116, 132, 0.16);
+  --shadow-hover: 0 28px 82px rgba(101, 116, 132, 0.18);
+
+  --container: 1280px;
+  --section-space: clamp(76px, 8vw, 120px);
+
+  color-scheme: light;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  margin: 0;
+  position: relative;
+  isolation: isolate;
+
+  font-family: var(--font-family);
+  color: var(--color-text);
+  line-height: 1.65;
+
+  background:
+    radial-gradient(circle at 12% 0%, rgba(247, 232, 168, 0.22), transparent 22%),
+    radial-gradient(circle at 86% 6%, rgba(191, 231, 234, 0.22), transparent 22%),
+    linear-gradient(180deg, var(--color-bg), var(--color-bg-2));
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(3rem, 4.9vw, 5.05rem);
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+}
+
+h2 {
+  margin-bottom: 14px;
+  font-size: clamp(1.85rem, 3vw, 2.8rem);
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+h3 {
+  line-height: 1.4;
+}
+
+svg {
+  display: block;
+}
+
+.container {
+  width: min(var(--container), calc(100% - 44px));
+  margin-inline: auto;
+}
+
+.section {
+  padding-block: var(--section-space);
+}
+
+.section-tight {
+  padding-top: 0;
+}
+
+.section-shell {
+  position: relative;
+}
+
+.section-shell::after {
+  content: "";
+  position: absolute;
+  left: 4%;
+  right: 4%;
+  bottom: 0;
+  height: 14px;
+  pointer-events: none;
+  opacity: 0.38;
+  background:
+    radial-gradient(circle at 10px -2px, transparent 12px, rgba(146, 189, 223, 0.22) 13px 14px, transparent 15px) repeat-x;
+  background-size: 28px 14px;
+}
+
+.card {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,253,251,0.94));
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 18% 20%, rgba(247, 217, 228, 0.14), transparent 18%),
+    radial-gradient(circle at 82% 78%, rgba(191, 231, 234, 0.10), transparent 18%);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+
+.eyebrow {
+  margin-bottom: 16px;
+  color: var(--summer-blue-deep);
+  font-size: 0.98rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 9999;
+  padding: 10px 16px;
+  transform: translateY(-160%);
+  border-radius: var(--radius-pill);
+  background: var(--color-text);
+  color: var(--color-bg);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 780px) {
+  h1 {
+    font-size: clamp(2.6rem, 11vw, 4rem);
+  }
+
+  .section-shell::after {
+    left: 0;
+    right: 0;
+  }
+}

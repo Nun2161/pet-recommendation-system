@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer">
+  <title>Recovery Code — CatMatch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700;800&family=Zen+Maru+Gothic:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/password-reset.css">
+</head>
+<body>
+  <div class="reset-sakura-scene" aria-hidden="true">
+    <span class="reset-petal"></span><span class="reset-petal"></span><span class="reset-petal"></span>
+    <span class="reset-petal"></span><span class="reset-petal"></span><span class="reset-petal"></span>
+    <span class="reset-petal"></span><span class="reset-petal"></span><span class="reset-petal"></span>
+    <span class="reset-petal"></span><span class="reset-petal"></span><span class="reset-petal"></span>
+  </div>
+  <header class="reset-header">
+    <div class="reset-header-inner">
+      <a class="reset-brand" href="./index.html"><strong>CatMatch</strong><small>แมวที่ใช่ สำหรับคุณ</small></a>
+      <a class="reset-header-link" href="./index.html">กลับหน้าหลัก</a>
+    </div>
+  </header>
+  <main class="reset-main">
+    <section class="reset-card" style="max-width:700px;margin:auto">
+      <p class="reset-eyebrow">การกู้คืนบัญชี</p>
+      <h2>สร้าง Recovery Code</h2>
+      <p>รหัสนี้ใช้เป็นข้อมูลช่วยยืนยันตัวตนเมื่อคุณลืมรหัสผ่าน ระบบจะแสดงรหัสใหม่เพียงครั้งเดียว และการสร้างใหม่จะทำให้รหัสเดิมใช้ไม่ได้</p>
+      <div class="reset-reference" id="recoveryResult" hidden>
+        <strong>Recovery Code ของคุณ</strong>
+        <code id="recoveryCodeValue"></code>
+        <p class="reset-help">จดหรือเก็บไว้ใน Password Manager อย่าส่งให้ผู้อื่น</p>
+      </div>
+      <div class="reset-message" id="recoveryMessage" hidden></div>
+      <button class="reset-button" id="generateRecoveryCode" type="button">สร้าง Recovery Code ใหม่</button>
+    </section>
+  </main>
+  <script src="../js/recovery-code.js"></script>
+</body>
+</html>

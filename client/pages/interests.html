@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>เลือกสิ่งที่สนใจ — CatMatch</title>
+  <meta name="description" content="เลือกส่วนที่คุณสนใจใน CatMatch หลังเข้าสู่ระบบ">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700;800&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/design-system.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/interests.css">
+</head>
+<body class="interests-page">
+  <header class="site-header">
+    <div class="container nav-shell">
+      <a class="brand" href="./index.html" aria-label="CatMatch หน้าแรก">
+        <span class="brand-logo" aria-hidden="true">
+          <svg viewBox="0 0 64 64" class="cute-cat-icon"><path d="M17 23 14 11l10 6c5-2 11-2 16 0l10-6-3 12c4 4 6 8 6 14 0 12-9 20-21 20S11 49 11 37c0-6 2-10 6-14Z"/><path d="M24 33h.01M42 33h.01M30 39c1.5 1 2.5 1 4 0"/></svg>
+        </span>
+        <span class="brand-text"><strong>CatMatch</strong><small>แมวที่ใช่ สำหรับคุณ</small></span>
+      </a>
+    </div>
+  </header>
+
+  <main class="interests-main">
+    <section class="interests-card" aria-labelledby="interestsTitle">
+      <p class="eyebrow">ตั้งค่าประสบการณ์ของคุณ</p>
+      <h1 id="interestsTitle">คุณสนใจใช้งานส่วนใดบ้าง</h1>
+      <p class="interests-description">เลือกได้ตั้งแต่ 1 รายการขึ้นไป และเปลี่ยนภายหลังได้ในโปรไฟล์</p>
+
+      <form id="interestsForm">
+        <div class="interest-grid">
+          <label class="interest-card">
+            <input type="checkbox" name="interests" value="assessment">
+            <span class="interest-check" aria-hidden="true">✓</span>
+            <span class="interest-icon"><svg viewBox="0 0 24 24"><path d="M6 4h12v16H6z"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></span>
+            <strong>ทำแบบประเมิน</strong>
+            <small>ค้นหาสายพันธุ์ที่เข้ากับไลฟ์สไตล์ของคุณ</small>
+          </label>
+
+          <label class="interest-card">
+            <input type="checkbox" name="interests" value="breeds">
+            <span class="interest-check" aria-hidden="true">✓</span>
+            <span class="interest-icon"><svg viewBox="0 0 24 24"><path d="M6.5 9 5 4l4 2.5c2-.8 4-.8 6 0L19 4l-1.5 5c1.7 1.6 2.5 3.4 2.5 5.5C20 18 16.8 20 12 20s-8-2-8-5.5C4 12.4 4.8 10.6 6.5 9Z"/><path d="M9.5 13h.01M14.5 13h.01"/></svg></span>
+            <strong>ศึกษาสายพันธุ์</strong>
+            <small>เรียนรู้ลักษณะนิสัย การดูแล และประวัติของแมว</small>
+          </label>
+
+          <label class="interest-card">
+            <input type="checkbox" name="interests" value="farms">
+            <span class="interest-check" aria-hidden="true">✓</span>
+            <span class="interest-icon"><svg viewBox="0 0 24 24"><path d="M12 21s6-5 6-11a6 6 0 1 0-12 0c0 6 6 11 6 11Z"/><circle cx="12" cy="10" r="2"/></svg></span>
+            <strong>ค้นหาฟาร์ม</strong>
+            <small>ดูฟาร์มที่ผ่านการอนุมัติและอยู่ใกล้คุณ</small>
+          </label>
+        </div>
+
+        <p class="interest-error" id="interestError" role="alert"></p>
+
+        <div class="interest-actions">
+          <button class="button button-secondary" type="button" id="skipInterests">ไว้ทีหลัง</button>
+          <button class="button button-primary" type="submit">บันทึกและเริ่มใช้งาน <span aria-hidden="true">→</span></button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <script src="../js/interests.js"></script>
+</body>
+</html>
