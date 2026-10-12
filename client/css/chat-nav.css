@@ -1,0 +1,50 @@
+/* Shared message navigation item and unread badge. */
+.main-nav .nav-link.chat-nav-link {
+  position: relative;
+}
+
+.main-nav .nav-link.chat-nav-link > span:not(.chat-nav-badge) {
+  white-space: nowrap;
+}
+
+.chat-nav-badge {
+  position: absolute;
+  top: -7px;
+  right: -9px;
+  min-width: 19px;
+  height: 19px;
+  display: inline-grid;
+  place-items: center;
+  box-sizing: border-box;
+  padding: 0 5px;
+  border: 2px solid var(--surface, #fff);
+  border-radius: 999px;
+  color: #fff;
+  background: #e5484d;
+  box-shadow: 0 4px 12px rgba(229, 72, 77, .28);
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.chat-nav-badge[hidden] {
+  display: none !important;
+}
+
+body.dark-mode .chat-nav-badge,
+html[data-theme="dark"] .chat-nav-badge,
+html[data-catmatch-theme="dark"] .chat-nav-badge {
+  border-color: #15283a;
+}
+
+@media (max-width: 980px) {
+  .main-nav .nav-link.chat-nav-link {
+    width: 100%;
+  }
+  .chat-nav-badge {
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+  }
+}

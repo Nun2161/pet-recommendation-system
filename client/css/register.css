@@ -3071,3 +3071,124 @@ textarea#address.is-invalid {
 textarea#address.is-valid {
   border-color: #75ad9d;
 }
+/* =========================================================
+   REGISTER V9 — FARM REGISTRATION LINK
+   ========================================================= */
+
+.register-account-type-note {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 13px;
+  margin: -4px 0 25px;
+  padding: 13px 15px;
+  border: 1px solid rgba(108, 162, 207, 0.2);
+  border-radius: 18px;
+  background:
+    radial-gradient(
+      circle at 7% 12%,
+      rgba(248, 221, 166, 0.18),
+      transparent 38%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(246, 251, 255, 0.94),
+      rgba(255, 248, 250, 0.94)
+    );
+}
+
+.register-account-type-note__icon {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  color: #6ca2cf;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 7px 18px rgba(77, 98, 116, 0.08);
+}
+
+.register-account-type-note__icon svg {
+  width: 23px;
+  height: 23px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.register-account-type-note__content {
+  min-width: 0;
+}
+
+.register-account-type-note__content small,
+.register-account-type-note__content strong,
+.register-account-type-note__content span {
+  display: block;
+}
+
+.register-account-type-note__content small {
+  margin-bottom: 2px;
+  color: #a47c8a;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.register-account-type-note__content strong {
+  margin-bottom: 2px;
+  color: #36383a;
+  font-size: 0.9rem;
+}
+
+.register-account-type-note__content span {
+  color: #77797b;
+  font-size: 0.76rem;
+  line-height: 1.5;
+}
+
+.register-account-type-note__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 40px;
+  padding: 0 14px;
+  border: 1px solid rgba(108, 162, 207, 0.3);
+  border-radius: 999px;
+  color: #477d9f;
+  background: #ffffff;
+  font-size: 0.79rem;
+  font-weight: 800;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.register-account-type-note__link:hover,
+.register-account-type-note__link:focus-visible {
+  color: #356c8e;
+  background: #f5fbff;
+  box-shadow: 0 9px 20px rgba(77, 98, 116, 0.11);
+  transform: translateY(-1px);
+  outline: none;
+}
+
+@media (max-width: 620px) {
+  .register-account-type-note {
+    grid-template-columns: 42px minmax(0, 1fr);
+  }
+
+  .register-account-type-note__icon {
+    width: 42px;
+    height: 42px;
+  }
+
+  .register-account-type-note__link {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+}

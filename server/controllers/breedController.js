@@ -1,15 +1,72 @@
+"use strict";
+
 const db = require("../config/db");
+const { normalizeSpecies } = require("../utils/species");
+const {
+  ensureAssessmentSetup,
+} = require("../services/assessmentSetupService");
+
+const TRAIT_COLUMNS = [
+  "friendly",
+  "affectionate",
+  "playful",
+  "independence",
+  "trainability",
+  "protective",
+  "adaptability",
+  "sociability",
+  "activity_level",
+  "exercise_need",
+  "outdoor_preference",
+  "apartment_suitability",
+  "family_friendly",
+  "child_friendly",
+  "first_time_owner_friendly",
+  "grooming_need",
+  "shedding_level",
+  "noise_level",
+  "heat_tolerance",
+  "cold_tolerance",
+];
+
+const SELECT_COLUMNS = [
+  "breed_id",
+  "breed_name",
+  ...TRAIT_COLUMNS,
+  "description",
+  "image_url",
+  "status",
+  "species",
+];
+
+function normalizeBreed(row) {
+  const breed = {
+    ...row,
+    breed_id: Number(row.breed_id),
+  };
+
+  TRAIT_COLUMNS.forEach((column) => {
+    breed[column] = Number(row[column]);
+  });
+
+  return breed;
+}
 
 /**
- * GET /api/breeds
- *
- * Query ที่รองรับ:
- * ?search=British
- * ?limit=20
- * ?page=1
+ * GET /api/breeds?species=cat|dog
  */
 const getAllBreeds = async (req, res) => {
   try {
+    await ensureAssessmentSetup();
+    const species = normalizeSpecies(req.query.species ?? "cat");
+
+    if (!species) {
+      return res.status(400).json({
+        success: false,
+        message: "species ต้องเป็น cat หรือ dog",
+      });
+    }
+
     const search =
       typeof req.query.search === "string"
         ? req.query.search.trim()
@@ -31,9 +88,11 @@ const getAllBreeds = async (req, res) => {
         : 1;
 
     const offset = (page - 1) * limit;
-
-    const conditions = ["status = 'active'"];
-    const params = [];
+    const conditions = [
+      "status = 'active'",
+      "species = ?",
+    ];
+    const params = [species];
 
     if (search) {
       conditions.push("breed_name LIKE ?");
@@ -43,99 +102,31 @@ const getAllBreeds = async (req, res) => {
     const whereClause = conditions.join(" AND ");
 
     const [countRows] = await db.query(
-      `
-        SELECT COUNT(*) AS total
-        FROM breed
-        WHERE ${whereClause}
-      `,
+      `SELECT COUNT(*) AS total
+       FROM breed
+       WHERE ${whereClause}`,
       params
     );
 
     const total = Number(countRows[0].total);
 
     const [rows] = await db.query(
-      `
-        SELECT
-          breed_id,
-          breed_name,
-          friendly,
-          affectionate,
-          playful,
-          independence,
-          trainability,
-          protective,
-          adaptability,
-          sociability,
-          activity_level,
-          exercise_need,
-          outdoor_preference,
-          apartment_suitability,
-          family_friendly,
-          child_friendly,
-          first_time_owner_friendly,
-          grooming_need,
-          shedding_level,
-          noise_level,
-          heat_tolerance,
-          cold_tolerance,
-          description,
-          image_url,
-          status
-        FROM breed
-        WHERE ${whereClause}
-        ORDER BY breed_name ASC
-        LIMIT ? OFFSET ?
-      `,
+      `SELECT ${SELECT_COLUMNS.join(", ")}
+       FROM breed
+       WHERE ${whereClause}
+       ORDER BY breed_name ASC
+       LIMIT ? OFFSET ?`,
       [...params, limit, offset]
     );
 
-    const breeds = rows.map((breed) => ({
-      ...breed,
-
-      breed_id: Number(breed.breed_id),
-
-      friendly: Number(breed.friendly),
-      affectionate: Number(breed.affectionate),
-      playful: Number(breed.playful),
-      independence: Number(breed.independence),
-      trainability: Number(breed.trainability),
-      protective: Number(breed.protective),
-      adaptability: Number(breed.adaptability),
-      sociability: Number(breed.sociability),
-      activity_level: Number(breed.activity_level),
-      exercise_need: Number(breed.exercise_need),
-      outdoor_preference: Number(
-        breed.outdoor_preference
-      ),
-      apartment_suitability: Number(
-        breed.apartment_suitability
-      ),
-      family_friendly: Number(
-        breed.family_friendly
-      ),
-      child_friendly: Number(
-        breed.child_friendly
-      ),
-      first_time_owner_friendly: Number(
-        breed.first_time_owner_friendly
-      ),
-      grooming_need: Number(breed.grooming_need),
-      shedding_level: Number(breed.shedding_level),
-      noise_level: Number(breed.noise_level),
-      heat_tolerance: Number(breed.heat_tolerance),
-      cold_tolerance: Number(breed.cold_tolerance),
-    }));
-
-    const totalPages =
-      total === 0 ? 0 : Math.ceil(total / limit);
-
     return res.status(200).json({
       success: true,
+      species,
       total,
       page,
       limit,
-      total_pages: totalPages,
-      data: breeds,
+      total_pages: total === 0 ? 0 : Math.ceil(total / limit),
+      data: rows.map(normalizeBreed),
     });
   } catch (error) {
     console.error("Get all breeds error:", error);
@@ -143,17 +134,18 @@ const getAllBreeds = async (req, res) => {
     return res.status(500).json({
       success: false,
       message: "ไม่สามารถดึงข้อมูลสายพันธุ์ได้",
-      error: error.message,
     });
   }
 };
 
 /**
- * GET /api/breeds/:id
+ * GET /api/breeds/:id?species=cat|dog
  */
 const getBreedById = async (req, res) => {
   try {
+    await ensureAssessmentSetup();
     const breedId = Number(req.params.id);
+    const species = normalizeSpecies(req.query.species ?? "cat");
 
     if (!Number.isInteger(breedId) || breedId <= 0) {
       return res.status(400).json({
@@ -162,40 +154,21 @@ const getBreedById = async (req, res) => {
       });
     }
 
+    if (!species) {
+      return res.status(400).json({
+        success: false,
+        message: "species ต้องเป็น cat หรือ dog",
+      });
+    }
+
     const [rows] = await db.query(
-      `
-        SELECT
-          breed_id,
-          breed_name,
-          friendly,
-          affectionate,
-          playful,
-          independence,
-          trainability,
-          protective,
-          adaptability,
-          sociability,
-          activity_level,
-          exercise_need,
-          outdoor_preference,
-          apartment_suitability,
-          family_friendly,
-          child_friendly,
-          first_time_owner_friendly,
-          grooming_need,
-          shedding_level,
-          noise_level,
-          heat_tolerance,
-          cold_tolerance,
-          description,
-          image_url,
-          status
-        FROM breed
-        WHERE breed_id = ?
-          AND status = 'active'
-        LIMIT 1
-      `,
-      [breedId]
+      `SELECT ${SELECT_COLUMNS.join(", ")}
+       FROM breed
+       WHERE breed_id = ?
+         AND species = ?
+         AND status = 'active'
+       LIMIT 1`,
+      [breedId, species]
     );
 
     if (rows.length === 0) {
@@ -205,46 +178,10 @@ const getBreedById = async (req, res) => {
       });
     }
 
-    const row = rows[0];
-
-    const breed = {
-      ...row,
-
-      breed_id: Number(row.breed_id),
-
-      friendly: Number(row.friendly),
-      affectionate: Number(row.affectionate),
-      playful: Number(row.playful),
-      independence: Number(row.independence),
-      trainability: Number(row.trainability),
-      protective: Number(row.protective),
-      adaptability: Number(row.adaptability),
-      sociability: Number(row.sociability),
-      activity_level: Number(row.activity_level),
-      exercise_need: Number(row.exercise_need),
-      outdoor_preference: Number(
-        row.outdoor_preference
-      ),
-      apartment_suitability: Number(
-        row.apartment_suitability
-      ),
-      family_friendly: Number(
-        row.family_friendly
-      ),
-      child_friendly: Number(row.child_friendly),
-      first_time_owner_friendly: Number(
-        row.first_time_owner_friendly
-      ),
-      grooming_need: Number(row.grooming_need),
-      shedding_level: Number(row.shedding_level),
-      noise_level: Number(row.noise_level),
-      heat_tolerance: Number(row.heat_tolerance),
-      cold_tolerance: Number(row.cold_tolerance),
-    };
-
     return res.status(200).json({
       success: true,
-      data: breed,
+      species,
+      data: normalizeBreed(rows[0]),
     });
   } catch (error) {
     console.error("Get breed by ID error:", error);
@@ -252,7 +189,6 @@ const getBreedById = async (req, res) => {
     return res.status(500).json({
       success: false,
       message: "ไม่สามารถดึงรายละเอียดสายพันธุ์ได้",
-      error: error.message,
     });
   }
 };

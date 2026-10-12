@@ -97,8 +97,20 @@ const listPasswordResetRequests = async (req, res) => {
 const approvePasswordResetRequest = async (req, res) => {
   try {
     const requestId = Number(req.params?.requestId);
+    const adminId = Number(req.admin?.admin_id);
+
     if (!Number.isInteger(requestId) || requestId <= 0) {
-      return res.status(400).json({ success: false, message: "request_id ไม่ถูกต้อง" });
+      return res.status(400).json({
+        success: false,
+        message: "request_id ไม่ถูกต้อง",
+      });
+    }
+
+    if (!Number.isInteger(adminId) || adminId <= 0) {
+      return res.status(401).json({
+        success: false,
+        message: "ไม่พบข้อมูลผู้ดูแลระบบ กรุณาเข้าสู่ระบบใหม่",
+      });
     }
 
     const [result] = await db.query(
@@ -115,30 +127,39 @@ const approvePasswordResetRequest = async (req, res) => {
           token_issued_at = NULL,
           reset_token_expires_at = NULL,
           token_used_at = NULL
-        WHERE request_id = ? AND status = 'pending'
+        WHERE request_id = ?
+          AND status = 'pending'
       `,
-      [req.admin.admin_id, requestId]
+      [adminId, requestId]
     );
 
     if (result.affectedRows !== 1) {
       return res.status(409).json({
         success: false,
-        message: "คำขอนี้ไม่ได้อยู่ในสถานะรออนุมัติ หรือถูกดำเนินการแล้ว",
+        message:
+          "คำขอนี้ไม่ได้อยู่ในสถานะรออนุมัติ หรือถูกดำเนินการแล้ว",
       });
     }
 
     return res.status(200).json({
       success: true,
-      message: "อนุมัติคำขอแล้ว ผู้ใช้สามารถรับ Reset Token ได้ภายใน 30 นาที",
+      message:
+        "อนุมัติคำขอแล้ว ผู้ใช้สามารถรับ Reset Token ได้ภายใน 30 นาที",
       request_id: requestId,
       status: "approved",
     });
   } catch (error) {
-    console.error("Approve password reset request error:", error);
-    return res.status(500).json({ success: false, message: "ไม่สามารถอนุมัติคำขอได้" });
+    console.error(
+      "Approve password reset request error:",
+      error
+    );
+
+    return res.status(500).json({
+      success: false,
+      message: "ไม่สามารถอนุมัติคำขอได้",
+    });
   }
 };
-
 const rejectPasswordResetRequest = async (req, res) => {
   try {
     const requestId = Number(req.params?.requestId);
@@ -151,19 +172,24 @@ const rejectPasswordResetRequest = async (req, res) => {
     }
 
     const [result] = await db.query(
-      `
-        UPDATE password_reset_requests
-        SET
-          status = 'rejected',
-          rejected_at = NOW(),
-          rejection_reason = ?,
-          reset_token_hash = NULL,
-          token_issued_at = NULL,
-          reset_token_expires_at = NULL
-        WHERE request_id = ? AND status = 'pending'
-      `,
-      [reason, requestId]
-    );
+  `
+    UPDATE password_reset_requests
+    SET
+      status = 'rejected',
+      rejected_at = NOW(),
+      rejection_reason = ?,
+      approved_by = NULL,
+      approved_at = NULL,
+      approval_expires_at = NULL,
+      reset_token_hash = NULL,
+      token_issued_at = NULL,
+      reset_token_expires_at = NULL,
+      token_used_at = NULL
+    WHERE request_id = ?
+      AND status = 'pending'
+  `,
+  [reason, requestId]
+);
 
     if (result.affectedRows !== 1) {
       return res.status(409).json({

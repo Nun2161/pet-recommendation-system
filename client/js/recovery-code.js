@@ -1,6 +1,6 @@
 "use strict";
 
-const API_URL = "http://localhost:3000/api/auth/password-reset/recovery-code";
+const API_URL = `${window.CATMATCH_API_URL}/auth/password-reset/recovery-code`;
 const button = document.getElementById("generateRecoveryCode");
 const result = document.getElementById("recoveryResult");
 const value = document.getElementById("recoveryCodeValue");
@@ -24,7 +24,8 @@ button.addEventListener("click", async () => {
     showMessage("กรุณาเข้าสู่ระบบก่อนสร้าง Recovery Code");
     return;
   }
-  if (!window.confirm("การสร้าง Recovery Code ใหม่จะทำให้รหัสเดิมใช้ไม่ได้ ยืนยันหรือไม่?")) return;
+  const confirmed = await window.CatMatchDialog.confirm("การสร้าง Recovery Code ใหม่จะทำให้รหัสเดิมใช้ไม่ได้", { title: "สร้าง Recovery Code ใหม่", confirmText: "สร้างรหัสใหม่", danger: true });
+  if (!confirmed) return;
 
   button.disabled = true;
   button.textContent = "กำลังสร้าง...";

@@ -1,0 +1,594 @@
+/* =========================================================
+   CATMATCH ACCOUNT INFORMATION
+   ========================================================= */
+
+.account-info-page .site-header {
+  z-index: 100000 !important;
+}
+
+.account-main {
+  position: relative;
+  z-index: 1;
+  min-height: calc(100vh - 160px);
+  padding: 68px 0 82px;
+}
+
+.account-hero {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 28px;
+  margin-bottom: 30px;
+}
+
+.account-eyebrow {
+  margin: 0 0 8px;
+  color: var(--summer-blue-deep, #6ca9d4);
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: .14em;
+}
+
+.account-hero h1 {
+  margin: 0;
+  color: var(--color-text, #4e4644);
+  font-family: var(--font-heading, "Zen Maru Gothic", sans-serif);
+  font-size: clamp(2.1rem, 5vw, 3.7rem);
+  line-height: 1.12;
+}
+
+.account-hero p:not(.account-eyebrow) {
+  margin: 13px 0 0;
+  color: var(--color-text-soft, #857d79);
+}
+
+.account-edit-button,
+.account-save-button,
+.account-cancel-button,
+.account-error button {
+  min-height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 19px;
+  border-radius: 999px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.account-edit-button,
+.account-save-button,
+.account-error button {
+  border: 1px solid #7eb2de;
+  color: #fff;
+  background: #7eb2de;
+  box-shadow: 0 10px 24px rgba(94, 147, 195, .18);
+}
+
+.account-cancel-button {
+  border: 1px solid rgba(126, 178, 222, .34);
+  color: #5e93c3;
+  background: #fff;
+}
+
+.account-layout {
+  display: grid;
+  grid-template-columns: minmax(230px, 300px) minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.account-profile-card,
+.account-details-card {
+  border: 1px solid rgba(126, 178, 222, .25);
+  border-radius: 28px;
+  background: rgba(255, 253, 251, .94);
+  box-shadow: 0 18px 46px rgba(76, 100, 122, .09);
+}
+
+.account-profile-card {
+  position: sticky;
+  top: 116px;
+  padding: 30px 24px;
+  text-align: center;
+}
+
+.account-large-avatar {
+  width: 88px;
+  height: 88px;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 18px;
+  border-radius: 30px;
+  color: #6d5946;
+  background: linear-gradient(145deg, #f9dfe5, #f7e8a8);
+  font-family: var(--font-heading, "Zen Maru Gothic", sans-serif);
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.account-profile-card h2 {
+  margin: 0;
+  color: var(--color-text, #4e4644);
+  font-size: 1.35rem;
+}
+
+.account-profile-card > p {
+  margin: 7px 0 16px;
+  color: var(--color-text-soft, #857d79);
+  overflow-wrap: anywhere;
+}
+
+.account-status-badge {
+  display: inline-flex;
+  padding: 7px 12px;
+  border-radius: 999px;
+  color: #5d8b80;
+  background: #edf7f3;
+  font-size: .78rem;
+  font-weight: 700;
+}
+
+.account-mini-details {
+  display: grid;
+  gap: 14px;
+  margin: 26px 0 0;
+  text-align: left;
+}
+
+.account-mini-details div {
+  padding-top: 14px;
+  border-top: 1px solid rgba(126, 178, 222, .18);
+}
+
+.account-mini-details dt {
+  color: #9a918c;
+  font-size: .76rem;
+}
+
+.account-mini-details dd {
+  margin: 4px 0 0;
+  color: #554d4a;
+  font-weight: 700;
+}
+
+.account-details-card {
+  min-height: 440px;
+  padding: 30px;
+}
+
+.account-section-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
+.account-section-heading p {
+  margin: 0 0 4px;
+  color: #6ca9d4;
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .12em;
+}
+
+.account-section-heading h2 {
+  margin: 0;
+  color: #4d4643;
+  font-size: 1.35rem;
+}
+
+.account-section-heading > span {
+  color: #9a918d;
+  font-size: .76rem;
+}
+
+.account-address-heading {
+  margin-top: 38px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(126, 178, 222, .2);
+}
+
+.account-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.account-field {
+  display: grid;
+  gap: 8px;
+}
+
+.account-field-wide {
+  grid-column: 1 / -1;
+}
+
+.account-field > span {
+  color: #564e4b;
+  font-size: .88rem;
+  font-weight: 700;
+}
+
+.account-field b {
+  color: #d06e87;
+}
+
+.account-field input,
+.account-field select,
+.account-field textarea {
+  width: 100%;
+  min-height: 48px;
+  padding: 11px 14px;
+  border: 1px solid rgba(126, 178, 222, .28);
+  border-radius: 16px;
+  color: #4f4745;
+  background: #fff;
+  font: inherit;
+  outline: none;
+  transition: border-color .18s ease, box-shadow .18s ease, background .18s ease;
+}
+
+.account-field textarea {
+  resize: vertical;
+}
+
+.account-field input:focus,
+.account-field select:focus,
+.account-field textarea:focus {
+  border-color: #7eb2de;
+  box-shadow: 0 0 0 4px rgba(126, 178, 222, .12);
+}
+
+.account-field input:disabled,
+.account-field select:disabled,
+.account-field textarea:disabled {
+  color: #625b57;
+  background: #f8fafb;
+  cursor: default;
+  opacity: 1;
+}
+
+.account-field > small {
+  min-height: 18px;
+  color: #9a918d;
+  font-size: .72rem;
+  line-height: 1.5;
+}
+
+.field-error {
+  color: #c15e70 !important;
+}
+
+.phone-field-row {
+  display: grid;
+  grid-template-columns: 124px minmax(0, 1fr);
+  gap: 10px;
+}
+
+.account-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 30px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(126, 178, 222, .18);
+}
+
+.account-form-status {
+  min-height: 24px;
+  margin: 14px 0 0;
+  color: #5e93c3;
+  text-align: right;
+  font-size: .84rem;
+}
+
+.account-loading {
+  display: grid;
+  gap: 16px;
+}
+
+.account-loading span {
+  height: 58px;
+  border-radius: 18px;
+  background: linear-gradient(90deg, #edf1f3 25%, #f8fafb 42%, #edf1f3 65%);
+  background-size: 400% 100%;
+  animation: accountSkeleton 1.3s ease infinite;
+}
+
+.account-loading span:nth-child(2) { width: 74%; }
+.account-loading span:nth-child(3) { width: 88%; }
+.account-loading span:nth-child(4) { width: 65%; }
+
+@keyframes accountSkeleton {
+  from { background-position: 100% 0; }
+  to { background-position: 0 0; }
+}
+
+.account-error {
+  padding: 54px 22px;
+  text-align: center;
+}
+
+.account-error strong {
+  color: #4f4745;
+  font-size: 1.15rem;
+}
+
+.account-error p {
+  color: #857d79;
+}
+
+@media (max-width: 900px) {
+  .account-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .account-profile-card {
+    position: static;
+  }
+}
+
+@media (max-width: 680px) {
+  .account-main {
+    padding-top: 44px;
+  }
+
+  .account-hero {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .account-edit-button {
+    align-self: flex-start;
+  }
+
+  .account-details-card {
+    padding: 22px 18px;
+  }
+
+  .account-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .account-field-wide {
+    grid-column: auto;
+  }
+
+  .phone-field-row {
+    grid-template-columns: 1fr;
+  }
+
+  .account-section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+[hidden] {
+  display: none !important;
+}
+
+
+/* =========================================================
+   V2 — FIXED PROFILE COLUMN + SCROLLABLE DETAILS + PHOTO
+   ========================================================= */
+
+.account-info-page {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.account-info-page .account-main {
+  height: calc(100vh - 92px);
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 36px 0 28px;
+  overflow: hidden;
+}
+
+.account-info-page .account-hero {
+  flex: 0 0 auto;
+  margin-bottom: 22px;
+}
+
+.account-info-page .account-layout {
+  flex: 1 1 auto;
+  min-height: 0;
+  align-items: stretch;
+}
+
+.account-info-page .account-profile-card {
+  position: static;
+  height: fit-content;
+  max-height: 100%;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.account-info-page .account-details-card {
+  min-height: 0;
+  height: 100%;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+}
+
+.account-info-page .notifications-footer {
+  display: none;
+}
+
+.account-avatar-wrap {
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.account-large-avatar {
+  margin-bottom: 0;
+  overflow: hidden;
+}
+
+.account-large-avatar img,
+.user-avatar img,
+.user-menu-avatar img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  border-radius: inherit;
+}
+
+.account-photo-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.account-photo-button,
+.account-photo-remove {
+  min-height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 7px 13px;
+  border-radius: 999px;
+  font: inherit;
+  font-size: .78rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.account-photo-button {
+  border: 1px solid rgba(126, 178, 222, .34);
+  color: #5e93c3;
+  background: #edf6fd;
+}
+
+.account-photo-remove {
+  border: 0;
+  color: #bf6678;
+  background: transparent;
+}
+
+@media (max-width: 900px) {
+  .account-info-page {
+    height: auto;
+    overflow: auto;
+  }
+
+  .account-info-page .account-main {
+    height: auto;
+    min-height: calc(100vh - 92px);
+    overflow: visible;
+  }
+
+  .account-info-page .account-layout {
+    min-height: auto;
+  }
+
+  .account-info-page .account-profile-card,
+  .account-info-page .account-details-card {
+    height: auto;
+    max-height: none;
+    overflow: visible;
+  }
+}
+
+
+/* V3 — ครอปรูปโปรไฟล์ให้พอดี ไม่ยืดหรือเป็นวงรี */
+.account-info-page .account-large-avatar {
+  width: 96px !important;
+  height: 96px !important;
+  aspect-ratio: 1 / 1;
+  flex: 0 0 96px;
+  padding: 0 !important;
+  border-radius: 50% !important;
+  overflow: hidden !important;
+}
+
+.account-info-page .account-large-avatar img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  border-radius: 50% !important;
+}
+
+.user-avatar,
+.user-menu-avatar {
+  aspect-ratio: 1 / 1;
+  flex-shrink: 0;
+  padding: 0 !important;
+  overflow: hidden !important;
+  border-radius: 50% !important;
+}
+
+.user-avatar img,
+.user-menu-avatar img {
+  width: 100% !important;
+  height: 100% !important;
+  display: block !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  border-radius: 50% !important;
+}
+
+/* =========================================================
+   ACCOUNT PAGE NATURAL FLOW FIX
+   The whole profile page scrolls normally. Cards no longer get
+   cropped into half-height internal scroll boxes at desktop zoom.
+   ========================================================= */
+.account-info-page {
+  height: auto !important;
+  min-height: 100vh !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+}
+
+.account-info-page .account-main {
+  height: auto !important;
+  min-height: calc(100vh - 92px) !important;
+  display: block !important;
+  padding: 44px 0 64px !important;
+  overflow: visible !important;
+}
+
+.account-info-page .account-layout {
+  min-height: 0 !important;
+  align-items: start !important;
+}
+
+.account-info-page .account-profile-card {
+  position: sticky !important;
+  top: 118px !important;
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+.account-info-page .account-details-card {
+  height: auto !important;
+  min-height: 440px !important;
+  max-height: none !important;
+  overflow: visible !important;
+  scrollbar-gutter: auto !important;
+}
+
+.account-info-page .notifications-footer {
+  display: block !important;
+}
+
+@media (max-width: 900px) {
+  .account-info-page .account-profile-card {
+    position: static !important;
+  }
+}

@@ -1,0 +1,891 @@
+/* =========================================================
+   FAVORITES PAGE V1
+   ========================================================= */
+
+.favorites-page {
+  min-height: 100vh;
+  margin: 0;
+  color: #30343a;
+  background:
+    radial-gradient(
+      circle at 7% 14%,
+      rgba(255, 232, 193, 0.42),
+      transparent 27rem
+    ),
+    radial-gradient(
+      circle at 93% 18%,
+      rgba(218, 241, 255, 0.58),
+      transparent 31rem
+    ),
+    linear-gradient(
+      180deg,
+      #fffaf8 0%,
+      #f8fbff 100%
+    );
+}
+
+.favorites-page .site-header {
+  position: relative;
+  z-index: 20;
+}
+
+.favorites-page .account-menu-item.is-current {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 234, 240, 0.8),
+      rgba(233, 246, 255, 0.88)
+    );
+}
+
+.favorites-page .account-menu-item.is-current strong {
+  color: #c65f77;
+}
+
+/* =========================================================
+   BACKGROUND PETALS
+   ========================================================= */
+
+.favorites-sakura-scene {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.favorites-petal {
+  position: absolute;
+  top: -40px;
+  width: 14px;
+  height: 9px;
+  border-radius:
+    80% 20% 80% 20%;
+  background:
+    linear-gradient(
+      135deg,
+      #ffb5cc,
+      #ff6d9b
+    );
+  box-shadow:
+    0 0 8px
+    rgba(255, 119, 158, 0.35);
+  opacity: 0.75;
+  animation:
+    favoritesPetalFall
+    linear infinite;
+}
+
+.favorites-petal-1 {
+  left: 6%;
+  animation-duration: 11s;
+  animation-delay: -3s;
+}
+
+.favorites-petal-2 {
+  left: 18%;
+  animation-duration: 14s;
+  animation-delay: -9s;
+}
+
+.favorites-petal-3 {
+  left: 31%;
+  animation-duration: 12s;
+  animation-delay: -5s;
+}
+
+.favorites-petal-4 {
+  left: 48%;
+  animation-duration: 15s;
+  animation-delay: -12s;
+}
+
+.favorites-petal-5 {
+  left: 62%;
+  animation-duration: 13s;
+  animation-delay: -7s;
+}
+
+.favorites-petal-6 {
+  left: 74%;
+  animation-duration: 16s;
+  animation-delay: -11s;
+}
+
+.favorites-petal-7 {
+  left: 86%;
+  animation-duration: 12s;
+  animation-delay: -4s;
+}
+
+.favorites-petal-8 {
+  left: 95%;
+  animation-duration: 15s;
+  animation-delay: -10s;
+}
+
+@keyframes favoritesPetalFall {
+  0% {
+    transform:
+      translate3d(0, -40px, 0)
+      rotate(0deg);
+    opacity: 0;
+  }
+
+  8% {
+    opacity: 0.78;
+  }
+
+  45% {
+    transform:
+      translate3d(45px, 48vh, 0)
+      rotate(220deg);
+  }
+
+  100% {
+    transform:
+      translate3d(-28px, 108vh, 0)
+      rotate(520deg);
+    opacity: 0;
+  }
+}
+
+/* =========================================================
+   MAIN
+   ========================================================= */
+
+.favorites-main {
+  position: relative;
+  z-index: 2;
+  min-height: calc(100vh - 180px);
+  padding:
+    42px 0
+    90px;
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.favorites-hero-inner {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 28px;
+  padding:
+    44px 0
+    32px;
+}
+
+.favorites-heading {
+  max-width: 720px;
+}
+
+.favorites-eyebrow {
+  margin:
+    0 0
+    11px;
+  color: #69a8d6;
+  font-size: 0.77rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+}
+
+.favorites-heading h1 {
+  margin: 0;
+  color: #2f3137;
+  font-family:
+    "Zen Maru Gothic",
+    "Noto Sans Thai",
+    sans-serif;
+  font-size:
+    clamp(
+      2.45rem,
+      6vw,
+      4.8rem
+    );
+  font-weight: 700;
+  line-height: 1.04;
+}
+
+.favorites-heading > p:last-child {
+  margin:
+    14px 0
+    0;
+  color: #7d8793;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.favorites-browse-button {
+  min-height: 50px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding:
+    0 22px;
+  border:
+    1px solid
+    #cfe0ee;
+  border-radius: 17px;
+  color: #3975a4;
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.9
+    );
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow:
+    0 14px 34px
+    rgba(
+      65,
+      104,
+      136,
+      0.09
+    );
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    background 0.18s ease;
+}
+
+.favorites-browse-button:hover {
+  transform: translateY(-2px);
+  background: #ffffff;
+  box-shadow:
+    0 18px 40px
+    rgba(
+      65,
+      104,
+      136,
+      0.14
+    );
+}
+
+/* =========================================================
+   CONTENT PANEL
+   ========================================================= */
+
+.favorites-content {
+  position: relative;
+  padding: 28px;
+  border:
+    1px solid
+    rgba(
+      177,
+      205,
+      226,
+      0.66
+    );
+  border-radius: 30px;
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.84
+    );
+  box-shadow:
+    0 28px 70px
+    rgba(
+      65,
+      104,
+      136,
+      0.11
+    );
+  backdrop-filter:
+    blur(18px);
+}
+
+.favorites-content::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 34px;
+  left: 34px;
+  height: 4px;
+  border-radius:
+    0 0
+    10px 10px;
+  background:
+    linear-gradient(
+      90deg,
+      #f5d98f,
+      #f6c2d6,
+      #9dcbed
+    );
+}
+
+/* =========================================================
+   TOOLBAR
+   ========================================================= */
+
+.favorites-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding:
+    10px 0
+    23px;
+  border-bottom:
+    1px solid
+    rgba(
+      183,
+      207,
+      225,
+      0.56
+    );
+}
+
+.favorites-count-block span,
+.favorites-count-block strong {
+  display: block;
+}
+
+.favorites-count-block span {
+  color: #8a94a0;
+  font-size: 0.79rem;
+}
+
+.favorites-count-block strong {
+  margin-top: 3px;
+  color: #30343a;
+  font-size: 1.28rem;
+}
+
+.favorites-refresh-button,
+.favorites-error button {
+  min-height: 44px;
+  padding:
+    0 19px;
+  border:
+    1px solid
+    #c9dfef;
+  border-radius: 14px;
+  color: #3f78a4;
+  background: #f2f9ff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    transform 0.18s ease,
+    background 0.18s ease;
+}
+
+.favorites-refresh-button:hover,
+.favorites-error button:hover {
+  transform:
+    translateY(-1px);
+  background: #e9f6ff;
+}
+
+/* =========================================================
+   LOADING / ERROR / EMPTY
+   ========================================================= */
+
+.favorites-state,
+.favorites-empty {
+  min-height: 330px;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.favorites-state h2,
+.favorites-state p,
+.favorites-empty h2,
+.favorites-empty p {
+  margin: 0;
+}
+
+.favorites-loading-heart {
+  width: 70px;
+  height: 70px;
+  display: grid;
+  place-items: center;
+  border-radius: 23px;
+  color: #d26a83;
+  background:
+    linear-gradient(
+      135deg,
+      #fff0f4,
+      #edf8ff
+    );
+  font-size: 2rem;
+  box-shadow:
+    0 16px 34px
+    rgba(
+      95,
+      128,
+      155,
+      0.12
+    );
+  animation:
+    favoritesHeartPulse
+    1.25s ease-in-out
+    infinite;
+}
+
+@keyframes favoritesHeartPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+.favorites-error {
+  color: #a64f5e;
+}
+
+.favorites-error-icon {
+  width: 64px;
+  height: 64px;
+  display: grid;
+  place-items: center;
+  border-radius: 21px;
+  color: #b44f63;
+  background: #fff0f3;
+  font-size: 1.55rem;
+  font-weight: 800;
+}
+
+.favorites-empty-icon {
+  width: 78px;
+  height: 78px;
+  display: grid;
+  place-items: center;
+  border-radius: 25px;
+  color: #d46a82;
+  background:
+    linear-gradient(
+      135deg,
+      #fff1f5,
+      #edf8ff
+    );
+  font-size: 2.2rem;
+  box-shadow:
+    0 16px 36px
+    rgba(
+      95,
+      128,
+      155,
+      0.12
+    );
+}
+
+.favorites-empty p {
+  max-width: 500px;
+  color: #7d8793;
+  line-height: 1.7;
+}
+
+.favorites-empty a {
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 4px;
+  padding:
+    0 22px;
+  border:
+    1px solid
+    #cfe0ee;
+  border-radius: 16px;
+  color: #3975a4;
+  background: #ffffff;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* =========================================================
+   FAVORITE GRID
+   ========================================================= */
+
+.favorites-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(0, 1fr)
+    );
+  gap: 24px;
+  padding-top: 28px;
+}
+
+.favorite-card {
+  overflow: hidden;
+  border:
+    1px solid
+    rgba(
+      177,
+      205,
+      226,
+      0.64
+    );
+  border-radius: 26px;
+  background: #ffffff;
+  box-shadow:
+    0 20px 46px
+    rgba(
+      65,
+      104,
+      136,
+      0.11
+    );
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.favorite-card:hover {
+  transform:
+    translateY(-5px);
+  box-shadow:
+    0 27px 58px
+    rgba(
+      65,
+      104,
+      136,
+      0.16
+    );
+}
+
+.favorite-card-image {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #eef6fb;
+}
+
+.favorite-card-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition:
+    transform 0.35s ease;
+}
+
+.favorite-card:hover
+.favorite-card-image img {
+  transform: scale(1.035);
+}
+
+/* =========================================================
+   REMOVE HEART
+   ========================================================= */
+
+.favorite-remove-button {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 45px;
+  height: 45px;
+  display: grid;
+  place-items: center;
+  border:
+    1px solid
+    rgba(
+      201,
+      94,
+      117,
+      0.28
+    );
+  border-radius: 50%;
+  color: #c95e75;
+  background:
+    rgba(
+      255,
+      245,
+      248,
+      0.95
+    );
+  font-size: 1.25rem;
+  cursor: pointer;
+  box-shadow:
+    0 10px 24px
+    rgba(
+      79,
+      102,
+      122,
+      0.13
+    );
+  transition:
+    transform 0.18s ease,
+    color 0.18s ease,
+    background 0.18s ease;
+}
+
+.favorite-remove-button:hover {
+  transform: scale(1.08);
+  color: #ffffff;
+  background: #cf647b;
+}
+
+.favorite-remove-button:disabled {
+  cursor: wait;
+  opacity: 0.58;
+}
+
+/* =========================================================
+   CARD CONTENT
+   ========================================================= */
+
+.favorite-card-body {
+  padding: 21px;
+}
+
+.favorite-card-body h2 {
+  margin: 0;
+  color: #30343a;
+  font-family:
+    "Zen Maru Gothic",
+    "Noto Sans Thai",
+    sans-serif;
+  font-size: 1.28rem;
+  line-height: 1.35;
+}
+
+.favorite-card-description {
+  min-height: 50px;
+  margin:
+    10px 0
+    0;
+  color: #7c8792;
+  font-size: 0.86rem;
+  line-height: 1.68;
+}
+
+.favorite-card-tags {
+  min-height: 34px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin:
+    17px 0
+    19px;
+}
+
+.favorite-card-tag {
+  padding:
+    6px 11px;
+  border:
+    1px solid
+    rgba(
+      120,
+      189,
+      218,
+      0.26
+    );
+  border-radius: 999px;
+  color: #477692;
+  background: #edf8fd;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.favorite-card-tag:nth-child(2) {
+  color: #8a6c35;
+  border-color:
+    rgba(
+      224,
+      186,
+      105,
+      0.32
+    );
+  background: #fff8df;
+}
+
+.favorite-card-tag:nth-child(3) {
+  color: #9a5c70;
+  border-color:
+    rgba(
+      220,
+      144,
+      170,
+      0.28
+    );
+  background: #fff0f5;
+}
+
+.favorite-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding-top: 17px;
+  border-top:
+    1px solid
+    #e8eef3;
+}
+
+.favorite-card-footer small {
+  color: #949da6;
+  font-size: 0.72rem;
+}
+
+.favorite-card-footer a {
+  flex-shrink: 0;
+  color: #5d9ed0;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.favorite-card-footer a:hover {
+  color: #347dad;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.favorites-footer {
+  position: relative;
+  z-index: 2;
+  border-top:
+    1px solid
+    rgba(
+      177,
+      205,
+      226,
+      0.5
+    );
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.72
+    );
+}
+
+.favorites-footer-inner {
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  color: #8a94a0;
+  font-size: 0.82rem;
+}
+
+.favorites-footer-inner a {
+  color: #5d91b9;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1050px) {
+  .favorites-grid {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+  }
+}
+
+@media (max-width: 760px) {
+  .favorites-main {
+    padding-top: 20px;
+  }
+
+  .favorites-hero-inner {
+    align-items: stretch;
+    flex-direction: column;
+    padding-top: 28px;
+  }
+
+  .favorites-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .favorites-browse-button,
+  .favorites-refresh-button {
+    width: 100%;
+  }
+
+  .favorites-content {
+    padding: 19px;
+    border-radius: 24px;
+  }
+
+  .favorites-content::before {
+    right: 22px;
+    left: 22px;
+  }
+
+  .favorites-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .favorite-card-description {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .favorites-heading h1 {
+    font-size: 2.35rem;
+  }
+
+  .favorites-content {
+    padding: 15px;
+  }
+
+  .favorite-card {
+    border-radius: 22px;
+  }
+
+  .favorite-card-body {
+    padding: 18px;
+  }
+
+  .favorite-card-footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .favorites-footer-inner {
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    padding:
+      18px 0;
+  }
+}
+
+@media (
+  prefers-reduced-motion:
+  reduce
+) {
+  .favorites-petal,
+  .favorites-loading-heart,
+  .favorite-card,
+  .favorite-card-image img,
+  .favorite-remove-button,
+  .favorites-browse-button {
+    animation: none;
+    transition: none;
+  }
+}
+.favorites-page [hidden] {
+  display: none !important;
+}

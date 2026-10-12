@@ -1,3 +1,4 @@
+const path = require("path");
 const db = require("../config/db");
 
 /**
@@ -171,6 +172,53 @@ const getAllFarmsForAdmin = async (req, res) => {
   }
 };
 
+
+/**
+ * GET /api/admin/farms/:id/certificate
+ */
+const getFarmCertificateForAdmin = async (req, res) => {
+  try {
+    const farmId = Number(req.params.id);
+
+    if (!Number.isInteger(farmId) || farmId <= 0) {
+      return res.status(400).json({ success: false, message: "farm_id ไม่ถูกต้อง" });
+    }
+
+    const [rows] = await db.query(
+      `SELECT certificate_file FROM farm WHERE farm_id = ? LIMIT 1`,
+      [farmId]
+    );
+
+    if (!rows.length || !rows[0].certificate_file) {
+      return res.status(404).json({ success: false, message: "ไม่พบไฟล์หลักฐานของฟาร์ม" });
+    }
+
+    const serverRoot = path.resolve(__dirname, "..");
+    const certificatePath = path.resolve(serverRoot, String(rows[0].certificate_file));
+    const allowedDirectory = path.resolve(serverRoot, "uploads", "farm-certificates");
+
+    if (certificatePath !== allowedDirectory && !certificatePath.startsWith(`${allowedDirectory}${path.sep}`)) {
+      return res.status(400).json({ success: false, message: "ตำแหน่งไฟล์หลักฐานไม่ถูกต้อง" });
+    }
+
+    return res.sendFile(certificatePath, (error) => {
+      if (!error || res.headersSent) return;
+      const status = error.code === "ENOENT" ? 404 : 500;
+      res.status(status).json({
+        success: false,
+        message: status === 404 ? "ไม่พบไฟล์หลักฐานบนเซิร์ฟเวอร์" : "ไม่สามารถเปิดไฟล์หลักฐานได้",
+      });
+    });
+  } catch (error) {
+    console.error("Admin get farm certificate error:", error);
+    return res.status(500).json({
+      success: false,
+      message: "ไม่สามารถเปิดไฟล์หลักฐานได้",
+      error: error.message,
+    });
+  }
+};
+
 /**
  * PATCH /api/admin/farms/:id/status
  *
@@ -213,20 +261,30 @@ const updateFarmStatusByAdmin = async (req, res) => {
     const approvedAt =
       status === "approved" ? new Date() : null;
 
+    const [farmRows] = await db.query(
+      `SELECT farm_id, email, firebase_uid FROM farm WHERE farm_id = ? LIMIT 1`,
+      [farmId]
+    );
+
+    if (!farmRows.length) {
+      return res.status(404).json({ success: false, message: "ไม่พบฟาร์ม" });
+    }
+
+    const targetFarm = farmRows[0];
     const [result] = await db.query(
-      `
-        UPDATE farm
-        SET
-          status = ?,
-          approved_by = ?,
-          approved_at = ?
-        WHERE farm_id = ?
-      `,
+      `UPDATE farm
+       SET status = ?, approved_by = ?, approved_at = ?
+       WHERE farm_id = ?
+          OR LOWER(TRIM(email)) = LOWER(TRIM(?))
+          OR (? <> '' AND firebase_uid = ?)`,
       [
         status,
         approvedBy,
         approvedAt,
         farmId,
+        targetFarm.email,
+        String(targetFarm.firebase_uid || ""),
+        String(targetFarm.firebase_uid || ""),
       ]
     );
 
@@ -261,4 +319,5 @@ module.exports = {
   updateUserStatusByAdmin,
   getAllFarmsForAdmin,
   updateFarmStatusByAdmin,
+  getFarmCertificateForAdmin,
 };

@@ -1,0 +1,814 @@
+/* CatMatch farm map — isolated styles for farm-map.html */
+:root {
+  --map-ink: #304c5d;
+  --map-muted: #6f7e88;
+  --map-paper: rgba(255, 255, 255, .94);
+  --map-line: rgba(102, 144, 169, .19);
+  --map-pink: #d989a4;
+  --map-blue: #78aac8;
+  --map-blue-deep: #3e7898;
+  --map-yellow: #f0cf7e;
+}
+
+body.farm-map-page {
+  min-height: 100vh;
+  color: var(--map-ink);
+  background:
+    radial-gradient(circle at 8% 4%, rgba(255, 220, 228, .7), transparent 25%),
+    radial-gradient(circle at 91% 8%, rgba(205, 235, 246, .75), transparent 28%),
+    linear-gradient(180deg, #fbfaf5 0%, #f7fbfc 100%);
+}
+
+.farm-map-main { position: relative; z-index: 2; padding-top: 46px; padding-bottom: 64px; }
+.farm-map-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 22px; }
+.farm-map-back { display: inline-flex; margin-bottom: 18px; color: #688090; font-weight: 700; text-decoration: none; }
+.farm-map-eyebrow { margin: 0 0 5px; color: #b47a8d; font-size: .78rem; font-weight: 800; letter-spacing: .16em; }
+.farm-map-heading h1 { margin: 0; color: #2f4d5d; font-family: "Zen Maru Gothic", "Noto Sans Thai", sans-serif; font-size: clamp(2rem, 4vw, 3.6rem); line-height: 1.08; }
+.farm-map-heading p:last-child { margin: 12px 0 0; color: var(--map-muted); }
+.location-button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 20px; border: 1px solid rgba(76, 126, 154, .22); border-radius: 999px; color: #315f79; background: linear-gradient(135deg, #eef9ff, #fff2f7); box-shadow: 0 14px 32px rgba(75, 112, 134, .14); font: inherit; font-weight: 800; cursor: pointer; }
+.location-button:hover { transform: translateY(-2px); }
+.location-button:disabled { opacity: .65; cursor: wait; transform: none; }
+.location-message { margin-bottom: 18px; padding: 11px 16px; border: 1px solid rgba(99, 145, 172, .15); border-radius: 14px; color: #627784; background: rgba(255, 255, 255, .72); }
+.location-message.is-success { color: #3b6f66; background: rgba(231, 249, 241, .9); }
+.location-message.is-error { color: #955a69; background: rgba(255, 238, 242, .9); }
+
+.farm-map-layout { display: grid; grid-template-columns: minmax(300px, 390px) minmax(0, 1fr); min-height: 650px; border: 1px solid var(--map-line); border-radius: 30px; overflow: hidden; background: var(--map-paper); box-shadow: 0 28px 75px rgba(73, 105, 123, .17); }
+.farm-list-panel { display: flex; flex-direction: column; min-width: 0; border-right: 1px solid var(--map-line); background: linear-gradient(180deg, rgba(255,255,255,.98), rgba(250,247,242,.96)); }
+.farm-list-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 22px; border-bottom: 1px solid var(--map-line); }
+.farm-list-head span { display: block; color: #87939b; font-size: .82rem; }
+.farm-list-head strong { display: block; margin-top: 3px; color: #344f5e; font-size: 1.08rem; }
+.farm-list-head select { max-width: 145px; padding: 9px 30px 9px 11px; border: 1px solid rgba(102, 144, 169, .22); border-radius: 12px; color: #496373; background: #fff; font: inherit; }
+.farm-list { flex: 1; min-height: 0; padding: 14px; overflow-y: auto; }
+.farm-list-status { margin: 18px; padding: 18px; border: 1px dashed rgba(102,144,169,.25); border-radius: 16px; color: #71838d; text-align: center; }
+.farm-list-status.is-error { color: #985b69; background: #fff4f6; }
+.farm-card { width: 100%; margin: 0 0 12px; padding: 17px; border: 1px solid rgba(106, 148, 171, .16); border-radius: 20px; color: inherit; background: rgba(255,255,255,.9); box-shadow: 0 10px 24px rgba(78, 109, 126, .08); text-align: left; transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease; }
+.farm-card:hover, .farm-card.is-active { transform: translateY(-2px); border-color: rgba(205, 124, 151, .5); box-shadow: 0 16px 32px rgba(78, 109, 126, .14); }
+.farm-card__top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.farm-card__rank { display: inline-flex; align-items: center; min-height: 30px; padding: 0 10px; border-radius: 999px; color: #8e5c6d; background: #fff0f4; font-size: .76rem; font-weight: 800; white-space: nowrap; }
+.farm-card h2 { margin: 8px 0 3px; color: #314e5e; font-size: 1.08rem; }
+.farm-card__verified { color: #4d7d71; font-size: .78rem; font-weight: 800; }
+.farm-card__address { margin: 10px 0 12px; color: #73828b; font-size: .88rem; line-height: 1.55; }
+.farm-card__meta { display: flex; flex-wrap: wrap; gap: 7px; }
+.farm-card__meta span { padding: 6px 9px; border-radius: 999px; color: #536f7d; background: #edf6fa; font-size: .76rem; font-weight: 700; }
+.farm-card__contact { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 13px; }
+.farm-card__contact a { display: inline-flex; align-items: center; min-height: 35px; padding: 0 11px; border: 1px solid rgba(106,148,171,.18); border-radius: 10px; color: #376a84; background: #fff; font-size: .8rem; font-weight: 800; text-decoration: none; }
+
+.map-panel { position: relative; min-width: 0; min-height: 650px; background: #deedf0; }
+.farm-map-canvas { width: 100%; height: 100%; min-height: 650px; }
+.map-badge { position: absolute; z-index: 500; top: 18px; left: 18px; display: inline-flex; align-items: center; gap: 8px; padding: 9px 13px; border: 1px solid rgba(255,255,255,.8); border-radius: 999px; color: #425f6e; background: rgba(255,255,255,.9); box-shadow: 0 10px 28px rgba(49, 82, 99, .16); font-size: .78rem; font-weight: 800; backdrop-filter: blur(10px); }
+.map-badge-dot { width: 9px; height: 9px; border-radius: 50%; background: #e191aa; box-shadow: 0 0 0 5px rgba(225,145,170,.16); }
+.map-legend { position: absolute; z-index: 500; right: 18px; bottom: 18px; display: flex; gap: 12px; padding: 10px 13px; border: 1px solid rgba(255,255,255,.8); border-radius: 14px; color: #526b78; background: rgba(255,255,255,.9); box-shadow: 0 10px 28px rgba(49,82,99,.14); font-size: .74rem; font-weight: 700; backdrop-filter: blur(10px); }
+.map-legend span { display: inline-flex; align-items: center; gap: 7px; }
+.legend-user { width: 12px; height: 12px; border: 3px solid #fff; border-radius: 50%; background: #69a9cf; box-shadow: 0 0 0 2px #69a9cf; }
+.legend-farm { display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50% 50% 50% 0; background: #e28da8; transform: rotate(-45deg); font-style: normal; font-size: 11px; }
+.legend-farm::first-letter { transform: rotate(45deg); }
+.map-fallback { position: absolute; z-index: 510; inset: 50% auto auto 50%; width: min(80%, 420px); padding: 18px; border-radius: 18px; color: #6f5960; background: rgba(255,248,249,.96); box-shadow: 0 16px 40px rgba(51,74,87,.18); text-align: center; transform: translate(-50%,-50%); }
+.leaflet-tile-pane { filter: saturate(.72) sepia(.08) hue-rotate(145deg) brightness(1.04); }
+.leaflet-control-zoom a { color: #426579 !important; }
+.catmatch-farm-pin, .catmatch-user-pin { background: transparent !important; border: 0 !important; }
+.farm-pin-shape { position: relative; display: grid; place-items: center; width: 42px; height: 42px; border: 3px solid #fff; border-radius: 50% 50% 50% 0; color: #fff; background: linear-gradient(145deg,#e9a0b5,#cf7895); box-shadow: 0 10px 22px rgba(91,70,80,.3); transform: rotate(-45deg); }
+.farm-pin-shape span { font-size: 17px; transform: rotate(45deg); }
+.farm-pin-shape.is-nearest { width: 50px; height: 50px; background: linear-gradient(145deg,#edc969,#dda740); box-shadow: 0 0 0 8px rgba(237,201,105,.2), 0 12px 24px rgba(91,70,80,.3); }
+.user-pin-shape { width: 20px; height: 20px; border: 4px solid #fff; border-radius: 50%; background: #64a9d0; box-shadow: 0 0 0 3px #64a9d0, 0 0 0 12px rgba(100,169,208,.18); }
+.catmatch-popup .leaflet-popup-content-wrapper { border-radius: 18px; box-shadow: 0 18px 45px rgba(44,71,87,.22); }
+.catmatch-popup .leaflet-popup-content { min-width: 190px; margin: 15px; font-family: "Noto Sans Thai", sans-serif; }
+.popup-farm-name { margin: 0 0 4px; color: #345565; font-weight: 800; }
+.popup-farm-meta { margin: 0; color: #70808a; font-size: .82rem; line-height: 1.5; }
+
+}
+
+html[data-catmatch-theme="dark"] body.farm-map-page { color: #edf4f7; background: radial-gradient(circle at 10% 0%,rgba(215,164,91,.1),transparent 24%),radial-gradient(circle at 88% 5%,rgba(91,157,184,.14),transparent 25%),linear-gradient(180deg,#111820,#18232c 58%,#131c24); }
+html[data-catmatch-theme="dark"] .farm-map-heading h1, html[data-catmatch-theme="dark"] .farm-list-head strong, html[data-catmatch-theme="dark"] .farm-card h2 { color: #eef5f8 !important; }
+html[data-catmatch-theme="dark"] .farm-map-heading p:last-child, html[data-catmatch-theme="dark"] .farm-card__address, html[data-catmatch-theme="dark"] .farm-list-head span { color: #b4c2c9 !important; }
+html[data-catmatch-theme="dark"] .farm-map-layout { background: #1e2b34; border-color: rgba(170,204,224,.2); box-shadow: 0 28px 75px rgba(0,0,0,.32); }
+html[data-catmatch-theme="dark"] .farm-list-panel { background: linear-gradient(180deg,#24323c,#1b2730); border-color: rgba(170,204,224,.18); }
+html[data-catmatch-theme="dark"] .farm-list-head { border-color: rgba(170,204,224,.16); }
+html[data-catmatch-theme="dark"] .farm-list-head select, html[data-catmatch-theme="dark"] .farm-card, html[data-catmatch-theme="dark"] .location-message { color: #e8f1f5; background: #263640; border-color: rgba(170,204,224,.2); }
+html[data-catmatch-theme="dark"] .farm-card__meta span { color: #d5e6ed; background: #314550; }
+html[data-catmatch-theme="dark"] .farm-card__contact a { color: #c8e7f7; background: #293a44; border-color: rgba(170,204,224,.2); }
+html[data-catmatch-theme="dark"] .map-panel { background: #23323b; }
+html[data-catmatch-theme="dark"] .leaflet-tile-pane { filter: saturate(.5) brightness(.58) contrast(1.08) hue-rotate(155deg); }
+html[data-catmatch-theme="dark"] .map-badge, html[data-catmatch-theme="dark"] .map-legend { color: #e2edf2; background: rgba(35,49,59,.92); border-color: rgba(170,204,224,.2); }
+
+@media (max-width: 980px) {
+  .farm-map-layout { grid-template-columns: 1fr; }
+  .map-panel, .farm-map-canvas { min-height: 480px; }
+  .farm-list-panel { order: 2; border-right: 0; border-top: 1px solid var(--map-line); }
+  .farm-list { max-height: 560px; }
+}
+@media (max-width: 680px) {
+  .farm-map-main { padding-top: 28px; }
+  .farm-map-heading { align-items: stretch; flex-direction: column; }
+  .location-button { width: 100%; }
+  .farm-map-layout { border-radius: 22px; }
+  .farm-list-head { align-items: stretch; flex-direction: column; }
+  .farm-list-head select { width: 100%; max-width: none; }
+  .map-panel, .farm-map-canvas { min-height: 390px; }
+  .map-legend { left: 12px; right: 12px; bottom: 12px; justify-content: center; }
+}
+
+
+/* =========================================================
+   SAME HEADER + SAKURA BACKGROUND AS THE OTHER CATMATCH PAGES
+   ========================================================= */
+body.farm-map-page {
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: var(--color-text, #304c5d);
+  background:
+    linear-gradient(135deg, rgba(255, 250, 247, 0.96), rgba(235, 247, 255, 0.96)),
+    radial-gradient(circle at 18% 22%, rgba(247, 232, 168, 0.18), transparent 22%),
+    radial-gradient(circle at 82% 12%, rgba(191, 231, 234, 0.18), transparent 18%);
+}
+
+.sakura-scene {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  transform: translateY(var(--scene-shift, 0px));
+}
+
+.falling-petals {
+  position: absolute;
+  inset: 0;
+}
+
+.falling-petal {
+  position: absolute;
+  top: -12vh;
+  width: var(--petal-size, 15px);
+  height: calc(var(--petal-size, 15px) * 0.72);
+  opacity: calc(var(--petal-opacity, 0.78) + var(--petal-boost, 0));
+  border-radius: 75% 25% 70% 30%;
+  background: radial-gradient(circle at 38% 36%, #fff9fb 0 12%, #ffd9e3 35%, #f1b6c9 75%, #e8a0ba 100%);
+  box-shadow: 0 3px 10px rgba(217, 137, 154, 0.12);
+  transform-origin: center;
+  animation: petalFall var(--fall-duration, 14s) linear infinite,
+             petalSway var(--sway-duration, 3.5s) ease-in-out infinite alternate;
+  animation-delay: var(--delay, 0s);
+}
+
+.falling-petal::after {
+  content: "";
+  position: absolute;
+  inset: 18% 22% 24% 24%;
+  border-radius: 70% 20% 70% 20%;
+  background: linear-gradient(135deg, rgba(255,255,255,.4), transparent);
+}
+
+.petal-1 { left:4%; --petal-size:14px; --fall-duration:13s; --sway-duration:3.6s; --delay:-2s; --petal-opacity:.90; --drift:72px; --spin:160deg; }
+.petal-2 { left:10%; --petal-size:13px; --fall-duration:16s; --sway-duration:4.1s; --delay:-5s; --petal-opacity:.82; --drift:54px; --spin:200deg; }
+.petal-3 { left:18%; --petal-size:18px; --fall-duration:14s; --sway-duration:3.8s; --delay:-8s; --petal-opacity:.85; --drift:80px; --spin:220deg; }
+.petal-4 { left:26%; --petal-size:15px; --fall-duration:17s; --sway-duration:4.6s; --delay:-4s; --petal-opacity:.78; --drift:66px; --spin:180deg; }
+.petal-5 { left:34%; --petal-size:19px; --fall-duration:15s; --sway-duration:3.7s; --delay:-10s; --petal-opacity:.86; --drift:88px; --spin:240deg; }
+.petal-6 { left:42%; --petal-size:14px; --fall-duration:18s; --sway-duration:4.4s; --delay:-7s; --petal-opacity:.80; --drift:58px; --spin:170deg; }
+.petal-7 { left:50%; --petal-size:17px; --fall-duration:14.5s; --sway-duration:3.4s; --delay:-3s; --petal-opacity:.86; --drift:78px; --spin:210deg; }
+.petal-8 { left:58%; --petal-size:12px; --fall-duration:16.5s; --sway-duration:4.2s; --delay:-11s; --petal-opacity:.74; --drift:48px; --spin:190deg; }
+.petal-9 { left:66%; --petal-size:18px; --fall-duration:15.5s; --sway-duration:3.9s; --delay:-6s; --petal-opacity:.84; --drift:74px; --spin:250deg; }
+.petal-10 { left:74%; --petal-size:15px; --fall-duration:17.5s; --sway-duration:4.8s; --delay:-9s; --petal-opacity:.78; --drift:64px; --spin:180deg; }
+.petal-11 { left:82%; --petal-size:13px; --fall-duration:19s; --sway-duration:4.5s; --delay:-12s; --petal-opacity:.72; --drift:52px; --spin:210deg; }
+.petal-12 { left:90%; --petal-size:17px; --fall-duration:13.8s; --sway-duration:3.5s; --delay:-1s; --petal-opacity:.84; --drift:70px; --spin:230deg; }
+.petal-13 { left:14%; --petal-size:11px; --fall-duration:18.8s; --sway-duration:4.3s; --delay:-14s; --petal-opacity:.68; --drift:42px; --spin:150deg; }
+.petal-14 { left:38%; --petal-size:14px; --fall-duration:16.8s; --sway-duration:4.1s; --delay:-15s; --petal-opacity:.76; --drift:60px; --spin:180deg; }
+.petal-15 { left:72%; --petal-size:12px; --fall-duration:18.2s; --sway-duration:4.6s; --delay:-13s; --petal-opacity:.70; --drift:44px; --spin:170deg; }
+.petal-16 { left:96%; --petal-size:16px; --fall-duration:15.9s; --sway-duration:3.8s; --delay:-7s; --petal-opacity:.82; --drift:58px; --spin:220deg; }
+
+@keyframes petalFall {
+  from { top: -12vh; transform: translateX(0) rotate(0deg); }
+  to { top: 110vh; transform: translateX(var(--drift,70px)) rotate(var(--spin,180deg)); }
+}
+
+@keyframes petalSway {
+  from { margin-left: -16px; }
+  to { margin-left: 20px; }
+}
+
+.farm-map-page .site-header,
+.farm-map-page .farm-map-main {
+  position: relative;
+  z-index: 2;
+}
+
+.farm-map-page .site-header {
+  width: 100%;
+}
+
+/* Real profile image saved by the account page. */
+.user-avatar,
+.user-menu-avatar {
+  overflow: hidden;
+  flex: 0 0 auto;
+}
+
+.user-avatar > img,
+.user-menu-avatar > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Thailand tiles are canvases clipped in JavaScript. */
+.thailand-boundary-tiles canvas {
+  display: block;
+}
+
+#farmMap {
+  background: #f7fbfd;
+}
+
+/* Global settings: dark/system theme and motion controls. */
+html[data-catmatch-theme="dark"] body.farm-map-page {
+  color: var(--color-text, #edf4f7);
+  background:
+    radial-gradient(circle at 10% 0%, rgba(215, 164, 91, 0.10), transparent 24%),
+    radial-gradient(circle at 88% 5%, rgba(91, 157, 184, 0.14), transparent 25%),
+    linear-gradient(180deg, #111820 0%, #18232c 58%, #131c24 100%);
+}
+
+html[data-catmatch-theme="dark"] #farmMap {
+  background: #1c2932;
+}
+
+html[data-catmatch-theme="dark"] .leaflet-tile-pane {
+  filter: saturate(.55) brightness(.62) contrast(1.08) hue-rotate(155deg);
+}
+
+html[data-sakura-motion="false"] .sakura-scene {
+  display: none !important;
+}
+
+html[data-reduced-motion="true"] .falling-petal {
+  animation: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .falling-petal { animation: none !important; }
+}
+
+
+/* แมวพร้อมติดต่อภายในแต่ละฟาร์ม */
+.farm-card__animals {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 13px;
+}
+.farm-animal {
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1fr);
+  gap: 9px;
+  min-width: 0;
+  padding: 7px;
+  border: 1px solid rgba(106,148,171,.16);
+  border-radius: 14px;
+  background: rgba(247,251,253,.92);
+}
+.farm-animal__media {
+  position: relative;
+  width: 58px;
+  height: 58px;
+  overflow: hidden;
+  border-radius: 11px;
+  background: linear-gradient(145deg, #f7eaf0, #eaf5fb);
+}
+.farm-animal__media img {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.farm-animal__fallback {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 1.35rem;
+}
+.farm-animal__body {
+  align-self: center;
+  min-width: 0;
+}
+.farm-animal__body strong,
+.farm-animal__body small {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.farm-animal__body strong {
+  color: #35596b;
+  font-size: .82rem;
+}
+.farm-animal__body small {
+  margin-top: 3px;
+  color: #7b8c95;
+  font-size: .69rem;
+}
+.popup-animal-list {
+  display: grid;
+  gap: 7px;
+  margin-top: 10px;
+  padding-top: 9px;
+  border-top: 1px solid rgba(106,148,171,.18);
+}
+.popup-animal-item {
+  display: grid;
+  grid-template-columns: 40px minmax(0,1fr);
+  align-items: center;
+  gap: 8px;
+}
+.popup-animal-image {
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: linear-gradient(145deg, #f7eaf0, #eaf5fb);
+}
+.popup-animal-image img { width: 100%; height: 100%; object-fit: cover; }
+.popup-animal-item strong,
+.popup-animal-item small { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.popup-animal-item strong { color: #35596b; font-size: .78rem; }
+.popup-animal-item small { margin-top: 2px; color: #7b8c95; font-size: .68rem; }
+.popup-animal-more { margin-top: 6px; color: #8b6b77; font-size: .7rem; font-weight: 700; text-align: right; }
+html[data-catmatch-theme="dark"] .farm-animal { background: #2d404b; border-color: rgba(170,204,224,.18); }
+html[data-catmatch-theme="dark"] .farm-animal__body strong,
+html[data-catmatch-theme="dark"] .popup-animal-item strong { color: #eef5f8; }
+html[data-catmatch-theme="dark"] .farm-animal__body small,
+html[data-catmatch-theme="dark"] .popup-animal-item small { color: #b4c2c9; }
+@media (max-width: 560px) {
+  .farm-card__animals { grid-template-columns: 1fr; }
+}
+
+/* Clickable cat cards and cat detail modal */
+.farm-animal,.popup-animal-item{width:100%;margin:0;font:inherit;text-align:left;cursor:pointer;appearance:none;color:inherit}
+.farm-animal{transition:.18s transform,.18s border-color,.18s box-shadow;background:rgba(247,251,253,.92)}
+.farm-animal:hover,.farm-animal:focus-visible{transform:translateY(-2px);border-color:rgba(86,151,188,.42);box-shadow:0 10px 24px rgba(62,120,152,.12);outline:0}
+.farm-animal__body em{display:block;margin-top:5px;color:#4b83a3;font-size:.66rem;font-style:normal;font-weight:800}
+.popup-animal-item{padding:4px;border:0;border-radius:10px;background:transparent}
+.popup-animal-item:hover,.popup-animal-item:focus-visible{background:rgba(111,169,202,.11);outline:0}
+body.has-open-animal-modal{overflow:hidden}.animal-detail-modal[hidden]{display:none!important}
+.animal-detail-modal{position:fixed;inset:0;z-index:5000;display:grid;place-items:center;padding:24px}
+.animal-detail-modal__backdrop{position:absolute;inset:0;width:100%;height:100%;border:0;background:rgba(28,47,58,.56);backdrop-filter:blur(7px);cursor:pointer}
+.animal-detail-card{position:relative;z-index:1;display:grid;grid-template-columns:minmax(280px,.92fr) minmax(320px,1.08fr);width:min(920px,100%);max-height:min(720px,calc(100vh - 48px));overflow:hidden;border:1px solid rgba(113,157,182,.22);border-radius:32px;background:rgba(255,255,255,.98);box-shadow:0 34px 90px rgba(29,54,68,.28);animation:animalDetailEnter .2s ease both}
+@keyframes animalDetailEnter{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+.animal-detail-close{position:absolute;z-index:3;top:16px;right:16px;display:grid;place-items:center;width:42px;height:42px;padding:0;border:1px solid rgba(96,138,161,.18);border-radius:50%;color:#466779;background:rgba(255,255,255,.94);font-size:1.65rem;line-height:1;cursor:pointer}
+.animal-detail-photo{position:relative;min-height:520px;overflow:hidden;background:linear-gradient(150deg,#eef8fc,#f9edf2)}
+.animal-detail-photo img{position:relative;z-index:2;display:block;width:100%;height:100%;min-height:520px;object-fit:cover}
+.animal-detail-photo__fallback{position:absolute;inset:0;display:grid;place-items:center;font-size:7rem}
+.animal-detail-content{overflow-y:auto;padding:54px 46px 42px}.animal-detail-eyebrow{margin:0 0 8px;color:#c47794;font-size:.73rem;font-weight:900;letter-spacing:.18em}
+.animal-detail-content h2{margin:0;color:#304f61;font-size:clamp(2rem,4vw,3.2rem);line-height:1.08}.animal-detail-breed{margin:8px 0 0;color:#59829a;font-size:1.04rem;font-weight:800}
+.animal-detail-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}.animal-detail-meta span{padding:7px 12px;border-radius:999px;color:#4a7187;background:#edf7fb;font-size:.79rem;font-weight:800}.animal-detail-meta span:last-child{color:#4d826c;background:#eaf7f0}
+.animal-detail-description{margin-top:28px;padding-top:24px;border-top:1px solid rgba(103,145,168,.17)}.animal-detail-description h3{margin:0 0 9px;color:#3c5d70;font-size:1rem}.animal-detail-description p{margin:0;color:#71818a;font-size:.93rem;line-height:1.8;white-space:pre-line}
+.animal-detail-farm{display:grid;gap:4px;margin-top:24px;padding:16px 18px;border:1px solid rgba(112,158,183,.17);border-radius:18px;background:linear-gradient(135deg,#f6fbfd,#fff7f9)}.animal-detail-farm span{color:#8998a0;font-size:.72rem}.animal-detail-farm strong{color:#3f6174}
+.animal-detail-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}.animal-detail-action{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 16px;border:1px solid rgba(85,135,164,.24);border-radius:999px;color:#47728b;background:#fff;font:inherit;font-size:.82rem;font-weight:800;text-decoration:none;cursor:pointer}.animal-detail-action.is-primary{border-color:transparent;color:#fff;background:linear-gradient(135deg,#6ca7c9,#5184a4)}
+html[data-catmatch-theme="dark"] .animal-detail-card{background:#22313b;border-color:rgba(165,204,224,.15)}html[data-catmatch-theme="dark"] .animal-detail-content h2,html[data-catmatch-theme="dark"] .animal-detail-description h3,html[data-catmatch-theme="dark"] .animal-detail-farm strong{color:#eef6f9}html[data-catmatch-theme="dark"] .animal-detail-breed{color:#a6ccdf}html[data-catmatch-theme="dark"] .animal-detail-description p,html[data-catmatch-theme="dark"] .animal-detail-farm span{color:#b7c5cb}html[data-catmatch-theme="dark"] .animal-detail-farm{background:#293d48}html[data-catmatch-theme="dark"] .animal-detail-action{color:#d2e5ee;background:#2e424d}
+@media(max-width:760px){.animal-detail-modal{padding:12px}.animal-detail-card{grid-template-columns:1fr;max-height:calc(100vh - 24px);overflow-y:auto;border-radius:24px}.animal-detail-photo,.animal-detail-photo img{min-height:290px;height:290px}.animal-detail-content{overflow:visible;padding:32px 24px 28px}}
+@media(prefers-reduced-motion:reduce){.animal-detail-card,.farm-animal{animation:none!important;transition:none!important}}
+
+
+/* Compact cat gallery: show two cats first, expand the rest on demand */
+.farm-card__animal-more {
+  margin-top: 9px;
+}
+.farm-card__animal-more > summary {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 8px 11px 8px 14px;
+  border: 1px dashed rgba(100, 148, 174, .28);
+  border-radius: 14px;
+  color: #4d7890;
+  background: linear-gradient(135deg, rgba(239, 248, 252, .96), rgba(255, 244, 248, .92));
+  font-size: .76rem;
+  font-weight: 850;
+  cursor: pointer;
+  list-style: none;
+  transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+}
+.farm-card__animal-more > summary::-webkit-details-marker { display: none; }
+.farm-card__animal-more > summary:hover,
+.farm-card__animal-more > summary:focus-visible {
+  transform: translateY(-1px);
+  border-color: rgba(76, 139, 174, .48);
+  box-shadow: 0 8px 20px rgba(65, 117, 146, .10);
+  outline: 0;
+}
+.farm-card__animal-more-count {
+  display: inline-grid;
+  place-items: center;
+  min-width: 29px;
+  height: 29px;
+  padding: 0 8px;
+  border-radius: 999px;
+  color: #a25f78;
+  background: #fdebf2;
+  font-size: .72rem;
+}
+.farm-card__animal-more-icon {
+  color: #6f91a4;
+  font-size: 1rem;
+  transition: transform .2s ease;
+}
+.farm-card__animal-more[open] .farm-card__animal-more-icon { transform: rotate(180deg); }
+.farm-card__animals--expanded {
+  margin-top: 9px;
+  padding-top: 9px;
+  border-top: 1px solid rgba(108, 150, 172, .13);
+  animation: farmAnimalsReveal .18s ease both;
+}
+@keyframes farmAnimalsReveal {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: none; }
+}
+html[data-catmatch-theme="dark"] .farm-card__animal-more > summary {
+  color: #d9edf6;
+  border-color: rgba(170, 204, 224, .24);
+  background: linear-gradient(135deg, #2b3e49, #34434b);
+}
+html[data-catmatch-theme="dark"] .farm-card__animal-more-count {
+  color: #ffd8e5;
+  background: #59404b;
+}
+html[data-catmatch-theme="dark"] .farm-card__animal-more-icon { color: #b9d3df; }
+@media (prefers-reduced-motion: reduce) {
+  .farm-card__animal-more > summary,
+  .farm-card__animal-more-icon,
+  .farm-card__animals--expanded { animation: none !important; transition: none !important; }
+}
+
+
+/* Professional farm list refinement */
+.farm-card { padding: 16px; overflow: hidden; }
+.farm-card.is-active { background: linear-gradient(145deg,#fff,#fff8fa); box-shadow: 0 18px 38px rgba(78,109,126,.16), inset 4px 0 0 #d983a1; }
+.farm-card__identity { min-width: 0; }
+.farm-card__address { margin: 7px 0 10px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.farm-card__meta { gap: 6px; }
+.farm-card__meta span { padding: 5px 8px; }
+.farm-card__breed { margin: 9px 0 0; color: #6d7d86; font-size: .77rem; line-height: 1.45; }
+.farm-card__breed strong { color: #4f6d7c; }
+.farm-card__animal-heading { display:flex; align-items:center; justify-content:space-between; margin: 13px 0 8px; color:#476574; font-size:.78rem; }
+.farm-card__animal-heading span { color:#83929a; font-weight:700; }
+.farm-card__animals { gap: 8px; }
+.farm-animal { min-height: 74px; padding: 7px; border-radius: 14px; }
+.farm-animal__media { width: 58px; height: 58px; flex: 0 0 58px; border-radius: 11px; }
+.farm-animal__media img { width:100%; height:100%; object-fit:cover; }
+.farm-animal__body strong, .farm-animal__body small { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.farm-card__location-note { margin: 11px 0 0; color:#8a979e; font-size:.68rem; line-height:1.45; }
+.farm-card__actions { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:12px; padding-top:12px; border-top:1px solid rgba(106,148,171,.12); }
+.farm-card__primary { min-height:38px; padding:0 13px; border:0; border-radius:11px; color:#fff; background:linear-gradient(135deg,#5f99bc,#6eabc9); box-shadow:0 8px 18px rgba(77,139,174,.2); font:inherit; font-size:.79rem; font-weight:800; cursor:pointer; }
+.farm-card__primary:hover { transform:translateY(-1px); box-shadow:0 11px 24px rgba(77,139,174,.28); }
+.farm-card__secondary { display:flex; gap:6px; }
+.farm-card__secondary a { display:inline-flex; align-items:center; justify-content:center; gap:5px; min-width:36px; height:36px; padding:0 9px; border:1px solid rgba(106,148,171,.2); border-radius:10px; color:#46718a; background:#fff; font-size:.75rem; font-weight:800; text-decoration:none; }
+.farm-card__secondary a span { display:none; }
+.popup-actions { display:flex; flex-wrap:wrap; gap:7px; margin-top:10px; }
+.popup-action { display:inline-flex; align-items:center; justify-content:center; min-height:32px; padding:0 10px; border:1px solid #d9e8ef; border-radius:9px; color:#3e7089; background:#fff; font:inherit; font-size:.75rem; font-weight:800; text-decoration:none; cursor:pointer; }
+.farm-card--skeleton { pointer-events:none; }
+.skeleton-line,.skeleton-pills i,.skeleton-cats i { display:block; border-radius:10px; background:linear-gradient(90deg,#edf2f5 25%,#f8fafb 45%,#edf2f5 65%); background-size:220% 100%; animation:farmSkeleton 1.25s ease-in-out infinite; }
+.skeleton-line { height:11px; margin:10px 0; }
+.skeleton-line.is-short { width:35%; height:9px; }
+.skeleton-line.is-title { width:58%; height:20px; }
+.skeleton-pills,.skeleton-cats { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:12px; }
+.skeleton-pills i { height:27px; border-radius:999px; }
+.skeleton-cats i { height:74px; }
+@keyframes farmSkeleton { to { background-position:-220% 0; } }
+html[data-catmatch-theme="dark"] .farm-card.is-active { background:linear-gradient(145deg,#2b3d48,#273640); box-shadow:0 18px 38px rgba(0,0,0,.28), inset 4px 0 0 #e092ad; }
+html[data-catmatch-theme="dark"] .farm-card__breed, html[data-catmatch-theme="dark"] .farm-card__location-note { color:#aebfc8; }
+html[data-catmatch-theme="dark"] .farm-card__breed strong, html[data-catmatch-theme="dark"] .farm-card__animal-heading { color:#d8e9f0; }
+html[data-catmatch-theme="dark"] .farm-card__animal-heading span { color:#a9bbc4; }
+html[data-catmatch-theme="dark"] .farm-card__actions { border-color:rgba(170,204,224,.15); }
+html[data-catmatch-theme="dark"] .farm-card__secondary a, html[data-catmatch-theme="dark"] .popup-action { color:#d2e9f3; background:#2b3d48; border-color:rgba(170,204,224,.2); }
+html[data-catmatch-theme="dark"] .skeleton-line,html[data-catmatch-theme="dark"] .skeleton-pills i,html[data-catmatch-theme="dark"] .skeleton-cats i { background:linear-gradient(90deg,#31434e 25%,#3a4d58 45%,#31434e 65%); background-size:220% 100%; }
+@media (min-width: 1180px) { .farm-card__secondary a:hover span { display:inline; } }
+@media (max-width: 980px) {
+  .farm-map-shell { grid-template-columns:1fr; }
+  .farm-map-canvas { min-height:58vh; }
+  .farm-list-panel { position:relative; z-index:600; margin-top:-24px; border-radius:24px 24px 0 0; box-shadow:0 -14px 34px rgba(57,84,99,.13); }
+  .farm-list { display:flex; gap:12px; max-height:none; overflow-x:auto; overflow-y:hidden; scroll-snap-type:x mandatory; padding-bottom:22px; }
+  .farm-card { flex:0 0 min(88vw,390px); scroll-snap-align:center; margin-bottom:0; }
+}
+@media (max-width: 560px) {
+  .farm-card__animals { grid-template-columns:1fr 1fr; }
+  .farm-animal { min-width:0; }
+  .farm-animal__media { width:52px; height:52px; flex-basis:52px; }
+  .farm-card__actions { align-items:stretch; flex-direction:column; }
+  .farm-card__primary { width:100%; }
+  .farm-card__secondary { justify-content:center; }
+  .farm-card__secondary a { flex:1; }
+  .farm-card__secondary a span { display:inline; }
+}
+@media (prefers-reduced-motion: reduce) { .skeleton-line,.skeleton-pills i,.skeleton-cats i { animation:none; } }
+
+
+/* Browse every breed from the homepage without tying the map to assessment results. */
+.breed-picker {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 390px);
+  align-items: center;
+  gap: 22px;
+  margin-bottom: 18px;
+  padding: 20px 22px;
+  border: 1px solid rgba(102, 144, 169, .18);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, .82);
+  box-shadow: 0 16px 38px rgba(73, 105, 123, .10);
+  backdrop-filter: blur(14px);
+}
+.breed-picker__copy { min-width: 0; }
+.breed-picker__eyebrow {
+  display: block;
+  margin-bottom: 4px;
+  color: #b47a8d;
+  font-size: .72rem;
+  font-weight: 900;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.breed-picker__copy strong {
+  display: block;
+  color: #304f60;
+  font-size: 1.05rem;
+}
+.breed-picker__copy small {
+  display: block;
+  margin-top: 5px;
+  color: #72838d;
+  line-height: 1.5;
+}
+.breed-picker__field { display: grid; gap: 7px; }
+.breed-picker__field > span {
+  color: #607985;
+  font-size: .78rem;
+  font-weight: 800;
+}
+.breed-picker__field select {
+  width: 100%;
+  min-height: 50px;
+  padding: 0 44px 0 15px;
+  border: 1px solid rgba(96, 139, 164, .28);
+  border-radius: 14px;
+  color: #31566b;
+  background: #fff;
+  font: inherit;
+  font-weight: 750;
+  cursor: pointer;
+  outline: none;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.breed-picker__field select:focus {
+  border-color: #75a9c7;
+  box-shadow: 0 0 0 4px rgba(117, 169, 199, .16);
+}
+.breed-empty-state {
+  display: grid;
+  justify-items: center;
+  gap: 7px;
+  margin: 20px 8px;
+  padding: 28px 20px;
+}
+.breed-empty-state__icon { font-size: 2rem; }
+.breed-empty-state strong { color: #3d6073; font-size: 1rem; }
+.breed-empty-state p { margin: 0; color: #778892; line-height: 1.6; }
+html[data-catmatch-theme="dark"] .breed-picker {
+  border-color: rgba(170, 204, 224, .20);
+  background: rgba(34, 49, 59, .90);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, .25);
+}
+html[data-catmatch-theme="dark"] .breed-picker__copy strong,
+html[data-catmatch-theme="dark"] .breed-empty-state strong { color: #edf5f8; }
+html[data-catmatch-theme="dark"] .breed-picker__copy small,
+html[data-catmatch-theme="dark"] .breed-picker__field > span,
+html[data-catmatch-theme="dark"] .breed-empty-state p { color: #b7c7cf; }
+html[data-catmatch-theme="dark"] .breed-picker__field select {
+  color: #eef5f8;
+  border-color: rgba(170, 204, 224, .23);
+  background: #293a44;
+}
+@media (max-width: 760px) {
+  .breed-picker { grid-template-columns: 1fr; padding: 18px; border-radius: 18px; }
+}
+
+
+/* Search by farm name — shown in browse mode from the index page */
+.breed-picker__field--search {
+  min-width: min(100%, 290px);
+}
+
+.farm-name-search {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-height: 48px;
+  padding: 0 0.9rem;
+  border: 1px solid rgba(123, 157, 184, 0.38);
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(39, 74, 105, 0.06);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.farm-name-search:focus-within {
+  border-color: #75aedd;
+  box-shadow: 0 0 0 4px rgba(117, 174, 221, 0.16);
+}
+
+.farm-name-search > span {
+  color: #6c91ad;
+  font-size: 1.2rem;
+}
+
+.farm-name-search input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #20374a;
+  font: inherit;
+}
+
+.farm-name-search input::placeholder {
+  color: #91a4b3;
+}
+
+[data-theme="dark"] .farm-name-search {
+  background: #20303d;
+  border-color: #496275;
+}
+
+[data-theme="dark"] .farm-name-search input {
+  color: #f4f8fb;
+}
+
+[data-theme="dark"] .farm-name-search input::placeholder {
+  color: #aebdca;
+}
+
+@media (max-width: 760px) {
+  .breed-picker__field--search {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+
+/* โปรไฟล์ฟาร์มเปิดภายในหน้าแผนที่ ไม่เปลี่ยน URL */
+body.has-open-farm-profile { overflow: hidden; }
+.farm-profile-modal[hidden] { display: none !important; }
+.farm-profile-modal { position: fixed; inset: 0; z-index: 3000; display: grid; place-items: center; padding: 24px; }
+.farm-profile-modal__backdrop { position: absolute; inset: 0; border: 0; background: rgba(24, 38, 52, .58); backdrop-filter: blur(5px); cursor: default; }
+.farm-profile-panel { position: relative; width: min(880px, 100%); max-height: calc(100vh - 48px); overflow: auto; border-radius: 28px; background: #fffdfd; box-shadow: 0 28px 80px rgba(28, 49, 69, .26); padding: 30px; color: #36566d; }
+.farm-profile-close { position: absolute; top: 16px; right: 16px; z-index: 2; width: 42px; height: 42px; border-radius: 50%; border: 1px solid #dce9f2; background: #fff; color: #46677d; font-size: 28px; line-height: 1; cursor: pointer; }
+.farm-profile-hero { display: grid; grid-template-columns: 180px 1fr; gap: 26px; align-items: center; padding-bottom: 24px; border-bottom: 1px solid #e8eef3; }
+.farm-profile-photo { width: 180px; aspect-ratio: 1; border-radius: 24px; overflow: hidden; background: #eef7fb; display: grid; place-items: center; font-size: 54px; }
+.farm-profile-photo img { width: 100%; height: 100%; object-fit: cover; grid-area: 1 / 1; }
+.farm-profile-photo span { display: none; grid-area: 1 / 1; }
+.farm-profile-photo.is-fallback span { display: block; }
+.farm-profile-eyebrow { margin: 0 0 4px; font-size: 12px; font-weight: 800; letter-spacing: .1em; color: #73a8c7; }
+.farm-profile-hero h2 { margin: 0 52px 8px 0; font-size: clamp(27px, 4vw, 40px); color: #31546b; }
+.farm-profile-verified { display: inline-flex; padding: 7px 12px; border-radius: 999px; background: #edf8f4; color: #438270; font-weight: 800; }
+.farm-profile-address { margin: 12px 0 0; color: #6f8290; }
+.farm-profile-section { padding-top: 24px; }
+.farm-profile-section h3 { margin: 0 0 10px; color: #365a70; }
+.farm-profile-section p { margin: 0; line-height: 1.8; color: #6d7f8c; }
+.farm-profile-section-head { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.farm-profile-section-head span { font-weight: 800; color: #7292a5; }
+.farm-profile-cats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 14px; }
+.farm-profile-cat { min-width: 0; border: 1px solid #dce8f0; background: #f8fbfd; border-radius: 18px; padding: 10px; text-align: left; cursor: pointer; color: inherit; transition: transform .18s ease, box-shadow .18s ease; }
+.farm-profile-cat:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(48, 83, 107, .12); }
+.farm-profile-cat__photo { aspect-ratio: 4 / 3; border-radius: 13px; overflow: hidden; background: #edf4f8; display: grid; place-items: center; font-size: 34px; }
+.farm-profile-cat__photo img, .farm-profile-cat__photo span { grid-area: 1 / 1; }
+.farm-profile-cat__photo img { width: 100%; height: 100%; object-fit: cover; }
+.farm-profile-cat__photo span { display: none; }
+.farm-profile-cat__photo.is-fallback span, .farm-profile-cat__photo:not(:has(img)) span { display: block; }
+.farm-profile-cat strong, .farm-profile-cat small, .farm-profile-cat em { display: block; margin-top: 7px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.farm-profile-cat small { color: #7a8d99; }
+.farm-profile-cat em { color: #4c91b8; font-style: normal; font-weight: 800; font-size: 12px; }
+.farm-profile-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; padding-top: 20px; border-top: 1px solid #e8eef3; }
+.farm-profile-actions :is(a, button) { padding: 11px 16px; border: 0; border-radius: 12px; background: #65a9cf; color: #fff; font: inherit; font-weight: 800; text-decoration: none; cursor: pointer; }
+.farm-profile-actions :is(a, button):hover { filter: brightness(.96); transform: translateY(-1px); }
+.farm-profile-location-section { background: #f8fbfd; border: 1px solid #e1ebf1; border-radius: 18px; padding: 16px 18px; }
+.farm-profile-location-section .farm-profile-section-head { margin-bottom: 5px; align-items: center; }
+.farm-profile-location-section .farm-profile-section-head span { color: #4c7d99; font-size: 12px; font-weight: 800; }
+.farm-profile-location-section p { margin: 0; }
+.farm-profile-loading, .farm-profile-error, .farm-profile-empty { padding: 50px 20px; text-align: center; color: #718796; }
+.farm-card__primary, .popup-action { font: inherit; cursor: pointer; }
+[data-theme="dark"] .farm-profile-panel { background: #172531; color: #dcebf3; }
+[data-theme="dark"] .farm-profile-hero, [data-theme="dark"] .farm-profile-actions { border-color: #314553; }
+[data-theme="dark"] .farm-profile-hero h2, [data-theme="dark"] .farm-profile-section h3 { color: #edf7fb; }
+[data-theme="dark"] .farm-profile-address, [data-theme="dark"] .farm-profile-section p { color: #b9cbd5; }
+[data-theme="dark"] .farm-profile-cat, [data-theme="dark"] .farm-profile-close { background: #203340; border-color: #3b5362; color: #eef7fb; }
+@media (max-width: 700px) {
+  .farm-profile-modal { padding: 0; align-items: end; }
+  .farm-profile-panel { width: 100%; max-height: 92vh; border-radius: 24px 24px 0 0; padding: 24px 18px; }
+  .farm-profile-hero { grid-template-columns: 96px 1fr; gap: 16px; }
+  .farm-profile-photo { width: 96px; border-radius: 18px; }
+  .farm-profile-cats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+
+/* =========================================================
+   Map refinement v16
+   - Preserve the natural OpenStreetMap colours for cat and dog.
+   - Apply a complete dark interface around the map.
+   ========================================================= */
+body.farm-map-page .leaflet-tile-pane,
+html[data-catmatch-theme="dark"] body.farm-map-page .leaflet-tile-pane {
+  filter: none !important;
+}
+
+html[data-catmatch-theme="dark"] body.farm-map-page {
+  color: #F5EFE7 !important;
+  background:
+    radial-gradient(circle at 12% 4%, rgba(62, 88, 121, .24), transparent 30%),
+    radial-gradient(circle at 88% 10%, rgba(216, 196, 182, .08), transparent 28%),
+    #17253B !important;
+}
+
+html[data-catmatch-theme="dark"] body.farm-map-page :is(
+  .farm-map-heading h1,
+  .farm-list-head strong,
+  .farm-card h2,
+  .breed-picker-copy strong,
+  .breed-picker-label,
+  .farm-search-label
+) {
+  color: #F5EFE7 !important;
+}
+
+html[data-catmatch-theme="dark"] body.farm-map-page :is(
+  .farm-map-heading p,
+  .farm-map-back,
+  .farm-card__address,
+  .farm-list-head span,
+  .breed-picker-copy p,
+  .location-message,
+  .breed-empty-state p
+) {
+  color: #D8C4B6 !important;
+}
+
+html[data-catmatch-theme="dark"] body.farm-map-page :is(
+  .breed-picker,
+  .farm-search-panel,
+  .farm-map-layout,
+  .farm-list-panel,
+  .farm-list-head,
+  .farm-card,
+  .farm-list-status,
+  .breed-empty-state
+) {
+  background: #253A59 !important;
+  color: #F5EFE7 !important;
+  border-color: rgba(216, 196, 182, .22) !important;
+  box-shadow: 0 18px 44px rgba(0, 0, 0, .20) !important;
+}
+
+html[data-catmatch-theme="dark"] body.farm-map-page :is(
+  #breedSelect,
+  #farmNameSearch,
+  #distanceFilter,
+  input,
+  select
+) {
+  color: #F5EFE7 !important;
+  background: #1D304C !important;
+  border-color: rgba(216, 196, 182, .24) !important;
+}
+
+html[data-catmatch-theme="dark"] body.farm-map-page :is(
+  #breedSelect,
+  #farmNameSearch,
+  #distanceFilter,
+  input,
+  select
+)::placeholder {
+  color: rgba(216, 196, 182, .72) !important;
+}
+
+html[data-catmatch-theme="dark"] body.farm-map-page .map-panel {
+  background: #1D304C !important;
+}
+
+html[data-catmatch-theme="dark"] body.farm-map-page :is(.map-badge, .map-legend) {
+  color: #213555 !important;
+  background: rgba(245, 239, 231, .94) !important;
+  border-color: rgba(33, 53, 85, .16) !important;
+}
+
+/* Keep map tiles readable and geographically natural in both themes. */
+body.farm-map-page .leaflet-container {
+  background: #E8ECEA !important;
+}
+
+[data-theme="dark"] .farm-profile-location-section { background:#203340; border-color:#3b5362; }

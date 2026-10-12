@@ -1,0 +1,1777 @@
+
+html[data-sakura-motion="false"] .sakura-scene,html[data-sakura-motion="false"] [class*="sakura-scene"],html[data-sakura-motion="false"] [class*="falling-petal"],html[data-sakura-motion="false"] [class*="page-sakura"],html[data-sakura-motion="false"] [class*="pending-sakura"]{display:none!important}
+html[data-reduced-motion="true"] *,html[data-reduced-motion="true"] *::before,html[data-reduced-motion="true"] *::after{scroll-behavior:auto!important;animation:none!important;transition-duration:.01ms!important;transition-delay:0s!important}
+html[data-catmatch-theme="dark"]{color-scheme:dark;--color-bg:#172029;--color-bg-2:#202d37;--color-surface:#25333d;--color-surface-strong:#2b3a45;--color-text:#f1f6f8;--color-text-soft:#b7c5cd;--color-border:rgba(178,210,229,.18);--color-shadow:rgba(0,0,0,.28);--summer-sky:#304b5e;--sakura-white:#27343d}
+html[data-catmatch-theme="dark"] body{color:#edf4f7!important;background:radial-gradient(circle at 12% 0%,rgba(222,171,94,.10),transparent 22%),radial-gradient(circle at 86% 6%,rgba(99,169,184,.13),transparent 22%),linear-gradient(180deg,#172029,#202d37)!important}
+html[data-catmatch-theme="dark"] .site-header,html[data-catmatch-theme="dark"] .user-menu-panel,html[data-catmatch-theme="dark"] .settings-card,html[data-catmatch-theme="dark"] .settings-sidebar,html[data-catmatch-theme="dark"] .notification-card,html[data-catmatch-theme="dark"] .account-info-card,html[data-catmatch-theme="dark"] .assessment-shell,html[data-catmatch-theme="dark"] .history-card{background:rgba(35,49,59,.95)!important;border-color:rgba(170,205,225,.18)!important;color:#edf4f7!important}
+html[data-catmatch-theme="dark"] h1,html[data-catmatch-theme="dark"] h2,html[data-catmatch-theme="dark"] h3,html[data-catmatch-theme="dark"] strong,html[data-catmatch-theme="dark"] label{color:#f1f6f8!important}
+html[data-catmatch-theme="dark"] p,html[data-catmatch-theme="dark"] small,html[data-catmatch-theme="dark"] .account-field span{color:#b7c5cd!important}
+html[data-catmatch-theme="dark"] input,html[data-catmatch-theme="dark"] textarea,html[data-catmatch-theme="dark"] select{color:#edf4f7!important;background:#1d2932!important;border-color:rgba(170,205,225,.22)!important}
+
+/* =========================================================
+   DARK MODE V2 — full-page surfaces
+   ========================================================= */
+html[data-catmatch-theme="dark"] {
+  --color-bg: #111820;
+  --color-bg-2: #18232c;
+  --color-surface: #202c35;
+  --color-surface-strong: #293842;
+  --color-text: #f2f6f8;
+  --color-text-soft: #b7c4cb;
+  --color-border: rgba(170, 204, 224, 0.22);
+  --color-shadow: rgba(0, 0, 0, 0.34);
+  --sakura-white: #293640;
+  --sakura-pink: #875d70;
+  --sakura-pink-strong: #d58ca7;
+  --summer-mint: #47727a;
+  --summer-sky: #304c60;
+  --summer-blue: #78a9cd;
+  --summer-blue-deep: #9bc8e8;
+  --soft-sun: #d9bc6f;
+  --branch: #b9a097;
+}
+
+html[data-catmatch-theme="dark"] body,
+html[data-catmatch-theme="dark"] body.assessment-page,
+html[data-catmatch-theme="dark"] body.cat-breeds-page,
+html[data-catmatch-theme="dark"] body.notifications-page,
+html[data-catmatch-theme="dark"] body.favorites-page,
+html[data-catmatch-theme="dark"] body.account-info-page {
+  color: var(--color-text) !important;
+  background:
+    radial-gradient(circle at 10% 0%, rgba(215, 164, 91, 0.10), transparent 24%),
+    radial-gradient(circle at 88% 5%, rgba(91, 157, 184, 0.14), transparent 25%),
+    linear-gradient(180deg, #111820 0%, #18232c 58%, #131c24 100%) !important;
+}
+
+html[data-catmatch-theme="dark"] .site-header,
+html[data-catmatch-theme="dark"] .assessment-header,
+html[data-catmatch-theme="dark"] .notifications-page .site-header {
+  background: rgba(22, 32, 40, 0.96) !important;
+  border-color: rgba(170, 204, 224, 0.16) !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.20) !important;
+}
+
+html[data-catmatch-theme="dark"] .brand-logo,
+html[data-catmatch-theme="dark"] .notifications-page .brand-logo,
+html[data-catmatch-theme="dark"] .notifications-page .site-header .brand-logo {
+  background: linear-gradient(145deg, #2b3944, #202c35) !important;
+  border-color: rgba(153, 195, 221, 0.28) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.05), 0 12px 26px rgba(0,0,0,.20) !important;
+}
+
+html[data-catmatch-theme="dark"] .main-nav,
+html[data-catmatch-theme="dark"] .notifications-page .main-nav {
+  background: rgba(29, 41, 50, 0.98) !important;
+  border-color: rgba(170, 204, 224, 0.18) !important;
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.28) !important;
+}
+
+html[data-catmatch-theme="dark"] .nav-link,
+html[data-catmatch-theme="dark"] .brand-text strong,
+html[data-catmatch-theme="dark"] .user-summary strong {
+  color: #eef5f8 !important;
+}
+
+html[data-catmatch-theme="dark"] .brand-text small,
+html[data-catmatch-theme="dark"] .user-summary small {
+  color: #aebdc6 !important;
+}
+
+html[data-catmatch-theme="dark"] .nav-link:hover,
+html[data-catmatch-theme="dark"] .nav-link.is-active,
+html[data-catmatch-theme="dark"] .nav-link.is-current,
+html[data-catmatch-theme="dark"] .nav-link[aria-current="page"],
+html[data-catmatch-theme="dark"] .notifications-page .main-nav .nav-link:hover,
+html[data-catmatch-theme="dark"] .notifications-page .main-nav .nav-link.is-current,
+html[data-catmatch-theme="dark"] .notifications-page .main-nav .nav-link[aria-current="page"] {
+  color: #f8fbfc !important;
+  background: linear-gradient(135deg, rgba(183, 149, 78, .30), rgba(158, 105, 127, .30)) !important;
+  box-shadow: inset 0 0 0 1px rgba(223, 194, 126, .12) !important;
+}
+
+html[data-catmatch-theme="dark"] .menu-toggle,
+html[data-catmatch-theme="dark"] .notifications-page .menu-toggle,
+html[data-catmatch-theme="dark"] .user-menu-trigger,
+html[data-catmatch-theme="dark"] .assessment-header .user-menu-trigger {
+  color: #edf5f8 !important;
+  background: #24323c !important;
+  border-color: rgba(170, 204, 224, 0.23) !important;
+  box-shadow: 0 10px 24px rgba(0,0,0,.22) !important;
+}
+
+html[data-catmatch-theme="dark"] .menu-toggle span,
+html[data-catmatch-theme="dark"] .notifications-page .menu-toggle span {
+  background: #d8e5eb !important;
+}
+
+html[data-catmatch-theme="dark"] .user-menu-panel,
+html[data-catmatch-theme="dark"] .assessment-header .user-menu-panel,
+html[data-catmatch-theme="dark"] .notifications-page .user-menu-panel {
+  background: #202c35 !important;
+  border-color: rgba(170, 204, 224, 0.22) !important;
+  box-shadow: 0 26px 64px rgba(0,0,0,.38) !important;
+}
+
+html[data-catmatch-theme="dark"] .user-menu-account,
+html[data-catmatch-theme="dark"] .assessment-header .user-menu-account {
+  background: linear-gradient(110deg, #2f3943, #223641) !important;
+}
+
+html[data-catmatch-theme="dark"] .account-menu-group,
+html[data-catmatch-theme="dark"] .logout-button {
+  border-color: rgba(170, 204, 224, 0.16) !important;
+}
+
+html[data-catmatch-theme="dark"] .account-menu-item,
+html[data-catmatch-theme="dark"] .assessment-header .account-menu-item,
+html[data-catmatch-theme="dark"] .logout-button {
+  color: #dce7ec !important;
+  background: transparent !important;
+}
+
+html[data-catmatch-theme="dark"] .account-menu-item:hover,
+html[data-catmatch-theme="dark"] .account-menu-item:focus-visible,
+html[data-catmatch-theme="dark"] .assessment-header .account-menu-item:hover {
+  background: #2b3b46 !important;
+}
+
+html[data-catmatch-theme="dark"] .account-menu-icon,
+html[data-catmatch-theme="dark"] .assessment-header .account-menu-icon {
+  color: #9bc8e8 !important;
+  background: #293b47 !important;
+  border-color: rgba(150, 195, 222, .20) !important;
+}
+
+html[data-catmatch-theme="dark"] .card {
+  color: var(--color-text) !important;
+  background: linear-gradient(180deg, rgba(39,53,63,.98), rgba(30,43,52,.98)) !important;
+  border-color: var(--color-border) !important;
+  box-shadow: 0 18px 48px rgba(0,0,0,.25) !important;
+}
+
+html[data-catmatch-theme="dark"] .button-secondary,
+html[data-catmatch-theme="dark"] .button-ghost,
+html[data-catmatch-theme="dark"] .account-cancel-button {
+  color: #e9f2f6 !important;
+  background: #263640 !important;
+  border-color: rgba(170, 204, 224, .24) !important;
+}
+
+/* Homepage */
+html[data-catmatch-theme="dark"] .hero::before {
+  background:
+    radial-gradient(circle at 18% 22%, rgba(211, 181, 101, .10), transparent 24%),
+    radial-gradient(circle at 82% 12%, rgba(90, 155, 181, .12), transparent 22%),
+    linear-gradient(135deg, rgba(20,29,37,.98), rgba(29,43,53,.98)) !important;
+}
+
+html[data-catmatch-theme="dark"] .hero-paper-mat {
+  background: linear-gradient(135deg, rgba(42,57,67,.90), rgba(29,43,53,.94)) !important;
+  border-color: rgba(153, 195, 221, .18) !important;
+  box-shadow: 0 28px 80px rgba(0,0,0,.28) !important;
+}
+
+html[data-catmatch-theme="dark"] .hero-arch {
+  background: linear-gradient(135deg, rgba(154,130,67,.14), rgba(76,133,154,.16)) !important;
+  border-color: #2b3a45 !important;
+  box-shadow: 0 28px 70px rgba(0,0,0,.34), 0 0 0 1px rgba(153,195,221,.15) !important;
+}
+
+html[data-catmatch-theme="dark"] .hero-arch::before {
+  background: linear-gradient(180deg, transparent, rgba(8,14,19,.16)) !important;
+}
+
+html[data-catmatch-theme="dark"] .dog-future-link,
+html[data-catmatch-theme="dark"] .stats-card,
+html[data-catmatch-theme="dark"] .steps-card,
+html[data-catmatch-theme="dark"] .map-promo,
+html[data-catmatch-theme="dark"] .article-card {
+  color: var(--color-text) !important;
+  background: linear-gradient(145deg, #273640, #1e2b34) !important;
+  border-color: rgba(170, 204, 224, .20) !important;
+  box-shadow: 0 18px 48px rgba(0,0,0,.24) !important;
+}
+
+html[data-catmatch-theme="dark"] .dog-future-icon,
+html[data-catmatch-theme="dark"] .step-icon,
+html[data-catmatch-theme="dark"] .map-illustration,
+html[data-catmatch-theme="dark"] .favorite-button:not(.is-active) {
+  color: #a9d1ec !important;
+  background: linear-gradient(145deg, #31434f, #25343e) !important;
+  border-color: rgba(170, 204, 224, .20) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.04), 0 8px 20px rgba(0,0,0,.20) !important;
+}
+
+html[data-catmatch-theme="dark"] .homepage-trait-tag,
+html[data-catmatch-theme="dark"] .homepage-trait-tag:nth-child(3n + 2),
+html[data-catmatch-theme="dark"] .homepage-trait-tag:nth-child(3n + 3),
+html[data-catmatch-theme="dark"] .trait-tag {
+  color: #d5e2e8 !important;
+  background: #2b3c46 !important;
+  border-color: rgba(170,204,224,.14) !important;
+}
+
+html[data-catmatch-theme="dark"] .farm-request-backdrop {
+  background: rgba(8, 13, 17, .78) !important;
+}
+
+html[data-catmatch-theme="dark"] .farm-request-card,
+html[data-catmatch-theme="dark"] .farm-request-progress article,
+html[data-catmatch-theme="dark"] .farm-status-banner,
+html[data-catmatch-theme="dark"] .farm-status-banner.is-approved,
+html[data-catmatch-theme="dark"] .farm-status-banner.is-rejected,
+html[data-catmatch-theme="dark"] .farm-status-banner.is-inactive {
+  color: var(--color-text) !important;
+  background: linear-gradient(145deg, #273640, #1e2b34) !important;
+  border-color: rgba(170,204,224,.18) !important;
+}
+
+html[data-catmatch-theme="dark"] .farm-request-note,
+html[data-catmatch-theme="dark"] .farm-status-banner__action {
+  color: #d4e1e7 !important;
+  background: #2b3a44 !important;
+  border-color: rgba(170,204,224,.20) !important;
+}
+
+/* Assessment */
+html[data-catmatch-theme="dark"] .assessment-hero__note,
+html[data-catmatch-theme="dark"] .assessment-progress-card,
+html[data-catmatch-theme="dark"] .assessment-guide,
+html[data-catmatch-theme="dark"] .assessment-page-map,
+html[data-catmatch-theme="dark"] .assessment-card,
+html[data-catmatch-theme="dark"] body:not(.assessment-auth-required):not(.assessment-prestart) .assessment-card,
+html[data-catmatch-theme="dark"] body:not(.assessment-auth-required):not(.assessment-prestart) .assessment-question,
+html[data-catmatch-theme="dark"] .assessment-dialog__card {
+  color: var(--color-text) !important;
+  background: linear-gradient(180deg, #273640, #202d36) !important;
+  border-color: rgba(170,204,224,.20) !important;
+  box-shadow: 0 20px 54px rgba(0,0,0,.26) !important;
+}
+
+html[data-catmatch-theme="dark"] body:not(.assessment-auth-required):not(.assessment-prestart) .assessment-card__header,
+html[data-catmatch-theme="dark"] body:not(.assessment-auth-required):not(.assessment-prestart) .assessment-questions,
+html[data-catmatch-theme="dark"] body:not(.assessment-auth-required):not(.assessment-prestart) .assessment-actions,
+html[data-catmatch-theme="dark"] .assessment-card__header,
+html[data-catmatch-theme="dark"] .assessment-actions {
+  background: #22313a !important;
+  border-color: rgba(170,204,224,.16) !important;
+}
+
+html[data-catmatch-theme="dark"] .assessment-option label,
+html[data-catmatch-theme="dark"] body:not(.assessment-auth-required):not(.assessment-prestart) .assessment-option label,
+html[data-catmatch-theme="dark"] .assessment-secondary-button,
+html[data-catmatch-theme="dark"] .assessment-account,
+html[data-catmatch-theme="dark"] .assessment-page-number {
+  color: #e7f0f4 !important;
+  background: #293842 !important;
+  border-color: rgba(170,204,224,.22) !important;
+}
+
+html[data-catmatch-theme="dark"] .assessment-option input:checked + label,
+html[data-catmatch-theme="dark"] body:not(.assessment-auth-required):not(.assessment-prestart) .assessment-option input:checked + label {
+  color: #f5f9fb !important;
+  background: linear-gradient(135deg, #29465a, #493743) !important;
+  border-color: #79afd3 !important;
+}
+
+html[data-catmatch-theme="dark"] .assessment-progress-track,
+html[data-catmatch-theme="dark"] .assessment-loading span,
+html[data-catmatch-theme="dark"] .assessment-loading__question,
+html[data-catmatch-theme="dark"] .assessment-loading__option {
+  background: #34434d !important;
+}
+
+html[data-catmatch-theme="dark"] .assessment-guide li span,
+html[data-catmatch-theme="dark"] .assessment-page-map button,
+html[data-catmatch-theme="dark"] .assessment-question__number,
+html[data-catmatch-theme="dark"] .assessment-hero__note-icon,
+html[data-catmatch-theme="dark"] .assessment-dialog__icon,
+html[data-catmatch-theme="dark"] .assessment-gate__icon {
+  color: #a9d1ec !important;
+  background: #304653 !important;
+}
+
+html[data-catmatch-theme="dark"] .assessment-question.is-missing .assessment-options,
+html[data-catmatch-theme="dark"] body:not(.assessment-auth-required):not(.assessment-prestart) .assessment-question.is-missing .assessment-options,
+html[data-catmatch-theme="dark"] .assessment-inline-message {
+  color: #f0c5d0 !important;
+  background: #49313a !important;
+  border-color: rgba(232,145,171,.38) !important;
+}
+
+/* Cat breeds */
+html[data-catmatch-theme="dark"] .breed-hero {
+  background:
+    radial-gradient(circle at 12% 12%, rgba(211,181,101,.10), transparent 24%),
+    radial-gradient(circle at 90% 8%, rgba(91,157,184,.13), transparent 26%),
+    linear-gradient(135deg, #18232c, #202f39) !important;
+  border-color: rgba(170,204,224,.16) !important;
+}
+
+html[data-catmatch-theme="dark"] .breed-library {
+  background: rgba(18, 27, 34, .72) !important;
+}
+
+html[data-catmatch-theme="dark"] .hero-summary > div,
+html[data-catmatch-theme="dark"] .floating-note,
+html[data-catmatch-theme="dark"] .filter-panel,
+html[data-catmatch-theme="dark"] .cat-breeds-page .breed-card,
+html[data-catmatch-theme="dark"] .empty-state,
+html[data-catmatch-theme="dark"] .modal-panel,
+html[data-catmatch-theme="dark"] .modal-fact {
+  color: var(--color-text) !important;
+  background: #24323c !important;
+  border-color: rgba(170,204,224,.20) !important;
+  box-shadow: 0 18px 46px rgba(0,0,0,.24) !important;
+}
+
+html[data-catmatch-theme="dark"] .hero-cat-frame {
+  background: #263640 !important;
+  border-color: #31424d !important;
+  box-shadow: 0 28px 70px rgba(0,0,0,.30) !important;
+}
+
+html[data-catmatch-theme="dark"] .hero-cat-frame img,
+html[data-catmatch-theme="dark"] .breed-image,
+html[data-catmatch-theme="dark"] .breed-image img,
+html[data-catmatch-theme="dark"] .modal-image {
+  background: #1d2932 !important;
+  border-color: rgba(170,204,224,.15) !important;
+}
+
+html[data-catmatch-theme="dark"] .search-field,
+html[data-catmatch-theme="dark"] .select-field select,
+html[data-catmatch-theme="dark"] .sort-field select,
+html[data-catmatch-theme="dark"] .reset-filter,
+html[data-catmatch-theme="dark"] .quick-chip,
+html[data-catmatch-theme="dark"] .detail-btn,
+html[data-catmatch-theme="dark"] .modal-close,
+html[data-catmatch-theme="dark"] .favorite-btn:not(.is-active),
+html[data-catmatch-theme="dark"] .coat-badge {
+  color: #e4edf1 !important;
+  background: #2b3a44 !important;
+  border-color: rgba(170,204,224,.20) !important;
+}
+
+html[data-catmatch-theme="dark"] .quick-chip:hover,
+html[data-catmatch-theme="dark"] .quick-chip.is-active,
+html[data-catmatch-theme="dark"] .favorite-btn.is-active {
+  color: #f5d7df !important;
+  background: #503541 !important;
+  border-color: rgba(224,145,170,.34) !important;
+}
+
+html[data-catmatch-theme="dark"] .origin-badge,
+html[data-catmatch-theme="dark"] .cat-breeds-page .trait-tag,
+html[data-catmatch-theme="dark"] .cat-breeds-page .trait-tag:nth-child(2),
+html[data-catmatch-theme="dark"] .cat-breeds-page .trait-tag:nth-child(3),
+html[data-catmatch-theme="dark"] .mini-score {
+  color: #d9e5ea !important;
+  background: #2d3c46 !important;
+  border-color: rgba(170,204,224,.16) !important;
+}
+
+html[data-catmatch-theme="dark"] .mini-track,
+html[data-catmatch-theme="dark"] .trait-score-track,
+html[data-catmatch-theme="dark"] .mini-segments i,
+html[data-catmatch-theme="dark"] .skeleton-block,
+html[data-catmatch-theme="dark"] .skeleton-content span {
+  background: #34434d !important;
+}
+
+/* Notifications */
+html[data-catmatch-theme="dark"] .notifications-summary,
+html[data-catmatch-theme="dark"] .notifications-toolbar,
+html[data-catmatch-theme="dark"] .notifications-panel,
+html[data-catmatch-theme="dark"] .notifications-list,
+html[data-catmatch-theme="dark"] .notifications-box,
+html[data-catmatch-theme="dark"] .notification-card,
+html[data-catmatch-theme="dark"] .notifications-skeleton article,
+html[data-catmatch-theme="dark"] .notifications-error,
+html[data-catmatch-theme="dark"] .notifications-empty {
+  color: var(--color-text) !important;
+  background: #24323c !important;
+  border-color: rgba(170,204,224,.19) !important;
+  box-shadow: 0 16px 42px rgba(0,0,0,.22) !important;
+}
+
+html[data-catmatch-theme="dark"] .notification-card.is-unread {
+  background: linear-gradient(100deg, #2d3f49, #24323c 42%) !important;
+  border-color: rgba(120,175,207,.34) !important;
+}
+
+html[data-catmatch-theme="dark"] .notification-filter,
+html[data-catmatch-theme="dark"] .notifications-page .notification-filter,
+html[data-catmatch-theme="dark"] .notifications-actions button,
+html[data-catmatch-theme="dark"] .notification-read-button,
+html[data-catmatch-theme="dark"] .notifications-empty a,
+html[data-catmatch-theme="dark"] .notifications-error button,
+html[data-catmatch-theme="dark"] .notification-request-link {
+  color: #dce9ef !important;
+  background: #2b3b46 !important;
+  border-color: rgba(170,204,224,.20) !important;
+}
+
+html[data-catmatch-theme="dark"] .notification-filter:hover,
+html[data-catmatch-theme="dark"] .notification-filter.is-active {
+  color: #cde8f8 !important;
+  background: #304957 !important;
+}
+
+html[data-catmatch-theme="dark"] .notification-icon,
+html[data-catmatch-theme="dark"] .notification-card.is-approved .notification-icon,
+html[data-catmatch-theme="dark"] .notification-card.is-rejected .notification-icon,
+html[data-catmatch-theme="dark"] .notifications-empty > span {
+  color: #acd2e9 !important;
+  background: #304653 !important;
+}
+
+html[data-catmatch-theme="dark"] .notifications-footer,
+html[data-catmatch-theme="dark"] .favorites-footer {
+  color: #b7c4cb !important;
+  background: rgba(20,29,37,.82) !important;
+  border-color: rgba(170,204,224,.15) !important;
+}
+
+/* Favorites */
+html[data-catmatch-theme="dark"] .favorites-content,
+html[data-catmatch-theme="dark"] .favorite-card {
+  color: var(--color-text) !important;
+  background: #24323c !important;
+  border-color: rgba(170,204,224,.20) !important;
+  box-shadow: 0 20px 50px rgba(0,0,0,.25) !important;
+}
+
+html[data-catmatch-theme="dark"] .favorites-browse-button,
+html[data-catmatch-theme="dark"] .favorites-refresh-button,
+html[data-catmatch-theme="dark"] .favorites-error button,
+html[data-catmatch-theme="dark"] .favorites-empty a {
+  color: #dce9ef !important;
+  background: #2b3b46 !important;
+  border-color: rgba(170,204,224,.20) !important;
+}
+
+html[data-catmatch-theme="dark"] .favorites-loading-heart,
+html[data-catmatch-theme="dark"] .favorites-error-icon,
+html[data-catmatch-theme="dark"] .favorites-empty-icon,
+html[data-catmatch-theme="dark"] .favorite-card-image {
+  color: #e49ab0 !important;
+  background: #2e414d !important;
+}
+
+html[data-catmatch-theme="dark"] .favorite-remove-button:not(:hover) {
+  color: #efafbf !important;
+  background: rgba(63,45,53,.96) !important;
+  border-color: rgba(224,145,170,.30) !important;
+}
+
+html[data-catmatch-theme="dark"] .favorite-card-tag,
+html[data-catmatch-theme="dark"] .favorite-card-tag:nth-child(2),
+html[data-catmatch-theme="dark"] .favorite-card-tag:nth-child(3) {
+  color: #d7e5eb !important;
+  background: #30424d !important;
+  border-color: rgba(170,204,224,.14) !important;
+}
+
+/* Account information */
+html[data-catmatch-theme="dark"] .account-profile-card,
+html[data-catmatch-theme="dark"] .account-details-card {
+  color: var(--color-text) !important;
+  background: #24323c !important;
+  border-color: rgba(170,204,224,.20) !important;
+  box-shadow: 0 18px 48px rgba(0,0,0,.24) !important;
+}
+
+html[data-catmatch-theme="dark"] .account-field input,
+html[data-catmatch-theme="dark"] .account-field select,
+html[data-catmatch-theme="dark"] .account-field textarea,
+html[data-catmatch-theme="dark"] .account-field input:disabled,
+html[data-catmatch-theme="dark"] .account-field select:disabled,
+html[data-catmatch-theme="dark"] .account-field textarea:disabled {
+  color: #edf4f7 !important;
+  background: #1c2831 !important;
+  border-color: rgba(170,204,224,.22) !important;
+  -webkit-text-fill-color: #edf4f7 !important;
+  opacity: 1 !important;
+}
+
+html[data-catmatch-theme="dark"] .account-status-badge,
+html[data-catmatch-theme="dark"] .account-photo-button {
+  color: #b9dccc !important;
+  background: #29423d !important;
+  border-color: rgba(133,195,169,.20) !important;
+}
+
+html[data-catmatch-theme="dark"] .account-loading span {
+  background: linear-gradient(90deg, #2d3b45 25%, #3a4a55 42%, #2d3b45 65%) !important;
+}
+
+/* Keep normal text readable when page CSS uses fixed light-theme colors. */
+html[data-catmatch-theme="dark"] :where(
+  .hero,
+  .overview,
+  .breeds,
+  .content-zone,
+  .assessment-page,
+  .cat-breeds-page,
+  .notifications-page,
+  .favorites-page,
+  .account-info-page
+) :is(h1,h2,h3,h4,legend,strong,label) {
+  color: #f1f6f8 !important;
+}
+
+html[data-catmatch-theme="dark"] :where(
+  .hero,
+  .overview,
+  .breeds,
+  .content-zone,
+  .assessment-page,
+  .cat-breeds-page,
+  .notifications-page,
+  .favorites-page,
+  .account-info-page
+) :is(p,small) {
+  color: #b7c4cb !important;
+}
+
+/* Dark mode: improve contrast for the requested pages */
+html[data-catmatch-theme="dark"] .hero-actions .button-primary,
+html[data-catmatch-theme="dark"] .hero-actions a.button-primary {
+  background: linear-gradient(135deg, #d99462, #eab66f) !important;
+  border-color: rgba(255, 225, 185, .55) !important;
+  color: #172029 !important;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, .28) !important;
+}
+html[data-catmatch-theme="dark"] .hero-actions .button-primary:hover,
+html[data-catmatch-theme="dark"] .hero-actions a.button-primary:hover {
+  background: linear-gradient(135deg, #e6a875, #f0c482) !important;
+  color: #101820 !important;
+}
+html[data-catmatch-theme="dark"] .hero-actions .button-primary svg,
+html[data-catmatch-theme="dark"] .hero-actions .button-primary i {
+  color: #172029 !important;
+  stroke: currentColor !important;
+}
+
+html[data-catmatch-theme="dark"] body.assessment-history-page .history-panel,
+html[data-catmatch-theme="dark"] body.assessment-history-page .history-state,
+html[data-catmatch-theme="dark"] body.assessment-history-page .history-item,
+html[data-catmatch-theme="dark"] .breed-detail,
+html[data-catmatch-theme="dark"] .detail-panel,
+html[data-catmatch-theme="dark"] .detail-image-frame,
+html[data-catmatch-theme="dark"] body.result-page .final-results,
+html[data-catmatch-theme="dark"] body.result-page .reveal-card,
+html[data-catmatch-theme="dark"] body.result-page .result-loading,
+html[data-catmatch-theme="dark"] body.result-page .result-error {
+  background: rgba(35, 49, 59, .96) !important;
+  border-color: rgba(170, 205, 225, .24) !important;
+  color: #edf4f7 !important;
+  box-shadow: 0 18px 44px rgba(0, 0, 0, .28) !important;
+}
+html[data-catmatch-theme="dark"] body.assessment-history-page .history-panel *,
+html[data-catmatch-theme="dark"] .breed-detail h1,
+html[data-catmatch-theme="dark"] .breed-detail h2,
+html[data-catmatch-theme="dark"] .detail-panel h2,
+html[data-catmatch-theme="dark"] .detail-panel h3,
+html[data-catmatch-theme="dark"] body.result-page .reveal-card h2 {
+  color: #f1f6f8 !important;
+}
+html[data-catmatch-theme="dark"] body.assessment-history-page .history-panel p,
+html[data-catmatch-theme="dark"] .detail-description,
+html[data-catmatch-theme="dark"] .detail-thai-name,
+html[data-catmatch-theme="dark"] .detail-panel p,
+html[data-catmatch-theme="dark"] body.result-page .reveal-card p {
+  color: #b7c5cd !important;
+}
+html[data-catmatch-theme="dark"] .detail-facts,
+html[data-catmatch-theme="dark"] .detail-tag,
+html[data-catmatch-theme="dark"] .trait-detail-grid > *,
+html[data-catmatch-theme="dark"] body.result-page .result-next {
+  background: #1d2932 !important;
+  border-color: rgba(170, 205, 225, .20) !important;
+  color: #edf4f7 !important;
+}
+
+/* =========================================================
+   Dark mode contrast fix: home CTA/footer + every cat detail page
+   ========================================================= */
+
+/* หน้าแรก: ปุ่ม “เริ่มค้นหาแมวที่ใช่” ต้องอ่านง่ายเฉพาะโหมดมืด */
+html[data-catmatch-theme="dark"] .hero-actions .button-accent,
+html[data-catmatch-theme="dark"] .hero-actions a.button-accent {
+  color: #172129 !important;
+  background: linear-gradient(135deg, #e7a67a, #f1cb79) !important;
+  border-color: rgba(255, 229, 190, .58) !important;
+  box-shadow: 0 16px 34px rgba(0, 0, 0, .32) !important;
+}
+
+html[data-catmatch-theme="dark"] .hero-actions .button-accent:hover,
+html[data-catmatch-theme="dark"] .hero-actions a.button-accent:hover {
+  color: #10171d !important;
+  background: linear-gradient(135deg, #efb48a, #f5d58a) !important;
+  box-shadow: 0 0 0 4px rgba(231, 166, 122, .16), 0 20px 38px rgba(0, 0, 0, .36) !important;
+}
+
+html[data-catmatch-theme="dark"] .hero-actions .button-accent .button-icon,
+html[data-catmatch-theme="dark"] .hero-actions .button-accent .button-paw,
+html[data-catmatch-theme="dark"] .hero-actions .button-accent svg {
+  color: #172129 !important;
+  fill: currentColor !important;
+  stroke: currentColor !important;
+}
+
+/* หน้าแรกด้านล่าง “เกี่ยวกับเรา” */
+html[data-catmatch-theme="dark"] body .site-footer {
+  color: #edf4f7 !important;
+  background: linear-gradient(180deg, #202d36 0%, #17232c 100%) !important;
+  border-top-color: rgba(171, 203, 222, .20) !important;
+}
+
+html[data-catmatch-theme="dark"] body .site-footer .footer-grid,
+html[data-catmatch-theme="dark"] body .site-footer .footer-bottom {
+  background: transparent !important;
+}
+
+html[data-catmatch-theme="dark"] body .site-footer h2,
+html[data-catmatch-theme="dark"] body .site-footer h3,
+html[data-catmatch-theme="dark"] body .site-footer strong,
+html[data-catmatch-theme="dark"] body .site-footer .brand-text strong {
+  color: #f3f7f9 !important;
+}
+
+html[data-catmatch-theme="dark"] body .site-footer p,
+html[data-catmatch-theme="dark"] body .site-footer small,
+html[data-catmatch-theme="dark"] body .site-footer a:not(.button),
+html[data-catmatch-theme="dark"] body .site-footer .footer-bottom {
+  color: #b8c7cf !important;
+}
+
+html[data-catmatch-theme="dark"] body .site-footer a:not(.button):hover {
+  color: #e7b899 !important;
+}
+
+html[data-catmatch-theme="dark"] body .site-footer .newsletter-form {
+  background: #1b2831 !important;
+  border-color: rgba(171, 203, 222, .22) !important;
+}
+
+html[data-catmatch-theme="dark"] body .site-footer .newsletter-form input {
+  color: #edf4f7 !important;
+  background: transparent !important;
+}
+
+html[data-catmatch-theme="dark"] body .site-footer .newsletter-form input::placeholder {
+  color: #82949e !important;
+}
+
+html[data-catmatch-theme="dark"] body .site-footer .footer-bottom {
+  border-top-color: rgba(171, 203, 222, .18) !important;
+}
+
+/* หน้ารายละเอียดแมวทุกสายพันธุ์: ลบกรอบขาวทั้งหมดในโหมดมืด */
+html[data-catmatch-theme="dark"] body .detail-main,
+html[data-catmatch-theme="dark"] body .detail-section,
+html[data-catmatch-theme="dark"] body .breed-detail {
+  color: #edf4f7 !important;
+}
+
+html[data-catmatch-theme="dark"] body .detail-image-frame,
+html[data-catmatch-theme="dark"] body .detail-image-frame img,
+html[data-catmatch-theme="dark"] body .detail-image-placeholder {
+  background: #1b2831 !important;
+  border-color: rgba(171, 203, 222, .24) !important;
+}
+
+html[data-catmatch-theme="dark"] body .detail-facts > div,
+html[data-catmatch-theme="dark"] body .detail-panel,
+html[data-catmatch-theme="dark"] body .feature-list article,
+html[data-catmatch-theme="dark"] body .similar-card,
+html[data-catmatch-theme="dark"] body .similar-card img,
+html[data-catmatch-theme="dark"] body .care-card,
+html[data-catmatch-theme="dark"] body .trait-detail-row,
+html[data-catmatch-theme="dark"] body .trait-row,
+html[data-catmatch-theme="dark"] body .trait-group,
+html[data-catmatch-theme="dark"] body .trait-group:nth-child(1),
+html[data-catmatch-theme="dark"] body .trait-group:nth-child(2),
+html[data-catmatch-theme="dark"] body .trait-group:nth-child(3),
+html[data-catmatch-theme="dark"] body .trait-group .trait-detail-row,
+html[data-catmatch-theme="dark"] body .detail-error {
+  color: #edf4f7 !important;
+  background: #24323c !important;
+  border-color: rgba(171, 203, 222, .22) !important;
+  box-shadow: 0 16px 38px rgba(0, 0, 0, .24) !important;
+}
+
+html[data-catmatch-theme="dark"] body .score-panel {
+  background: #202e38 !important;
+}
+
+html[data-catmatch-theme="dark"] body .detail-copy h1,
+html[data-catmatch-theme="dark"] body .detail-panel h2,
+html[data-catmatch-theme="dark"] body .detail-panel h3,
+html[data-catmatch-theme="dark"] body .detail-facts strong,
+html[data-catmatch-theme="dark"] body .feature-list strong,
+html[data-catmatch-theme="dark"] body .similar-card h3,
+html[data-catmatch-theme="dark"] body .care-card strong,
+html[data-catmatch-theme="dark"] body .trait-group-heading h3,
+html[data-catmatch-theme="dark"] body .trait-group .trait-detail-row > span,
+html[data-catmatch-theme="dark"] body .trait-detail-row > span {
+  color: #f2f7f9 !important;
+}
+
+html[data-catmatch-theme="dark"] body .detail-description,
+html[data-catmatch-theme="dark"] body .detail-facts span,
+html[data-catmatch-theme="dark"] body .section-heading.compact > p:last-child,
+html[data-catmatch-theme="dark"] body .feature-list article p,
+html[data-catmatch-theme="dark"] body .similar-card p,
+html[data-catmatch-theme="dark"] body .care-card span,
+html[data-catmatch-theme="dark"] body .trait-group-heading p,
+html[data-catmatch-theme="dark"] body .detail-error p,
+html[data-catmatch-theme="dark"] body .image-source-note {
+  color: #b8c7cf !important;
+}
+
+html[data-catmatch-theme="dark"] body .detail-thai-name,
+html[data-catmatch-theme="dark"] body .image-source-note a,
+html[data-catmatch-theme="dark"] body .similar-card .compare-label,
+html[data-catmatch-theme="dark"] body .similar-card a {
+  color: #8fc6e7 !important;
+}
+
+html[data-catmatch-theme="dark"] body .detail-tags span,
+html[data-catmatch-theme="dark"] body .detail-tag-link {
+  color: #e8d7df !important;
+  background: #3b3039 !important;
+  border-color: rgba(224, 172, 194, .22) !important;
+}
+
+html[data-catmatch-theme="dark"] body .feature-list article span {
+  color: #182129 !important;
+  background: linear-gradient(135deg, #dda5bc, #e8c873) !important;
+}
+
+html[data-catmatch-theme="dark"] body .trait-detail-track,
+html[data-catmatch-theme="dark"] body .trait-row > div,
+html[data-catmatch-theme="dark"] body .trait-level-meter i,
+html[data-catmatch-theme="dark"] body .trait-group .trait-level-meter i {
+  background: #40505b !important;
+}
+
+html[data-catmatch-theme="dark"] body .trait-level-meter i.is-active,
+html[data-catmatch-theme="dark"] body .trait-row .trait-level-meter i.is-active,
+html[data-catmatch-theme="dark"] body .trait-group .trait-level-meter i.is-active {
+  background: linear-gradient(90deg, #72afd4, #8bc5e8) !important;
+}
+
+html[data-catmatch-theme="dark"] body .detail-loading-image,
+html[data-catmatch-theme="dark"] body .detail-loading-copy span {
+  background: #293842 !important;
+}
+
+html[data-catmatch-theme="dark"] body .detail-loading-image::after,
+html[data-catmatch-theme="dark"] body .detail-loading-copy span::after {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.12), transparent) !important;
+}
+
+/* =========================================================
+   CATMATCH COMPACT LAYOUT V3
+   Desktop-wide screens only. This intentionally does not
+   resize cat photographs, breed images, farm animal images,
+   profile images, or their image frames.
+   ========================================================= */
+@media (min-width: 1024px) {
+  :root {
+    --catmatch-compact-content: 1180px;
+    --catmatch-compact-radius: 24px;
+    --catmatch-compact-control: 48px;
+  }
+
+  /* Shared navigation: less empty height, same functions. */
+  body .site-header {
+    min-height: 76px !important;
+  }
+
+  body .nav-shell {
+    min-height: 76px !important;
+    gap: 20px !important;
+  }
+
+  body .brand-logo {
+    width: 48px !important;
+    height: 48px !important;
+    border-radius: 16px !important;
+  }
+
+  body .brand-logo svg {
+    width: 29px !important;
+    height: 29px !important;
+  }
+
+  body .brand-text strong {
+    font-size: 1.34rem !important;
+    line-height: 1.08 !important;
+  }
+
+  body .brand-text small {
+    font-size: .78rem !important;
+  }
+
+  body .main-nav {
+    gap: 3px !important;
+  }
+
+  body .nav-link {
+    min-height: 40px !important;
+    padding: 8px 11px !important;
+    font-size: .91rem !important;
+  }
+
+  body .button-small,
+  body .nav-actions .button {
+    min-height: 40px !important;
+    padding-inline: 17px !important;
+    font-size: .9rem !important;
+  }
+
+  body .user-menu-trigger {
+    min-height: 44px !important;
+    padding: 6px 10px !important;
+  }
+
+  body .user-avatar {
+    width: 36px !important;
+    height: 36px !important;
+  }
+
+  body .user-summary strong { font-size: .9rem !important; }
+  body .user-summary small { font-size: .72rem !important; }
+
+  /* Shared cards, headings and controls. */
+  body :where(input:not([type="checkbox"]):not([type="radio"]), select) {
+    min-height: var(--catmatch-compact-control) !important;
+  }
+
+  body :where(textarea) {
+    min-height: 92px !important;
+  }
+
+  body :where(.button, button, [role="button"]) {
+    font-size: .92rem;
+  }
+
+  body :where(.page-heading, .section-heading, .settings-heading, .notifications-heading) h1,
+  body :where(.page-heading, .section-heading, .settings-heading, .notifications-heading) h2 {
+    line-height: 1.15 !important;
+  }
+
+  /* Home page: compact copy/spacing only; hero cat image stays untouched. */
+  body.home-page .hero {
+    padding-top: 28px !important;
+    padding-bottom: 48px !important;
+  }
+
+  body.home-page .hero-grid {
+    gap: clamp(34px, 4vw, 58px) !important;
+  }
+
+  body.home-page .hero-kicker { margin-bottom: 14px !important; }
+  body.home-page .hero-title-wrap { margin-bottom: 16px !important; }
+  body.home-page .hero-title-wrap h1 {
+    max-width: 590px !important;
+    font-size: clamp(3.15rem, 4vw, 4rem) !important;
+    line-height: 1.08 !important;
+  }
+  body.home-page .hero-description {
+    margin-bottom: 20px !important;
+    font-size: 1rem !important;
+    line-height: 1.68 !important;
+  }
+  body.home-page .hero-actions {
+    gap: 10px !important;
+    margin-bottom: 15px !important;
+  }
+  body.home-page .hero-actions .button { min-height: 48px !important; }
+  body.home-page .stats-card,
+  body.home-page .steps-card,
+  body.home-page .map-promo { padding: 26px !important; }
+  body.home-page .section { padding-block: 56px !important; }
+
+  /* Login: preserve the left cat photograph and its frame. */
+  body.login-page .login-main {
+    min-height: calc(100vh - 76px) !important;
+    padding: 24px 0 38px !important;
+  }
+  body.login-page .login-layout {
+    gap: clamp(38px, 5vw, 70px) !important;
+  }
+  body.login-page .login-intro-copy { margin-top: 16px !important; }
+  body.login-page .login-intro-copy h1 {
+    margin-bottom: 7px !important;
+    font-size: clamp(2.25rem, 3vw, 3.15rem) !important;
+    line-height: 1.12 !important;
+  }
+  body.login-page .login-intro-copy > p:last-child {
+    font-size: .93rem !important;
+    line-height: 1.65 !important;
+  }
+  body.login-page .login-feature-list {
+    gap: 7px !important;
+    margin-top: 13px !important;
+  }
+  body.login-page .login-feature-list span {
+    padding: 7px 11px !important;
+    font-size: .78rem !important;
+  }
+  body.login-page .login-card {
+    padding: 27px 30px !important;
+    border-radius: 26px !important;
+  }
+  body.login-page .login-card-heading { margin-bottom: 18px !important; }
+  body.login-page .login-card-heading h2 {
+    font-size: clamp(2.25rem, 3vw, 2.8rem) !important;
+  }
+  body.login-page .login-card-heading > span { font-size: .9rem !important; }
+  body.login-page .login-field { margin-bottom: 11px !important; }
+  body.login-page .login-field label { margin-bottom: 5px !important; }
+  body.login-page .login-field input { height: 50px !important; }
+  body.login-page .login-submit { min-height: 50px !important; }
+  body.login-page .login-divider { margin: 16px 0 13px !important; }
+  body.login-page .login-options-row { margin-bottom: 18px !important; }
+  body.login-page .register-prompt { margin: 20px 0 16px !important; }
+  body.login-page .farm-register-entry {
+    padding: 12px !important;
+    gap: 11px !important;
+  }
+  body.login-page .login-security-note {
+    margin-top: 14px !important;
+    padding: 10px 13px !important;
+  }
+
+  /* Register / Google onboarding / farm registration.
+     The cat photograph and photo frame are deliberately untouched. */
+  body.register-page .register-main {
+    padding: 28px 0 52px !important;
+  }
+  body.register-page .register-layout {
+    gap: clamp(34px, 4vw, 58px) !important;
+  }
+  body.register-page .register-intro { padding-top: 14px !important; }
+  body.register-page .intro-copy h1 {
+    margin-bottom: 10px !important;
+    font-size: clamp(2.35rem, 3.25vw, 3.2rem) !important;
+    line-height: 1.12 !important;
+  }
+  body.register-page .intro-copy > p:last-child {
+    margin-bottom: 16px !important;
+    font-size: .93rem !important;
+    line-height: 1.65 !important;
+  }
+  body.register-page .intro-benefits { gap: 8px !important; }
+  body.register-page .intro-benefits li {
+    grid-template-columns: 40px 1fr !important;
+    gap: 10px !important;
+    padding: 9px 12px !important;
+  }
+  body.register-page .benefit-icon {
+    width: 38px !important;
+    height: 38px !important;
+  }
+  body.register-page .register-card {
+    padding: 27px 30px !important;
+    border-radius: 27px !important;
+  }
+  body.register-page .form-heading {
+    grid-template-columns: 50px 1fr !important;
+    gap: 13px !important;
+    margin-bottom: 18px !important;
+  }
+  body.register-page .form-badge {
+    width: 48px !important;
+    height: 48px !important;
+  }
+  body.register-page .form-heading h2 {
+    font-size: clamp(2.2rem, 3vw, 2.75rem) !important;
+    line-height: 1.1 !important;
+  }
+  body.register-page .form-heading p:last-child { font-size: .88rem !important; }
+  body.register-page .register-account-type-note,
+  body.register-page .farm-section-note,
+  body.register-page .google-account-panel {
+    padding: 11px 13px !important;
+    margin-bottom: 17px !important;
+  }
+  body.register-page .stepper { margin-bottom: 21px !important; }
+  body.register-page .step-indicator span {
+    width: 36px !important;
+    height: 36px !important;
+  }
+  body.register-page .step-indicator small { font-size: .78rem !important; }
+  body.register-page .field-grid,
+  body.register-page .farm-field-grid { gap: 13px !important; }
+  body.register-page .form-field,
+  body.register-page .farm-field { margin-bottom: 12px !important; }
+  body.register-page .form-field label,
+  body.register-page .field-label,
+  body.register-page .farm-field label { margin-bottom: 5px !important; }
+  body.register-page .input-shell,
+  body.register-page .farm-input-shell {
+    min-height: 49px !important;
+    border-radius: 14px !important;
+  }
+  body.register-page .input-shell input,
+  body.register-page .farm-input-shell input,
+  body.register-page .farm-plain-input { height: 47px !important; }
+  body.register-page .field-hint,
+  body.register-page .field-error,
+  body.register-page .farm-field-hint,
+  body.register-page .farm-field-error {
+    font-size: .74rem !important;
+    line-height: 1.4 !important;
+  }
+  body.register-page .password-strength,
+  body.register-page .farm-password-strength { padding: 11px 13px !important; }
+  body.register-page .form-actions,
+  body.register-page .farm-form-actions { margin-top: 19px !important; }
+
+  /* Assessment */
+  body.assessment-page .assessment-main { padding-bottom: 50px !important; }
+  body.assessment-page .assessment-hero__inner {
+    padding-top: 23px !important;
+    padding-bottom: 19px !important;
+  }
+  body.assessment-page .assessment-hero h1 {
+    font-size: clamp(1.8rem, 2.4vw, 2.55rem) !important;
+  }
+  body.assessment-page .assessment-shell {
+    grid-template-columns: 225px minmax(0, 1fr) !important;
+    gap: 18px !important;
+    max-width: 1220px !important;
+  }
+  body.assessment-page .assessment-sidebar { gap: 14px !important; }
+  body.assessment-page .assessment-progress-card,
+  body.assessment-page .assessment-guide { padding: 17px !important; }
+  body.assessment-page .assessment-card { border-radius: 25px !important; }
+  body.assessment-page .assessment-card__header {
+    padding: 20px 24px 17px !important;
+  }
+  body.assessment-page .assessment-questions {
+    gap: 14px !important;
+    padding: 20px 24px 23px !important;
+  }
+  body.assessment-page .assessment-question { padding: 17px !important; }
+  body.assessment-page .assessment-option {
+    min-height: 52px !important;
+    padding: 11px 13px !important;
+  }
+  body.assessment-page .assessment-actions {
+    padding: 15px 24px 18px !important;
+  }
+  body.assessment-page .assessment-primary-button,
+  body.assessment-page .assessment-secondary-button { min-height: 50px !important; }
+  body.assessment-auth-required .assessment-card,
+  body.assessment-prestart .assessment-card {
+    min-height: 520px !important;
+  }
+  body.assessment-page .assessment-gate {
+    max-width: 700px !important;
+    padding: 38px 34px !important;
+  }
+
+  /* Assessment history */
+  body.assessment-history-page .history-main { padding: 40px 0 60px !important; }
+  body.assessment-history-page .history-heading { margin-bottom: 20px !important; }
+  body.assessment-history-page .history-heading h1 {
+    font-size: clamp(2.2rem, 3.5vw, 3.25rem) !important;
+  }
+  body.assessment-history-page .history-panel {
+    padding: 21px !important;
+    border-radius: 25px !important;
+  }
+  body.assessment-history-page .history-toolbar { margin-bottom: 16px !important; }
+  body.assessment-history-page .history-card {
+    gap: 11px !important;
+    padding: 15px !important;
+    border-radius: 18px !important;
+  }
+  body.assessment-history-page .history-new-button { min-height: 44px !important; }
+
+  /* Result page: keep recommendation cat imagery untouched. */
+  body.result-page .gacha-main { padding: 26px 20px 58px !important; }
+  body.result-page .gacha-stage {
+    gap: 38px !important;
+    min-height: 650px !important;
+  }
+  body.result-page .gacha-copy h1 {
+    font-size: clamp(2.45rem, 4vw, 3.8rem) !important;
+    line-height: 1.08 !important;
+  }
+  body.result-page .final-results { padding-top: 34px !important; }
+  body.result-page .final-head { margin-bottom: 20px !important; }
+  body.result-page .final-head h1,
+  body.result-page .final-head h2 {
+    font-size: clamp(2rem, 3vw, 2.8rem) !important;
+  }
+  body.result-page .recommendation-grid { gap: 16px !important; }
+  body.result-page .recommendation-card { padding: 18px !important; }
+  body.result-page .result-next { margin-top: 24px !important; }
+
+  /* Breed library: no breed/cat image sizing changes. */
+  body.cat-breeds-page .breed-hero { padding: 42px 0 48px !important; }
+  body.cat-breeds-page .breed-hero-grid { gap: 38px !important; }
+  body.cat-breeds-page .breed-hero-copy h1 {
+    font-size: clamp(2.65rem, 4vw, 3.75rem) !important;
+    line-height: 1.1 !important;
+  }
+  body.cat-breeds-page .breed-hero-description {
+    font-size: .98rem !important;
+    line-height: 1.68 !important;
+  }
+  body.cat-breeds-page .breed-library.section { padding: 54px 0 66px !important; }
+  body.cat-breeds-page .library-heading { margin-bottom: 20px !important; }
+  body.cat-breeds-page .library-heading h2 {
+    font-size: clamp(2rem, 3vw, 2.8rem) !important;
+  }
+  body.cat-breeds-page .filter-panel {
+    gap: 13px !important;
+    padding: 18px !important;
+    margin-bottom: 22px !important;
+  }
+  body.cat-breeds-page .breed-grid { gap: 17px !important; }
+  body.cat-breeds-page .breed-card-content { padding: 16px !important; }
+
+  /* Farm map */
+  body.farm-map-page .farm-map-main {
+    padding-top: 32px !important;
+    padding-bottom: 46px !important;
+  }
+  body.farm-map-page .farm-map-heading {
+    gap: 18px !important;
+    margin-bottom: 16px !important;
+  }
+  body.farm-map-page .farm-map-heading h1 {
+    font-size: clamp(2rem, 3vw, 2.85rem) !important;
+  }
+  body.farm-map-page .farm-map-heading p:last-child { margin-top: 8px !important; }
+  body.farm-map-page .breed-picker {
+    gap: 13px !important;
+    padding: 15px 17px !important;
+    margin-bottom: 15px !important;
+    border-radius: 20px !important;
+  }
+  body.farm-map-page .breed-picker__copy strong { font-size: 1rem !important; }
+  body.farm-map-page .breed-picker__field select,
+  body.farm-map-page .farm-name-search { min-height: 46px !important; }
+  body.farm-map-page .farm-map-layout {
+    grid-template-columns: minmax(285px, 360px) minmax(0, 1fr) !important;
+    min-height: 590px !important;
+    border-radius: 24px !important;
+  }
+  body.farm-map-page .map-panel { min-height: 590px !important; }
+  body.farm-map-page .farm-list-head { padding: 15px !important; }
+  body.farm-map-page .farm-list { padding: 12px !important; }
+  body.farm-map-page .farm-card {
+    margin-bottom: 9px !important;
+    padding: 14px !important;
+    border-radius: 17px !important;
+  }
+  body.farm-map-page .farm-card h2 { margin-top: 6px !important; }
+  body.farm-map-page .farm-card__actions {
+    margin-top: 10px !important;
+    padding-top: 10px !important;
+  }
+
+  /* Farm dashboard */
+  body.farm-dashboard-page .farm-topbar { min-height: 68px !important; }
+  body.farm-dashboard-page .farm-dashboard-shell {
+    grid-template-columns: 232px minmax(0, 1fr) !important;
+  }
+  body.farm-dashboard-page .farm-sidebar { padding: 18px 14px !important; }
+  body.farm-dashboard-page .farm-profile-mini { padding: 13px !important; }
+  body.farm-dashboard-page .farm-nav-item {
+    min-height: 42px !important;
+    padding: 9px 12px !important;
+  }
+  body.farm-dashboard-page .farm-main { padding: 28px 30px 48px !important; }
+  body.farm-dashboard-page .farm-page-heading { margin-bottom: 18px !important; }
+  body.farm-dashboard-page .farm-page-heading h1 {
+    font-size: clamp(2rem, 3vw, 2.8rem) !important;
+  }
+  body.farm-dashboard-page .farm-stats-grid {
+    gap: 13px !important;
+    margin-bottom: 17px !important;
+  }
+  body.farm-dashboard-page .farm-stat-card,
+  body.farm-dashboard-page .farm-card,
+  body.farm-dashboard-page .farm-form-card {
+    padding: 17px !important;
+    border-radius: 20px !important;
+  }
+  body.farm-dashboard-page .farm-two-column { gap: 15px !important; }
+  body.farm-dashboard-page .farm-toolbar { margin-bottom: 15px !important; }
+  body.farm-dashboard-page .animal-card-grid { gap: 14px !important; }
+  body.farm-dashboard-page .form-grid { gap: 13px !important; }
+  body.farm-dashboard-page .farm-primary-action,
+  body.farm-dashboard-page .farm-secondary-action { min-height: 43px !important; }
+
+  /* User adoption requests */
+  body.adoption-page .adoption-main { padding-bottom: 54px !important; }
+  body.adoption-page .adoption-hero { padding: 36px 0 23px !important; }
+  body.adoption-page .adoption-hero h1 {
+    font-size: clamp(2.15rem, 3.5vw, 3.2rem) !important;
+  }
+  body.adoption-page .adoption-hero p { margin-top: 8px !important; }
+  body.adoption-page .adoption-summary {
+    padding: 13px 18px !important;
+    border-radius: 19px !important;
+  }
+  body.adoption-page .adoption-content {
+    padding: 20px !important;
+    border-radius: 25px !important;
+  }
+  body.adoption-page .adoption-toolbar { margin-bottom: 16px !important; }
+  body.adoption-page .adoption-filter,
+  body.adoption-page .adoption-refresh { min-height: 39px !important; }
+  body.adoption-page .adoption-card { padding: 16px !important; }
+
+  /* Favorites, notifications, account and settings */
+  body.favorites-page .favorites-main,
+  body.notifications-page .notifications-main,
+  body.account-info-page .account-info-main,
+  body.settings-page .settings-main {
+    padding-top: 40px !important;
+    padding-bottom: 58px !important;
+  }
+  body.favorites-page .favorites-hero,
+  body.notifications-page .notifications-hero { padding: 30px 0 22px !important; }
+  body.favorites-page .favorites-heading h1,
+  body.notifications-page .notifications-hero h1,
+  body.account-info-page .account-info-heading h1,
+  body.settings-page .settings-heading h1 {
+    font-size: clamp(2.1rem, 3.2vw, 3rem) !important;
+  }
+  body.favorites-page .favorites-content,
+  body.notifications-page .notifications-panel,
+  body.account-info-page .account-info-card,
+  body.settings-page .settings-card,
+  body.settings-page .settings-sidebar {
+    padding: 20px !important;
+    border-radius: 23px !important;
+  }
+  body.favorites-page .favorites-toolbar,
+  body.notifications-page .notifications-toolbar { margin-bottom: 16px !important; }
+  body.favorites-page .favorite-card,
+  body.notifications-page .notification-card { padding: 15px !important; }
+  body.account-info-page .account-field,
+  body.settings-page .settings-row { padding-block: 12px !important; }
+
+  /* Interest selection */
+  body.interests-page .interests-main { padding: 42px 20px 58px !important; }
+  body.interests-page .interests-card {
+    max-width: 920px !important;
+    padding: 28px !important;
+    border-radius: 26px !important;
+  }
+  body.interests-page .interests-card h1 {
+    font-size: clamp(2.1rem, 3vw, 2.8rem) !important;
+  }
+  body.interests-page .interest-grid { gap: 13px !important; }
+  body.interests-page .interest-card { padding: 16px !important; }
+
+  /* Password recovery/status pages */
+  body .reset-header-inner { min-height: 72px !important; }
+  body .reset-main { padding: 42px 0 56px !important; }
+  body .reset-layout { gap: clamp(30px, 4vw, 60px) !important; }
+  body .reset-intro h1 {
+    font-size: clamp(2.25rem, 3.5vw, 3.35rem) !important;
+  }
+  body .reset-process { margin-top: 22px !important; gap: 9px !important; }
+  body .reset-card {
+    padding: 27px 29px !important;
+    border-radius: 25px !important;
+  }
+  body .reset-card h2 { font-size: clamp(1.8rem, 2.5vw, 2.25rem) !important; }
+  body .reset-card > p { margin-bottom: 20px !important; }
+  body .reset-form { gap: 15px !important; }
+  body .reset-field { gap: 6px !important; }
+  body .reset-field input { min-height: 50px !important; }
+  body .reset-button { min-height: 50px !important; }
+
+  /* Legal/about/FAQ pages */
+  body .legal-page { padding: 24px 0 52px !important; }
+  body .legal-shell { width: min(1000px, calc(100% - 40px)) !important; }
+  body .legal-nav { margin-bottom: 16px !important; }
+  body .legal-card { border-radius: 25px !important; }
+  body .legal-hero { padding: 28px 34px 23px !important; }
+  body .legal-hero h1 {
+    font-size: clamp(2rem, 3.5vw, 2.9rem) !important;
+  }
+  body .legal-content { padding: 27px 34px 40px !important; }
+  body .legal-section { padding: 18px 0 !important; }
+  body .legal-section h2 { font-size: 1.2rem !important; }
+  body .faq-list details { padding: 15px 17px !important; }
+
+  /* Pending/success pages */
+  body.farm-pending-page .pending-main,
+  body.farm-success-page .success-main { padding: 38px 0 58px !important; }
+  body.farm-pending-page .pending-hero-card,
+  body.farm-success-page .success-card { padding: 28px !important; }
+  body.farm-pending-page .pending-hero-card h1,
+  body.farm-success-page .success-card h1 {
+    font-size: clamp(2.1rem, 3.3vw, 3rem) !important;
+  }
+  body.farm-pending-page .pending-grid { gap: 15px !important; }
+  body.farm-pending-page .pending-card { padding: 18px !important; }
+
+  /* Admin: compact without changing table behavior. */
+  body.admin-page .admin-main,
+  body.admin-page .admin-reset-main { padding: 30px 26px 52px !important; }
+  body.admin-page .admin-heading,
+  body.admin-page .admin-reset-toolbar { margin-bottom: 18px !important; }
+  body.admin-page .admin-heading h1,
+  body.admin-page .admin-reset-toolbar h1 {
+    font-size: clamp(2rem, 3vw, 2.8rem) !important;
+  }
+  body.admin-page .admin-card,
+  body.admin-page .admin-reset-card { padding: 17px !important; }
+}
+
+/* Short desktop screens: reduce only spacing, never cat imagery. */
+@media (min-width: 1024px) and (max-height: 800px) {
+  body.login-page .login-main,
+  body.register-page .register-main { padding-top: 18px !important; }
+
+  body.assessment-page .assessment-hero__inner { padding-top: 16px !important; }
+  body.farm-map-page .farm-map-main { padding-top: 24px !important; }
+  body.farm-map-page .farm-map-layout,
+  body.farm-map-page .map-panel { min-height: 540px !important; }
+}
+
+/* =========================================================
+   CATMATCH DESKTOP VIEW SCALE — 67%
+   Matches the comfortable visual size of browser zoom 67%
+   while the browser itself remains at 100%.
+   ========================================================= */
+@media screen and (min-width: 1024px) {
+  html {
+    --catmatch-desktop-view-scale: 0.67;
+    zoom: var(--catmatch-desktop-view-scale);
+  }
+
+  /* CSS zoom scales 100vh as well. Compensate so page backgrounds and
+     full-height layouts still cover the complete visible screen. */
+  body {
+    min-height: 149.2537313433vh !important;
+  }
+}
+
+/* Keep tablet/mobile and printed pages at their natural size. */
+@media screen and (max-width: 1023px) {
+  html {
+    zoom: 1;
+  }
+
+  body {
+    min-height: 100vh;
+  }
+}
+
+@media print {
+  html {
+    zoom: 1 !important;
+  }
+
+  body {
+    min-height: auto !important;
+  }
+}
+
+/* =========================================================
+   CATMATCH DESKTOP TOP BARS — EFFECTIVE 80%
+   The page stays at 67%; only top navigation/header bars are
+   enlarged to the visual equivalent of browser zoom 80%.
+   0.80 / 0.67 = 1.1940298507
+   ========================================================= */
+@media screen and (min-width: 1024px) {
+  :root {
+    --catmatch-topbar-relative-scale: 1.1940298507;
+  }
+
+  /* All top-level page headers: user pages, assessment, result,
+     farm dashboard, farm registration, password recovery and admin. */
+  body > header {
+    zoom: var(--catmatch-topbar-relative-scale);
+  }
+
+  /* About / FAQ / privacy / terms use a nav bar instead of a header. */
+  .legal-page > .legal-shell > .legal-nav {
+    zoom: var(--catmatch-topbar-relative-scale);
+  }
+}
+
+/* Mobile/tablet stays at the original responsive size. */
+@media screen and (max-width: 1023px) {
+  body > header,
+  .legal-page > .legal-shell > .legal-nav {
+    zoom: 1;
+  }
+}
+
+/* =========================================================
+   TOP BAR + ACCOUNT MENU STABILITY FIX
+   Keep the site at 67% and the top bar at the requested 80%,
+   but anchor the account dropdown to its trigger instead of
+   positioning it against the zoomed browser viewport.
+   ========================================================= */
+@media screen and (min-width: 1024px) {
+  body > header {
+    overflow: visible !important;
+  }
+
+  body > header .auth-nav,
+  body > header .user-nav-actions {
+    position: relative !important;
+    overflow: visible !important;
+  }
+
+  body > header .user-menu-panel {
+    position: absolute !important;
+    top: calc(100% + 12px) !important;
+    right: 0 !important;
+    left: auto !important;
+    width: min(360px, calc(100vw - 32px)) !important;
+    max-height: min(720px, calc(100vh - 130px)) !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    z-index: 999999 !important;
+  }
+
+  body > header .user-menu-panel[hidden] {
+    display: none !important;
+  }
+
+  body > header .user-menu-panel.is-open:not([hidden]) {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    transform: translateY(0) scale(1) !important;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  body > header .user-menu-panel {
+    left: auto !important;
+    right: 0 !important;
+  }
+}
+
+/* =========================================================
+   ACCOUNT HEADER 80% WITHOUT NESTED CSS ZOOM
+   Pages remain at the requested 67%. Headers that contain the
+   account dropdown are sized to the same visual 80% using real
+   dimensions instead of a nested zoom, so the dropdown cannot
+   drift, clip, or fall behind maps and form controls.
+   ========================================================= */
+@media screen and (min-width: 1024px) {
+  body > header.catmatch-account-header {
+    zoom: 1 !important;
+    overflow: visible !important;
+    z-index: 1000000 !important;
+    isolation: isolate;
+  }
+
+  body > header.catmatch-account-header .nav-shell {
+    min-height: 110px !important;
+    gap: 38px !important;
+  }
+
+  body > header.catmatch-account-header .brand {
+    gap: 16px !important;
+  }
+
+  body > header.catmatch-account-header .brand-logo {
+    width: 69px !important;
+    height: 69px !important;
+    border-radius: 24px !important;
+  }
+
+  body > header.catmatch-account-header .brand-logo svg {
+    width: 43px !important;
+    height: 43px !important;
+  }
+
+  body > header.catmatch-account-header .brand-text strong {
+    font-size: 1.85rem !important;
+  }
+
+  body > header.catmatch-account-header .brand-text small {
+    font-size: 1rem !important;
+  }
+
+  body > header.catmatch-account-header .main-nav {
+    gap: 10px !important;
+  }
+
+  body > header.catmatch-account-header .nav-link {
+    gap: 10px !important;
+    padding: 13px 17px !important;
+    font-size: 1.08rem !important;
+  }
+
+  body > header.catmatch-account-header .nav-link svg {
+    width: 24px !important;
+    height: 24px !important;
+  }
+
+  body > header.catmatch-account-header .guest-nav-actions {
+    gap: 12px !important;
+  }
+
+  body > header.catmatch-account-header .button-small {
+    min-height: 53px !important;
+    padding-inline: 24px !important;
+    font-size: 1.08rem !important;
+  }
+
+  body > header.catmatch-account-header .auth-nav,
+  body > header.catmatch-account-header .user-nav-actions {
+    position: relative !important;
+    overflow: visible !important;
+    z-index: 1000001 !important;
+  }
+
+  body > header.catmatch-account-header .user-menu-trigger {
+    min-width: 210px !important;
+    max-width: 258px !important;
+    min-height: 65px !important;
+    gap: 13px !important;
+    padding: 7px 12px 7px 8px !important;
+  }
+
+  body > header.catmatch-account-header .user-avatar {
+    width: 49px !important;
+    height: 49px !important;
+    font-size: 1.18rem !important;
+  }
+
+  body > header.catmatch-account-header .user-summary strong,
+  body > header.catmatch-account-header .user-summary small {
+    max-width: 158px !important;
+  }
+
+  body > header.catmatch-account-header .user-summary strong {
+    font-size: 1.1rem !important;
+  }
+
+  body > header.catmatch-account-header .user-summary small {
+    margin-top: 5px !important;
+    font-size: .86rem !important;
+  }
+
+  body > header.catmatch-account-header .user-menu-chevron {
+    width: 23px !important;
+    height: 23px !important;
+  }
+
+  body > header.catmatch-account-header .user-menu-panel {
+    position: absolute !important;
+    top: calc(100% + 14px) !important;
+    right: 0 !important;
+    bottom: auto !important;
+    left: auto !important;
+    inset: auto 0 auto auto !important;
+    width: min(430px, calc(100vw - 40px)) !important;
+    max-width: min(430px, calc(100vw - 40px)) !important;
+    max-height: min(760px, calc(100vh - 132px)) !important;
+    padding: 14px !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    border-radius: 27px !important;
+    background: #fffdfb !important;
+    box-shadow: 0 30px 82px rgba(45, 61, 74, .26) !important;
+    backdrop-filter: none !important;
+    transform: translateY(-8px) scale(.985) !important;
+    transform-origin: top right !important;
+    z-index: 1000002 !important;
+  }
+
+  body > header.catmatch-account-header .user-menu-panel[hidden] {
+    display: none !important;
+  }
+
+  body > header.catmatch-account-header .user-menu-panel.is-open:not([hidden]) {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    transform: translateY(0) scale(1) !important;
+  }
+
+  body > header.catmatch-account-header .user-menu-account {
+    gap: 14px !important;
+    padding: 15px !important;
+    margin-bottom: 9px !important;
+    border-radius: 20px !important;
+  }
+
+  body > header.catmatch-account-header .user-menu-avatar {
+    width: 50px !important;
+    height: 50px !important;
+    flex-basis: 50px !important;
+    font-size: 1.16rem !important;
+  }
+
+  body > header.catmatch-account-header .user-menu-account strong {
+    font-size: 1.08rem !important;
+  }
+
+  body > header.catmatch-account-header .user-menu-account small {
+    margin-top: 3px !important;
+    font-size: .86rem !important;
+  }
+
+  body > header.catmatch-account-header .account-menu-group {
+    padding: 7px 0 !important;
+  }
+
+  body > header.catmatch-account-header .account-menu-label {
+    padding: 7px 14px 6px !important;
+    font-size: .83rem !important;
+  }
+
+  body > header.catmatch-account-header .account-menu-item {
+    min-height: 69px !important;
+    grid-template-columns: 45px minmax(0, 1fr) !important;
+    gap: 13px !important;
+    padding: 11px 13px !important;
+    border-radius: 18px !important;
+  }
+
+  body > header.catmatch-account-header .account-menu-icon {
+    width: 43px !important;
+    height: 43px !important;
+    border-radius: 14px !important;
+  }
+
+  body > header.catmatch-account-header .account-menu-icon svg {
+    width: 25px !important;
+    height: 25px !important;
+  }
+
+  body > header.catmatch-account-header .account-menu-item strong {
+    font-size: 1.06rem !important;
+  }
+
+  body > header.catmatch-account-header .account-menu-item small {
+    margin-top: 3px !important;
+    font-size: .82rem !important;
+  }
+
+  body > header.catmatch-account-header .logout-button {
+    min-height: 57px !important;
+    gap: 12px !important;
+    padding-inline: 15px !important;
+    font-size: 1.05rem !important;
+  }
+
+  html[data-catmatch-theme="dark"] body > header.catmatch-account-header .user-menu-panel {
+    color: #edf4f7 !important;
+    border-color: rgba(170, 205, 225, .22) !important;
+    background: #253540 !important;
+    box-shadow: 0 32px 88px rgba(0, 0, 0, .45) !important;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  body > header.catmatch-account-header {
+    zoom: 1 !important;
+  }
+
+  body > header.catmatch-account-header .user-menu-panel {
+    position: fixed !important;
+    top: 82px !important;
+    right: 12px !important;
+    bottom: auto !important;
+    left: auto !important;
+    width: min(400px, calc(100vw - 24px)) !important;
+    max-height: calc(100vh - 98px) !important;
+    background: #fffdfb !important;
+    z-index: 1000002 !important;
+  }
+}
+
+/* Keep the coded DogMatch portal logo transparent in dark mode too. */
+html[data-catmatch-theme="dark"] .dog-future-icon {
+  background: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+html[data-catmatch-theme="dark"] .dog-future-icon .dogmatch-round-dog-portal .dog-logo-ear,
+html[data-catmatch-theme="dark"] .dog-future-icon .dogmatch-round-dog-portal .dog-logo-face {
+  fill: #F5EFE7 !important;
+  stroke: #a9d1ec !important;
+}
+
+html[data-catmatch-theme="dark"] .dog-future-icon .dogmatch-round-dog-portal .dog-logo-ear-line,
+html[data-catmatch-theme="dark"] .dog-future-icon .dogmatch-round-dog-portal .dog-logo-mouth {
+  stroke: #a9d1ec !important;
+}
+
+html[data-catmatch-theme="dark"] .dog-future-icon .dogmatch-round-dog-portal .dog-logo-eye,
+html[data-catmatch-theme="dark"] .dog-future-icon .dogmatch-round-dog-portal .dog-logo-nose {
+  fill: #213555 !important;
+}
+
+
+/* Header dark-mode cleanup: keep navigation links floating without a black rectangle. */
+html[data-catmatch-theme="dark"] body .site-header .main-nav,
+html[data-catmatch-theme="dark"] body .assessment-header .main-nav,
+html[data-catmatch-theme="dark"] body header .main-nav,
+html[data-catmatch-theme="dark"] body .result-main-nav,
+html[data-catmatch-theme="dark"] body .notifications-page .main-nav,
+html[data-catmatch-theme="dark"] body.dog-account-context .site-header .main-nav,
+html[data-auth-species="dog"][data-catmatch-theme="dark"] body.dog-auth-context .site-header .main-nav {
+  background: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Exact Dog Index navigation icon sizing on dog authentication pages. */
+html[data-auth-species="dog"] body.dog-auth-context .site-header .main-nav .dogmatch-round-dog-nav {
+  width: 21px !important;
+  height: 21px !important;
+  overflow: visible;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+html[data-auth-species="dog"] body.dog-auth-context .site-header .dog-logo-face {
+  fill: #F5EFE7;
+  stroke: #3E5879;
+}
+html[data-auth-species="dog"] body.dog-auth-context .site-header .dog-logo-ear {
+  fill: #D8C4B6;
+  stroke: #3E5879;
+}
+html[data-auth-species="dog"] body.dog-auth-context .site-header :is(.dog-logo-ear-line,.dog-logo-mouth) {
+  fill: none;
+  stroke: #3E5879;
+}
+html[data-auth-species="dog"] body.dog-auth-context .site-header :is(.dog-logo-eye,.dog-logo-nose) {
+  fill: #213555;
+  stroke: none;
+}
+html[data-auth-species="dog"] body.dog-auth-context .site-header .dog-logo-cheek {
+  fill: #D8C4B6;
+  stroke: none;
+}

@@ -1,6 +1,6 @@
 "use strict";
 
-const API_BASE = "http://localhost:3000/api/auth";
+const API_BASE = `${window.CATMATCH_API_URL}/auth`;
 const form = document.getElementById("interestsForm");
 const errorBox = document.getElementById("interestError");
 const skipButton = document.getElementById("skipInterests");

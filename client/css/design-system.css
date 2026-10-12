@@ -231,3 +231,9 @@ svg {
     right: 0;
   }
 }
+
+
+/* User preference: do not show skip-navigation buttons anywhere. */
+.skip-link {
+  display: none !important;
+}

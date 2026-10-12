@@ -10,6 +10,18 @@ const {
 
 const router = express.Router();
 
+/*
+ * สถิติสำหรับหน้าแรก
+ * เปิดให้ผู้ใช้ทั่วไปอ่านได้ เพราะมีเฉพาะตัวเลขรวม
+ */
+router.get(
+  "/dashboard/stats",
+  getAdminDashboardStats
+);
+
+/*
+ * สถิติสำหรับหน้าแอดมิน
+ */
 router.get(
   "/admin/dashboard/stats",
   authenticateAdmin,

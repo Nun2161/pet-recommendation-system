@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>สถานะคำขอฟาร์ม — CatMatch</title>
+  <meta name="catmatch-farm-flow" content="v17">
+  <meta name="description" content="ติดตามสถานะคำขอลงทะเบียนฟาร์ม CatMatch">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700;800&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/design-system.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/global-settings.css?v=5">
+  <link rel="stylesheet" href="../css/farm-pending.css?v=23">
+  <link rel="stylesheet" href="../css/auth-dog-theme.css?v=5">
+  <script defer src="../js/auth-species-theme.js?v=7"></script>
+  <link rel="stylesheet" href="../css/catmatch-dialog.css?v=22">
+  <link rel="stylesheet" href="../css/sakura-enhanced.css?v=22">
+  <script src="../js/global-settings.js?v=3"></script>
+  <script src="../js/api-config.js?v=1"></script>
+</head>
+<body class="farm-pending-page">
+  <div class="pending-sakura" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
+
+  <header class="site-header pending-header">
+    <div class="container nav-shell">
+      <a class="brand" href="./index.html" aria-label="CatMatch หน้าแรก">
+        <span class="brand-logo" aria-hidden="true">
+          <svg viewBox="0 0 64 64" class="cute-cat-icon"><path d="M17 23 14 11l10 6c5-2 11-2 16 0l10-6-3 12c4 4 6 8 6 14 0 12-9 20-21 20S11 49 11 37c0-6 2-10 6-14Z"/><path d="M24 33h.01M40 33h.01M30 39c1.5 1 2.5 1 4 0M32 35v2"/></svg>
+        </span>
+        <span class="brand-text"><strong>CatMatch</strong><small>แมวที่ใช่ สำหรับคุณ</small></span>
+      </a>
+      <div class="pending-nav-actions">
+        <a class="button button-secondary button-small" href="./index.html">หน้าหลัก</a>
+        <a class="button button-primary button-small" href="./login.html">เข้าสู่ระบบ</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="pending-main">
+    <section class="pending-dashboard container" aria-labelledby="pendingTitle">
+      <div class="pending-burst" aria-hidden="true">
+        <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+      </div>
+
+      <article class="pending-hero-card">
+        <span class="pending-status-icon" aria-hidden="true">
+          <svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="27"/><path d="M32 17v16l10 6"/></svg>
+        </span>
+        <p class="pending-eyebrow" id="pendingEyebrow">ส่งคำขอเรียบร้อยแล้ว</p>
+        <h1 id="pendingTitle">กำลังรอผู้ดูแลระบบอนุมัติ</h1>
+        <p class="pending-lead" id="pendingLead">CatMatch ได้รับข้อมูลฟาร์มและใบรับรองแล้ว ผู้ดูแลระบบจะตรวจสอบความถูกต้องก่อนเปิดสิทธิ์ให้เข้าใช้งานระบบจัดการฟาร์ม</p>
+
+        <div class="pending-account-card">
+          <div><small>ชื่อฟาร์ม</small><strong id="pendingFarmName">ฟาร์มของคุณ</strong></div>
+          <div><small>อีเมลบัญชี</small><strong id="pendingFarmEmail">—</strong></div>
+          <span class="pending-badge"><b></b> รออนุมัติ</span>
+        </div>
+      </article>
+
+      <div class="pending-grid">
+        <article class="pending-card pending-process">
+          <div class="pending-card-heading">
+            <span class="pending-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 4h14v16H5z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span>
+            <div><small>ขั้นตอนคำขอ</small><h2>กำลังตรวจสอบข้อมูล</h2></div>
+          </div>
+          <ol class="pending-steps">
+            <li class="is-complete"><span>✓</span><div><strong>ส่งคำขอแล้ว</strong><small>ระบบบันทึกข้อมูลและใบรับรองเรียบร้อย</small></div></li>
+            <li class="is-current"><span>2</span><div><strong>ผู้ดูแลระบบตรวจสอบ</strong><small>ตรวจเลขทะเบียน ข้อมูลติดต่อ และเอกสารฟาร์ม</small></div></li>
+            <li id="pendingFinalStep"><span>3</span><div><strong>เริ่มใช้งานบัญชีฟาร์ม</strong><small>หลังอนุมัติ เข้าสู่ระบบเพื่อจัดการข้อมูลสัตว์และตอบข้อความผู้สนใจ</small></div></li>
+          </ol>
+        </article>
+
+        <article class="pending-card pending-next">
+          <div class="pending-card-heading">
+            <span class="pending-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 10.5 12 4l9 6.5"/><path d="M5 9.5V20h14V9.5"/><path d="M9 20v-6h6v6"/></svg></span>
+            <div><small>หลังได้รับอนุมัติ</small><h2>ฟาร์มทำอะไรต่อได้บ้าง</h2></div>
+          </div>
+          <div class="pending-feature-list">
+            <div><span>＋</span><p><strong>เพิ่มข้อมูลสัตว์</strong><small>ลงข้อมูลประเภท สายพันธุ์ อายุ เพศ รูปภาพ และสถานะ</small></p></div>
+            <div><span>💬</span><p><strong>ตอบข้อความผู้สนใจ</strong><small>พูดคุยกับผู้ใช้ที่สนใจสัตว์หรือสายพันธุ์ของฟาร์ม</small></p></div>
+            <div><span>⌖</span><p><strong>อัปเดตโปรไฟล์ฟาร์ม</strong><small>ดูแลข้อมูลติดต่อ ที่อยู่ และช่องทางของฟาร์ม</small></p></div>
+          </div>
+        </article>
+      </div>
+
+      <aside class="pending-live-note" id="pendingLiveNote" role="status">
+        <strong>อย่าเพิ่งออกจากระบบระหว่างรอตรวจสอบ</strong>
+        <p>หน้านี้จะตรวจสอบสถานะจากผู้ดูแลระบบให้อัตโนมัติทุก 10 วินาที หรือกดรีเฟรชสถานะได้ทันที</p>
+        <small id="pendingLastChecked">ยังไม่ได้ตรวจสอบสถานะล่าสุด</small>
+      </aside>
+
+      <div class="pending-actions">
+        <a class="button button-secondary" href="./index.html">กลับหน้าหลัก</a>
+        <button class="button button-secondary" id="refreshFarmStatus" type="button">↻ รีเฟรชสถานะ</button>
+        <a class="button button-primary" id="pendingPrimaryAction" href="./login.html">ไปหน้าเข้าสู่ระบบ <span aria-hidden="true">→</span></a>
+      </div>
+      <p class="pending-note">บัญชีฟาร์มจะเข้าสู่ระบบได้หลังจากผู้ดูแลระบบอนุมัติแล้วเท่านั้น</p>
+    </section>
+  </main>
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js"></script>
+  <script src="../js/firebase-config.js"></script>
+  <script src="../js/firebase-auth.js"></script>
+  <script src="../js/farm-pending.js?v=802"></script>
+  <script src="../js/catmatch-dialog.js?v=22"></script>
+  <script src="../js/sakura-enhanced.js?v=22"></script>
+</body>
+</html>

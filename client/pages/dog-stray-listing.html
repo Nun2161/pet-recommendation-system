@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="th" data-catmatch-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ลงประกาศช่วยหาบ้านให้สุนัข — DogMatch</title>
+  <meta name="description" content="ส่งข้อมูลสุนัขที่ต้องการหาบ้านให้แอดมินตรวจสอบก่อนเผยแพร่ในพื้นที่เพื่อนที่กำลังรอบ้าน">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+  <link rel="stylesheet" href="../css/design-system.css">
+  <link rel="stylesheet" href="../css/components.css?v=3">
+  <link rel="stylesheet" href="../css/global-settings.css?v=10">
+  <link rel="stylesheet" href="../css/stray-listing.css?v=7">
+  <script src="../js/global-settings.js?v=6"></script>
+  <script src="../js/api-config.js?v=2"></script>
+</head>
+<body class="stray-listing-page dog-theme" data-species="dog">
+  <header class="stray-topbar">
+    <div class="container stray-topbar__inner">
+      <a class="stray-brand" data-home-link href="./dog-index.html" aria-label="DogMatch หน้าแรก">
+        <span class="stray-brand__logo" aria-hidden="true">
+          <svg aria-label="โลโก้สุนัขหน้ากลมของ DogMatch" class="cute-dog-icon dogmatch-round-dog" role="img" viewBox="0 0 64 64">
+            <path class="dog-logo-ear" d="M20.2 22.2C16.5 18.7 11.4 19.1 9.8 25.1c-2 7.5.6 14.8 6.3 18 2.6 1.5 5.2.5 6.6-2.1 1.5-2.9.7-6.8.2-10.2-.5-3.4-.7-6.3-2.7-8.6Z"></path>
+            <path class="dog-logo-ear" d="M43.8 22.2c3.7-3.5 8.8-3.1 10.4 2.9 2 7.5-.6 14.8-6.3 18-2.6 1.5-5.2.5-6.6-2.1-1.5-2.9-.7-6.8-.2-10.2.5-3.4.7-6.3 2.7-8.6Z"></path>
+            <path class="dog-logo-face" d="M32 12.5c-10.5 0-17.4 7.4-17.4 19 0 12.8 7 21.2 17.4 21.2s17.4-8.4 17.4-21.2c0-11.6-6.9-19-17.4-19Z"></path>
+            <path class="dog-logo-ear-line" d="M18.9 23.8c-1.8 3.6-2.1 8.4-1.1 12.3"></path>
+            <path class="dog-logo-ear-line" d="M45.1 23.8c1.8 3.6 2.1 8.4 1.1 12.3"></path>
+            <circle class="dog-logo-eye" cx="27.4" cy="31.9" r="1.55"></circle>
+            <circle class="dog-logo-eye" cx="36.6" cy="31.9" r="1.55"></circle>
+            <circle class="dog-logo-cheek" cx="22.7" cy="37.8" r="2.35"></circle>
+            <circle class="dog-logo-cheek" cx="41.3" cy="37.8" r="2.35"></circle>
+            <path class="dog-logo-nose" d="M29.5 37.5c1.6-1.15 3.4-1.15 5 0-1 1.7-1.7 2.45-2.5 2.45s-1.5-.75-2.5-2.45Z"></path>
+            <path class="dog-logo-mouth" d="M32 39.9v1.25"></path>
+            <path class="dog-logo-mouth" d="M32 41.1c-1.2 2.8-4.4 4-6.8 1.2"></path>
+            <path class="dog-logo-mouth" d="M32 41.1c1.2 2.8 4.4 4 6.8 1.2"></path>
+          </svg>
+        </span>
+        <span class="stray-brand__text"><strong>DogMatch</strong><small>สุนัขที่ใช่ สำหรับคุณ</small></span>
+      </a>
+      <a class="stray-back" data-home-link href="./dog-index.html">← กลับหน้าหลัก</a>
+    </div>
+  </header>
+
+  <section class="stray-auth-required" id="strayAuthRequired" hidden>
+    <div class="stray-auth-card">
+      <span class="stray-auth-logo" aria-hidden="true">
+        <svg aria-label="โลโก้สุนัขหน้ากลมของ DogMatch" class="cute-dog-icon dogmatch-round-dog" role="img" viewBox="0 0 64 64">
+            <path class="dog-logo-ear" d="M20.2 22.2C16.5 18.7 11.4 19.1 9.8 25.1c-2 7.5.6 14.8 6.3 18 2.6 1.5 5.2.5 6.6-2.1 1.5-2.9.7-6.8.2-10.2-.5-3.4-.7-6.3-2.7-8.6Z"></path>
+            <path class="dog-logo-ear" d="M43.8 22.2c3.7-3.5 8.8-3.1 10.4 2.9 2 7.5-.6 14.8-6.3 18-2.6 1.5-5.2.5-6.6-2.1-1.5-2.9-.7-6.8-.2-10.2.5-3.4.7-6.3 2.7-8.6Z"></path>
+            <path class="dog-logo-face" d="M32 12.5c-10.5 0-17.4 7.4-17.4 19 0 12.8 7 21.2 17.4 21.2s17.4-8.4 17.4-21.2c0-11.6-6.9-19-17.4-19Z"></path>
+            <path class="dog-logo-ear-line" d="M18.9 23.8c-1.8 3.6-2.1 8.4-1.1 12.3"></path>
+            <path class="dog-logo-ear-line" d="M45.1 23.8c1.8 3.6 2.1 8.4 1.1 12.3"></path>
+            <circle class="dog-logo-eye" cx="27.4" cy="31.9" r="1.55"></circle>
+            <circle class="dog-logo-eye" cx="36.6" cy="31.9" r="1.55"></circle>
+            <circle class="dog-logo-cheek" cx="22.7" cy="37.8" r="2.35"></circle>
+            <circle class="dog-logo-cheek" cx="41.3" cy="37.8" r="2.35"></circle>
+            <path class="dog-logo-nose" d="M29.5 37.5c1.6-1.15 3.4-1.15 5 0-1 1.7-1.7 2.45-2.5 2.45s-1.5-.75-2.5-2.45Z"></path>
+            <path class="dog-logo-mouth" d="M32 39.9v1.25"></path>
+            <path class="dog-logo-mouth" d="M32 41.1c-1.2 2.8-4.4 4-6.8 1.2"></path>
+            <path class="dog-logo-mouth" d="M32 41.1c1.2 2.8 4.4 4 6.8 1.2"></path>
+          </svg>
+      </span>
+      <p class="eyebrow">USER HOME-FINDING LISTING</p>
+      <h1>เข้าสู่ระบบก่อนลงประกาศ</h1>
+      <p>ผู้ลงประกาศต้องมีบัญชีในระบบ เพื่อให้แอดมินตรวจสอบที่มาของข้อมูลและให้คุณติดตามผลการอนุมัติได้</p>
+      <div class="stray-auth-actions">
+        <a class="button button-primary" data-login-link href="#">เข้าสู่ระบบ</a>
+        <a class="button button-secondary" data-register-link href="#">สมัครสมาชิก</a>
+      </div>
+    </div>
+  </section>
+
+  <main class="stray-main" id="strayListingApp" hidden>
+    <div class="container">
+      <section class="stray-hero">
+        <div>
+          <p class="eyebrow">ช่วยหาบ้านให้เพื่อนที่กำลังรอครอบครัว</p>
+          <h1>ลงประกาศช่วยหาบ้านให้สุนัข</h1>
+          <p>พื้นที่นี้สำหรับสุนัขที่ผู้ใช้กำลังดูแลหรือพบและต้องการช่วยหาบ้าน ผู้ใช้เป็นผู้ลงข้อมูลและช่องทางติดต่อเอง ทุกประกาศจะยังไม่ขึ้นหน้าเว็บจนกว่าแอดมินจะตรวจสอบและอนุมัติ</p>
+        </div>
+        <aside class="stray-process-card">
+          <strong>ขั้นตอนการเผยแพร่</strong>
+          <ol><li>กรอกข้อมูลและปักหมุด</li><li>ส่งให้แอดมินตรวจสอบ</li><li>อนุมัติแล้วจึงแสดงในหน้ากำลังรอบ้าน</li></ol>
+        </aside>
+      </section>
+
+      <div class="stray-message" id="strayMessage" role="alert" aria-live="polite" hidden></div>
+
+      <section class="stray-form-card">
+        <div class="stray-form-heading">
+          <div><p class="eyebrow">HOME-FINDING LISTING FORM</p><h2>ข้อมูลสุนัขและผู้ติดต่อ</h2><p>กรอกข้อมูลตามจริง ไม่ใช้รูปจากอินเทอร์เน็ต และต้องได้รับอนุญาตจากผู้ดูแลพื้นที่ก่อนเผยแพร่ตำแหน่งส่วนบุคคล</p></div>
+        </div>
+        <form id="strayListingForm" novalidate>
+          <input id="strayListingId" type="hidden">
+          <input id="strayCurrentImage" type="hidden">
+          <div class="stray-form-grid">
+            <div class="stray-field is-full">
+              <span>รูปสุนัข *</span>
+              <label class="stray-image-picker" for="strayImageFile">
+                <input id="strayImageFile" type="file" accept="image/jpeg,image/png,image/webp">
+                <span class="stray-image-preview">
+                  <img id="strayImagePreview" alt="ตัวอย่างรูปสุนัข · คลิกเพื่อดูรูปขนาดใหญ่" role="button" tabindex="0" title="คลิกเพื่อดูรูปขนาดใหญ่" hidden>
+                  <span class="stray-image-placeholder" id="strayImagePlaceholder"><b>＋</b><span>เลือกรูปจากเครื่อง</span></span>
+                  <span class="stray-image-zoom-hint" id="strayImageZoomHint" hidden>⌕ ดูรูปขนาดใหญ่</span>
+                </span>
+                <span class="stray-image-copy"><strong>คลิกเพื่อเลือกรูป</strong><span class="stray-image-filename" id="strayImageFileName">ยังไม่ได้เลือกรูป</span><span>รองรับ JPG, PNG หรือ WEBP ไม่เกิน 5 MB รูปจะผ่านการตรวจสอบก่อนเผยแพร่</span><span class="stray-image-view-note">หลังเลือกรูป สามารถคลิกที่รูปตัวอย่างเพื่อดูรูปขนาดใหญ่ได้</span></span>
+              </label>
+            </div>
+
+            <div class="stray-field"><label for="strayName">ชื่อหรือชื่อเรียก *</label><input id="strayName" type="text" maxlength="150" required></div>
+            <div class="stray-field"><label for="strayGender">เพศ *</label><select id="strayGender" required><option value="male">เพศผู้</option><option value="female">เพศเมีย</option><option value="unknown">ไม่ทราบ</option></select></div>
+            <div class="stray-field"><label for="strayAgeValue">อายุโดยประมาณ</label><div class="stray-unit"><input id="strayAgeValue" type="number" min="0" max="360" step="1" inputmode="numeric" placeholder="เช่น 6"><select id="strayAgeUnit" aria-label="หน่วยอายุ"><option value="month">เดือน</option><option value="year">ปี</option></select></div></div>
+            <div class="stray-field"><label for="straySize">ขนาด *</label><select id="straySize" required><option value="small">ขนาดเล็ก</option><option value="medium" selected>ขนาดกลาง</option><option value="large">ขนาดใหญ่</option></select></div>
+            <div class="stray-field"><label for="strayWeight">น้ำหนัก</label><div class="stray-unit is-weight"><input id="strayWeight" type="number" min="0.1" max="200" step="0.1" inputmode="decimal" placeholder="เช่น 4.5"><span>กิโลกรัม</span></div></div>
+            <div class="stray-field"><label for="strayProvince">จังหวัด *</label><input id="strayProvince" type="text" maxlength="120" list="strayProvinceOptions" required><datalist id="strayProvinceOptions"></datalist></div>
+            <div class="stray-field is-full"><label for="strayLocationText">รายละเอียดสถานที่พบสัตว์ *</label><textarea id="strayLocationText" maxlength="1000" placeholder="เช่น บริเวณตลาด... ใกล้จุดสังเกต... หลีกเลี่ยงการใส่เลขบ้านส่วนบุคคล" required></textarea></div>
+
+            <div class="stray-field is-full">
+              <div class="stray-map-toolbar"><div><strong>ปักหมุดสถานที่ *</strong><p>คลิกบนแผนที่ หรือลากหมุดเพื่อปรับตำแหน่ง</p></div><button class="button button-secondary button-small" id="strayLocateMe" type="button">ใช้ตำแหน่งของฉัน</button></div>
+              <div class="stray-map" id="strayLocationMap" aria-label="แผนที่สำหรับปักหมุด"></div>
+              <div class="stray-coordinates"><input id="strayLatitude" type="text" placeholder="ละติจูด" readonly required><input id="strayLongitude" type="text" placeholder="ลองจิจูด" readonly required></div>
+            </div>
+
+            <div class="stray-field is-full"><label for="strayTraits">ลักษณะเด่น</label><input id="strayTraits" type="text" maxlength="500" placeholder="เป็นมิตร, ขี้กลัว, เข้ากับคนง่าย"></div>
+            <div class="stray-field"><label for="strayVaccination">วัคซีน</label><select id="strayVaccination"><option value="">เลือกสถานะวัคซีน</option><option value="ได้รับวัคซีนครบตามเกณฑ์">ครบตามเกณฑ์</option><option value="ได้รับวัคซีนบางส่วน">ได้รับบางส่วน</option><option value="ยังไม่ได้รับวัคซีน">ยังไม่ได้รับ</option><option value="ไม่ทราบข้อมูลวัคซีน">ไม่ทราบข้อมูล</option></select></div>
+            <div class="stray-field"><label for="straySterilization">การทำหมัน</label><select id="straySterilization"><option value="">เลือกสถานะการทำหมัน</option><option value="ทำหมันแล้ว">ทำหมันแล้ว</option><option value="ยังไม่ได้ทำหมัน">ยังไม่ได้ทำหมัน</option><option value="ไม่ทราบข้อมูลการทำหมัน">ไม่ทราบข้อมูล</option></select></div>
+            <div class="stray-field is-full"><label for="strayHealth">ข้อมูลสุขภาพ</label><textarea id="strayHealth" maxlength="4000"></textarea></div>
+            <div class="stray-field is-full"><label for="strayPersonality">นิสัยและการเข้ากับคน</label><textarea id="strayPersonality" maxlength="4000"></textarea></div>
+            <div class="stray-field is-full"><label for="strayStory">เรื่องราว</label><textarea id="strayStory" maxlength="6000"></textarea></div>
+            <div class="stray-field is-full"><label for="straySuitableHome">บ้านที่เหมาะสม</label><textarea id="straySuitableHome" maxlength="4000"></textarea></div>
+
+            <div class="stray-field"><label for="strayContactName">ชื่อผู้ติดต่อ *</label><input id="strayContactName" type="text" maxlength="150" required></div>
+            <div class="stray-field"><label for="strayContactPhone">เบอร์โทร</label><input id="strayContactPhone" type="tel" maxlength="40" placeholder="(+__)__-___-___"></div>
+            <div class="stray-field"><label for="strayContactSocial">Facebook / โซเชียล URL</label><input id="strayContactSocial" type="url" maxlength="1000" placeholder="https://..."></div>
+            <div class="stray-field"><label for="strayContactLine">LINE ID</label><input id="strayContactLine" type="text" maxlength="255"></div>
+
+            <div class="stray-checks">
+              <label class="stray-check"><input id="strayWebContact" type="checkbox" checked><span>อนุญาตให้ผู้สนใจติดต่อผ่านระบบแชทในเว็บ เมื่อระบบแชทเปิดใช้งาน</span></label>
+              <label class="stray-check"><input id="strayUrgent" type="checkbox"><span>ต้องการหาบ้านด่วน</span></label>
+              <label class="stray-check"><input id="strayContactConsent" type="checkbox" required><span>ฉันยืนยันว่าข้อมูลเป็นจริง และยินยอมให้แสดงชื่อ เบอร์โทร โซเชียล ตำแหน่งโดยประมาณ และข้อมูลประกาศหลังแอดมินอนุมัติ *</span></label>
+            </div>
+
+            <div class="stray-form-actions"><button class="button button-secondary" id="strayCancelEdit" type="button" hidden>ยกเลิกการแก้ไข</button><button class="button button-primary" id="straySubmit" type="submit">ส่งให้แอดมินตรวจสอบ</button></div>
+          </div>
+        </form>
+      </section>
+
+      <section class="stray-listings-link-card" aria-label="ติดตามประกาศของฉัน">
+        <div><strong>ติดตามประกาศสุนัขของฉัน</strong><p>ดูสถานะการตรวจสอบ แก้ไขประกาศ และบันทึกว่าได้บ้านแล้วในหน้ากิจกรรมของฉัน</p></div>
+        <a class="button button-secondary" href="./adoption-requests.html?tab=listings&species=dog">ไปที่ประกาศของฉัน →</a>
+      </section>
+    </div>
+  </main>
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js"></script>
+  <script src="../js/firebase-config.js"></script>
+  <script src="../js/firebase-auth.js"></script>
+<script src="../js/user-session.js?v=7"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script src="../js/thailand-mask.js?v=3"></script>
+  <script src="../js/stray-listing-form.js?v=8"></script>
+  <script src="../js/chat-api.js?v=6"></script>
+  <script src="../js/chat-nav.js?v=7"></script>
+</body>
+</html>

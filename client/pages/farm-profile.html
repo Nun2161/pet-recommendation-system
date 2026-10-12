@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>โปรไฟล์ฟาร์ม — CatMatch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700;800&family=Zen+Maru+Gothic:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/design-system.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/global-settings.css?v=5">
+  <link rel="stylesheet" href="../css/farm-profile.css?v=2">
+  <script src="../js/global-settings.js?v=2"></script>
+  <script src="../js/api-config.js?v=1"></script>
+</head>
+<body class="farm-profile-page">
+  <header class="profile-header">
+    <a class="profile-brand" href="./index.html"><span>🐱</span><strong>CatMatch</strong></a>
+    <a class="profile-back" href="./farm-map.html">← กลับหน้าแผนที่</a>
+  </header>
+
+  <main class="profile-shell">
+    <div id="profileLoading" class="profile-state">กำลังโหลดโปรไฟล์ฟาร์ม...</div>
+    <div id="profileError" class="profile-state profile-state--error" hidden></div>
+
+    <article id="profileContent" hidden>
+      <section class="farm-hero">
+        <div class="farm-hero__image">
+          <img id="farmProfileImage" alt="" hidden>
+          <div id="farmProfileFallback" class="farm-hero__fallback" aria-hidden="true">🏡</div>
+        </div>
+        <div class="farm-hero__content">
+          <span class="verified-badge">✓ ฟาร์มผ่านการยืนยัน</span>
+          <h1 id="farmName"></h1>
+          <p id="farmAddress" class="farm-address"></p>
+          <p id="farmDescription" class="farm-description"></p>
+          <div id="farmActions" class="farm-actions"></div>
+        </div>
+      </section>
+
+      <section class="profile-grid">
+        <div class="profile-card">
+          <div class="section-heading">
+            <div><span>AVAILABLE CATS</span><h2>แมวที่พร้อมติดต่อ</h2></div>
+            <strong id="animalCount">0 ตัว</strong>
+          </div>
+          <div id="animalGrid" class="animal-grid"></div>
+        </div>
+
+        <aside class="profile-card contact-card">
+          <div class="section-heading"><div><span>FARM INFO</span><h2>ข้อมูลฟาร์ม</h2></div></div>
+          <dl id="farmInfo" class="farm-info"></dl>
+          <p class="location-note">ตำแหน่งที่แสดงเป็นข้อมูลโดยประมาณ กรุณาติดต่อฟาร์มก่อนเดินทาง</p>
+        </aside>
+      </section>
+    </article>
+  </main>
+
+  <section id="catModal" class="cat-modal" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="catModalName">
+    <button class="cat-modal__backdrop" type="button" data-close-modal aria-label="ปิด"></button>
+    <article class="cat-modal__card">
+      <button class="cat-modal__close" type="button" data-close-modal aria-label="ปิด">×</button>
+      <div class="cat-modal__photo"><img id="catModalImage" alt=""><span id="catModalFallback">🐱</span></div>
+      <div class="cat-modal__content">
+        <span class="cat-modal__eyebrow">CAT PROFILE</span>
+        <h2 id="catModalName"></h2>
+        <p id="catModalBreed"></p>
+        <div id="catModalMeta" class="cat-modal__meta"></div>
+        <p id="catModalDescription" class="cat-modal__description"></p>
+        <a id="catModalChat" class="action action--primary" href="#">💬 แชทเกี่ยวกับตัวนี้</a>
+      </div>
+    </article>
+  </section>
+
+  <script src="../js/farm-profile.js?v=4"></script>
+  <script src="../js/chat-api.js?v=6"></script>
+  <script src="../js/chat-nav.js?v=7"></script>
+</body>
+</html>

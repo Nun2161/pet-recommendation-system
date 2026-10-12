@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>ประวัติแบบประเมิน — CatMatch</title>
+
+  <meta
+    name="description"
+    content="ดูประวัติผลแบบประเมินและสายพันธุ์แมวที่ CatMatch เคยแนะนำ"
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700;800&family=Zen+Maru+Gothic:wght@500;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="../css/design-system.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="../css/components.css?v=3"
+  >
+
+  <link
+    rel="stylesheet"
+    href="../css/assessment-history.css?v=2"
+  >
+  <link rel="stylesheet" href="../css/global-settings.css?v=2">
+  <link rel="stylesheet" href="../css/page-proportion-fix.css?v=1">
+  <script src="../js/global-settings.js?v=1"></script>
+  <link rel="stylesheet" href="../css/page-ambient.css?v=1">
+  <script src="../js/api-config.js?v=1"></script>
+<link href="../css/chat-nav.css?v=1" rel="stylesheet"/>
+</head>
+
+<body class="assessment-history-page catmatch-index-ambient">
+  <div class="sakura-scene" aria-hidden="true">
+    <div class="falling-petals">
+      <span class="falling-petal petal-1"></span>
+      <span class="falling-petal petal-2"></span>
+      <span class="falling-petal petal-3"></span>
+      <span class="falling-petal petal-4"></span>
+      <span class="falling-petal petal-5"></span>
+      <span class="falling-petal petal-6"></span>
+      <span class="falling-petal petal-7"></span>
+      <span class="falling-petal petal-8"></span>
+      <span class="falling-petal petal-9"></span>
+      <span class="falling-petal petal-10"></span>
+      <span class="falling-petal petal-11"></span>
+      <span class="falling-petal petal-12"></span>
+      <span class="falling-petal petal-13"></span>
+      <span class="falling-petal petal-14"></span>
+      <span class="falling-petal petal-15"></span>
+      <span class="falling-petal petal-16"></span>
+    </div>
+  </div>
+  <a
+    class="skip-link"
+    href="#main-content"
+  >
+    ข้ามไปยังเนื้อหาหลัก
+  </a>
+
+  <header
+    class="site-header"
+    id="siteHeader"
+  >
+    <div class="container nav-shell">
+      <a
+        class="brand"
+        href="./index.html"
+        aria-label="CatMatch หน้าแรก"
+      >
+        <span
+          class="brand-logo"
+          aria-hidden="true"
+        >
+          <svg
+            viewBox="0 0 64 64"
+            class="cute-cat-icon"
+          >
+            <path
+              d="M17 23 14 11l10 6c5-2 11-2 16 0l10-6-3 12c4 4 6 8 6 14 0 12-9 20-21 20S11 49 11 37c0-6 2-10 6-14Z"
+            />
+
+            <path
+              d="M24 33h.01M40 33h.01M30 39c1.5 1 2.5 1 4 0M32 35v2M24 40l-7 1M40 40l7 1M23 45l-6 4M41 45l6 4"
+            />
+          </svg>
+        </span>
+
+        <span class="brand-text">
+          <strong>CatMatch</strong>
+          <small>แมวที่ใช่ สำหรับคุณ</small>
+        </span>
+      </a>
+
+      <nav
+        class="main-nav"
+        id="mainNav"
+        aria-label="เมนูหลัก"
+      >
+        <a
+          class="nav-link"
+          href="./index.html"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path
+              d="m3 11 9-8 9 8M5 10v10h14V10M9 20v-6h6v6"
+            />
+          </svg>
+
+          <span>หน้าหลัก</span>
+        </a>
+
+        <a
+          class="nav-link is-active"
+          href="./assessment.html"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path d="M6 4h12v16H6z"/>
+            <path d="M9 8h6M9 12h6M9 16h4"/>
+          </svg>
+
+          <span>แบบประเมิน</span>
+        </a>
+
+        <a
+          class="nav-link"
+          href="./cat-breeds.html"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path
+              d="M6.5 9 5 4l4 2.5c2-.8 4-.8 6 0L19 4l-1.5 5c1.7 1.6 2.5 3.4 2.5 5.5C20 18 16.8 20 12 20s-8-2-8-5.5C4 12.4 4.8 10.6 6.5 9Z"
+            />
+
+            <path
+              d="M9.5 13h.01M14.5 13h.01M10.5 16c1 .8 2.5.8 3.5 0"
+            />
+          </svg>
+
+          <span>แมวของเรา</span>
+        </a>
+
+
+        <a
+          class="nav-link"
+          href="./index.html#about"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <circle cx="11" cy="11" r="6"/>
+            <path d="m20 20-4-4"/>
+          </svg>
+
+          <span>เกี่ยวกับเรา</span>
+        </a>
+      </nav>
+
+      <div
+        class="history-nav-placeholder"
+        aria-hidden="true"
+      ></div>
+
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        type="button"
+        aria-label="เปิดเมนู"
+        aria-expanded="false"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main
+    class="history-main"
+    id="main-content"
+  >
+    <div class="container">
+      <section class="history-heading">
+        <p>MY ASSESSMENT HISTORY</p>
+
+        <h1>ประวัติแบบประเมิน</h1>
+
+        <span>
+          ดูผลการประเมินและสายพันธุ์แมวที่ระบบเคยแนะนำให้คุณ
+        </span>
+      </section>
+
+      <section
+        class="history-panel"
+        aria-labelledby="historyPanelTitle"
+      >
+        <div class="history-toolbar">
+          <div>
+            <small id="historyPanelTitle">
+              ผลแบบประเมินทั้งหมด
+            </small>
+
+            <strong id="historyCount">
+              0 ครั้ง
+            </strong>
+          </div>
+
+          <a
+            class="history-new-button"
+            href="./assessment.html"
+          >
+            ทำแบบประเมินใหม่
+          </a>
+        </div>
+
+        <div
+          class="history-state"
+          id="historyLoading"
+          aria-live="polite"
+        >
+          <strong>กำลังโหลดประวัติ</strong>
+
+          <p>
+            ระบบกำลังดึงผลแบบประเมินของคุณ
+          </p>
+        </div>
+
+        <div
+          class="history-state"
+          id="historyEmpty"
+          hidden
+        >
+          <strong>ยังไม่มีประวัติแบบประเมิน</strong>
+
+          <p>
+            เมื่อทำแบบประเมินเสร็จ ผลลัพธ์จะมาแสดงที่หน้านี้
+          </p>
+
+          <a href="./assessment.html">
+            เริ่มทำแบบประเมิน
+          </a>
+        </div>
+
+        <div
+          class="history-state history-error"
+          id="historyError"
+          role="alert"
+          hidden
+        ></div>
+
+        <div
+          class="history-list"
+          id="historyList"
+          hidden
+        ></div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    (() => {
+      const menuToggle =
+        document.getElementById("menuToggle");
+
+      const mainNav =
+        document.getElementById("mainNav");
+
+      menuToggle?.addEventListener(
+        "click",
+        () => {
+          const expanded =
+            menuToggle.getAttribute(
+              "aria-expanded"
+            ) === "true";
+
+          menuToggle.setAttribute(
+            "aria-expanded",
+            String(!expanded)
+          );
+
+          mainNav?.classList.toggle(
+            "is-open",
+            !expanded
+          );
+        }
+      );
+    })();
+  </script>
+
+  <script
+    src="../js/assessment-history.js?v=3"
+  ></script>
+<script src="../js/chat-api.js?v=6"></script>
+<script src="../js/chat-nav.js?v=7"></script>
+</body>
+</html>

@@ -1,0 +1,802 @@
+/* DogMatch account context — loaded only when ?species=dog is present. */
+:root[data-dog-account-context="true"] {
+  --dog-navy: #213555;
+  --dog-blue: #3E5879;
+  --dog-beige: #D8C4B6;
+  --dog-ivory: #F5EFE7;
+  --dog-white: #ffffff;
+  --dog-ice: #eaf4fb;
+}
+
+body.dog-account-context {
+  color: var(--dog-navy) !important;
+  background: var(--dog-ivory) !important;
+}
+
+body.dog-account-context::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 16% 8%, rgba(255,255,255,.9), transparent 31%),
+    radial-gradient(circle at 87% 18%, rgba(234,244,251,.78), transparent 34%),
+    linear-gradient(180deg, #F5EFE7 0%, #f8f5f0 48%, #eef5f8 100%);
+}
+
+body.dog-account-context .favorites-sakura-scene,
+body.dog-account-context .favorites-petal,
+body.dog-account-context .sakura-scene,
+body.dog-account-context .sakura-petal,
+body.dog-account-context [class*="sakura"] {
+  display: none !important;
+}
+
+.dog-account-snow {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.dog-account-snow > i {
+  position: absolute;
+  top: -24px;
+  left: var(--left);
+  width: var(--size);
+  height: var(--size);
+  opacity: var(--opacity);
+  border-radius: 50%;
+  background: rgba(255,255,255,.96);
+  box-shadow:
+    0 0 0 1px rgba(62,88,121,.10),
+    0 0 9px rgba(62,88,121,.28);
+  animation:
+    dogAccountSnowFall var(--duration) linear var(--delay) infinite,
+    dogAccountSnowSway var(--sway) ease-in-out var(--delay) infinite alternate;
+}
+
+.dog-account-snow > i:nth-child(3n) {
+  border-radius: 2px;
+  transform: rotate(45deg);
+}
+
+@keyframes dogAccountSnowFall {
+  from { translate: 0 -30px; }
+  to { translate: var(--drift) calc(100vh + 70px); }
+}
+
+@keyframes dogAccountSnowSway {
+  from { margin-left: -9px; }
+  to { margin-left: 11px; }
+}
+
+body.dog-account-context > :not(.dog-account-snow) {
+  position: relative;
+  z-index: 2;
+}
+
+body.dog-account-context .site-header {
+  background: rgba(245,239,231,.96) !important;
+  border-bottom: 1px solid rgba(33,53,85,.16) !important;
+  box-shadow: 0 10px 30px rgba(33,53,85,.06) !important;
+  backdrop-filter: blur(18px);
+}
+
+body.dog-account-context .brand-logo {
+  display: grid !important;
+  place-items: center !important;
+  background: var(--dog-navy) !important;
+  border: 1px solid rgba(33,53,85,.12) !important;
+  color: #fff !important;
+  box-shadow: 0 10px 22px rgba(33,53,85,.18) !important;
+}
+
+body.dog-account-context .brand-logo svg {
+  width: 72% !important;
+  height: 72% !important;
+}
+
+body.dog-account-context .dog-account-logo .dog-logo-face {
+  fill: #F5EFE7;
+  stroke: #F5EFE7;
+}
+body.dog-account-context .dog-account-logo .dog-logo-ear {
+  fill: #F5EFE7;
+  stroke: #F5EFE7;
+}
+body.dog-account-context .dog-account-logo .dog-logo-ear-line,
+body.dog-account-context .dog-account-logo .dog-logo-mouth {
+  fill: none;
+  stroke: #3E5879;
+  stroke-width: 2.1;
+  stroke-linecap: round;
+}
+body.dog-account-context .dog-account-logo .dog-logo-eye,
+body.dog-account-context .dog-account-logo .dog-logo-nose {
+  fill: #213555;
+}
+body.dog-account-context .dog-account-logo .dog-logo-cheek {
+  fill: #D8C4B6;
+}
+
+body.dog-account-context .brand-text strong,
+body.dog-account-context .main-nav .nav-link,
+body.dog-account-context .user-summary strong,
+body.dog-account-context .user-menu-account strong {
+  color: var(--dog-navy) !important;
+}
+
+body.dog-account-context .brand-text small,
+body.dog-account-context .user-summary small,
+body.dog-account-context .user-menu-account small {
+  color: var(--dog-blue) !important;
+}
+
+body.dog-account-context .main-nav .nav-link svg {
+  color: var(--dog-blue) !important;
+  stroke: currentColor !important;
+}
+
+body.dog-account-context .main-nav .nav-link:hover,
+body.dog-account-context .main-nav .nav-link.is-active,
+body.dog-account-context .main-nav .nav-link[aria-current="page"] {
+  color: var(--dog-navy) !important;
+  background: rgba(216,196,182,.46) !important;
+}
+
+body.dog-account-context .user-menu-trigger {
+  background: rgba(255,255,255,.9) !important;
+  border-color: rgba(33,53,85,.16) !important;
+  box-shadow: 0 10px 26px rgba(33,53,85,.10) !important;
+}
+
+body.dog-account-context .user-avatar,
+body.dog-account-context .user-menu-avatar,
+body.dog-account-context .account-large-avatar {
+  background: var(--dog-ice) !important;
+  color: var(--dog-navy) !important;
+  border-color: rgba(62,88,121,.18) !important;
+}
+
+body.dog-account-context .user-avatar img,
+body.dog-account-context .user-menu-avatar img,
+body.dog-account-context .account-large-avatar img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  border-radius: inherit !important;
+}
+
+body.dog-account-context .user-menu-panel {
+  background: rgba(255,255,255,.98) !important;
+  border: 1px solid rgba(33,53,85,.14) !important;
+  box-shadow: 0 26px 60px rgba(33,53,85,.18) !important;
+}
+
+body.dog-account-context .user-menu-account {
+  background: linear-gradient(110deg, rgba(216,196,182,.34), rgba(234,244,251,.74)) !important;
+}
+
+body.dog-account-context .account-menu-label,
+body.dog-account-context [class$="-eyebrow"],
+body.dog-account-context [class*="-eyebrow"] {
+  color: var(--dog-blue) !important;
+}
+
+body.dog-account-context .account-menu-item:hover,
+body.dog-account-context .account-menu-item.is-current {
+  background: var(--dog-ice) !important;
+  color: var(--dog-navy) !important;
+}
+
+body.dog-account-context .account-menu-icon {
+  background: var(--dog-ice) !important;
+  border-color: rgba(62,88,121,.16) !important;
+  color: var(--dog-blue) !important;
+}
+
+body.dog-account-context .account-menu-heart {
+  background: rgba(216,196,182,.34) !important;
+  color: var(--dog-navy) !important;
+}
+
+body.dog-account-context :is(
+  .notifications-hero,
+  .favorites-hero,
+  .account-hero,
+  .settings-hero,
+  .adoption-hero
+) {
+  background: transparent !important;
+}
+
+body.dog-account-context :is(
+  .notifications-summary,
+  .notifications-content,
+  .notification-item,
+  .favorites-content,
+  .favorites-toolbar,
+  .favorite-card,
+  .account-profile-card,
+  .account-details-card,
+  .settings-card,
+  .settings-sidebar,
+  .adoption-content,
+  .adoption-card,
+  .notifications-empty,
+  .notifications-error,
+  .favorites-empty,
+  .favorites-error,
+  .adoption-empty,
+  .adoption-error
+) {
+  background: rgba(255,255,255,.94) !important;
+  border-color: rgba(33,53,85,.14) !important;
+  box-shadow: 0 18px 42px rgba(33,53,85,.08) !important;
+}
+
+body.dog-account-context :is(
+  .notifications-hero h1,
+  .favorites-heading h1,
+  .account-hero h1,
+  .settings-hero h1,
+  .adoption-hero h1,
+  .settings-card h2,
+  .account-section-heading h2
+) {
+  color: var(--dog-navy) !important;
+}
+
+body.dog-account-context :is(
+  .notification-filter,
+  .adoption-filter,
+  .favorites-refresh-button,
+  .adoption-refresh,
+  .settings-sidebar a
+) {
+  border-color: rgba(62,88,121,.24) !important;
+  color: var(--dog-blue) !important;
+  background: rgba(255,255,255,.78) !important;
+}
+
+body.dog-account-context :is(
+  .notification-filter.is-active,
+  .adoption-filter.is-active,
+  .settings-sidebar a.is-active,
+  .button-primary,
+  .account-save-button
+) {
+  color: #fff !important;
+  background: var(--dog-blue) !important;
+  border-color: var(--dog-blue) !important;
+}
+
+body.dog-account-context :is(
+  input,
+  select,
+  textarea
+) {
+  border-color: rgba(62,88,121,.24) !important;
+  background: rgba(255,255,255,.94) !important;
+  color: var(--dog-navy) !important;
+}
+
+body.dog-account-context :is(input, select, textarea):focus {
+  border-color: var(--dog-blue) !important;
+  box-shadow: 0 0 0 4px rgba(62,88,121,.12) !important;
+}
+
+body.dog-account-context .notifications-footer,
+body.dog-account-context .favorites-footer {
+  background: rgba(245,239,231,.88) !important;
+  border-top-color: rgba(33,53,85,.12) !important;
+}
+
+html[data-catmatch-theme="dark"] body.dog-account-context {
+  background: #17253b !important;
+  color: #F5EFE7 !important;
+}
+
+html[data-catmatch-theme="dark"] body.dog-account-context::before {
+  background:
+    radial-gradient(circle at 18% 8%, rgba(62,88,121,.30), transparent 34%),
+    radial-gradient(circle at 86% 16%, rgba(216,196,182,.10), transparent 30%),
+    #17253b;
+}
+
+html[data-catmatch-theme="dark"] body.dog-account-context :is(
+  .site-header,
+  .user-menu-panel,
+  .notifications-summary,
+  .notifications-content,
+  .notification-item,
+  .favorites-content,
+  .favorites-toolbar,
+  .favorite-card,
+  .account-profile-card,
+  .account-details-card,
+  .settings-card,
+  .settings-sidebar,
+  .adoption-content,
+  .adoption-card
+) {
+  background: rgba(33,53,85,.94) !important;
+  color: #F5EFE7 !important;
+  border-color: rgba(216,196,182,.16) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dog-account-snow > i { animation: none !important; }
+}
+
+
+/* =========================================================
+   Dog account header v3 — exact DogMatch header structure.
+   This block wins over page-specific CatMatch header rules.
+   ========================================================= */
+body.dog-account-context .site-header {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1000 !important;
+  width: 100% !important;
+  min-height: 100px !important;
+  padding: 0 !important;
+  background: rgba(245, 239, 231, .97) !important;
+  border: 0 !important;
+  border-bottom: 1px solid rgba(33, 53, 85, .16) !important;
+  border-radius: 0 !important;
+  box-shadow: 0 10px 30px rgba(33, 53, 85, .06) !important;
+  backdrop-filter: blur(18px) !important;
+}
+
+body.dog-account-context .site-header .nav-shell {
+  width: min(1320px, calc(100% - 40px)) !important;
+  min-height: 100px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  display: grid !important;
+  grid-template-columns: auto 1fr auto auto !important;
+  align-items: center !important;
+  gap: 30px !important;
+}
+
+body.dog-account-context .site-header .brand {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+  min-width: max-content !important;
+  color: #213555 !important;
+  text-decoration: none !important;
+}
+
+body.dog-account-context .site-header .brand-logo {
+  width: 64px !important;
+  height: 64px !important;
+  min-width: 64px !important;
+  display: grid !important;
+  place-items: center !important;
+  padding: 0 !important;
+  border-radius: 21px !important;
+  background: #213555 !important;
+  color: #F5EFE7 !important;
+  border: 1px solid rgba(33, 53, 85, .12) !important;
+  box-shadow: 0 12px 24px rgba(33, 53, 85, .18) !important;
+}
+
+body.dog-account-context .site-header .brand-logo svg {
+  width: 44px !important;
+  height: 44px !important;
+  display: block !important;
+}
+
+body.dog-account-context .site-header .dogmatch-round-dog .dog-logo-face,
+body.dog-account-context .site-header .dogmatch-round-dog .dog-logo-ear {
+  fill: #F5EFE7 !important;
+  stroke: #F5EFE7 !important;
+}
+
+body.dog-account-context .site-header .dogmatch-round-dog .dog-logo-ear-line,
+body.dog-account-context .site-header .dogmatch-round-dog .dog-logo-mouth {
+  fill: none !important;
+  stroke: #3E5879 !important;
+  stroke-width: 2.1 !important;
+  stroke-linecap: round !important;
+}
+
+body.dog-account-context .site-header .dogmatch-round-dog .dog-logo-eye,
+body.dog-account-context .site-header .dogmatch-round-dog .dog-logo-nose {
+  fill: #213555 !important;
+}
+
+body.dog-account-context .site-header .dogmatch-round-dog .dog-logo-cheek {
+  fill: #D8C4B6 !important;
+}
+
+body.dog-account-context .site-header .brand-text {
+  display: grid !important;
+  gap: 1px !important;
+  line-height: 1.12 !important;
+}
+
+body.dog-account-context .site-header .brand-text strong {
+  font-size: 1.72rem !important;
+  font-weight: 700 !important;
+  letter-spacing: -.03em !important;
+  color: #213555 !important;
+}
+
+body.dog-account-context .site-header .brand-text small {
+  font-size: .86rem !important;
+  color: #3E5879 !important;
+}
+
+body.dog-account-context .site-header .main-nav {
+  justify-self: center !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  margin: 0 !important;
+}
+
+body.dog-account-context .site-header .nav-link {
+  min-height: 48px !important;
+  padding: 0 14px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 9px !important;
+  border-radius: 999px !important;
+  color: #3E5879 !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  background: transparent !important;
+}
+
+body.dog-account-context .site-header .nav-link:hover,
+body.dog-account-context .site-header .nav-link.is-active,
+body.dog-account-context .site-header .nav-link[aria-current="page"] {
+  color: #213555 !important;
+  background: rgba(216, 196, 182, .48) !important;
+}
+
+body.dog-account-context .site-header .nav-link > svg {
+  width: 21px !important;
+  height: 21px !important;
+  flex: 0 0 21px !important;
+  fill: none !important;
+  stroke: currentColor !important;
+  stroke-width: 1.8 !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
+}
+
+body.dog-account-context .site-header .nav-link .dogmatch-round-dog-nav {
+  width: 24px !important;
+  height: 24px !important;
+}
+
+body.dog-account-context .site-header .auth-nav {
+  justify-self: end !important;
+  position: relative !important;
+}
+
+body.dog-account-context .site-header .user-menu-trigger {
+  min-width: 190px !important;
+  min-height: 64px !important;
+  padding: 8px 14px 8px 9px !important;
+  display: grid !important;
+  grid-template-columns: 48px 1fr 20px !important;
+  align-items: center !important;
+  gap: 11px !important;
+  border: 1px solid rgba(33, 53, 85, .14) !important;
+  border-radius: 999px !important;
+  background: rgba(255, 255, 255, .94) !important;
+  box-shadow: 0 10px 26px rgba(33, 53, 85, .10) !important;
+}
+
+body.dog-account-context .site-header .user-avatar {
+  width: 48px !important;
+  height: 48px !important;
+  min-width: 48px !important;
+  border-radius: 50% !important;
+}
+
+body.dog-account-context .site-header .user-summary {
+  min-width: 0 !important;
+  display: grid !important;
+  gap: 2px !important;
+  text-align: left !important;
+}
+
+body.dog-account-context .site-header .user-summary strong,
+body.dog-account-context .site-header .user-summary small {
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+body.dog-account-context .site-header .user-menu-panel {
+  top: calc(100% + 12px) !important;
+  right: 0 !important;
+  left: auto !important;
+  width: min(420px, calc(100vw - 28px)) !important;
+  max-height: min(640px, calc(100vh - 130px)) !important;
+  overflow-y: auto !important;
+}
+
+body.dog-account-context footer,
+body.dog-account-context [class$="-footer"] {
+  color: #3E5879 !important;
+}
+
+@media (max-width: 980px) {
+  body.dog-account-context .site-header .nav-shell {
+    grid-template-columns: auto 1fr auto !important;
+    gap: 16px !important;
+  }
+
+  body.dog-account-context .site-header .main-nav {
+    position: fixed !important;
+    top: 100px !important;
+    right: 16px !important;
+    left: 16px !important;
+    display: none !important;
+    padding: 14px !important;
+    border-radius: 22px !important;
+    background: #F5EFE7 !important;
+    box-shadow: 0 24px 60px rgba(33, 53, 85, .18) !important;
+  }
+
+  body.dog-account-context .site-header .main-nav.is-open {
+    display: grid !important;
+  }
+
+  body.dog-account-context .site-header .menu-toggle {
+    display: inline-grid !important;
+  }
+}
+
+
+/* Dog account refinement v4 — keep header identical and remove non-content frames. */
+body.dog-account-context.notifications-page .notifications-content,
+body.dog-account-context.notifications-page .notifications-toolbar {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+body.dog-account-context.notifications-page .notification-card {
+  background: rgba(255,255,255,.96) !important;
+  border: 1px solid rgba(33,53,85,.14) !important;
+  box-shadow: 0 16px 36px rgba(33,53,85,.08) !important;
+}
+
+/* Dog About uses the same winter identity without any cat wording or cat mark. */
+body.dog-account-context.dog-about-page .legal-brand-mark {
+  display: grid;
+  place-items: center;
+  background: #213555 !important;
+  border-color: rgba(33,53,85,.18) !important;
+}
+
+body.dog-account-context.dog-about-page .legal-brand-mark svg {
+  width: 72%;
+  height: 72%;
+}
+
+body.dog-account-context.dog-about-page .legal-card,
+body.dog-account-context.dog-about-page .legal-nav {
+  border-color: rgba(33,53,85,.14) !important;
+  box-shadow: 0 20px 48px rgba(33,53,85,.09) !important;
+}
+
+/* Readable DogMatch account surfaces in dark mode. */
+html[data-catmatch-theme="dark"] body.dog-account-context :is(
+  .notifications-content,
+  .notifications-toolbar
+) {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+html[data-catmatch-theme="dark"] body.dog-account-context :is(
+  .notification-card,
+  .favorites-toolbar,
+  .favorite-card,
+  .account-profile-card,
+  .account-details-card,
+  .settings-card,
+  .settings-sidebar,
+  .adoption-card,
+  .adoption-empty,
+  .notifications-empty,
+  .favorites-empty
+) {
+  background: #253A59 !important;
+  color: #F5EFE7 !important;
+  border-color: rgba(216,196,182,.24) !important;
+  box-shadow: 0 18px 40px rgba(0,0,0,.20) !important;
+}
+
+html[data-catmatch-theme="dark"] body.dog-account-context :is(
+  h1,h2,h3,strong,label,
+  .notification-body h2,
+  .favorite-card h2,
+  .account-section-heading h2,
+  .settings-card h2
+) {
+  color: #F5EFE7 !important;
+}
+
+html[data-catmatch-theme="dark"] body.dog-account-context :is(
+  p,small,.notification-body p,.notification-meta,
+  .favorite-card-description,.favorite-card-footer small,
+  .settings-row small,.account-helper,.account-field small
+) {
+  color: #D8C4B6 !important;
+}
+
+html[data-catmatch-theme="dark"] body.dog-account-context .favorite-card-tag {
+  color: #F5EFE7 !important;
+  background: rgba(62,88,121,.76) !important;
+  border-color: rgba(216,196,182,.22) !important;
+}
+
+html[data-catmatch-theme="dark"] body.dog-account-context.dog-about-page .legal-card,
+html[data-catmatch-theme="dark"] body.dog-account-context.dog-about-page .legal-nav,
+html[data-catmatch-theme="dark"] body.dog-account-context.dog-about-page .legal-section {
+  background: #253A59 !important;
+  color: #F5EFE7 !important;
+  border-color: rgba(216,196,182,.20) !important;
+}
+
+html[data-catmatch-theme="dark"] body.dog-account-context.dog-about-page :is(
+  .legal-hero h1,.legal-section h2,.legal-brand strong
+) {
+  color: #F5EFE7 !important;
+}
+
+html[data-catmatch-theme="dark"] body.dog-account-context.dog-about-page :is(
+  .legal-content p,.legal-content li,.legal-updated,.legal-brand small
+) {
+  color: #D8C4B6 !important;
+}
+
+
+/* =========================================================
+   Dog account dark mode v6 — all five account pages use
+   readable navy surfaces instead of bright white panels.
+   ========================================================= */
+html[data-catmatch-theme="dark"] body.dog-account-context {
+  color-scheme: dark;
+  color: #F5EFE7 !important;
+  background: #14243A !important;
+}
+
+html[data-catmatch-theme="dark"] body.dog-account-context::before {
+  background:
+    radial-gradient(circle at 15% 8%, rgba(62,88,121,.26), transparent 32%),
+    radial-gradient(circle at 88% 15%, rgba(216,196,182,.08), transparent 30%),
+    #14243A !important;
+}
+
+html[data-catmatch-theme="dark"] body.dog-account-context .site-header {
+  background: rgba(20,36,58,.97) !important;
+  border-bottom-color: rgba(216,196,182,.18) !important;
+  box-shadow: 0 12px 32px rgba(0,0,0,.24) !important;
+}
+
+html[data-catmatch-theme="dark"] body.dog-account-context .site-header :is(
+  .brand-text strong,.user-summary strong,.nav-link
+) { color: #F5EFE7 !important; }
+html[data-catmatch-theme="dark"] body.dog-account-context .site-header :is(
+  .brand-text small,.user-summary small
+) { color: #D8C4B6 !important; }
+html[data-catmatch-theme="dark"] body.dog-account-context .site-header .nav-link:hover,
+html[data-catmatch-theme="dark"] body.dog-account-context .site-header .nav-link.is-active,
+html[data-catmatch-theme="dark"] body.dog-account-context .site-header .nav-link[aria-current="page"] {
+  color: #F5EFE7 !important;
+  background: rgba(62,88,121,.72) !important;
+}
+html[data-catmatch-theme="dark"] body.dog-account-context .site-header .user-menu-trigger,
+html[data-catmatch-theme="dark"] body.dog-account-context .user-menu-panel {
+  color: #F5EFE7 !important;
+  background: #213555 !important;
+  border-color: rgba(216,196,182,.22) !important;
+}
+html[data-catmatch-theme="dark"] body.dog-account-context .user-menu-account {
+  background: #2A4265 !important;
+}
+html[data-catmatch-theme="dark"] body.dog-account-context .user-menu-panel :is(
+  strong,.account-menu-label,.account-menu-item
+) { color: #F5EFE7 !important; }
+html[data-catmatch-theme="dark"] body.dog-account-context .user-menu-panel :is(small,p) {
+  color: #D8C4B6 !important;
+}
+html[data-catmatch-theme="dark"] body.dog-account-context .account-menu-item:hover,
+html[data-catmatch-theme="dark"] body.dog-account-context .account-menu-item.is-current {
+  color: #F5EFE7 !important;
+  background: #3E5879 !important;
+}
+
+html[data-catmatch-theme="dark"] body.dog-account-context :is(
+  .adoption-page,.notifications-page,.favorites-page,.account-info-page,.settings-page,
+  .adoption-main,.notifications-main,.favorites-main,.account-main,.settings-main
+) {
+  color: #F5EFE7 !important;
+  background: transparent !important;
+}
+
+html[data-catmatch-theme="dark"] body.dog-account-context :is(
+  .adoption-content,.adoption-summary,.adoption-toolbar,.adoption-card,.adoption-empty,.adoption-error,
+  .notifications-content,.notifications-summary,.notifications-toolbar,.notification-card,.notification-item,.notifications-empty,.notifications-error,
+  .favorites-content,.favorites-toolbar,.favorite-card,.favorites-empty,.favorites-error,.favorites-loading,
+  .account-profile-card,.account-details-card,.account-loading,.account-error,
+  .settings-sidebar,.settings-card,.settings-save-state,.settings-fieldset,.settings-row,.settings-action,.theme-choice
+) {
+  color: #F5EFE7 !important;
+  background: #213555 !important;
+  border-color: rgba(216,196,182,.22) !important;
+  box-shadow: 0 18px 42px rgba(0,0,0,.20) !important;
+}
+
+html[data-catmatch-theme="dark"] body.dog-account-context :is(
+  .adoption-hero h1,.notifications-hero h1,.favorites-heading h1,.account-hero h1,.settings-hero h1,
+  .adoption-card h2,.notification-card h2,.notification-item h2,.favorite-card h2,
+  .account-section-heading h2,.settings-card h2,.settings-row strong,.settings-action strong,
+  h1,h2,h3,label,strong
+) { color: #F5EFE7 !important; }
+
+html[data-catmatch-theme="dark"] body.dog-account-context :is(
+  .adoption-hero p,.notifications-hero p,.favorites-heading p,.account-hero p,.settings-hero p,
+  .adoption-card p,.notification-card p,.notification-item p,.favorite-card p,
+  .adoption-status,.notifications-status,.favorite-card-description,.favorite-card-footer small,
+  .account-mini-details,.account-helper,.account-field small,.settings-row small,.settings-action small,.theme-choice small,
+  p,small
+) { color: #D8C4B6 !important; }
+
+html[data-catmatch-theme="dark"] body.dog-account-context :is(
+  .adoption-filter,.adoption-refresh,.notification-filter,.notifications-actions button,
+  .favorites-refresh-button,.favorites-browse-button,.account-edit-button,.account-photo-button,
+  .account-cancel-button,.settings-sidebar a,.settings-action,.theme-choice
+) {
+  color: #F5EFE7 !important;
+  background: #2A4265 !important;
+  border-color: rgba(216,196,182,.24) !important;
+}
+html[data-catmatch-theme="dark"] body.dog-account-context :is(
+  .adoption-filter.is-active,.notification-filter.is-active,.settings-sidebar a.is-active,
+  .account-save-button,.button-primary
+) {
+  color: #FFFFFF !important;
+  background: #3E5879 !important;
+  border-color: #6D8FB7 !important;
+}
+
+html[data-catmatch-theme="dark"] body.dog-account-context :is(input,select,textarea) {
+  color: #F5EFE7 !important;
+  background: #172B46 !important;
+  border-color: rgba(216,196,182,.28) !important;
+}
+html[data-catmatch-theme="dark"] body.dog-account-context :is(input,textarea)::placeholder {
+  color: rgba(216,196,182,.66) !important;
+}
+
+html[data-catmatch-theme="dark"] body.dog-account-context :is(
+  .adoption-empty,.notifications-empty,.favorites-empty,.account-loading,.account-error
+) :is(h2,h3,strong) { color: #F5EFE7 !important; }
+html[data-catmatch-theme="dark"] body.dog-account-context :is(
+  .adoption-empty,.notifications-empty,.favorites-empty,.account-loading,.account-error
+) :is(p,small) { color: #D8C4B6 !important; }
+
+html[data-catmatch-theme="dark"] body.dog-account-context :is(
+  .notifications-footer,.favorites-footer,footer,[class$="-footer"]
+) {
+  color: #D8C4B6 !important;
+  background: #172B46 !important;
+  border-color: rgba(216,196,182,.16) !important;
+}

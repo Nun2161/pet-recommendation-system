@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex">
+  <title>CatMatch Session Bridge</title>
+</head>
+<body>
+<script>
+"use strict";
+(() => {
+  const tokenKeys = ["catmatch_token", "userToken", "token"];
+  const userKeys = ["catmatch_user", "user"];
+  const identityKeys = [
+    "catmatch_auth_uid",
+    "catmatch_auth_user_id",
+    "catmatch_auth_email",
+  ];
+  const profileImageKey = "catmatch_profile_image";
+  const profileImageOwnerKey = "catmatch_profile_image_owner";
+  const profileImageIndexKey = "catmatch_profile_image_index_v3";
+  const legacyProfileImageIndexKey = "catmatch_profile_image_index_v2";
+  const scopedProfileOwnerPrefix = "catmatch_profile_image_owner_v3:";
+  const allAuthKeys = [
+    ...tokenKeys,
+    ...userKeys,
+    ...identityKeys,
+    "catmatch_role",
+    "catmatch_farm_token",
+    "farm_token",
+    "farmToken",
+    "catmatch_farm",
+    "farm",
+    "catmatch_admin_token",
+    "admin_token",
+    "adminToken",
+    "catmatch_admin",
+    "admin",
+  ];
+  const allowedHosts = new Set(["localhost", "127.0.0.1"]);
+  const parentOrigin = (() => {
+    try {
+      const referrer = new URL(document.referrer);
+      return allowedHosts.has(referrer.hostname) ? referrer.origin : "";
+    } catch (_error) {
+      return "";
+    }
+  })();
+
+  if (!parentOrigin) return;
+
+  function storages() {
+    return [sessionStorage, localStorage];
+  }
+
+  function firstValue(keys) {
+    for (const storage of storages()) {
+      for (const key of keys) {
+        const value = storage.getItem(key);
+        if (value) return value;
+      }
+    }
+    return "";
+  }
+
+  function readUser() {
+    for (const storage of storages()) {
+      for (const key of userKeys) {
+        try {
+          const value = JSON.parse(storage.getItem(key) || "null");
+          if (value && typeof value === "object") return value;
+        } catch (_error) {
+          // ข้ามข้อมูลที่อ่านไม่ได้
+        }
+      }
+    }
+    return null;
+  }
+
+  function decodeTokenIdentity(token) {
+    try {
+      const part = String(token || "").split(".")[1];
+      if (!part) return {};
+      const normalized = part.replace(/-/g, "+").replace(/_/g, "/");
+      const padded = normalized.padEnd(Math.ceil(normalized.length / 4) * 4, "=");
+      const payload = JSON.parse(atob(padded));
+      return {
+        uid: String(payload.firebase_uid || ""),
+        userId: Number(payload.user_id || 0),
+        email: String(payload.email || "").trim().toLowerCase(),
+      };
+    } catch (_error) {
+      return {};
+    }
+  }
+
+  function readIdentity(token = firstValue(tokenKeys), user = readUser()) {
+    const tokenIdentity = decodeTokenIdentity(token);
+    return {
+      uid:
+        firstValue(["catmatch_auth_uid"]) ||
+        String(user?.firebase_uid || user?.uid || tokenIdentity.uid || ""),
+      userId: Number(
+        firstValue(["catmatch_auth_user_id"]) ||
+        user?.user_id ||
+        user?.id ||
+        tokenIdentity.userId ||
+        0
+      ),
+      email: String(
+        firstValue(["catmatch_auth_email"]) ||
+        user?.email ||
+        tokenIdentity.email ||
+        ""
+      ).trim().toLowerCase(),
+    };
+  }
+
+  function identityAliases(identity = {}) {
+    const uid = String(identity.uid || identity.firebase_uid || "").trim();
+    const userId = Number(identity.userId || identity.user_id || 0);
+    const email = String(identity.email || "").trim().toLowerCase();
+    return [...new Set([
+      uid,
+      Number.isInteger(userId) && userId > 0 ? `user:${userId}` : "",
+      email ? `email:${email}` : "",
+    ].filter(Boolean))];
+  }
+
+  function readIndexFrom(key) {
+    for (const storage of storages()) {
+      try {
+        const value = JSON.parse(storage.getItem(key) || "{}");
+        if (value && typeof value === "object" && !Array.isArray(value)) return value;
+      } catch (_error) {}
+    }
+    return {};
+  }
+
+  function readProfileImageIndex() {
+    return readIndexFrom(profileImageIndexKey);
+  }
+
+  function readLegacyProfileImageIndex() {
+    return readIndexFrom(legacyProfileImageIndexKey);
+  }
+
+  function writeProfileImageIndex(index) {
+    try { localStorage.setItem(profileImageIndexKey, JSON.stringify(index || {})); } catch (_error) {}
+  }
+
+  function readScopedOwner(identity) {
+    if (!identity) return "";
+    for (const storage of storages()) {
+      const owner = String(storage.getItem(`${scopedProfileOwnerPrefix}${identity}`) || "").trim();
+      if (owner) return owner;
+    }
+    return "";
+  }
+
+  function writeScopedOwner(identity, owner) {
+    if (!identity || !owner) return;
+    try { localStorage.setItem(`${scopedProfileOwnerPrefix}${identity}`, owner); }
+    catch (_error) {
+      try { sessionStorage.setItem(`${scopedProfileOwnerPrefix}${identity}`, owner); } catch (_sessionError) {}
+    }
+  }
+
+  function readLegacyOwner() {
+    return String(
+      localStorage.getItem(profileImageOwnerKey) ||
+      sessionStorage.getItem(profileImageOwnerKey) ||
+      ""
+    ).trim();
+  }
+
+  function readProfileImage(identity = {}) {
+    const aliases = identityAliases(identity);
+    const canonical = aliases[0] || "";
+    if (!canonical) return "";
+    const index = readProfileImageIndex();
+    const legacyIndex = readLegacyProfileImageIndex();
+    const identities = [...new Set([
+      canonical,
+      ...aliases,
+      ...aliases.map((alias) => index[alias]).filter(Boolean),
+      ...aliases.map((alias) => legacyIndex[alias]).filter(Boolean),
+    ])];
+    const legacyOwner = readLegacyOwner();
+    let indexChanged = false;
+
+    for (const value of identities) {
+      const key = `${profileImageKey}:${value}`;
+      let image = "";
+      for (const storage of storages()) {
+        image = storage.getItem(key) || "";
+        if (image) break;
+      }
+      if (!image) continue;
+
+      const owner = readScopedOwner(value) || legacyOwner;
+      if (!owner || !aliases.includes(owner)) {
+        aliases.forEach((alias) => {
+          if (index[alias] === value) {
+            delete index[alias];
+            indexChanged = true;
+          }
+        });
+        continue;
+      }
+
+      if (value !== canonical) {
+        try { localStorage.setItem(`${profileImageKey}:${canonical}`, image); } catch (_error) {}
+      }
+      writeScopedOwner(canonical, canonical);
+      aliases.forEach((alias) => { index[alias] = canonical; });
+      writeProfileImageIndex(index);
+      return image;
+    }
+
+    if (indexChanged) writeProfileImageIndex(index);
+
+    const legacyImage = localStorage.getItem(profileImageKey) || sessionStorage.getItem(profileImageKey) || "";
+    if (legacyImage && legacyOwner && aliases.includes(legacyOwner)) {
+      try { localStorage.setItem(`${profileImageKey}:${canonical}`, legacyImage); } catch (_error) {}
+      writeScopedOwner(canonical, canonical);
+      aliases.forEach((alias) => { index[alias] = canonical; });
+      writeProfileImageIndex(index);
+      return legacyImage;
+    }
+    return "";
+  }
+
+  function writeProfileImage(identity = {}, imageData = "") {
+    const aliases = identityAliases(identity);
+    const canonical = aliases[0] || "";
+    const value = String(imageData || "");
+    if (!canonical || !value) return;
+
+    try {
+      localStorage.setItem(`${profileImageKey}:${canonical}`, value);
+    } catch (_error) {
+      try { sessionStorage.setItem(`${profileImageKey}:${canonical}`, value); } catch (_sessionError) { return; }
+    }
+
+    writeScopedOwner(canonical, canonical);
+    const index = readProfileImageIndex();
+    aliases.forEach((alias) => { index[alias] = canonical; });
+    writeProfileImageIndex(index);
+  }
+
+  function clearSession() {
+    for (const storage of storages()) {
+      allAuthKeys.forEach((key) => storage.removeItem(key));
+    }
+  }
+
+  function writeSession(token, user, identity = {}, profileImage = "") {
+    clearSession();
+    if (!token) return;
+
+    const fallbackIdentity = readIdentity(token, user);
+    const normalizedIdentity = {
+      uid: String(identity.uid || identity.firebase_uid || fallbackIdentity.uid || ""),
+      userId: Number(identity.userId || identity.user_id || fallbackIdentity.userId || 0),
+      email: String(identity.email || fallbackIdentity.email || "").trim().toLowerCase(),
+    };
+    const normalizedUser = user
+      ? {
+          ...user,
+          ...(normalizedIdentity.uid
+            ? { firebase_uid: normalizedIdentity.uid }
+            : {}),
+        }
+      : null;
+
+    for (const storage of storages()) {
+      tokenKeys.forEach((key) => storage.setItem(key, token));
+      storage.setItem("catmatch_role", "user");
+
+      if (normalizedUser) {
+        const value = JSON.stringify(normalizedUser);
+        userKeys.forEach((key) => storage.setItem(key, value));
+      }
+
+      if (normalizedIdentity.uid) {
+        storage.setItem("catmatch_auth_uid", normalizedIdentity.uid);
+      }
+      if (normalizedIdentity.userId) {
+        storage.setItem(
+          "catmatch_auth_user_id",
+          String(normalizedIdentity.userId)
+        );
+      }
+      if (normalizedIdentity.email) {
+        storage.setItem("catmatch_auth_email", normalizedIdentity.email);
+      }
+    }
+
+    if (profileImage) writeProfileImage(normalizedIdentity, profileImage);
+  }
+
+  function respond(payload) {
+    parent.postMessage(
+      {
+        type: "catmatch-session-bridge-result",
+        ...payload,
+      },
+      parentOrigin
+    );
+  }
+
+  window.addEventListener("message", (event) => {
+    if (event.origin !== parentOrigin || event.source !== parent) return;
+    const message = event.data || {};
+
+    if (message.type === "catmatch-session-read") {
+      const token = firstValue(tokenKeys);
+      const user = readUser();
+      respond({
+        ok: true,
+        token,
+        user,
+        identity: readIdentity(token, user),
+        profileImage: readProfileImage(readIdentity(token, user)),
+      });
+      return;
+    }
+
+    if (message.type === "catmatch-session-write" && message.token) {
+      writeSession(
+        String(message.token),
+        message.user || null,
+        message.identity || {},
+        message.profileImage || ""
+      );
+      respond({ ok: true });
+      return;
+    }
+
+    if (message.type === "catmatch-session-clear") {
+      clearSession();
+      respond({ ok: true });
+    }
+  });
+
+  parent.postMessage(
+    { type: "catmatch-session-bridge-ready" },
+    parentOrigin
+  );
+})();
+</script>
+</body>
+</html>

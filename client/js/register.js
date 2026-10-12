@@ -1,7 +1,8 @@
-const API_BASE_URL = "http://localhost:3000/api";
+const API_BASE_URL = window.CATMATCH_API_URL;
 const REGISTER_ENDPOINT = `${API_BASE_URL}/auth/register`;
 const AVAILABILITY_ENDPOINT = `${API_BASE_URL}/auth/check-availability`;
-const HOME_PAGE = "./index.html";
+const REGISTER_SPECIES = new URLSearchParams(window.location.search).get("species");
+const HOME_PAGE = REGISTER_SPECIES === "dog" ? "./dog-index.html" : "./index.html";
 const REGISTER_DRAFT_KEY = "catmatch_register_draft_v1";
 const DRAFT_EXCLUDED_FIELDS = new Set(["password", "confirmPassword"]);
 
@@ -74,32 +75,116 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+let allowRegisterDraftRestore = false;
+
 function prepareRegisterSession() {
   const params = new URLSearchParams(window.location.search);
-  const startFresh = params.get("fresh") === "1";
-  const restoreDraft = params.get("restore") === "1";
 
-  if (startFresh && !restoreDraft) {
-    clearRegisterDraft();
-    form?.reset();
-    currentStep = 1;
-    highestStep = 1;
+  const restoreDraft =
+    params.get("restore") === "1";
 
-    form?.querySelectorAll("[data-location-field]").forEach((field) => {
+  const startFresh =
+    params.get("fresh") === "1";
+
+  const navigationEntry =
+    performance.getEntriesByType("navigation")[0];
+
+  const isReload =
+    navigationEntry?.type === "reload";
+
+  /*
+   * เริ่มใหม่เมื่อ:
+   * - กด Ctrl + F5
+   * - กด F5
+   * - เปิดหน้าสมัครโดยตรง
+   * - URL มี ?fresh=1
+   *
+   * คืนข้อมูลเดิมเฉพาะ URL ที่มี ?restore=1 เท่านั้น
+   */
+  allowRegisterDraftRestore =
+    restoreDraft &&
+    !isReload &&
+    !startFresh;
+
+  if (allowRegisterDraftRestore) {
+    return;
+  }
+
+  clearRegisterDraft();
+
+  form?.reset();
+
+  currentStep = 1;
+  highestStep = 1;
+
+  Object.keys(availabilityState).forEach((fieldName) => {
+    availabilityState[fieldName] = null;
+  });
+
+  form
+    ?.querySelectorAll(
+      "input, textarea, select"
+    )
+    .forEach((field) => {
+      field.classList.remove(
+        "is-invalid",
+        "is-valid"
+      );
+
+      const control =
+        field.closest(".input-shell");
+
+      control?.classList.remove(
+        "is-invalid",
+        "is-valid"
+      );
+    });
+
+  form
+    ?.querySelectorAll("[data-location-field]")
+    .forEach((field) => {
       field.value = "";
       field.dataset.locationId = "";
     });
 
-    // ลบ query หลังรีเซ็ต เพื่อให้ URL สะอาด แต่ไม่ทำให้หน้าโหลดซ้ำ
-    window.history.replaceState({}, "", window.location.pathname);
+  document
+    .querySelectorAll("[data-error-for]")
+    .forEach((errorElement) => {
+      errorElement.textContent = "";
+    });
+
+  const usernameAvailability =
+    document.getElementById(
+      "usernameAvailability"
+    );
+
+  if (usernameAvailability) {
+    usernameAvailability.textContent = "";
   }
+
+  clearStatus();
+
+  window.history.replaceState(
+    {},
+    "",
+    window.location.pathname
+  );
+
+  window.scrollTo({
+    top: 0,
+    behavior: "instant",
+  });
 }
 
 
 function setupRegisterDraft() {
   if (!form) return;
 
-  restoreRegisterDraft();
+  if (allowRegisterDraftRestore) {
+    restoreRegisterDraft();
+  } else {
+    clearRegisterDraft();
+  }
 
   let saveTimer = null;
   const scheduleSave = () => {
@@ -1606,6 +1691,99 @@ function getFallbackCountries() {
   ];
 }
 
+function getRegistrationFirebaseError(error) {
+  const code = String(error?.code || "");
+ const messages = {
+  "auth/invalid-email":
+    "รูปแบบอีเมลไม่ถูกต้อง",
+
+  "auth/missing-email":
+    "กรุณากรอกอีเมลก่อนสมัครสมาชิก",
+
+  "auth/missing-password":
+    "กรุณากรอกรหัสผ่านก่อนสมัครสมาชิก",
+
+  "auth/invalid-password-length":
+    "รหัสผ่านต้องมี 10 ตัวพอดี",
+
+  "auth/email-already-in-use":
+    "อีเมลนี้มีบัญชีอยู่แล้ว กรุณาเข้าสู่ระบบด้วยช่องทางที่สมัครไว้",
+
+  "auth/account-exists-with-different-credential":
+    "อีเมลนี้สมัครผ่าน Google แล้ว กรุณาเข้าสู่ระบบด้วย Google",
+
+  "auth/credential-already-in-use":
+    "บัญชีนี้ถูกเชื่อมกับช่องทางเข้าสู่ระบบอื่นแล้ว",
+
+  "auth/weak-password":
+    "รหัสผ่านไม่ผ่านเงื่อนไขความปลอดภัย",
+
+  "auth/invalid-credential":
+    "อีเมลหรือข้อมูลยืนยันตัวตนไม่ถูกต้อง",
+
+  "auth/too-many-requests":
+    "มีการส่งคำขอหลายครั้งเกินไป กรุณารอสักครู่",
+
+  "auth/network-request-failed":
+    "ไม่สามารถเชื่อมต่อ Firebase ได้ กรุณาตรวจสอบอินเทอร์เน็ต",
+};
+  return messages[code] || error?.message || "ไม่สามารถสร้างบัญชี Firebase ได้";
+}
+
+async function getRegistrationCredential(
+  email,
+  password
+) {
+  if (!window.catmatchFirebase?.configured) {
+    throw new Error(
+      "ยังไม่ได้ตั้งค่า Firebase กรุณาตรวจสอบ client/js/firebase-config.js"
+    );
+  }
+
+  if (!email) {
+    const error = new Error(
+      "กรุณากรอกอีเมลก่อนสมัครสมาชิก"
+    );
+
+    error.code = "auth/missing-email";
+
+    throw error;
+  }
+
+  if (!password) {
+    const error = new Error(
+      "กรุณากรอกรหัสผ่านก่อนสมัครสมาชิก"
+    );
+
+    error.code = "auth/missing-password";
+
+    throw error;
+  }
+
+  if (password.length !== 10) {
+    const error = new Error(
+      "รหัสผ่านต้องมี 10 ตัวพอดี"
+    );
+
+    error.code = "auth/invalid-password-length";
+
+    throw error;
+  }
+
+  await window.catmatchFirebase
+    .useSessionPersistence();
+
+  /*
+   * หน้าสมัครต้องสร้างบัญชีใหม่เท่านั้น
+   * ห้ามนำบัญชีที่มีอยู่แล้วมาล็อกอินอัตโนมัติ
+   */
+  return window.catmatchFirebase
+    .createEmailAccount(
+      email,
+      password
+    );
+}
+
 async function submitRegistration(event) {
   event.preventDefault();
   if (!validateStep(3)) return;
@@ -1614,11 +1792,38 @@ async function submitRegistration(event) {
   clearStatus();
 
   const data = new FormData(form);
+  // อ่านช่องสำคัญจาก DOM โดยตรง เพราะบางเบราว์เซอร์หรือ password manager
+  // อาจไม่ส่งค่ารหัสผ่านมากับ FormData ในฟอร์มหลายขั้นตอน
+  const emailValue = document.getElementById("email")?.value?.trim().toLowerCase() || "";
+  const passwordValue = document.getElementById("password")?.value || "";
+  const confirmPasswordValue = document.getElementById("confirmPassword")?.value || "";
+
+  if (!emailValue) {
+    goToStep(1);
+    showFieldError(document.getElementById("email"), "กรุณากรอกอีเมล");
+    setLoading(false);
+    return;
+  }
+
+  if (!passwordValue) {
+    goToStep(1);
+    showFieldError(document.getElementById("password"), "กรุณากรอกรหัสผ่าน");
+    setLoading(false);
+    return;
+  }
+
+  if (passwordValue !== confirmPasswordValue) {
+    goToStep(1);
+    showFieldError(document.getElementById("confirmPassword"), "รหัสผ่านทั้งสองช่องไม่ตรงกัน");
+    setLoading(false);
+    return;
+  }
+
   const payload = {
     name: normalizeFullName(data.get("name")),
     username: data.get("username")?.trim(),
-    email: data.get("email")?.trim().toLowerCase(),
-    password: data.get("password"),
+    email: emailValue,
+    password: passwordValue,
     phone: getPhoneE164(),
     phone_country: data.get("phone_country"),
     birth_date: toIsoDate(data.get("birthDate")),
@@ -1633,9 +1838,15 @@ async function submitRegistration(event) {
   };
 
   try {
+    const credential = await getRegistrationCredential(payload.email, payload.password);
+    const firebaseIdToken = await window.catmatchFirebase.getIdToken(credential.user, true);
+
     const response = await fetch(REGISTER_ENDPOINT, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${firebaseIdToken}`
+      },
       body: JSON.stringify(payload)
     });
 
@@ -1652,6 +1863,8 @@ async function submitRegistration(event) {
       throw new Error(result.message || "ไม่สามารถสมัครสมาชิกได้ กรุณาลองใหม่อีกครั้ง");
     }
 
+    // หน้าเดิมแสดง modal แล้วให้ผู้ใช้ไปหน้า Login จึงออกจาก Firebase ก่อน
+    await window.catmatchFirebase.signOut().catch(() => {});
     clearRegisterDraft();
     successModal.hidden = false;
     successModal.classList.remove("is-celebrating");
@@ -1661,7 +1874,7 @@ async function submitRegistration(event) {
   } catch (error) {
     showStatus(error.message === "Failed to fetch"
       ? "เชื่อมต่อเซิร์ฟเวอร์ไม่ได้ กรุณาเปิด backend ที่ http://localhost:3000"
-      : error.message, "error");
+      : getRegistrationFirebaseError(error), "error");
   } finally {
     setLoading(false);
   }

@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>แบบประเมินค้นหาแมวที่ใช่ — CatMatch</title>
+  <meta name="description" content="ตอบแบบประเมินเพื่อค้นหาสายพันธุ์แมวที่เหมาะกับไลฟ์สไตล์ของคุณ">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700;800&family=Zen+Maru+Gothic:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/design-system.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/assessment.css?v=53">
+  <link rel="stylesheet" href="../css/global-settings.css?v=9">
+  <link rel="stylesheet" href="../css/page-proportion-fix.css?v=1">
+  <script src="../js/global-settings.js?v=6"></script>
+  <link rel="stylesheet" href="../css/page-ambient.css?v=1">
+  <script src="../js/api-config.js?v=1"></script>
+<link rel="stylesheet" href="../css/chat-nav.css?v=1">
+</head>
+<body class="assessment-page catmatch-index-ambient">
+  <a class="skip-link" href="#assessmentContent">ข้ามไปยังแบบประเมิน</a>
+  <div class="sakura-scene" aria-hidden="true">
+    <div class="falling-petals">
+      <span class="falling-petal petal-1"></span>
+      <span class="falling-petal petal-2"></span>
+      <span class="falling-petal petal-3"></span>
+      <span class="falling-petal petal-4"></span>
+      <span class="falling-petal petal-5"></span>
+      <span class="falling-petal petal-6"></span>
+      <span class="falling-petal petal-7"></span>
+      <span class="falling-petal petal-8"></span>
+      <span class="falling-petal petal-9"></span>
+      <span class="falling-petal petal-10"></span>
+      <span class="falling-petal petal-11"></span>
+      <span class="falling-petal petal-12"></span>
+      <span class="falling-petal petal-13"></span>
+      <span class="falling-petal petal-14"></span>
+      <span class="falling-petal petal-15"></span>
+      <span class="falling-petal petal-16"></span>
+    </div>
+  </div>
+
+  <header class="site-header assessment-header" id="siteHeader">
+    <div class="container nav-shell">
+      <a class="brand" href="./index.html" aria-label="CatMatch หน้าแรก">
+        <span class="brand-logo" aria-hidden="true">
+          <svg viewBox="0 0 64 64" class="cute-cat-icon">
+            <path d="M17 23 14 11l10 6c5-2 11-2 16 0l10-6-3 12c4 4 6 8 6 14 0 12-9 20-21 20S11 49 11 37c0-6 2-10 6-14Z"/>
+            <path d="M24 33h.01M40 33h.01M30 39c1.5 1 2.5 1 4 0M32 35v2M24 40l-7 1M40 40l7 1M23 45l-6 4M41 45l6 4"/>
+          </svg>
+        </span>
+        <span class="brand-text"><strong>CatMatch</strong><small>แมวที่ใช่ สำหรับคุณ</small></span>
+      </a>
+
+      <nav class="main-nav assessment-main-nav" aria-label="เมนูหลัก">
+        <a class="nav-link" href="./index.html">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m3 11 9-8 9 8M5 10v10h14V10M9 20v-6h6v6"/>
+          </svg>
+          <span>หน้าหลัก</span>
+        </a>
+
+        <a class="nav-link is-active" href="./assessment.html" aria-current="page">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6 4h12v16H6z"/>
+            <path d="M9 8h6M9 12h6M9 16h4"/>
+            <path d="m16 15 1.5 1.5L20 13.5"/>
+          </svg>
+          <span>แบบประเมิน</span>
+        </a>
+
+        <a class="nav-link" href="./cat-breeds.html">
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="cute-cat-nav">
+            <path d="M6.5 9 5 4l4 2.5c2-.8 4-.8 6 0L19 4l-1.5 5c1.7 1.6 2.5 3.4 2.5 5.5C20 18 16.8 20 12 20s-8-2-8-5.5C4 12.4 4.8 10.6 6.5 9Z"/>
+            <path d="M9.5 13h.01M14.5 13h.01M10.5 16c1 .8 2.5.8 3.5 0"/>
+          </svg>
+          <span>แมวของเรา</span>
+        </a>
+
+
+        <a class="nav-link" href="./index.html#about">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="6"/>
+            <path d="m20 20-4-4"/>
+          </svg>
+          <span>เกี่ยวกับเรา</span>
+        </a>
+      </nav>
+
+      <div
+        class="user-nav-actions"
+        id="assessmentAccount"
+        hidden
+      >
+        <button
+          class="user-menu-trigger"
+          id="userMenuTrigger"
+          type="button"
+          aria-expanded="false"
+          aria-controls="userMenuPanel"
+        >
+          <span
+            class="user-avatar"
+            id="assessmentAvatar"
+            aria-hidden="true"
+          >
+            U
+          </span>
+
+          <span class="user-summary">
+            <strong id="assessmentUserName">
+              ผู้ใช้งาน
+            </strong>
+
+            <small>บัญชีของฉัน</small>
+          </span>
+
+          <svg
+            class="user-menu-chevron"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path d="m7 10 5 5 5-5"/>
+          </svg>
+        </button>
+
+        <div
+          class="user-menu-panel"
+          id="userMenuPanel"
+          hidden
+        >
+          <div class="user-menu-account">
+            <span
+              class="user-menu-avatar"
+              id="userMenuAvatar"
+              aria-hidden="true"
+            >
+              U
+            </span>
+
+            <span>
+              <strong id="userMenuName">
+                ผู้ใช้งาน
+              </strong>
+
+              <small id="userMenuEmail"></small>
+            </span>
+          </div>
+
+          <div class="account-menu-group">
+            <small class="account-menu-label">
+              กิจกรรมของฉัน
+            </small>
+
+            <a
+              class="account-menu-item"
+              href="./adoption-requests.html"
+            >
+              <span
+                class="account-menu-icon"
+                aria-hidden="true"
+              >
+                ♡
+              </span>
+
+              <span>
+                <strong>
+                  คำขออุปการะของฉัน
+                </strong>
+
+                <small>
+                  ติดตามสถานะคำขอที่ส่งไปยังฟาร์ม
+                </small>
+              </span>
+            </a>
+
+            <a
+              class="account-menu-item"
+              href="./notifications.html"
+            >
+              <span
+                class="account-menu-icon"
+                aria-hidden="true"
+              >
+                ◷
+              </span>
+
+              <span>
+                <strong>การแจ้งเตือน</strong>
+
+                <small>
+                  ดูการตอบกลับและความเคลื่อนไหวล่าสุด
+                </small>
+              </span>
+            </a>
+
+            <a
+              class="account-menu-item"
+              href="./favorites.html"
+            >
+              <span
+                class="account-menu-icon account-menu-heart"
+                aria-hidden="true"
+              >
+                ♥
+              </span>
+
+              <span>
+                <strong>แมวที่ถูกใจ</strong>
+
+                <small>
+                  สายพันธุ์ที่คุณบันทึกไว้
+                </small>
+              </span>
+            </a>
+          </div>
+
+          <div class="account-menu-group">
+            <small class="account-menu-label">
+              จัดการบัญชี
+            </small>
+
+            <a
+              class="account-menu-item"
+              id="accountInfoButton"
+              href="./account-info.html"
+            >
+              <span
+                class="account-menu-icon"
+                aria-hidden="true"
+              >
+                ♙
+              </span>
+
+              <span>
+                <strong>ข้อมูลบัญชี</strong>
+
+                <small>
+                  ชื่อบัญชี อีเมล และข้อมูลส่วนตัว
+                </small>
+              </span>
+            </a>
+
+            <button
+              class="account-menu-item account-menu-button"
+              id="accountSettingsButton"
+              type="button"
+            >
+              <span
+                class="account-menu-icon"
+                aria-hidden="true"
+              >
+                ⚙
+              </span>
+
+              <span>
+                <strong>การตั้งค่า</strong>
+
+                <small>
+                  ตั้งค่าการใช้งาน CatMatch
+                </small>
+              </span>
+            </button>
+          </div>
+
+          <button
+            class="logout-button"
+            id="logoutButton"
+            type="button"
+          >
+            <span aria-hidden="true">↪</span>
+            <span>ออกจากระบบ</span>
+          </button>
+        </div>
+      </div>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="เปิดเมนู" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main id="assessmentContent" class="assessment-main">
+    <section class="assessment-hero">
+      <div class="container assessment-hero__inner">
+        <div>
+          <p class="assessment-kicker">PERSONALITY × LIFESTYLE</p>
+          <h1>ค้นหาแมวที่เข้ากับ<br><span>ชีวิตของคุณจริง ๆ</span></h1>
+          <p>ไม่มีคำตอบถูกหรือผิด เลือกคำตอบที่ใกล้เคียงตัวคุณมากที่สุด ระบบจะนำไปคำนวณและจัดอันดับสายพันธุ์ที่เหมาะสม</p>
+        </div>
+        <div class="assessment-hero__note">
+          <span class="assessment-hero__note-icon" aria-hidden="true">♡</span>
+          <div><strong>ใช้เวลาประมาณ 8–12 นาที</strong><small>ระบบบันทึกคำตอบร่างให้อัตโนมัติในอุปกรณ์นี้</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container assessment-shell">
+      <aside class="assessment-sidebar" aria-label="ความคืบหน้าแบบประเมิน">
+        <div class="assessment-progress-card">
+          <div class="assessment-progress-card__head">
+            <span>ความคืบหน้า</span><strong id="progressPercent">0%</strong>
+          </div>
+          <div class="assessment-progress-track" aria-hidden="true"><span id="progressFill"></span></div>
+          <p><strong id="answeredCount">0</strong> จาก <span id="totalQuestionCount">100</span> ข้อ</p>
+        </div>
+
+        <div class="assessment-guide">
+          <p class="assessment-guide__eyebrow">วิธีตอบ</p>
+          <h2>ตอบตามตัวตนจริง</h2>
+          <ul>
+            <li><span>1</span>อ่านสถานการณ์สั้น ๆ</li>
+            <li><span>2</span>เลือกตัวเลือกที่ใกล้คุณที่สุด</li>
+            <li><span>3</span>ตรวจคำตอบก่อนส่งผล</li>
+          </ul>
+        </div>
+
+      </aside>
+
+      <section class="assessment-card" aria-live="polite">
+        <div id="loginGate" class="assessment-gate" hidden>
+          <div class="assessment-gate__icon" aria-hidden="true">⌂</div>
+          <p class="assessment-kicker">เข้าสู่ระบบก่อนเริ่ม</p>
+          <h2>ผลลัพธ์นี้จะบันทึกไว้ในบัญชีของคุณ</h2>
+          <p>กรุณาเข้าสู่ระบบด้วยบัญชีผู้ใช้งานทั่วไป เพื่อทำแบบประเมินและดูประวัติคำแนะนำภายหลัง</p>
+          <a class="assessment-primary-button" href="./login.html?return=assessment">ไปหน้าเข้าสู่ระบบ <span>→</span></a>
+        </div>
+
+
+        <div id="startGate" class="assessment-gate assessment-start-gate" hidden>
+          <div class="assessment-gate__icon" aria-hidden="true">♡</div>
+          <p class="assessment-kicker">พร้อมเริ่มทำแบบประเมิน</p>
+          <h2>ค้นหาแมวที่เข้ากับชีวิตของคุณ</h2>
+          <p>แบบประเมินมี 100 ข้อ ระบบจะแสดงคำถามให้ทำทีละชุด ใช้เวลาประมาณ 8–12 นาที</p>
+       <div class="assessment-start-actions">
+  <button
+    class="assessment-primary-button"
+    id="startAssessmentButton"
+    type="button"
+  >
+    เริ่มทำแบบประเมิน <span>→</span>
+  </button>
+
+  <a
+    class="assessment-secondary-button"
+    href="./assessment-history.html"
+  >
+    ดูประวัติแบบประเมิน
+  </a>
+</div>
+        </div>
+
+        <div id="loadingState" class="assessment-loading">
+          <div class="assessment-loading__header"><span></span><span></span></div>
+          <div class="assessment-loading__question"></div>
+          <div class="assessment-loading__option"></div><div class="assessment-loading__option"></div><div class="assessment-loading__option"></div>
+        </div>
+
+        <div id="errorState" class="assessment-error" hidden>
+          <div aria-hidden="true">!</div>
+          <h2>โหลดคำถามไม่สำเร็จ</h2>
+          <p id="errorMessage">กรุณาตรวจสอบว่า Backend เปิดอยู่ แล้วลองใหม่อีกครั้ง</p>
+          <button class="assessment-secondary-button" id="retryButton" type="button">ลองโหลดอีกครั้ง</button>
+        </div>
+
+        <div id="questionnaire" hidden>
+          <div class="assessment-card__header">
+            <div>
+              <p class="assessment-kicker" id="sectionLabel">คำถามส่วนที่ 1</p>
+              <h2 id="pageTitle">ทำความรู้จักไลฟ์สไตล์ของคุณ</h2>
+            </div>
+
+          </div>
+
+          <form id="assessmentForm" novalidate>
+            <div class="assessment-questions" id="questionList"></div>
+            <div class="assessment-inline-message" id="formMessage" role="alert" hidden></div>
+            <div class="assessment-actions">
+              <button class="assessment-secondary-button" id="previousButton" type="button">← ย้อนกลับ</button>
+              <button class="assessment-primary-button" id="nextButton" type="button">ถัดไป <span>→</span></button>
+              <button class="assessment-primary-button assessment-submit-button" id="submitButton" type="submit" hidden>
+                <span class="submit-label">ดูผลลัพธ์ของฉัน</span><span class="submit-loading" hidden>กำลังคำนวณผล...</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <dialog class="assessment-dialog" id="assessmentDialog" aria-labelledby="assessmentDialogTitle" hidden>
+    <button class="assessment-dialog__backdrop" type="button" data-dialog-close aria-label="ปิด"></button>
+    <div class="assessment-dialog__card">
+      <div class="assessment-dialog__icon" aria-hidden="true">♡</div>
+      <p class="assessment-kicker">พร้อมส่งคำตอบแล้ว</p>
+      <h2 id="assessmentDialogTitle">ตรวจครบทั้ง 100 ข้อแล้ว</h2>
+      <p>ระบบจะคำนวณคะแนนจากบุคลิกและไลฟ์สไตล์ เพื่อจัดอันดับแมวที่เหมาะกับคุณมากที่สุด</p>
+      <div class="assessment-dialog__actions">
+        <button class="assessment-secondary-button" type="button" data-dialog-close>กลับไปตรวจ</button>
+        <button class="assessment-primary-button" id="confirmSubmitButton" type="button">ยืนยันและคำนวณผล</button>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="../js/assessment.js?v=44"></script>
+  <script src="../js/profile-avatar.js?v=7"></script>
+  <script src="../js/chat-api.js?v=6"></script>
+  <script src="../js/chat-nav.js?v=7"></script>
+</body>
+</html>

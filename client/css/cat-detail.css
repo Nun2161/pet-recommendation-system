@@ -465,3 +465,512 @@ button, input, select { font: inherit; }
   .detail-image-frame { min-height: 310px; padding: 10px; }
   .trait-row { grid-template-columns: 100px 1fr 42px; gap: 9px; font-size: .84rem; }
 }
+
+
+/* รอบแก้ไข: แสดงระดับแบบกระชับ ไม่พิมพ์คำว่า มาก/ปานกลาง/น้อยซ้ำทุกบรรทัด */
+.score-panel .section-heading.compact > p:last-child {
+  max-width: 720px;
+  margin-bottom: 0;
+}
+
+.trait-detail-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.trait-detail-row,
+.trait-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  min-width: 0;
+  padding: 14px 15px;
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, .88);
+}
+
+.trait-detail-row > span {
+  overflow: hidden;
+  color: var(--color-text);
+  font-size: .88rem;
+  font-weight: 700;
+  line-height: 1.35;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.trait-level-meter,
+.trait-row > .trait-level-meter {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 5px;
+  height: auto;
+  overflow: visible;
+  border-radius: 0;
+  background: transparent;
+}
+
+.trait-level-meter i,
+.trait-row .trait-level-meter i {
+  display: block;
+  height: 7px;
+  border-radius: 999px;
+  background: #e5edf2;
+}
+
+.trait-level-meter i.is-active,
+.trait-row .trait-level-meter i.is-active {
+  background: linear-gradient(90deg, var(--summer-blue), var(--summer-blue-deep));
+}
+
+@media (max-width: 1050px) {
+  .trait-detail-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 620px) {
+  .trait-detail-grid { grid-template-columns: 1fr; }
+  .trait-detail-row,
+  .trait-row { grid-template-columns: 1fr; padding: 13px 14px; }
+}
+.trait-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 22px;
+  margin-top: 28px;
+}
+
+/* กล่องหมวดหลัก */
+.trait-group {
+  min-width: 0;
+  padding: 24px;
+  border: 1px solid var(--color-border);
+  border-radius: 24px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.96),
+      rgba(247, 251, 254, 0.88)
+    );
+  box-shadow: 0 12px 32px rgba(82, 95, 109, 0.06);
+}
+
+/* หัวข้อของแต่ละหมวด */
+.trait-group-heading {
+  max-width: 760px;
+  margin-bottom: 20px;
+}
+
+.trait-group-heading h3 {
+  margin: 0 0 6px;
+  color: var(--color-text);
+  font-size: 1.16rem;
+  line-height: 1.4;
+}
+
+.trait-group-heading p {
+  margin: 0;
+  color: var(--color-text-soft);
+  font-size: 0.86rem;
+  line-height: 1.7;
+}
+
+/* รายการคุณลักษณะภายในแต่ละหมวด */
+.trait-group-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+/* การ์ดข้อมูลแต่ละด้าน */
+.trait-group .trait-detail-row {
+  min-width: 0;
+  min-height: 86px;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-content: space-between;
+  gap: 12px;
+  padding: 14px 15px;
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.92);
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.trait-group .trait-detail-row:hover {
+  transform: translateY(-2px);
+  border-color: rgba(104, 167, 213, 0.34);
+  box-shadow: 0 9px 22px rgba(82, 95, 109, 0.08);
+}
+
+/*
+ * CSS เดิมกำหนด white-space: nowrap
+ * ทำให้ชื่อหัวข้อยาวถูกตัด จึงเปลี่ยนให้ขึ้นบรรทัดได้
+ */
+.trait-group .trait-detail-row > span {
+  display: block;
+  overflow: visible;
+  color: var(--color-text);
+  font-size: 0.86rem;
+  font-weight: 700;
+  line-height: 1.5;
+  text-overflow: initial;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+/* แถบระดับ 5 ช่อง */
+.trait-group .trait-level-meter {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 5px;
+  height: auto;
+  overflow: visible;
+  background: transparent;
+}
+
+/* ช่องที่ยังไม่มีค่า */
+.trait-group .trait-level-meter i {
+  display: block;
+  width: 100%;
+  height: 7px;
+  border-radius: 999px;
+  background: #e5edf2;
+}
+
+/* ช่องที่ตรงกับค่าคุณลักษณะ */
+.trait-group .trait-level-meter i.is-active {
+  background:
+    linear-gradient(
+      90deg,
+      var(--summer-blue),
+      var(--summer-blue-deep)
+    );
+  box-shadow: 0 2px 7px rgba(104, 167, 213, 0.2);
+}
+
+/* สีพื้นหมวดต่างกันเล็กน้อยเพื่อช่วยแยกข้อมูล */
+.trait-group:nth-child(1) {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.97),
+      rgba(255, 244, 248, 0.82)
+    );
+}
+
+.trait-group:nth-child(2) {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.97),
+      rgba(239, 249, 255, 0.86)
+    );
+}
+
+.trait-group:nth-child(3) {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.97),
+      rgba(255, 250, 230, 0.72)
+    );
+}
+
+/* =========================================================
+   Responsive
+   ========================================================= */
+
+@media (max-width: 1050px) {
+  .trait-group-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 680px) {
+  .trait-group {
+    padding: 19px;
+    border-radius: 20px;
+  }
+
+  .trait-group-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .trait-group .trait-detail-row {
+    min-height: 76px;
+    padding: 13px 14px;
+  }
+
+  .trait-group-heading h3 {
+    font-size: 1.05rem;
+  }
+
+  .trait-group-heading p {
+    font-size: 0.82rem;
+  }
+}
+.detail-tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 22px;
+}
+
+/* แท็กที่กดเพื่อดูสายพันธุ์ที่เกี่ยวข้อง */
+.detail-tag-link {
+  position: relative;
+  max-width: 100%;
+  min-height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 7px 12px;
+  overflow: hidden;
+  border: 1px solid rgba(213, 165, 183, 0.2);
+  border-radius: 999px;
+  color: #6e5660;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(247, 217, 228, 0.72),
+      rgba(247, 232, 168, 0.5)
+    );
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1.35;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+/* ลูกศรเล็กเพื่อบอกว่ากดเปิดหน้าที่เกี่ยวข้องได้ */
+.detail-tag-link::after {
+  content: "›";
+  flex: 0 0 auto;
+  color: var(--summer-blue-deep);
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.detail-tag-link:hover {
+  transform: translateY(-2px);
+  border-color: rgba(108, 158, 200, 0.38);
+  color: var(--summer-blue-deep);
+  box-shadow: 0 7px 18px rgba(97, 110, 126, 0.1);
+}
+
+.detail-tag-link:focus-visible {
+  outline: 3px solid rgba(108, 158, 200, 0.22);
+  outline-offset: 2px;
+}
+
+/*
+ * เปลี่ยนพื้นสีสลับกันเล็กน้อย
+ * เพื่อให้ดูง่าย แต่ไม่ใช้สีมากจนรก
+ */
+.detail-tag-link:nth-child(3n + 2) {
+  border-color: rgba(108, 158, 200, 0.18);
+  background:
+    linear-gradient(
+      135deg,
+      rgba(237, 248, 251, 0.95),
+      rgba(239, 249, 255, 0.76)
+    );
+}
+
+.detail-tag-link:nth-child(3n + 3) {
+  border-color: rgba(213, 187, 111, 0.2);
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 247, 220, 0.94),
+      rgba(255, 250, 235, 0.78)
+    );
+}
+
+/* ป้องกันแท็กเก่าที่เป็น span แสดงรูปแบบต่างกัน */
+.detail-tags > span {
+  display: none;
+}
+
+/* ไม่ให้แท็กเยอะจนกินพื้นที่หน้ารายละเอียดเกินไป */
+.detail-tag-link:nth-child(n + 9) {
+  display: none;
+}
+
+@media (max-width: 620px) {
+  .detail-tags {
+    gap: 7px;
+    margin-top: 19px;
+  }
+
+  .detail-tag-link {
+    min-height: 34px;
+    padding: 6px 10px;
+    font-size: 0.76rem;
+  }
+}
+
+/* =========================================================
+   แถบคะแนนหน้าแมวแบบอ่านง่าย: แถบเดียว + คะแนน 1–5
+   ========================================================= */
+.trait-group .trait-detail-row.cat-trait-card {
+  min-height: 128px;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-content: space-between;
+  gap: 13px;
+  padding: 17px 18px;
+  border: 1px solid rgba(104, 167, 213, .22);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, .95);
+  box-shadow: 0 7px 20px rgba(82, 95, 109, .05);
+}
+
+.trait-group .trait-detail-row.cat-trait-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(104, 167, 213, .42);
+  box-shadow: 0 12px 27px rgba(82, 95, 109, .09);
+}
+
+.cat-trait-card__head,
+.cat-trait-card__foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.cat-trait-card__head > span {
+  min-width: 0;
+  color: var(--color-text);
+  font-size: .91rem;
+  font-weight: 750;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.cat-trait-score {
+  flex: 0 0 auto;
+  min-width: 55px;
+  padding: 6px 10px;
+  border: 1px solid rgba(104, 167, 213, .2);
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(139, 188, 224, .16), rgba(247, 217, 228, .32));
+  color: #4d7898;
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1;
+  text-align: center;
+}
+
+.cat-trait-score small {
+  margin-left: 2px;
+  color: #7b8790;
+  font-size: .72rem;
+  font-weight: 700;
+}
+
+.cat-trait-progress {
+  position: relative;
+  width: 100%;
+  height: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(104, 167, 213, .12);
+  border-radius: 999px;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(104, 167, 213, .10) 0,
+      rgba(104, 167, 213, .10) calc(20% - 1px),
+      rgba(255, 255, 255, .94) calc(20% - 1px),
+      rgba(255, 255, 255, .94) 20%
+    ),
+    #eaf1f5;
+}
+
+.cat-trait-progress__fill {
+  display: block;
+  width: var(--trait-width);
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--summer-blue), var(--summer-blue-deep));
+  box-shadow: 0 2px 7px rgba(104, 167, 213, .22);
+  transition: width .35s ease;
+}
+
+.cat-trait-card__foot > strong {
+  color: #4d7898;
+  font-size: .9rem;
+  font-weight: 800;
+}
+
+.cat-trait-card__foot > small {
+  color: var(--color-text-soft);
+  font-size: .76rem;
+  font-weight: 600;
+}
+
+html[data-catmatch-theme="dark"] .trait-group .trait-detail-row.cat-trait-card {
+  border-color: rgba(178, 210, 229, .2);
+  background: rgba(37, 51, 61, .94);
+  box-shadow: none;
+}
+
+html[data-catmatch-theme="dark"] .cat-trait-card__head > span,
+html[data-catmatch-theme="dark"] .cat-trait-card__foot > strong {
+  color: #f1f6f8;
+}
+
+html[data-catmatch-theme="dark"] .cat-trait-score {
+  border-color: rgba(178, 210, 229, .24);
+  background: rgba(139, 188, 224, .14);
+  color: #edf4f7;
+}
+
+html[data-catmatch-theme="dark"] .cat-trait-score small,
+html[data-catmatch-theme="dark"] .cat-trait-card__foot > small {
+  color: #b7c5cd;
+}
+
+html[data-catmatch-theme="dark"] .cat-trait-progress {
+  border-color: rgba(178, 210, 229, .15);
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(178, 210, 229, .10) 0,
+      rgba(178, 210, 229, .10) calc(20% - 1px),
+      rgba(37, 51, 61, .92) calc(20% - 1px),
+      rgba(37, 51, 61, .92) 20%
+    ),
+    #30414d;
+}
+
+html[data-catmatch-theme="dark"] .cat-trait-progress__fill {
+  background: linear-gradient(90deg, #8bbce0, #d9a3b8);
+}
+
+@media (max-width: 680px) {
+  .trait-group .trait-detail-row.cat-trait-card {
+    min-height: 116px;
+    padding: 15px 16px;
+  }
+
+  .cat-trait-card__head > span {
+    font-size: .88rem;
+  }
+}

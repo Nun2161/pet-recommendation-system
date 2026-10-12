@@ -1,0 +1,1123 @@
+
+:root{--farm-blue:#6ca2cf;--farm-blue-deep:#477d9f;--farm-pink:#e985aa;--farm-pink-soft:#fff0f5;--farm-cream:#fffaf4;--farm-ink:#34383b;--farm-soft:#7b8084;--farm-line:#dfe8ef;--farm-green:#5f9b83;--farm-gold:#e4b661}.farm-dashboard-page{margin:0;min-height:100vh;color:var(--farm-ink);background:linear-gradient(135deg,#fffaf6 0%,#f4fbff 52%,#fff7fa 100%);font-family:"Noto Sans Thai",sans-serif}.farm-dashboard-page *{box-sizing:border-box}.farm-topbar{position:sticky;top:0;z-index:40;height:84px;display:flex;align-items:center;justify-content:space-between;padding:0 34px;border-bottom:1px solid rgba(108,162,207,.16);background:rgba(255,252,250,.9);backdrop-filter:blur(16px)}.farm-brand{display:flex;align-items:center;gap:13px;color:inherit;text-decoration:none}.farm-brand-mark{width:52px;height:52px;display:grid;place-items:center;border:1px solid #dce9f3;border-radius:18px;color:var(--farm-blue);background:#fff}.farm-brand-mark svg{width:34px;fill:none;stroke:currentColor;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}.farm-brand strong,.farm-brand small{display:block}.farm-brand strong{font:700 1.3rem "Zen Maru Gothic",sans-serif}.farm-brand small{color:var(--farm-soft);font-size:.74rem}.farm-topbar-account{display:flex;align-items:center;gap:14px}.approved-pill{display:inline-flex;align-items:center;padding:7px 12px;border-radius:999px;color:#477c69;background:#eaf7f1;font-size:.76rem;font-weight:800}.farm-topbar-account button{border:0;color:#a06276;background:transparent;font-weight:800;cursor:pointer}.farm-dashboard-shell{display:grid;grid-template-columns:270px minmax(0,1fr);min-height:calc(100vh - 84px)}.farm-sidebar{position:sticky;top:84px;height:calc(100vh - 84px);padding:24px 18px;border-right:1px solid rgba(108,162,207,.16);background:rgba(255,255,255,.62)}.farm-profile-mini{display:flex;align-items:center;gap:12px;padding:14px;margin-bottom:20px;border:1px solid var(--farm-line);border-radius:20px;background:#fff}.farm-profile-mini>span,.profile-hero>span{width:46px;height:46px;display:grid;place-items:center;border-radius:16px;color:#fff;background:linear-gradient(145deg,var(--farm-blue),#8fc0e4);font-weight:800}.farm-profile-mini strong,.farm-profile-mini small{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.farm-profile-mini strong{max-width:155px}.farm-profile-mini small{max-width:155px;color:var(--farm-soft);font-size:.7rem}.farm-sidebar nav{display:grid;gap:7px}.farm-nav-item{width:100%;display:grid;grid-template-columns:24px 1fr auto;align-items:center;gap:12px;padding:13px 14px;border:0;border-radius:15px;color:#6e757a;background:transparent;text-align:left;font:700 .9rem inherit;cursor:pointer}.farm-nav-item svg{width:21px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}.farm-nav-item b{min-width:25px;padding:2px 7px;border-radius:999px;text-align:center;background:#eef3f7;font-size:.68rem}.farm-nav-item:hover,.farm-nav-item.is-active{color:var(--farm-blue-deep);background:linear-gradient(90deg,#eef7ff,#fff4f7)}.farm-nav-item.is-active{box-shadow:inset 3px 0 var(--farm-blue)}.farm-help-card{position:absolute;left:18px;right:18px;bottom:22px;padding:17px;border-radius:20px;background:linear-gradient(145deg,#fff3f7,#f3f9ff);font-size:.78rem}.farm-help-card>span{width:28px;height:28px;display:grid;place-items:center;float:left;margin-right:9px;border-radius:50%;color:#fff;background:var(--farm-pink);font-weight:800}.farm-help-card strong{display:block}.farm-help-card p{clear:both;margin:11px 0 0;color:var(--farm-soft);line-height:1.55}.farm-main{padding:38px clamp(24px,4vw,58px) 70px}.farm-panel[hidden]{display:none}.farm-panel.is-active{animation:panelIn .28s ease both}@keyframes panelIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}.farm-page-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;margin-bottom:28px}.farm-page-heading.compact{margin-bottom:24px}.farm-eyebrow{margin:0 0 5px;color:var(--farm-blue);font-size:.73rem;font-weight:800;letter-spacing:.08em}.farm-page-heading h1{margin:0;font-size:clamp(2rem,4vw,3.2rem);line-height:1.16}.farm-page-heading p:not(.farm-eyebrow){margin:8px 0 0;color:var(--farm-soft)}.farm-primary-action,.farm-secondary-action{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 19px;border-radius:999px;font:800 .86rem inherit;text-decoration:none;cursor:pointer}.farm-primary-action{border:0;color:#fff;background:linear-gradient(135deg,var(--farm-blue),#79acd3);box-shadow:0 10px 24px rgba(108,162,207,.24)}.farm-secondary-action{border:1px solid var(--farm-line);color:var(--farm-blue-deep);background:#fff}.farm-stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}.farm-stats-grid article{display:flex;align-items:center;gap:14px;padding:20px;border:1px solid rgba(108,162,207,.16);border-radius:23px;background:rgba(255,255,255,.88);box-shadow:0 12px 34px rgba(74,100,120,.07)}.stat-icon{width:48px;height:48px;display:grid;place-items:center;border-radius:16px;font-size:1.2rem}.stat-icon.blue{color:#477d9f;background:#edf7ff}.stat-icon.green{color:#4f866f;background:#ebf7f1}.stat-icon.pink{color:#b96885;background:#fff0f5}.stat-icon.gold{color:#9a7439;background:#fff5df}.farm-stats-grid small,.farm-stats-grid strong{display:block}.farm-stats-grid small{color:var(--farm-soft);font-size:.73rem}.farm-stats-grid strong{margin-top:3px;font-size:1.8rem}.farm-stats-grid .status-word{font-size:1rem;color:var(--farm-green)}.farm-get-started,.farm-card,.farm-form-card{padding:25px;border:1px solid rgba(108,162,207,.17);border-radius:27px;background:rgba(255,255,255,.9);box-shadow:0 14px 38px rgba(74,100,120,.07)}.section-title{display:flex;align-items:center;justify-content:space-between;gap:16px}.section-title h2{margin:0}.section-title button{border:0;color:var(--farm-blue-deep);background:transparent;font-weight:800;cursor:pointer}.setup-progress{height:7px;margin:17px 0 20px;border-radius:99px;background:#e8eef2;overflow:hidden}.setup-progress span{display:block;width:33%;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--farm-pink),var(--farm-blue));transition:width .3s}.setup-list{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.setup-list button{display:grid;grid-template-columns:38px 1fr auto;gap:11px;align-items:center;padding:15px;border:1px solid var(--farm-line);border-radius:18px;background:#fff;text-align:left;cursor:pointer}.setup-list button>span{width:36px;height:36px;display:grid;place-items:center;border-radius:50%;color:#6f7980;background:#edf1f4;font-weight:800}.setup-list .is-complete>span{color:#fff;background:var(--farm-green)}.setup-list strong,.setup-list small{display:block}.setup-list small{margin-top:3px;color:var(--farm-soft);font-size:.7rem;line-height:1.4}.setup-list b{color:var(--farm-blue-deep);font-size:.72rem}.farm-two-column{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:20px}.mini-animal-list,.mini-request-list{display:grid;gap:10px;margin-top:17px}.mini-row{display:flex;align-items:center;gap:12px;padding:11px;border-radius:16px;background:#f8fbfd}.mini-row img,.mini-placeholder{width:48px;height:48px;border-radius:14px;object-fit:cover}.mini-placeholder{display:grid;place-items:center;color:var(--farm-blue);background:#eaf5fc}.mini-row div{min-width:0;flex:1}.mini-row strong,.mini-row small{display:block}.mini-row small{color:var(--farm-soft);font-size:.72rem}.empty-mini{padding:22px;text-align:center;color:var(--farm-soft)}.farm-toolbar{display:flex;gap:12px;margin-bottom:18px}.farm-toolbar input,.farm-toolbar select{height:48px;border:1px solid var(--farm-line);border-radius:15px;background:#fff;padding:0 15px;font:inherit}.farm-toolbar input{flex:1}.animal-card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}.animal-card{overflow:hidden;border:1px solid var(--farm-line);border-radius:24px;background:#fff}.animal-card-media{height:190px;background:linear-gradient(135deg,#edf7ff,#fff0f5)}.animal-card-media img{width:100%;height:100%;object-fit:cover}.animal-card-media .no-image{height:100%;display:grid;place-items:center;color:var(--farm-blue);font-size:3rem}.animal-card-body{padding:17px}.animal-card-body h3{margin:0}.animal-meta{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}.animal-meta span,.animal-status{padding:5px 9px;border-radius:999px;background:#f1f5f7;color:#687078;font-size:.7rem}.animal-status.available{color:#477c69;background:#eaf7f1}.animal-status.adopted{color:#9b6575;background:#fff0f5}.animal-card-actions{display:flex;gap:8px;margin-top:13px}.animal-card-actions button{flex:1;min-height:38px;border:1px solid var(--farm-line);border-radius:12px;background:#fff;font-weight:700;cursor:pointer}.farm-form-card{max-width:900px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.form-grid label>span{display:block;margin-bottom:8px;font-weight:800}.form-grid b{color:#df6870}.form-grid input,.form-grid select,.form-grid textarea{width:100%;border:1px solid var(--farm-line);border-radius:16px;background:#fff;padding:13px 15px;font:inherit}.form-grid .full{grid-column:1/-1}.farm-form-message{min-height:24px;margin-top:12px;color:#c25966}.farm-form-message.is-success{color:var(--farm-green)}.form-actions{display:flex;gap:11px;margin-top:17px}.request-filter-tabs{display:flex;gap:8px;margin-bottom:18px}.request-filter-tabs button{padding:9px 14px;border:1px solid var(--farm-line);border-radius:999px;background:#fff;font-weight:700;cursor:pointer}.request-filter-tabs button.is-active{color:#fff;border-color:var(--farm-blue);background:var(--farm-blue)}.request-list{display:grid;gap:15px}.request-card{display:grid;grid-template-columns:72px 1fr auto;gap:16px;align-items:center;padding:18px;border:1px solid var(--farm-line);border-radius:23px;background:#fff}.request-card img,.request-card .request-image-placeholder{width:72px;height:72px;border-radius:18px;object-fit:cover}.request-image-placeholder{display:grid;place-items:center;color:var(--farm-blue);background:#edf7ff;font-size:1.5rem}.request-card h3{margin:0}.request-card p{margin:5px 0;color:var(--farm-soft);font-size:.8rem}.request-actions{display:flex;gap:8px}.request-actions button{padding:9px 12px;border-radius:12px;font-weight:800;cursor:pointer}.request-actions .approve{border:0;color:#fff;background:var(--farm-green)}.request-actions .reject{border:1px solid #f0cbd6;color:#a75e75;background:#fff5f8}.profile-layout{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(260px,.7fr);gap:18px}.profile-hero{display:flex;align-items:center;gap:16px;margin-bottom:22px}.profile-hero>span{width:64px;height:64px;font-size:1.4rem}.profile-hero h2{margin:0}.profile-hero p{margin:3px 0 8px;color:var(--farm-soft)}.profile-main dl{margin:0}.profile-main dl div{display:grid;grid-template-columns:145px 1fr;padding:13px 0;border-top:1px solid #edf1f4}.profile-main dt{color:var(--farm-soft)}.profile-main dd{margin:0;font-weight:700}.profile-note{text-align:center}.profile-note-icon{width:58px;height:58px;display:grid;place-items:center;margin:0 auto 13px;border-radius:20px;color:var(--farm-blue);background:#edf7ff;font-size:1.5rem}.profile-note p{color:var(--farm-soft);line-height:1.7}.farm-welcome-modal[hidden]{display:none!important}.farm-welcome-modal{position:fixed;inset:0;z-index:1500;display:grid;place-items:center;padding:24px;overflow:hidden}.farm-welcome-backdrop{position:absolute;inset:0;background:rgba(255,250,247,.86);backdrop-filter:blur(14px)}.farm-welcome-modal>section{position:relative;z-index:3;width:min(570px,100%);padding:44px 36px 36px;border:1px solid rgba(108,162,207,.2);border-radius:34px;text-align:center;background:linear-gradient(180deg,#fff,#fffaf7);box-shadow:0 30px 100px rgba(77,98,116,.22);animation:welcomeIn .55s ease both}.welcome-icon{width:82px;height:82px;display:grid;place-items:center;margin:0 auto 17px;border-radius:27px;color:var(--farm-blue);background:linear-gradient(145deg,#edf7ff,#fff0f5)}.welcome-icon svg{width:53px;fill:none;stroke:currentColor;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}.farm-welcome-modal h2{margin:5px 0 13px;font-size:clamp(2rem,5vw,3rem)}.farm-welcome-modal section>p:not(.farm-eyebrow){color:var(--farm-soft);line-height:1.75}.farm-welcome-burst{position:absolute;left:50%;top:50%;z-index:2}.farm-welcome-burst i{position:absolute;width:18px;height:13px;border-radius:75% 25% 70% 30%;background:linear-gradient(135deg,#ffdce8,#e985aa);opacity:0;animation:welcomePetal 1.35s cubic-bezier(.15,.75,.2,1) both}.farm-welcome-burst i:nth-child(1){--x:-340px;--y:-230px;--r:-120deg}.farm-welcome-burst i:nth-child(2){--x:-160px;--y:-350px;--r:120deg}.farm-welcome-burst i:nth-child(3){--x:80px;--y:-350px;--r:240deg}.farm-welcome-burst i:nth-child(4){--x:320px;--y:-210px;--r:90deg}.farm-welcome-burst i:nth-child(5){--x:350px;--y:100px;--r:210deg}.farm-welcome-burst i:nth-child(6){--x:160px;--y:320px;--r:310deg}.farm-welcome-burst i:nth-child(7){--x:-120px;--y:340px;--r:150deg}.farm-welcome-burst i:nth-child(8){--x:-350px;--y:80px;--r:270deg}@keyframes welcomePetal{0%{opacity:0;transform:scale(.2)}15%{opacity:1}100%{opacity:0;transform:translate(var(--x),var(--y)) rotate(var(--r)) scale(1.1)}}@keyframes welcomeIn{from{opacity:0;transform:translateY(24px) scale(.94)}to{opacity:1;transform:none}}.farm-sakura-scene{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}.farm-sakura-scene span{position:absolute;width:12px;height:9px;border-radius:70% 30%;background:#ffd9e5;opacity:.55;animation:fall 12s linear infinite}.farm-sakura-scene span:nth-child(1){left:8%;animation-delay:-2s}.farm-sakura-scene span:nth-child(2){left:24%;animation-delay:-8s}.farm-sakura-scene span:nth-child(3){left:48%;animation-delay:-5s}.farm-sakura-scene span:nth-child(4){left:67%;animation-delay:-10s}.farm-sakura-scene span:nth-child(5){left:82%;animation-delay:-4s}.farm-sakura-scene span:nth-child(6){left:94%;animation-delay:-7s}@keyframes fall{from{top:-20px;transform:rotate(0)}to{top:105vh;transform:rotate(540deg) translateX(60px)}}.dashboard-empty{padding:50px 24px;border:1px dashed #dbe5ec;border-radius:22px;text-align:center;color:var(--farm-soft);background:rgba(255,255,255,.7)}@media(max-width:1100px){.farm-stats-grid{grid-template-columns:1fr 1fr}.setup-list{grid-template-columns:1fr}.animal-card-grid{grid-template-columns:1fr 1fr}}@media(max-width:820px){.farm-topbar{padding:0 18px}.approved-pill{display:none}.farm-dashboard-shell{display:block}.farm-sidebar{position:static;height:auto;border-right:0;border-bottom:1px solid var(--farm-line)}.farm-profile-mini,.farm-help-card{display:none}.farm-sidebar nav{display:flex;overflow-x:auto}.farm-nav-item{min-width:max-content}.farm-main{padding:28px 18px 60px}.farm-two-column,.profile-layout{grid-template-columns:1fr}}@media(max-width:620px){.farm-page-heading{display:block}.farm-page-heading .farm-primary-action{width:100%;margin-top:16px}.farm-stats-grid,.animal-card-grid,.form-grid{grid-template-columns:1fr}.request-card{grid-template-columns:58px 1fr}.request-card img,.request-card .request-image-placeholder{width:58px;height:58px}.request-actions{grid-column:1/-1}.farm-toolbar{flex-direction:column}.farm-request-progress{grid-template-columns:1fr}}
+
+/* V2: เลือกรูปภาพแมวจากเครื่อง */
+.animal-image-field{grid-column:1/-1}.animal-image-label{display:block;margin-bottom:8px;font-weight:800}.animal-image-label b{color:#df6870}.animal-image-upload{position:relative;min-height:230px;display:grid;place-items:center;overflow:hidden;border:2px dashed #cbddea;border-radius:22px;background:linear-gradient(145deg,#f4faff,#fff5f8);cursor:pointer;transition:border-color .2s,transform .2s,box-shadow .2s}.animal-image-upload:hover,.animal-image-upload:focus-visible,.animal-image-upload.is-dragover{outline:none;border-color:var(--farm-blue);box-shadow:0 14px 34px rgba(108,162,207,.16);transform:translateY(-1px)}.animal-image-empty{display:grid;justify-items:center;gap:7px;padding:28px;text-align:center;color:var(--farm-soft)}.animal-image-empty strong{color:var(--farm-ink);font-size:1rem}.animal-image-empty small{font-size:.76rem}.animal-image-icon{width:64px;height:64px;display:grid;place-items:center;border-radius:22px;color:var(--farm-blue);background:#fff;box-shadow:0 9px 24px rgba(108,162,207,.15)}.animal-image-icon svg{width:34px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.animal-image-preview{width:100%;height:320px;object-fit:contain;background:#f5f7f9}.animal-image-remove{position:absolute;right:14px;top:14px;padding:9px 13px;border:1px solid #f0cbd6;border-radius:999px;color:#a75e75;background:rgba(255,255,255,.94);font:800 .76rem inherit;cursor:pointer;box-shadow:0 8px 18px rgba(70,80,90,.12)}@media(max-width:620px){.animal-image-upload{min-height:190px}.animal-image-preview{height:250px}}
+
+/* V20: แก้ไข/ลบแมว, checklist แบบทำตามลำดับ และรูปโปรไฟล์ฟาร์ม */
+.farm-get-started{
+  transition:opacity .38s ease,transform .38s ease,max-height .45s ease,margin .45s ease,padding .45s ease;
+  overflow:hidden;
+}
+.farm-get-started.is-finished{
+  opacity:0;
+  transform:translateY(-12px);
+  max-height:0;
+  margin-top:0;
+  margin-bottom:0;
+  padding-top:0;
+  padding-bottom:0;
+  border-width:0;
+}
+.setup-list button.is-complete .setup-step-number{
+  color:#fff;
+  background:var(--farm-green);
+}
+.setup-list button.is-complete b{
+  color:var(--farm-green);
+}
+.setup-list button.is-locked{
+  opacity:.56;
+  cursor:not-allowed;
+}
+.setup-list button.is-locked b{
+  color:#9aa6ae;
+}
+.animal-card-actions.manage-row{
+  margin-top:8px;
+}
+.animal-card-actions.manage-row .edit-animal{
+  color:#3978a4;
+  border-color:#c9dfef;
+  background:#f3faff;
+}
+.animal-card-actions.manage-row .delete-animal{
+  color:#ad5f72;
+  border-color:#f0cbd6;
+  background:#fff5f8;
+}
+.animal-card-actions.manage-row button:hover{
+  transform:translateY(-1px);
+  box-shadow:0 7px 16px rgba(72,91,108,.1);
+}
+.profile-avatar-editor{
+  display:grid;
+  justify-items:center;
+  gap:8px;
+  flex:0 0 auto;
+}
+.profile-avatar-editor>span,
+.farm-profile-mini>span{
+  overflow:hidden;
+}
+.profile-avatar-editor>span.has-image,
+.farm-profile-mini>span.has-image{
+  padding:0;
+  background:#eef6fb;
+}
+.profile-avatar-editor>span img,
+.farm-profile-mini>span img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+}
+.profile-avatar-editor>button{
+  padding:6px 11px;
+  border:1px solid #c9dfef;
+  border-radius:999px;
+  color:#3978a4;
+  background:#f5fbff;
+  font:800 .7rem inherit;
+  cursor:pointer;
+}
+.profile-image-actions{
+  margin:-6px 0 20px;
+  padding:16px;
+  border:1px solid #e3edf3;
+  border-radius:18px;
+  background:linear-gradient(135deg,#f7fbfe,#fff7fa);
+}
+.profile-image-actions>p:first-child{
+  margin:0 0 12px;
+  color:var(--farm-soft);
+  line-height:1.65;
+  font-size:.8rem;
+}
+.profile-image-actions>div{
+  display:flex;
+  gap:9px;
+  flex-wrap:wrap;
+}
+.profile-image-actions .farm-primary-action:disabled{
+  opacity:.5;
+  cursor:not-allowed;
+  transform:none;
+}
+.danger-soft{
+  color:#ad5f72!important;
+  border-color:#f0cbd6!important;
+  background:#fff5f8!important;
+}
+#farmProfileImageMessage{
+  margin:10px 0 0;
+  min-height:20px;
+}
+@media(max-width:620px){
+  .animal-card-actions.manage-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+  }
+  .profile-image-actions>div{
+    display:grid;
+  }
+}
+.profile-avatar-editor>span{
+  width:76px;
+  height:76px;
+  display:grid;
+  place-items:center;
+  border-radius:24px;
+  color:#fff;
+  background:var(--farm-blue);
+  font-size:1.5rem;
+  font-weight:800;
+  box-shadow:0 10px 24px rgba(108,162,207,.2);
+}
+.profile-avatar-editor>button{
+  font:inherit;
+  font-size:.7rem;
+  font-weight:800;
+}
+
+/* V21: keep uploaded images visually centered */
+.animal-image-upload{position:relative;display:grid;place-items:center;overflow:hidden}
+.animal-image-preview{position:relative;display:block;width:100%!important;height:320px!important;margin:0 auto!important;object-fit:contain!important;object-position:center center!important;background:#f5f7f9}
+.animal-image-upload.has-image .animal-image-preview{align-self:center;justify-self:center}
+
+/* V21: stronger sakura accents, matching index/login/register */
+.farm-dashboard-page .catmatch-sakura-scene span{background:linear-gradient(135deg,#dc6d98,#f09ab6 58%,#ffd0dd);opacity:.86}
+
+/* V22: keep the selected cat photo geometrically centered inside the uploader. */
+.animal-image-upload{display:flex!important;align-items:center!important;justify-content:center!important;text-align:center!important}
+.animal-image-upload.has-image,.animal-image-upload:has(.animal-image-preview:not([hidden])){padding:0!important}
+.animal-image-preview{position:relative!important;display:block!important;width:auto!important;max-width:100%!important;height:320px!important;max-height:320px!important;margin:auto!important;object-fit:contain!important;object-position:50% 50%!important;align-self:center!important;justify-self:center!important;inset:auto!important;transform:none!important}
+@media(max-width:620px){.animal-image-preview{height:250px!important;max-height:250px!important}}
+
+
+/* V23 — single-image uploader: centered frame and centered preview */
+.animal-image-field{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+.animal-image-label{
+  width:min(100%, 780px);
+  align-self:center;
+}
+.animal-image-upload{
+  width:min(100%, 780px)!important;
+  min-height:300px;
+  margin-inline:auto!important;
+  display:grid!important;
+  place-items:center!important;
+  padding:0!important;
+}
+.animal-image-empty[hidden],
+.animal-image-preview-shell[hidden],
+.animal-image-selected-actions[hidden]{
+  display:none!important;
+}
+.animal-image-empty{
+  width:100%;
+  min-height:300px;
+  display:grid;
+  place-content:center;
+  justify-items:center;
+}
+.animal-image-preview-shell{
+  width:100%;
+  min-height:300px;
+  max-height:460px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  background:linear-gradient(145deg,#f4faff,#fff7f9);
+}
+.animal-image-preview{
+  display:block!important;
+  width:auto!important;
+  max-width:100%!important;
+  height:auto!important;
+  max-height:460px!important;
+  margin:0 auto!important;
+  object-fit:contain!important;
+  object-position:center!important;
+}
+.animal-image-selected-actions{
+  position:absolute;
+  top:14px;
+  right:14px;
+  z-index:3;
+  display:flex;
+  gap:8px;
+}
+.animal-image-change,
+.animal-image-remove{
+  position:static!important;
+  padding:9px 14px;
+  border-radius:999px;
+  font:800 .78rem inherit;
+  cursor:pointer;
+  background:rgba(255,255,255,.96);
+  box-shadow:0 8px 18px rgba(70,80,90,.12);
+}
+.animal-image-change{
+  border:1px solid #c7dff2;
+  color:#4f8fc4;
+}
+.animal-image-remove{
+  border:1px solid #f0cbd6;
+  color:#a75e75;
+}
+.animal-image-upload.has-image{
+  cursor:default;
+}
+@media(max-width:620px){
+  .animal-image-upload,
+  .animal-image-label{width:100%!important}
+  .animal-image-preview-shell{min-height:230px;max-height:340px}
+  .animal-image-preview{max-height:340px!important}
+  .animal-image-selected-actions{top:10px;right:10px;gap:6px}
+  .animal-image-change,.animal-image-remove{padding:8px 11px;font-size:.72rem}
+}
+
+/* V24: fixed dashboard navigation + compact profile image editor */
+@media (min-width: 821px) {
+  .farm-topbar {
+    position: fixed;
+    inset: 0 0 auto 0;
+    width: 100%;
+    z-index: 1200;
+  }
+  .farm-dashboard-shell {
+    display: block;
+    min-height: 100vh;
+    padding-top: 84px;
+  }
+  .farm-sidebar {
+    position: fixed;
+    left: 0;
+    top: 84px;
+    bottom: 0;
+    z-index: 1100;
+    width: 270px;
+    height: auto;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+  .farm-main {
+    min-height: calc(100vh - 84px);
+    margin-left: 270px;
+  }
+}
+
+.profile-avatar-editor {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 7px;
+}
+.profile-avatar-preview {
+  display: block;
+  width: 64px;
+  height: 64px;
+  padding: 0;
+  border: 0;
+  border-radius: 19px;
+  background: transparent;
+  cursor: zoom-in;
+}
+.profile-avatar-preview > span {
+  width: 64px;
+  height: 64px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 19px;
+  color: #fff;
+  background: linear-gradient(145deg,var(--farm-blue),#8fc0e4);
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+.profile-avatar-preview > span img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.profile-avatar-editor > #chooseFarmProfileImage {
+  border: 1px solid #cfe1ef;
+  border-radius: 999px;
+  padding: 5px 10px;
+  color: var(--farm-blue-deep);
+  background: #fff;
+  font: 800 .72rem inherit;
+  cursor: pointer;
+}
+.profile-image-actions[hidden] { display: none !important; }
+.profile-image-actions {
+  margin: -4px 0 20px;
+  padding: 16px 18px;
+  border: 1px solid #dce9f3;
+  border-radius: 20px;
+  background: linear-gradient(135deg,#f6fbff,#fff7fa);
+}
+.profile-image-editor-heading,
+.profile-image-editor-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.profile-image-editor-heading { justify-content: space-between; margin-bottom: 13px; }
+.profile-image-editor-heading strong,
+.profile-image-editor-heading small { display: block; }
+.profile-image-editor-heading small { margin-top: 3px; color: var(--farm-soft); font-size: .74rem; }
+.profile-editor-close {
+  width: 34px;
+  height: 34px;
+  border: 0;
+  border-radius: 50%;
+  color: #9b6575;
+  background: #fff;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+.profile-image-actions .farm-form-message { margin: 10px 0 0; }
+.farm-image-viewer[hidden] { display: none !important; }
+.farm-image-viewer {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+.farm-image-viewer-backdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(30,42,52,.68);
+  backdrop-filter: blur(10px);
+}
+.farm-image-viewer-card {
+  position: relative;
+  z-index: 1;
+  width: min(680px, 92vw);
+  max-height: 86vh;
+  padding: 14px;
+  border-radius: 28px;
+  background: #fff;
+  box-shadow: 0 30px 100px rgba(20,35,48,.35);
+}
+.farm-image-viewer-card img {
+  display: block;
+  width: 100%;
+  max-height: calc(86vh - 28px);
+  object-fit: contain;
+  border-radius: 20px;
+}
+.farm-image-viewer-close {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  z-index: 2;
+  width: 42px;
+  height: 42px;
+  border: 0;
+  border-radius: 50%;
+  color: #8e5268;
+  background: #fff;
+  box-shadow: 0 10px 25px rgba(20,35,48,.2);
+  font-size: 1.45rem;
+  cursor: pointer;
+}
+
+/* V25: ล็อกแถบบน/เมนูซ้าย และให้เลื่อนเฉพาะเนื้อหากลาง */
+@media (min-width: 821px) {
+  html,
+  body.farm-dashboard-page {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .farm-topbar {
+    position: fixed;
+    inset: 0 0 auto 0;
+    height: 84px;
+    z-index: 1200;
+  }
+
+  .farm-dashboard-shell {
+    position: fixed;
+    inset: 84px 0 0 0;
+    display: grid;
+    grid-template-columns: 270px minmax(0, 1fr);
+    min-height: 0;
+    padding-top: 0;
+    overflow: hidden;
+  }
+
+  .farm-sidebar {
+    position: relative;
+    inset: auto;
+    width: auto;
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .farm-main {
+    width: auto;
+    height: 100%;
+    min-height: 0;
+    margin-left: 0;
+    padding: 24px clamp(24px, 4vw, 58px) 56px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-gutter: stable;
+  }
+
+  .farm-panel[data-panel-content="overview"] > .farm-page-heading {
+    margin-bottom: 20px;
+  }
+
+  .farm-panel[data-panel-content="overview"] .farm-page-heading h1 {
+    line-height: 1.08;
+  }
+
+  .farm-panel[data-panel-content="overview"] .farm-page-heading p:not(.farm-eyebrow) {
+    margin-top: 6px;
+  }
+}
+
+/* V26: แถบบนและเมนูซ้ายคงที่ เลื่อนเฉพาะเนื้อหาตรงกลาง */
+@media (min-width: 821px) {
+  html,
+  body.farm-dashboard-page {
+    width: 100%;
+    height: 100%;
+    overflow: hidden !important;
+  }
+
+  .farm-topbar {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 84px;
+    z-index: 1200;
+  }
+
+  .farm-dashboard-shell {
+    display: block !important;
+    position: static !important;
+    inset: auto !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+  }
+
+  .farm-sidebar {
+    position: fixed !important;
+    top: 84px;
+    left: 0;
+    bottom: 0;
+    width: 270px;
+    height: auto !important;
+    z-index: 1100;
+    overflow: hidden !important;
+  }
+
+  .farm-main {
+    position: fixed !important;
+    top: 84px;
+    left: 270px;
+    right: 0;
+    bottom: 0;
+    width: auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 24px clamp(24px, 4vw, 58px) 56px;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    overscroll-behavior-y: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-gutter: stable;
+  }
+}
+
+
+/* V27 — fix farm logo and profile avatar layout */
+.farm-brand-mark {
+  width: 52px;
+  height: 52px;
+  flex: 0 0 52px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid #d7e7f3;
+  border-radius: 18px;
+  color: #6ca2cf;
+  background: rgba(255,255,255,.96);
+  box-shadow: 0 8px 22px rgba(77,125,159,.08);
+}
+.farm-brand-mark .farm-brand-cat {
+  width: 35px;
+  height: 35px;
+  display: block;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.profile-hero {
+  display: grid;
+  grid-template-columns: 88px minmax(0,1fr);
+  align-items: start;
+  column-gap: 18px;
+  margin-bottom: 22px;
+}
+.profile-avatar-editor {
+  width: 88px;
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  gap: 8px;
+}
+.profile-avatar-preview {
+  width: 82px;
+  height: 82px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 2px solid #d9e8f2;
+  border-radius: 28px;
+  background: linear-gradient(145deg,#edf7ff,#fff2f6);
+  box-shadow: 0 10px 24px rgba(74,100,120,.10);
+  cursor: zoom-in;
+}
+.profile-avatar-preview > span {
+  width: 100% !important;
+  height: 100% !important;
+  display: grid !important;
+  place-items: center;
+  overflow: hidden;
+  border-radius: inherit !important;
+  color: #fff;
+  background: linear-gradient(145deg,var(--farm-blue),#8fc0e4);
+  font-size: 1.45rem;
+  font-weight: 800;
+}
+.profile-avatar-preview > span.has-image {
+  padding: 0;
+  background: #eef6fb;
+}
+.profile-avatar-preview > span img {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
+.profile-avatar-editor > #chooseFarmProfileImage {
+  width: max-content;
+  min-height: 32px;
+  padding: 5px 12px;
+  position: static;
+  margin: 0;
+  border: 1px solid #c9dfef;
+  border-radius: 999px;
+  color: #3978a4;
+  background: #f5fbff;
+  font: 800 .7rem inherit;
+  cursor: pointer;
+}
+.profile-hero > div:last-child {
+  min-width: 0;
+  padding-top: 4px;
+}
+.profile-hero h2 {
+  overflow-wrap: anywhere;
+  line-height: 1.12;
+}
+.profile-hero p {
+  margin: 5px 0 10px;
+}
+
+.farm-profile-mini > span {
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+  overflow: hidden;
+  border-radius: 15px;
+}
+.farm-profile-mini > span img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (max-width: 620px) {
+  .profile-hero {
+    grid-template-columns: 76px minmax(0,1fr);
+    column-gap: 14px;
+  }
+  .profile-avatar-editor { width: 76px; }
+  .profile-avatar-preview { width: 72px; height: 72px; border-radius: 24px; }
+}
+
+
+/* V28 — center the add/edit cat form inside the scrollable content area */
+.farm-panel[data-panel-content="add-animal"] > .farm-page-heading,
+.farm-panel[data-panel-content="add-animal"] > .farm-form-card {
+  width: min(100%, 980px);
+  margin-left: auto;
+  margin-right: auto;
+}
+.farm-panel[data-panel-content="add-animal"] > .farm-page-heading {
+  margin-bottom: 24px;
+}
+.farm-panel[data-panel-content="add-animal"] > .farm-form-card {
+  max-width: 980px;
+}
+@media (max-width: 820px) {
+  .farm-panel[data-panel-content="add-animal"] > .farm-page-heading,
+  .farm-panel[data-panel-content="add-animal"] > .farm-form-card {
+    width: 100%;
+  }
+}
+
+
+/* V29 — global settings integration */
+.farm-sidebar .farm-settings-link { text-decoration:none; }
+html[data-sakura-motion="false"] .farm-sakura-scene { display:none!important; }
+html[data-reduced-motion="true"] .farm-dashboard-page *,html[data-reduced-motion="true"] .farm-dashboard-page *::before,html[data-reduced-motion="true"] .farm-dashboard-page *::after{animation:none!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+html[data-catmatch-theme="dark"] body.farm-dashboard-page{--farm-bg:#111820;--farm-panel:#202c35;--farm-panel-soft:#263640;--farm-ink:#f1f6f8;--farm-soft:#b7c5cd;--farm-line:rgba(170,204,224,.2);background:radial-gradient(circle at 10% 0%,rgba(215,164,91,.1),transparent 24%),radial-gradient(circle at 88% 5%,rgba(91,157,184,.14),transparent 25%),linear-gradient(180deg,#111820,#18232c 58%,#131c24)!important;color:var(--farm-ink)}
+html[data-catmatch-theme="dark"] .farm-topbar,html[data-catmatch-theme="dark"] .farm-sidebar,html[data-catmatch-theme="dark"] .farm-card,html[data-catmatch-theme="dark"] .farm-get-started,html[data-catmatch-theme="dark"] .farm-form-card{background:rgba(32,44,53,.96)!important;border-color:var(--farm-line)!important;color:var(--farm-ink)!important;box-shadow:0 18px 48px rgba(0,0,0,.24)!important}
+html[data-catmatch-theme="dark"] .farm-nav-item{color:#dce7ec!important;background:transparent!important}
+html[data-catmatch-theme="dark"] .farm-nav-item:hover,html[data-catmatch-theme="dark"] .farm-nav-item.is-active{color:#f8fbfc!important;background:linear-gradient(135deg,rgba(80,135,167,.28),rgba(158,105,127,.24))!important}
+html[data-catmatch-theme="dark"] .farm-profile-mini,html[data-catmatch-theme="dark"] .farm-help-card,html[data-catmatch-theme="dark"] .farm-stats-grid article,html[data-catmatch-theme="dark"] .setup-list button,html[data-catmatch-theme="dark"] .animal-card,html[data-catmatch-theme="dark"] .request-card{background:#263640!important;border-color:var(--farm-line)!important;color:var(--farm-ink)!important}
+html[data-catmatch-theme="dark"] .farm-dashboard-page input,html[data-catmatch-theme="dark"] .farm-dashboard-page textarea,html[data-catmatch-theme="dark"] .farm-dashboard-page select{color:#edf4f7!important;background:#1d2932!important;border-color:rgba(170,204,224,.22)!important}
+html[data-catmatch-theme="dark"] .farm-dashboard-page p,html[data-catmatch-theme="dark"] .farm-dashboard-page small{color:#b7c5cd!important}
+
+/* V30 — farm location editor */
+.farm-profile-location-card{grid-column:1/-1;padding:28px}.farm-profile-location-actions{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:14px 0}.farm-profile-location-actions span{color:var(--farm-soft);font-size:.82rem;font-weight:700}.farm-profile-location-actions span.is-success{color:var(--farm-green)}.farm-profile-location-actions span.is-error{color:#bd6577}.dashboard-farm-location-map{width:100%;height:390px;overflow:hidden;border:1px solid var(--farm-line);border-radius:24px;background:#edf7fb}.farm-profile-coordinate-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}.farm-profile-coordinate-row label{display:grid;gap:7px;font-weight:800}.farm-profile-coordinate-row input{width:100%;padding:12px 14px;border:1px solid var(--farm-line);border-radius:14px;background:#f7fbfd;color:var(--farm-ink)}html[data-catmatch-theme="dark"] .dashboard-farm-location-map{background:#1d2932}html[data-catmatch-theme="dark"] .farm-profile-coordinate-row input{background:#1d2932;color:#edf4f7}@media(max-width:680px){.dashboard-farm-location-map{height:310px}.farm-profile-coordinate-row{grid-template-columns:1fr}}
+
+
+/* Farm location editor uses the same Thailand-only map treatment as farm-map.html. */
+.dashboard-farm-location-map {
+  position: relative;
+  background: #deedf0;
+}
+.dashboard-farm-location-map .thailand-boundary-tiles canvas {
+  filter: saturate(.72) sepia(.08) hue-rotate(145deg) brightness(1.04);
+}
+.dashboard-farm-location-map .leaflet-control-zoom a {
+  color: #426579 !important;
+}
+.dashboard-farm-location-map .leaflet-container {
+  font-family: "Noto Sans Thai", sans-serif;
+}
+.dashboard-farm-location-map .leaflet-tooltip {
+  padding: 8px 11px;
+  border: 1px solid rgba(115, 174, 218, .35);
+  border-radius: 12px;
+  color: #36596c;
+  background: rgba(255, 255, 255, .94);
+  box-shadow: 0 10px 26px rgba(49, 82, 99, .16);
+  font-family: "Noto Sans Thai", sans-serif;
+  font-weight: 700;
+}
+.dashboard-map-error {
+  display: grid;
+  place-items: center;
+  min-height: 390px;
+  padding: 24px;
+  color: #985b69;
+  text-align: center;
+  background: #fff4f6;
+}
+html[data-catmatch-theme="dark"] .dashboard-farm-location-map {
+  background: #23323b;
+}
+html[data-catmatch-theme="dark"] .dashboard-farm-location-map .thailand-boundary-tiles canvas {
+  filter: saturate(.5) brightness(.58) contrast(1.08) hue-rotate(155deg);
+}
+html[data-catmatch-theme="dark"] .dashboard-farm-location-map .leaflet-tooltip {
+  color: #e2edf2;
+  background: rgba(35, 49, 59, .94);
+  border-color: rgba(170, 204, 224, .2);
+}
+
+/* V31 — readable farm dark mode while keeping the location map bright */
+html[data-catmatch-theme="dark"] body.farm-dashboard-page {
+  --farm-bg: #101820;
+  --farm-panel: #24333d;
+  --farm-panel-soft: #2d404b;
+  --farm-ink: #f7fbfd;
+  --farm-soft: #c8d6de;
+  --farm-line: rgba(196, 222, 236, .3);
+}
+html[data-catmatch-theme="dark"] .farm-main,
+html[data-catmatch-theme="dark"] .farm-panel {
+  color: #f7fbfd;
+}
+html[data-catmatch-theme="dark"] .farm-topbar,
+html[data-catmatch-theme="dark"] .farm-sidebar,
+html[data-catmatch-theme="dark"] .farm-card,
+html[data-catmatch-theme="dark"] .farm-get-started,
+html[data-catmatch-theme="dark"] .farm-form-card {
+  background: rgba(36, 51, 61, .98) !important;
+  border-color: rgba(196, 222, 236, .28) !important;
+}
+html[data-catmatch-theme="dark"] .farm-page-heading h1,
+html[data-catmatch-theme="dark"] .farm-page-heading h2,
+html[data-catmatch-theme="dark"] .farm-card h2,
+html[data-catmatch-theme="dark"] .farm-card h3,
+html[data-catmatch-theme="dark"] .farm-form-card h2,
+html[data-catmatch-theme="dark"] .farm-form-card h3,
+html[data-catmatch-theme="dark"] .farm-dashboard-page label,
+html[data-catmatch-theme="dark"] .farm-dashboard-page strong,
+html[data-catmatch-theme="dark"] .farm-dashboard-page th {
+  color: #f7fbfd !important;
+}
+html[data-catmatch-theme="dark"] .farm-dashboard-page p,
+html[data-catmatch-theme="dark"] .farm-dashboard-page small,
+html[data-catmatch-theme="dark"] .farm-dashboard-page td,
+html[data-catmatch-theme="dark"] .farm-profile-location-actions span {
+  color: #c8d6de !important;
+}
+html[data-catmatch-theme="dark"] .farm-profile-mini,
+html[data-catmatch-theme="dark"] .farm-help-card,
+html[data-catmatch-theme="dark"] .farm-stats-grid article,
+html[data-catmatch-theme="dark"] .setup-list button,
+html[data-catmatch-theme="dark"] .animal-card,
+html[data-catmatch-theme="dark"] .request-card {
+  background: #2d404b !important;
+  border-color: rgba(196, 222, 236, .26) !important;
+}
+html[data-catmatch-theme="dark"] .farm-dashboard-page input,
+html[data-catmatch-theme="dark"] .farm-dashboard-page textarea,
+html[data-catmatch-theme="dark"] .farm-dashboard-page select {
+  color: #f7fbfd !important;
+  background: #17242d !important;
+  border-color: rgba(196, 222, 236, .38) !important;
+}
+html[data-catmatch-theme="dark"] .farm-dashboard-page input::placeholder,
+html[data-catmatch-theme="dark"] .farm-dashboard-page textarea::placeholder {
+  color: #9fb2bd !important;
+  opacity: 1;
+}
+html[data-catmatch-theme="dark"] .farm-dashboard-page input:focus,
+html[data-catmatch-theme="dark"] .farm-dashboard-page textarea:focus,
+html[data-catmatch-theme="dark"] .farm-dashboard-page select:focus {
+  border-color: #82bce0 !important;
+  box-shadow: 0 0 0 3px rgba(130, 188, 224, .18) !important;
+}
+html[data-catmatch-theme="dark"] .farm-nav-item {
+  color: #dce9ef !important;
+}
+html[data-catmatch-theme="dark"] .farm-nav-item:hover,
+html[data-catmatch-theme="dark"] .farm-nav-item.is-active {
+  color: #ffffff !important;
+  background: linear-gradient(135deg, rgba(89, 151, 187, .38), rgba(181, 112, 142, .28)) !important;
+}
+html[data-catmatch-theme="dark"] .button-secondary,
+html[data-catmatch-theme="dark"] .farm-dashboard-page .secondary-button {
+  color: #eaf4f8 !important;
+  background: #2b3e49 !important;
+  border-color: rgba(196, 222, 236, .34) !important;
+}
+html[data-catmatch-theme="dark"] .farm-dashboard-page table,
+html[data-catmatch-theme="dark"] .farm-dashboard-page tr,
+html[data-catmatch-theme="dark"] .farm-dashboard-page td,
+html[data-catmatch-theme="dark"] .farm-dashboard-page th {
+  border-color: rgba(196, 222, 236, .2) !important;
+}
+
+/* The location editor remains a light map in every theme for easy reading. */
+html[data-catmatch-theme="dark"] .dashboard-farm-location-map {
+  color-scheme: light;
+  background: #deedf0 !important;
+  border-color: #bfd5df !important;
+}
+html[data-catmatch-theme="dark"] .dashboard-farm-location-map .thailand-boundary-tiles canvas {
+  filter: saturate(.72) sepia(.08) hue-rotate(145deg) brightness(1.04) !important;
+}
+html[data-catmatch-theme="dark"] .dashboard-farm-location-map .leaflet-control-zoom a,
+html[data-catmatch-theme="dark"] .dashboard-farm-location-map .leaflet-control-attribution {
+  color: #426579 !important;
+  background: rgba(255, 255, 255, .96) !important;
+}
+html[data-catmatch-theme="dark"] .dashboard-farm-location-map .leaflet-tooltip,
+html[data-catmatch-theme="dark"] .dashboard-farm-location-map .leaflet-popup-content-wrapper,
+html[data-catmatch-theme="dark"] .dashboard-farm-location-map .leaflet-popup-tip {
+  color: #36596c !important;
+  background: rgba(255, 255, 255, .97) !important;
+  border-color: rgba(115, 174, 218, .35) !important;
+}
+
+/* V32 — remove remaining white frames in farm dark mode */
+html[data-catmatch-theme="dark"] .farm-dashboard-page {
+  color: #f4f9fc;
+}
+html[data-catmatch-theme="dark"] .farm-brand-mark,
+html[data-catmatch-theme="dark"] .farm-profile-mini,
+html[data-catmatch-theme="dark"] .farm-help-card,
+html[data-catmatch-theme="dark"] .farm-stats-grid article,
+html[data-catmatch-theme="dark"] .farm-get-started,
+html[data-catmatch-theme="dark"] .farm-card,
+html[data-catmatch-theme="dark"] .farm-form-card,
+html[data-catmatch-theme="dark"] .setup-list button,
+html[data-catmatch-theme="dark"] .mini-row,
+html[data-catmatch-theme="dark"] .animal-card,
+html[data-catmatch-theme="dark"] .request-card,
+html[data-catmatch-theme="dark"] .dashboard-empty,
+html[data-catmatch-theme="dark"] .animal-image-upload,
+html[data-catmatch-theme="dark"] .animal-image-icon,
+html[data-catmatch-theme="dark"] .animal-image-preview,
+html[data-catmatch-theme="dark"] .farm-toolbar input,
+html[data-catmatch-theme="dark"] .farm-toolbar select,
+html[data-catmatch-theme="dark"] .form-grid input,
+html[data-catmatch-theme="dark"] .form-grid select,
+html[data-catmatch-theme="dark"] .form-grid textarea,
+html[data-catmatch-theme="dark"] .request-filter-tabs button,
+html[data-catmatch-theme="dark"] .animal-card-actions button {
+  color: #f4f9fc !important;
+  background: #263945 !important;
+  border-color: rgba(193, 220, 235, .30) !important;
+}
+html[data-catmatch-theme="dark"] .mini-row,
+html[data-catmatch-theme="dark"] .setup-list button,
+html[data-catmatch-theme="dark"] .animal-card,
+html[data-catmatch-theme="dark"] .request-card,
+html[data-catmatch-theme="dark"] .animal-image-upload {
+  background: #2b404c !important;
+}
+html[data-catmatch-theme="dark"] .farm-nav-item b,
+html[data-catmatch-theme="dark"] .setup-list button > span,
+html[data-catmatch-theme="dark"] .animal-meta span,
+html[data-catmatch-theme="dark"] .animal-status,
+html[data-catmatch-theme="dark"] .mini-placeholder,
+html[data-catmatch-theme="dark"] .request-image-placeholder,
+html[data-catmatch-theme="dark"] .profile-note-icon,
+html[data-catmatch-theme="dark"] .stat-icon {
+  color: #dcecf4 !important;
+  background: #344b58 !important;
+}
+html[data-catmatch-theme="dark"] .animal-status.available,
+html[data-catmatch-theme="dark"] .setup-list .is-complete > span {
+  color: #eafff5 !important;
+  background: #39745f !important;
+}
+html[data-catmatch-theme="dark"] .animal-status.adopted {
+  color: #ffe8f0 !important;
+  background: #704556 !important;
+}
+html[data-catmatch-theme="dark"] .request-filter-tabs button.is-active {
+  color: #ffffff !important;
+  background: #568eb3 !important;
+  border-color: #79b5dc !important;
+}
+html[data-catmatch-theme="dark"] .request-actions .reject,
+html[data-catmatch-theme="dark"] .animal-image-remove {
+  color: #ffdce7 !important;
+  background: #633d4b !important;
+  border-color: #986173 !important;
+}
+html[data-catmatch-theme="dark"] .profile-main dl div {
+  border-color: rgba(193, 220, 235, .22) !important;
+}
+html[data-catmatch-theme="dark"] .farm-dashboard-page dt,
+html[data-catmatch-theme="dark"] .farm-dashboard-page small,
+html[data-catmatch-theme="dark"] .farm-dashboard-page p,
+html[data-catmatch-theme="dark"] .farm-dashboard-page .empty-mini,
+html[data-catmatch-theme="dark"] .farm-dashboard-page .animal-meta span {
+  color: #c8d8e1 !important;
+}
+html[data-catmatch-theme="dark"] .farm-dashboard-page h1,
+html[data-catmatch-theme="dark"] .farm-dashboard-page h2,
+html[data-catmatch-theme="dark"] .farm-dashboard-page h3,
+html[data-catmatch-theme="dark"] .farm-dashboard-page dd,
+html[data-catmatch-theme="dark"] .farm-dashboard-page label,
+html[data-catmatch-theme="dark"] .farm-dashboard-page strong,
+html[data-catmatch-theme="dark"] .farm-dashboard-page b:not(.farm-nav-item b) {
+  color: #f8fcff !important;
+}
+html[data-catmatch-theme="dark"] .farm-welcome-backdrop {
+  background: rgba(10, 18, 24, .82) !important;
+}
+html[data-catmatch-theme="dark"] .farm-welcome-modal > section {
+  color: #f4f9fc !important;
+  background: linear-gradient(180deg, #263945, #1f303a) !important;
+  border-color: rgba(193, 220, 235, .30) !important;
+}
+/* Keep the farm location map light and untouched by the dark card overrides. */
+html[data-catmatch-theme="dark"] .dashboard-farm-location-map,
+html[data-catmatch-theme="dark"] .dashboard-farm-location-map * {
+  color-scheme: light;
+}
+
+
+/* FARM V33 — PetMatch Farm without adoption-request workflow */
+.farm-stats-grid{grid-template-columns:repeat(3,minmax(0,1fr));}
+.setup-list{grid-template-columns:repeat(2,minmax(0,1fr));}
+@media(max-width:1100px){.farm-stats-grid{grid-template-columns:repeat(3,minmax(0,1fr));}.setup-list{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media(max-width:760px){.farm-stats-grid,.setup-list{grid-template-columns:1fr;}}
+
+
+/* FARM OWNER ACCOUNT — account stays inside the authenticated farm dashboard */
+.farm-owner-account-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(280px, .65fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.farm-owner-account-card,
+.farm-owner-account-actions {
+  min-width: 0;
+}
+
+.farm-owner-account-hero {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--farm-line, #dfe8ef);
+}
+
+.farm-owner-account-avatar {
+  width: 82px;
+  height: 82px;
+  flex: 0 0 82px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid var(--farm-line, #dfe8ef);
+  border-radius: 24px;
+  color: var(--farm-blue-deep, #477d9f);
+  background: linear-gradient(145deg, #eef8ff, #fff7fa);
+  font-size: 1.6rem;
+  font-weight: 800;
+}
+
+.farm-owner-account-avatar.has-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
+
+.farm-owner-account-hero h2,
+.farm-owner-account-actions h2 {
+  margin: 2px 0 4px;
+}
+
+.farm-owner-account-hero p:not(.farm-eyebrow),
+.farm-owner-account-actions p:not(.farm-eyebrow) {
+  margin: 0;
+  color: var(--farm-soft, #7b8084);
+}
+
+.farm-owner-account-hero .approved-pill {
+  display: inline-flex;
+  margin-top: 10px;
+}
+
+.farm-owner-account-details {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0;
+  margin: 20px 0 0;
+}
+
+.farm-owner-account-details > div {
+  min-width: 0;
+  padding: 15px 14px;
+  border-bottom: 1px solid var(--farm-line, #dfe8ef);
+}
+
+.farm-owner-account-details dt {
+  color: var(--farm-soft, #7b8084);
+  font-size: .78rem;
+}
+
+.farm-owner-account-details dd {
+  margin: 5px 0 0;
+  overflow-wrap: anywhere;
+  color: var(--farm-ink, #34383b);
+  font-weight: 700;
+}
+
+.farm-owner-account-actions {
+  display: grid;
+  gap: 14px;
+}
+
+.farm-owner-account-actions .farm-primary-action,
+.farm-owner-account-actions .farm-secondary-action {
+  width: 100%;
+  justify-content: center;
+}
+
+@media (max-width: 900px) {
+  .farm-owner-account-layout { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 560px) {
+  .farm-owner-account-hero { align-items: flex-start; }
+  .farm-owner-account-avatar { width: 68px; height: 68px; flex-basis: 68px; border-radius: 20px; }
+  .farm-owner-account-details { grid-template-columns: 1fr; }
+}
+
+
+/* V35 — unified cat/dog farm controls and green Thailand map treatment. */
+.farm-toolbar select { min-width: 150px; }
+.animal-species-chip { font-weight: 800; }
+.dashboard-farm-location-map {
+  border-color: rgba(95,155,131,.42) !important;
+  background: #e9f5ef !important;
+  box-shadow: inset 0 0 0 1px rgba(95,155,131,.08);
+}
+.dashboard-farm-location-map .thailand-boundary-tiles canvas {
+  filter: saturate(.78) sepia(.10) hue-rotate(78deg) brightness(1.03) !important;
+}
+.dashboard-farm-location-map .leaflet-control-zoom a {
+  color:#477c69 !important;
+  border-color:rgba(95,155,131,.24) !important;
+}
+.dashboard-farm-location-map .leaflet-tooltip {
+  color:#376b57 !important;
+  border-color:rgba(95,155,131,.36) !important;
+}
+@media(max-width:760px){ .farm-toolbar select{min-width:0;width:100%;} }
+
+.farm-location-pin-shell { background:transparent !important; border:0 !important; }
+.farm-location-pin {
+  position:relative; display:block; width:34px; height:34px;
+  border:4px solid #fff; border-radius:50% 50% 50% 0;
+  background:#5f9b83; box-shadow:0 8px 20px rgba(48,102,80,.32);
+  transform:rotate(-45deg);
+}
+.farm-location-pin > span {
+  position:absolute; inset:8px; border-radius:50%; background:#fff;
+}
+
+/* V36 — keep the existing Thailand-only map but restore natural OSM colors. */
+.dashboard-farm-location-map {
+  border-color: var(--farm-line) !important;
+  background: #eef2f4 !important;
+  box-shadow: none !important;
+}
+.dashboard-farm-location-map .thailand-boundary-tiles canvas {
+  filter: none !important;
+}
+.dashboard-farm-location-map .leaflet-control-zoom a {
+  color: #4c5962 !important;
+  border-color: #d7e0e6 !important;
+  background: #fff !important;
+}
+.dashboard-farm-location-map .leaflet-tooltip {
+  color: #34414a !important;
+  border-color: #cfd9df !important;
+  background: #fff !important;
+}
+html[data-catmatch-theme="dark"] .dashboard-farm-location-map,
+html[data-catmatch-theme="dark"] .dashboard-farm-location-map * {
+  filter: none !important;
+}
+
+/* V37 — circular farm profile photo and reliable preview. */
+.profile-avatar-preview,
+.profile-avatar-preview > span,
+.profile-avatar-preview > span img {
+  border-radius: 50% !important;
+}
+
+.profile-avatar-preview {
+  aspect-ratio: 1 / 1 !important;
+  flex: 0 0 auto !important;
+}
+
+.profile-avatar-preview > span img {
+  object-fit: cover !important;
+  object-position: center !important;
+}
+
+.profile-avatar-preview:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--farm-blue) 55%, transparent) !important;
+  outline-offset: 4px !important;
+}
+

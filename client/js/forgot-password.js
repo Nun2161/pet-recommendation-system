@@ -1,76 +1,149 @@
 "use strict";
 
-const API_BASE = "http://localhost:3000/api/auth/password-reset";
 const form = document.getElementById("forgotPasswordForm");
-const identifierInput = document.getElementById("resetIdentifier");
-const phoneInput = document.getElementById("phoneLast4");
-const recoveryInput = document.getElementById("recoveryCode");
+const emailInput = document.getElementById("resetEmail");
 const submitButton = document.getElementById("forgotSubmit");
+const submitLabel = submitButton?.querySelector(".submit-label");
+const submitLoading = submitButton?.querySelector(".submit-loading");
 const messageBox = document.getElementById("forgotMessage");
-const referenceBox = document.getElementById("requestReference");
-const requestCodeText = document.getElementById("requestCodeText");
-const identifierError = document.getElementById("identifierError");
-const phoneError = document.getElementById("phoneError");
+const emailError = document.getElementById("emailError");
 
-function setMessage(message, success = false) {
+/*
+ * ขณะพัฒนา หน้าเว็บทำงานผ่าน Live Server และ Backend ทำงานที่พอร์ต 3000
+ * ในอนาคตเมื่อนำ Backend ขึ้นออนไลน์ สามารถกำหนดค่า
+ * window.CATMATCH_API_BASE_URL ก่อนโหลดไฟล์นี้ได้
+ */
+const isLocalPage = ["localhost", "127.0.0.1"].includes(window.location.hostname);
+const API_BASE_URL = String(
+  window.CATMATCH_API_BASE_URL || (isLocalPage ? "http://localhost:3000" : "")
+).replace(/\/+$/, "");
+
+const PASSWORD_RESET_REQUEST_URL = API_BASE_URL
+  ? `${API_BASE_URL}/api/auth/password-reset/request`
+  : "";
+
+function setMessage(message = "", success = false) {
+  if (!messageBox) return;
   messageBox.hidden = !message;
-  messageBox.textContent = message || "";
+  messageBox.textContent = message;
   messageBox.classList.toggle("is-success", success);
 }
 
-phoneInput.addEventListener("input", () => {
-  phoneInput.value = phoneInput.value.replace(/\D/g, "").slice(0, 4);
-  phoneError.textContent = "";
-});
-identifierInput.addEventListener("input", () => { identifierError.textContent = ""; });
-recoveryInput.addEventListener("input", () => {
-  recoveryInput.value = recoveryInput.value.toUpperCase().replace(/\s+/g, "").slice(0, 64);
-});
+function setEmailError(message = "") {
+  if (!emailInput || !emailError) return;
+  emailError.textContent = message;
+  emailInput.setAttribute("aria-invalid", message ? "true" : "false");
+}
 
-form.addEventListener("submit", async (event) => {
-  event.preventDefault();
-  setMessage("");
-  referenceBox.hidden = true;
+function isValidEmail(value) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+}
 
-  const identifier = identifierInput.value.trim();
-  const phoneLast4 = phoneInput.value.trim();
-  let valid = true;
+function setLoading(loading) {
+  if (!submitButton) return;
+  submitButton.disabled = loading;
+  submitButton.setAttribute("aria-busy", String(loading));
+  if (submitLabel) submitLabel.hidden = loading;
+  if (submitLoading) submitLoading.hidden = !loading;
+}
 
-  if (!identifier) {
-    identifierError.textContent = "กรุณากรอกอีเมลหรือชื่อผู้ใช้งาน";
-    valid = false;
+async function readJsonResponse(response) {
+  const contentType = response.headers.get("content-type") || "";
+
+  if (!contentType.includes("application/json")) {
+    return {};
   }
-  if (!/^\d{4}$/.test(phoneLast4)) {
-    phoneError.textContent = "กรุณากรอกตัวเลข 4 ตัว";
-    valid = false;
-  }
-  if (!valid) return;
 
-  submitButton.disabled = true;
-  submitButton.textContent = "กำลังส่งคำขอ...";
+  return response.json().catch(() => ({}));
+}
+
+async function requestPasswordReset(email) {
+  if (!PASSWORD_RESET_REQUEST_URL) {
+    throw new Error(
+      "ยังไม่ได้กำหนด URL ของ Backend สำหรับเว็บไซต์ออนไลน์"
+    );
+  }
+
+  const controller = new AbortController();
+  const timeoutId = window.setTimeout(() => controller.abort(), 15000);
 
   try {
-    const response = await fetch(`${API_BASE}/requests`, {
+    const response = await fetch(PASSWORD_RESET_REQUEST_URL, {
       method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
-      body: JSON.stringify({
-        identifier,
-        phone_last4: phoneLast4,
-        recovery_code: recoveryInput.value.trim() || undefined,
-      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email }),
+      signal: controller.signal,
     });
-    const data = await response.json();
-    if (!response.ok || data.success === false) throw new Error(data.message || "ส่งคำขอไม่สำเร็จ");
 
-    sessionStorage.setItem("catmatch_reset_request_code", data.request_code);
-    requestCodeText.textContent = `${data.request_code.slice(0, 6)}••••••${data.request_code.slice(-6)}`;
-    referenceBox.hidden = false;
-    setMessage(data.message, true);
+    const result = await readJsonResponse(response);
+
+    if (!response.ok) {
+      throw new Error(
+        result.message ||
+          `Server ไม่สามารถส่งอีเมลได้ (HTTP ${response.status})`
+      );
+    }
+
+    return result;
+  } finally {
+    window.clearTimeout(timeoutId);
+  }
+}
+
+function friendlyRequestError(error) {
+  if (error?.name === "AbortError") {
+    return "Server ใช้เวลาตอบกลับนานเกินไป กรุณาลองใหม่อีกครั้ง";
+  }
+
+  if (error instanceof TypeError) {
+    return "เชื่อมต่อ Server ไม่สำเร็จ กรุณาตรวจสอบว่า npm run dev กำลังทำงานที่พอร์ต 3000";
+  }
+
+  return error?.message || "ไม่สามารถส่งอีเมลรีเซ็ตรหัสผ่านได้";
+}
+
+emailInput?.addEventListener("input", () => {
+  setEmailError();
+  setMessage();
+});
+
+form?.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  setEmailError();
+  setMessage();
+
+  const email = emailInput?.value.trim().toLowerCase() || "";
+
+  if (!email) {
+    setEmailError("กรุณากรอกอีเมล");
+    emailInput?.focus();
+    return;
+  }
+
+  if (!isValidEmail(email)) {
+    setEmailError("รูปแบบอีเมลไม่ถูกต้อง");
+    emailInput?.focus();
+    return;
+  }
+
+  setLoading(true);
+
+  try {
+    const result = await requestPasswordReset(email);
+
+    setMessage(
+      result.message ||
+        "หากอีเมลนี้มีบัญชี CatMatch เราได้ส่งลิงก์รีเซ็ตรหัสผ่านให้แล้ว กรุณาตรวจสอบกล่องจดหมายและโฟลเดอร์สแปม",
+      true
+    );
+
     form.reset();
   } catch (error) {
-    setMessage(error.message || "ไม่สามารถส่งคำขอได้");
+    console.error("Password reset request failed:", error);
+    setMessage(friendlyRequestError(error));
   } finally {
-    submitButton.disabled = false;
-    submitButton.textContent = "ส่งคำขอเปลี่ยนรหัสผ่าน";
+    setLoading(false);
   }
 });

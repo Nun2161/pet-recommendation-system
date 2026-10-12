@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PetMatch Farm — ศูนย์จัดการฟาร์มหมาและแมว</title>
+  <meta name="description" content="Dashboard สำหรับเจ้าของฟาร์มหมาและแมวที่ผ่านการอนุมัติจาก PetMatch">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700;800&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="../css/design-system.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/global-settings.css?v=5">
+  <link rel="stylesheet" href="../css/farm-dashboard.css?v=36">
+  <link rel="stylesheet" href="../css/chat.css?v=18">
+  <link rel="stylesheet" href="../css/catmatch-dialog.css?v=22">
+  <link rel="stylesheet" href="../css/sakura-enhanced.css?v=22">
+  <script src="../js/global-settings.js?v=3"></script>
+  <script src="../js/api-config.js?v=1"></script>
+</head>
+<body class="farm-dashboard-page">
+  <div class="farm-sakura-scene" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+  <header class="farm-topbar">
+    <a class="farm-brand" href="./index.html" aria-label="PetMatch Farm หน้าหลัก">
+      <span class="farm-brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 64 64" class="farm-brand-cat">
+          <circle cx="20" cy="20" r="6"/>
+          <circle cx="32" cy="15" r="6"/>
+          <circle cx="44" cy="20" r="6"/>
+          <circle cx="49" cy="32" r="5"/>
+          <path d="M32 27c-8 0-15 8-15 16 0 6 5 9 10 7 3-1 7-1 10 0 5 2 10-1 10-7 0-8-7-16-15-16Z"/>
+        </svg>
+      </span>
+      <span><strong>PetMatch Farm</strong><small>ศูนย์จัดการฟาร์มหมาและแมว</small></span>
+    </a>
+    <div class="farm-topbar-account"><span class="approved-pill">✓ ฟาร์มที่ได้รับอนุมัติ</span><button id="farmLogout" type="button">ออกจากระบบ</button></div>
+  </header>
+
+  <div class="farm-dashboard-shell">
+    <aside class="farm-sidebar">
+      <div class="farm-profile-mini"><span id="farmAvatar">F</span><div><strong id="farmSidebarName">ฟาร์มของคุณ</strong><small id="farmSidebarEmail"></small></div></div>
+      <nav aria-label="เมนูจัดการฟาร์ม">
+        <button class="farm-nav-item is-active" data-panel="overview" type="button"><svg viewBox="0 0 24 24"><path d="M4 13h7V4H4zM13 20h7v-9h-7zM4 20h7v-5H4zM13 9h7V4h-7z"/></svg><span>ภาพรวม</span></button>
+        <button class="farm-nav-item" data-panel="animals" type="button"><svg viewBox="0 0 24 24"><circle cx="7" cy="8" r="2"/><circle cx="12" cy="6" r="2"/><circle cx="17" cy="8" r="2"/><circle cx="19" cy="13" r="1.8"/><path d="M12 11c-4 0-7 3.3-7 6.2 0 2.3 2 3.5 4 2.6 2-.9 4-.9 6 0 2 .9 4-.3 4-2.6C19 14.3 16 11 12 11Z"/></svg><span>จัดการสัตว์</span><b id="navAnimalCount">0</b></button>
+        <button class="farm-nav-item" data-panel="add-animal" type="button"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg><span>เพิ่มสัตว์</span></button>
+        <button class="farm-nav-item" data-panel="chat" type="button"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H8l-4 4V5Z"/><path d="M8 9h8M8 12h5"/></svg><span>ข้อความ</span><b id="farmChatUnread" hidden></b></button>
+        <button class="farm-nav-item" data-panel="profile" type="button"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-5 4-7 8-7s7 2 8 7"/></svg><span>โปรไฟล์ฟาร์ม</span></button>
+        <button class="farm-nav-item" data-panel="settings" type="button"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-2.8 2.8-.1-.1a1.7 1.7 0 0 0-1.9-.3A1.7 1.7 0 0 0 14 21v.2h-4V21a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1L4.2 17l.1-.1a1.7 1.7 0 0 0 .3-1.9A1.7 1.7 0 0 0 3 14H2.8v-4H3a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9L4.2 7 7 4.2l.1.1A1.7 1.7 0 0 0 9 4.6 1.7 1.7 0 0 0 10 3V2.8h4V3a1.7 1.7 0 0 0 1 1.6 1.7 1.7 0 0 0 1.9-.3l.1-.1L19.8 7l-.1.1a1.7 1.7 0 0 0-.3 1.9A1.7 1.7 0 0 0 21 10h.2v4H21a1.7 1.7 0 0 0-1.6 1Z"/></svg><span>บัญชีเจ้าของฟาร์ม</span></button>
+      </nav>
+      <div class="farm-help-card"><span>?</span><strong>ต้องทำอะไรต่อ</strong><p>เพิ่มข้อมูลหมาหรือแมวที่พร้อมติดต่อ และตอบข้อความจากผู้สนใจอย่างสม่ำเสมอ</p></div>
+    </aside>
+
+    <main class="farm-main">
+      <section class="farm-panel is-active" data-panel-content="overview">
+        <div class="farm-page-heading"><div><p class="farm-eyebrow">FARM OVERVIEW</p><h1>ยินดีต้อนรับ <span id="overviewFarmName">ฟาร์มของคุณ</span></h1><p>บัญชีได้รับอนุมัติแล้ว เริ่มจัดการข้อมูลสัตว์และตอบข้อความจากผู้สนใจได้เลย</p></div><button class="farm-primary-action" data-open-panel="add-animal" type="button">＋ เพิ่มสัตว์ตัวแรก</button></div>
+        <div class="farm-stats-grid"><article><span class="stat-icon blue">🐾</span><div><small>สัตว์ทั้งหมด</small><strong id="totalAnimals">0</strong></div></article><article><span class="stat-icon green">✓</span><div><small>พร้อมติดต่อ</small><strong id="availableAnimals">0</strong></div></article><article><span class="stat-icon gold">⌂</span><div><small>สถานะฟาร์ม</small><strong class="status-word">อนุมัติแล้ว</strong></div></article></div>
+        <section class="farm-get-started" id="farmGettingStarted">
+          <div class="section-title"><div><p class="farm-eyebrow">เริ่มต้นใช้งาน</p><h2>เริ่มต้นจัดการฟาร์ม</h2></div><span id="setupProgressText">1 / 2</span></div>
+          <div class="setup-progress"><span id="setupProgressBar"></span></div>
+          <div class="setup-list">
+            <button class="is-complete" id="setupStep1" type="button"><span class="setup-step-number">✓</span><div><strong>ผ่านการตรวจสอบฟาร์ม</strong><small>แอดมินอนุมัติบัญชีและใบรับรองแล้ว</small></div></button>
+            <button id="setupStep2" data-open-panel="add-animal" type="button"><span class="setup-step-number">2</span><div><strong>เพิ่มข้อมูลสัตว์</strong><small>เลือกประเภทสัตว์ ใส่ชื่อ สายพันธุ์ อายุ รูป และสถานะ</small></div><b>เริ่มทำ →</b></button>
+          </div>
+        </section>
+        <section class="farm-card"><div class="section-title"><div><p class="farm-eyebrow">ล่าสุด</p><h2>สัตว์ในฟาร์ม</h2></div><button data-open-panel="animals" type="button">ดูทั้งหมด →</button></div><div id="overviewAnimals" class="mini-animal-list"></div></section>
+      </section>
+
+      <section class="farm-panel" data-panel-content="animals" hidden><div class="farm-page-heading compact"><div><p class="farm-eyebrow">MY ANIMALS</p><h1>จัดการสัตว์</h1><p>อัปเดตข้อมูลและสถานะของสัตว์ในฟาร์ม</p></div><button class="farm-primary-action" data-open-panel="add-animal" type="button">＋ เพิ่มสัตว์</button></div><div class="farm-toolbar"><input id="animalSearch" type="search" placeholder="ค้นหาชื่อสัตว์หรือสายพันธุ์"><select id="animalSpeciesFilter"><option value="all">หมาและแมว</option><option value="cat">แมว</option><option value="dog">สุนัข</option></select><select id="animalStatusFilter"><option value="all">ทุกสถานะ</option><option value="available">พร้อมติดต่อ</option><option value="adopted">ปิดการติดต่อ</option></select></div><div id="animalList" class="animal-card-grid"></div></section>
+
+      <section class="farm-panel" data-panel-content="add-animal" hidden><div class="farm-page-heading compact"><div><p class="farm-eyebrow" id="animalFormEyebrow">ADD AN ANIMAL</p><h1 id="animalFormTitle">เพิ่มข้อมูลสัตว์</h1><p id="animalFormDescription">ข้อมูลนี้จะแสดงให้ผู้ใช้เห็นหลังบันทึก</p></div></div><form id="animalForm" class="farm-form-card"><input id="editingAnimalId" name="animal_id" type="hidden"><div class="form-grid"><label><span>ชื่อสัตว์ <b>*</b></span><input name="animal_name" required placeholder="เช่น โมจิ"></label><label><span>ประเภทสัตว์ <b>*</b></span><select name="species" id="animalSpeciesSelect" required><option value="cat">แมว</option><option value="dog">สุนัข</option></select></label><label><span>สายพันธุ์ <b>*</b></span><select name="breed_id" id="breedSelect" required><option value="">เลือกสายพันธุ์</option></select></label><label><span>อายุ (เดือน)</span><input name="age_months" type="number" min="0" max="360" placeholder="เช่น 12"></label><label><span>เพศ</span><select name="gender"><option value="">ไม่ระบุ</option><option value="male">เพศผู้</option><option value="female">เพศเมีย</option></select></label><label><span>สีขน</span><input name="color" placeholder="เช่น สีขาวครีม"></label><div class="full animal-image-field">
+  <span class="animal-image-label">รูปภาพสัตว์ <b>*</b></span>
+  <div class="animal-image-upload" id="animalImageUpload" role="button" tabindex="0" aria-label="เลือกรูปภาพสัตว์">
+    <input id="animalImageInput" name="image_file" type="file" accept="image/jpeg,image/png,image/webp" hidden>
+    <div class="animal-image-empty" id="animalImageEmpty">
+      <span class="animal-image-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="2"/><path d="m5 18 5-5 3 3 2-2 4 4"/></svg>
+      </span>
+      <strong>กดเพื่อเลือกรูปภาพจากเครื่อง</strong>
+      <small>รองรับ JPG, PNG และ WEBP ขนาดไม่เกิน 5 MB</small>
+    </div>
+    <div class="animal-image-preview-shell" id="animalImagePreviewShell" hidden>
+      <img id="animalImagePreview" class="animal-image-preview" alt="ตัวอย่างรูปภาพสัตว์">
+    </div>
+    <div class="animal-image-selected-actions" id="animalImageSelectedActions" hidden>
+      <button id="changeAnimalImage" class="animal-image-change" type="button">เปลี่ยนรูปภาพ</button>
+      <button id="removeAnimalImage" class="animal-image-remove" type="button">ลบรูปภาพ</button>
+    </div>
+  </div>
+</div><label class="full"><span>รายละเอียด</span><textarea name="description" rows="5" placeholder="นิสัย สุขภาพ และข้อมูลที่ผู้สนใจควรรู้"></textarea></label></div><div id="animalFormMessage" class="farm-form-message"></div><div class="form-actions"><button class="farm-primary-action" id="animalSubmitButton" type="submit">บันทึกข้อมูลสัตว์</button><button class="farm-secondary-action" id="animalCancelButton" data-open-panel="animals" type="button">ยกเลิก</button></div></form></section>
+
+
+      <section class="farm-panel farm-chat-panel" data-panel-content="chat" hidden>
+        <div class="realtime-chat chat-dashboard-shell" data-chat-app data-chat-role="farm" data-species="cat">
+            <aside class="chat-sidebar">
+              <div class="chat-sidebar-head">
+                <div><p class="chat-kicker">MESSAGES</p><h1>ข้อความ</h1><p>ผู้ใช้ที่ติดต่อฟาร์ม</p></div>
+                <button class="chat-refresh-button" data-chat-refresh type="button" aria-label="รีเฟรชรายการข้อความ">↻ รีเฟรช</button>
+              </div>
+              <label class="chat-search-wrap">
+                <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"></circle><path d="m20 20-4-4"></path></svg>
+                <input data-chat-search type="search" placeholder="ค้นหาชื่อหรือบทสนทนา">
+              </label>
+              <div class="chat-conversation-list" data-chat-conversations></div>
+            </aside>
+            <section class="chat-main">
+              <div class="chat-error" data-chat-error role="alert" hidden></div>
+              <div class="chat-empty-state farm-chat-empty" data-chat-empty aria-hidden="true"></div>
+              <div class="chat-active" data-chat-active hidden>
+                <header class="chat-active-header">
+                  <span class="chat-active-avatar" data-chat-avatar>?</span>
+                  <div class="chat-active-header-body"><h2 data-chat-name>บทสนทนา</h2><div class="chat-active-subject" data-chat-subject></div><span class="chat-active-status" data-chat-status>ออฟไลน์</span></div>
+                </header>
+                <div class="chat-message-list" data-chat-messages></div>
+                <div class="chat-typing" data-chat-typing hidden></div>
+                <div class="chat-attachment-preview" data-chat-preview hidden></div>
+                <form class="chat-composer" data-chat-form>
+                  <button class="chat-attach-button" data-chat-attach type="button" aria-label="แนบรูปหรือวิดีโอ"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m8 12 6.5-6.5a3 3 0 0 1 4.2 4.2L10 18.4a5 5 0 0 1-7-7l8.4-8.4"></path></svg></button>
+                  <input data-chat-file type="file" accept="image/jpeg,image/png,image/webp,video/mp4,video/webm,video/quicktime" hidden>
+                  <div class="chat-input-shell"><textarea data-chat-input rows="1" maxlength="4000" placeholder="พิมพ์ข้อความ..."></textarea></div>
+                  <button class="chat-send-button" data-chat-send type="submit" aria-label="ส่งข้อความ"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m3 11 17-8-6 18-3-7-8-3Z"></path><path d="m11 14 9-11"></path></svg></button>
+                </form>
+              </div>
+            </section>
+          </div>
+      </section>
+
+      <section class="farm-panel" data-panel-content="profile" hidden>
+        <div class="farm-page-heading compact"><div><p class="farm-eyebrow">FARM PROFILE</p><h1>โปรไฟล์ฟาร์ม</h1><p>ข้อมูลบัญชีที่ได้รับการตรวจสอบจาก PetMatch</p></div></div>
+        <div class="profile-layout">
+          <section class="farm-card profile-main">
+            <div class="profile-hero">
+              <div class="profile-avatar-editor">
+                <button class="profile-avatar-preview" id="viewFarmProfileImage" type="button" aria-label="ดูรูปโปรไฟล์ฟาร์ม">
+                  <span id="profileAvatar">F</span>
+                </button>
+                <button id="chooseFarmProfileImage" type="button">เปลี่ยนรูป</button>
+                <input id="farmProfileImageInput" type="file" accept="image/jpeg,image/png,image/webp" hidden>
+              </div>
+              <div><h2 id="profileFarmName">ฟาร์มของคุณ</h2><p id="profileOwnerName"></p><span class="approved-pill">✓ ผ่านการอนุมัติ</span></div>
+            </div>
+            <div class="profile-image-actions" id="farmProfileImageEditor" hidden>
+              <div class="profile-image-editor-heading">
+                <div><strong>เปลี่ยนรูปโปรไฟล์ฟาร์ม</strong><small>รองรับ JPG, PNG และ WEBP ขนาดไม่เกิน 5 MB</small></div>
+                <button class="profile-editor-close" id="closeFarmProfileImageEditor" type="button" aria-label="ปิด">×</button>
+              </div>
+              <div class="profile-image-editor-actions"><button class="farm-secondary-action" id="selectFarmProfileImage" type="button">เลือกรูปจากเครื่อง</button><button class="farm-primary-action" id="saveFarmProfileImage" type="button" disabled>บันทึกรูปโปรไฟล์</button><button class="farm-secondary-action danger-soft" id="removeFarmProfileImage" type="button" hidden>ลบรูป</button></div>
+              <p class="farm-form-message" id="farmProfileImageMessage"></p>
+            </div>
+            <dl><div><dt>อีเมล</dt><dd id="profileEmail">—</dd></div><div><dt>เบอร์โทรศัพท์</dt><dd id="profilePhone">—</dd></div><div><dt>ที่อยู่</dt><dd id="profileAddress">—</dd></div></dl>
+          </section>
+          <section class="farm-card farm-profile-location-card">
+            <div class="section-title"><div><p class="farm-eyebrow">FARM LOCATION</p><h2>ตำแหน่งฟาร์มบนแผนที่</h2><p>คลิกบนแผนที่หรือลากหมุดเพื่อให้ผู้ใช้ค้นหาฟาร์มใกล้เคียงได้ถูกต้อง</p></div></div>
+            <div class="farm-profile-location-actions"><button class="farm-secondary-action" id="useDashboardFarmLocation" type="button">⌖ ใช้ตำแหน่งปัจจุบัน</button><span id="dashboardFarmLocationStatus">ยังไม่ได้ปักหมุด</span></div>
+            <div id="dashboardFarmLocationMap" class="dashboard-farm-location-map" aria-label="แผนที่ตำแหน่งฟาร์ม"></div>
+            <div class="farm-profile-coordinate-row"><label>ละติจูด<input id="dashboardFarmLatitude" type="text" readonly></label><label>ลองจิจูด<input id="dashboardFarmLongitude" type="text" readonly></label></div>
+            <button class="farm-primary-action" id="saveDashboardFarmLocation" type="button" disabled>บันทึกตำแหน่งฟาร์ม</button>
+          </section>
+          <aside class="farm-card profile-note"><span class="profile-note-icon">⌂</span><h3>ข้อมูลที่ผู้ใช้จะเห็น</h3><p>รูปโปรไฟล์ ชื่อฟาร์ม ช่องทางติดต่อ ที่อยู่ และรายการสัตว์ที่มีสถานะ “พร้อมติดต่อ”</p><a class="farm-secondary-action" href="./index.html">ดูหน้าหลัก PetMatch</a></aside>
+        </div>
+      </section>
+
+      <section class="farm-panel" data-panel-content="settings" hidden>
+        <div class="farm-page-heading compact">
+          <div><p class="farm-eyebrow">FARM OWNER ACCOUNT</p><h1>บัญชีเจ้าของฟาร์ม</h1><p>ข้อมูลนี้มาจากบัญชีฟาร์มที่กำลังเข้าสู่ระบบ ไม่ใช้ข้อมูลบัญชีผู้ใช้ทั่วไป</p></div>
+        </div>
+        <div class="farm-owner-account-layout">
+          <section class="farm-card farm-owner-account-card">
+            <div class="farm-owner-account-hero">
+              <span class="farm-owner-account-avatar" id="settingsFarmAvatar">F</span>
+              <div><p class="farm-eyebrow">OWNER</p><h2 id="settingsFarmOwnerName">เจ้าของฟาร์ม</h2><p id="settingsFarmEmail">—</p><span class="approved-pill" id="settingsFarmStatus">✓ ฟาร์มที่ได้รับอนุมัติ</span></div>
+            </div>
+            <dl class="farm-owner-account-details">
+              <div><dt>ชื่อฟาร์ม</dt><dd id="settingsFarmName">—</dd></div>
+              <div><dt>รหัสฟาร์ม</dt><dd id="settingsFarmId">—</dd></div>
+              <div><dt>ประเภทบัญชี</dt><dd>เจ้าของฟาร์ม PetMatch</dd></div>
+              <div><dt>วันที่ได้รับอนุมัติ</dt><dd id="settingsFarmApprovedAt">—</dd></div>
+            </dl>
+          </section>
+          <section class="farm-card farm-owner-account-actions">
+            <div><p class="farm-eyebrow">ACCOUNT ACTIONS</p><h2>จัดการบัญชีฟาร์ม</h2><p>แก้ไขรูป ข้อมูลติดต่อ ที่อยู่ และตำแหน่งของฟาร์มได้จากโปรไฟล์ฟาร์ม</p></div>
+            <button class="farm-primary-action" data-open-panel="profile" type="button">แก้ไขโปรไฟล์ฟาร์ม</button>
+            <button class="farm-secondary-action danger-soft" id="farmSettingsLogout" type="button">ออกจากบัญชีฟาร์ม</button>
+          </section>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="farm-welcome-modal" id="farmWelcomeModal" role="dialog" aria-modal="true" aria-labelledby="farmWelcomeTitle" hidden><div class="farm-welcome-backdrop"></div><div class="farm-welcome-burst" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><section><span class="welcome-icon"><svg viewBox="0 0 64 64"><path d="M12 29 32 13l20 16M17 27v25h30V27M25 52V37h14v15"/><path d="m23 31 7 7 13-15"/></svg></span><p class="farm-eyebrow">บัญชีได้รับการอนุมัติแล้ว</p><h2 id="farmWelcomeTitle">ยินดีต้อนรับสู่ PetMatch Farm</h2><p>ตอนนี้ <strong id="welcomeFarmName">ฟาร์มของคุณ</strong> สามารถเพิ่มข้อมูลสัตว์ จัดการสถานะ และตอบข้อความจากผู้สนใจได้แล้ว</p><button class="farm-primary-action" id="startFarmDashboard" type="button">เริ่มจัดการฟาร์ม →</button></section></div>
+
+  <div class="farm-image-viewer" id="farmProfileImageViewer" role="dialog" aria-modal="true" aria-label="รูปโปรไฟล์ฟาร์ม" hidden>
+    <button class="farm-image-viewer-backdrop" id="closeFarmProfileImageViewerBackdrop" type="button" aria-label="ปิดรูปภาพ"></button>
+    <div class="farm-image-viewer-card">
+      <button class="farm-image-viewer-close" id="closeFarmProfileImageViewer" type="button" aria-label="ปิด">×</button>
+      <img id="farmProfileImageViewerImage" alt="รูปโปรไฟล์ฟาร์มขนาดใหญ่">
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="../js/thailand-mask.js?v=4"></script>
+  <script src="../js/cat-breed-data.js?v=2"></script>
+  <script src="../js/dog-breed-data.js?v=1"></script>
+  <script src="../js/farm-dashboard.js?v=35"></script>
+  <script src="../js/chat-api.js?v=6"></script>
+  <script src="../js/chat-ui.js?v=13"></script>
+  <script src="../js/farm-chat.js?v=1"></script>
+  <script src="../js/catmatch-dialog.js?v=22"></script>
+  <script src="../js/sakura-enhanced.js?v=22"></script>
+</body>
+</html>

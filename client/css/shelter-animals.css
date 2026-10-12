@@ -1,0 +1,816 @@
+
+/* Shelter adoption area — isolated component styles. */
+.shelter-home { position: relative; }
+.shelter-home__heading { align-items: end; gap: 24px; }
+.shelter-home__intro { max-width: 720px; margin-top: 10px; color: var(--color-text-soft); line-height: 1.75; }
+.shelter-home-grid { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(300px, .85fr); gap: 24px; }
+.shelter-featured-card, .shelter-mini-card, .shelter-animal-card, .shelter-filter-panel, .shelter-contact-card, .shelter-detail-gallery, .shelter-detail-content { border: 1px solid rgba(84,113,137,.18); background: rgba(255,255,255,.9); box-shadow: 0 20px 50px rgba(69,91,109,.10); }
+.shelter-featured-card { display: grid; grid-template-columns: minmax(300px, .95fr) minmax(0, 1.05fr); min-height: 420px; border-radius: 30px; overflow: hidden; }
+.shelter-featured-card__media, .shelter-animal-card__media, .shelter-detail-image { position: relative; overflow: hidden; background: #e9eef2; }
+.shelter-featured-card__media img, .shelter-animal-card__media img, .shelter-detail-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.shelter-featured-card__content { padding: clamp(26px, 4vw, 48px); display: flex; flex-direction: column; align-items: flex-start; justify-content: center; }
+.shelter-kicker { margin: 0 0 7px; color: #547b99; font-size: .82rem; font-weight: 800; letter-spacing: .05em; }
+.shelter-featured-card h3 { margin: 0; font-size: clamp(2rem, 4vw, 3.4rem); color: var(--color-text); }
+.shelter-meta { margin: 8px 0 0; color: var(--color-text-soft); }
+.shelter-traits { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0; }
+.shelter-traits span { padding: 7px 11px; border: 1px solid rgba(82,119,148,.18); border-radius: 999px; background: #f4f8fb; color: #345b76; font-size: .78rem; font-weight: 700; }
+.shelter-story { margin: 0 0 22px; color: var(--color-text-soft); line-height: 1.75; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; }
+.shelter-primary-action { margin-top: auto; }
+.shelter-status-badge { position: absolute; top: 18px; left: 18px; z-index: 2; padding: 8px 13px; border-radius: 999px; background: rgba(245,239,231,.94); color: #213555; font-size: .78rem; font-weight: 800; box-shadow: 0 8px 20px rgba(33,53,85,.12); }
+.shelter-status-badge.is-urgent { background: #213555; color: #fff; }
+.shelter-mini-list { display: grid; grid-template-rows: repeat(3, 1fr); gap: 14px; }
+.shelter-mini-card { min-height: 124px; display: grid; grid-template-columns: 124px minmax(0,1fr) 30px; align-items: center; gap: 16px; padding: 12px 16px 12px 12px; border-radius: 22px; color: inherit; text-decoration: none; transition: transform .22s ease, box-shadow .22s ease; }
+.shelter-mini-card:hover { transform: translateY(-3px); box-shadow: 0 24px 55px rgba(69,91,109,.15); }
+.shelter-mini-card img { width: 124px; height: 100%; min-height: 100px; border-radius: 16px; object-fit: cover; }
+.shelter-mini-card__body { min-width: 0; display: grid; gap: 3px; }
+.shelter-mini-card__body small { color: #6d91aa; font-weight: 800; }
+.shelter-mini-card__body strong { color: var(--color-text); font-size: 1.16rem; }
+.shelter-mini-card__body span { color: var(--color-text-soft); font-size: .86rem; }
+.shelter-mini-card__arrow { font-weight: 900; color: #5685a6; }
+.shelter-source-note { margin: 16px 0 0; color: var(--color-text-soft); font-size: .8rem; text-align: right; }
+
+.shelter-page { min-height: 100vh; }
+.shelter-page-main { padding: clamp(50px,7vw,90px) 0 90px; position: relative; z-index: 2; }
+.shelter-page-hero { display: grid; grid-template-columns: minmax(0,1fr) auto; align-items: end; gap: 24px; margin-bottom: 28px; }
+.shelter-page-hero h1 { margin: 5px 0 10px; font-size: clamp(2.4rem,5vw,4.7rem); line-height: 1.08; color: var(--color-text); }
+.shelter-page-hero p:not(.eyebrow) { max-width: 720px; color: var(--color-text-soft); line-height: 1.75; }
+.shelter-result-count { min-width: 120px; padding: 20px; border-radius: 22px; background: rgba(255,255,255,.84); border: 1px solid rgba(84,113,137,.16); text-align: center; box-shadow: 0 15px 36px rgba(69,91,109,.08); }
+.shelter-result-count strong { display: block; color: var(--color-text); font-size: 1.55rem; }
+.shelter-result-count span { color: var(--color-text-soft); font-size: .78rem; }
+.shelter-filter-panel { display: grid; grid-template-columns: minmax(230px,1.7fr) repeat(2,minmax(150px,.7fr)) auto auto; gap: 12px; align-items: end; padding: 18px; border-radius: 24px; margin-bottom: 26px; }
+.shelter-field { display: grid; gap: 7px; }
+.shelter-field label { color: var(--color-text); font-weight: 700; font-size: .82rem; }
+.shelter-field input, .shelter-field select { width: 100%; min-height: 46px; border: 1px solid rgba(84,113,137,.22); border-radius: 14px; background: #fff; padding: 10px 13px; color: var(--color-text); font: inherit; }
+.shelter-check { min-height: 46px; display: flex; align-items: center; gap: 9px; padding: 0 12px; color: var(--color-text); font-weight: 700; white-space: nowrap; }
+.shelter-check input { width: 18px; height: 18px; accent-color: #3e5879; }
+.shelter-clear { min-height: 46px; padding: 0 16px; border: 1px solid rgba(84,113,137,.22); border-radius: 14px; background: transparent; color: var(--color-text); font-weight: 700; cursor: pointer; }
+.shelter-animal-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 22px; }
+.shelter-animal-card { border-radius: 26px; overflow: hidden; }
+.shelter-animal-card__media { display: block; aspect-ratio: 4/3; }
+.shelter-animal-card__body { padding: 22px; }
+.shelter-animal-card h2 { margin: 0; color: var(--color-text); font-size: 1.65rem; }
+.shelter-card-location { color: var(--color-text-soft); font-size: .86rem; }
+.shelter-card-link { display: inline-flex; gap: 8px; margin-top: 4px; color: #386889; font-weight: 800; text-decoration: none; }
+.shelter-empty { grid-column: 1/-1; min-height: 280px; display: grid; place-content: center; text-align: center; padding: 30px; border: 1px dashed rgba(84,113,137,.26); border-radius: 26px; background: rgba(255,255,255,.65); }
+.shelter-empty strong { color: var(--color-text); font-size: 1.35rem; }
+.shelter-empty p { color: var(--color-text-soft); }
+
+.shelter-detail-main { padding: clamp(48px,7vw,82px) 0 100px; position: relative; z-index: 2; }
+.shelter-back-link { display: inline-flex; margin-bottom: 20px; color: #477694; font-weight: 800; text-decoration: none; }
+.shelter-detail-grid { display: grid; grid-template-columns: minmax(360px,.95fr) minmax(0,1.2fr); gap: 24px; align-items: start; }
+.shelter-detail-gallery, .shelter-detail-content, .shelter-contact-card { border-radius: 30px; padding: 24px; }
+.shelter-detail-gallery { grid-row: span 2; }
+.shelter-detail-image { aspect-ratio: 4/3; border-radius: 22px; }
+.shelter-detail-gallery > p { margin: 14px 2px 0; color: var(--color-text-soft); font-size: .78rem; line-height: 1.6; }
+.shelter-detail-content h1 { margin: 4px 0 8px; color: var(--color-text); font-size: clamp(2.7rem,5vw,4.8rem); line-height: 1.05; }
+.shelter-detail-meta { color: var(--color-text-soft); }
+.shelter-detail-section { margin-top: 26px; }
+.shelter-detail-section h2 { color: var(--color-text); }
+.shelter-detail-section p { color: var(--color-text-soft); line-height: 1.8; }
+.shelter-detail-facts { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; margin-top: 24px; }
+.shelter-detail-facts div { padding: 17px; border-radius: 17px; background: #f3f7fa; border: 1px solid rgba(84,113,137,.12); }
+.shelter-detail-facts span { display: block; color: #6b879a; font-size: .76rem; font-weight: 800; }
+.shelter-detail-facts strong { display: block; margin-top: 5px; color: var(--color-text); line-height: 1.55; }
+.shelter-contact-card { grid-column: 2; }
+.shelter-contact-card h2 { color: var(--color-text); margin: 2px 0 6px; }
+.shelter-contact-card > p, .shelter-contact-card > small { color: var(--color-text-soft); }
+.shelter-contact-actions { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; margin-top: 22px; }
+.shelter-contact-actions .shelter-chat-coming { grid-column: 1/-1; background: #d8c4b6; color: #213555; }
+.shelter-contact-actions button:disabled { opacity: .72; cursor: not-allowed; }
+.shelter-contact-note { margin: 14px 0 0; font-size: .78rem; line-height: 1.55; }
+
+body.dog-theme .shelter-featured-card, body.dog-theme .shelter-mini-card, body.dog-theme .shelter-animal-card, body.dog-theme .shelter-filter-panel, body.dog-theme .shelter-contact-card, body.dog-theme .shelter-detail-gallery, body.dog-theme .shelter-detail-content { border-color: rgba(33,53,85,.18); }
+body.dog-theme .shelter-kicker, body.dog-theme .shelter-card-link, body.dog-theme .shelter-back-link { color: #3e5879; }
+body.dog-theme .shelter-traits span { background: #f5efe7; border-color: rgba(62,88,121,.16); color: #213555; }
+body.dog-theme .shelter-primary-action { background: #213555; color: #fff; }
+
+html[data-catmatch-theme="dark"] .shelter-featured-card,
+html[data-catmatch-theme="dark"] .shelter-mini-card,
+html[data-catmatch-theme="dark"] .shelter-animal-card,
+html[data-catmatch-theme="dark"] .shelter-filter-panel,
+html[data-catmatch-theme="dark"] .shelter-contact-card,
+html[data-catmatch-theme="dark"] .shelter-detail-gallery,
+html[data-catmatch-theme="dark"] .shelter-detail-content,
+html[data-catmatch-theme="dark"] .shelter-result-count,
+html[data-catmatch-theme="dark"] .shelter-empty { background: #202f3a; border-color: #3b4e5b; box-shadow: 0 22px 55px rgba(0,0,0,.22); }
+html[data-catmatch-theme="dark"] .shelter-field input,
+html[data-catmatch-theme="dark"] .shelter-field select { background: #172631; border-color: #425866; color: #f5efe7; }
+html[data-catmatch-theme="dark"] .shelter-traits span,
+html[data-catmatch-theme="dark"] .shelter-detail-facts div { background: #283b48; border-color: #405564; color: #edf4f7; }
+html[data-catmatch-theme="dark"] :is(.shelter-featured-card h3,.shelter-mini-card__body strong,.shelter-animal-card h2,.shelter-page-hero h1,.shelter-result-count strong,.shelter-detail-content h1,.shelter-detail-section h2,.shelter-detail-facts strong,.shelter-contact-card h2,.shelter-field label,.shelter-check,.shelter-clear,.shelter-empty strong) { color: #f5efe7; }
+html[data-catmatch-theme="dark"] :is(.shelter-home__intro,.shelter-meta,.shelter-story,.shelter-mini-card__body span,.shelter-source-note,.shelter-page-hero p:not(.eyebrow),.shelter-result-count span,.shelter-card-location,.shelter-detail-meta,.shelter-detail-section p,.shelter-contact-card>p,.shelter-contact-card>small,.shelter-contact-note,.shelter-empty p) { color: #bfcbd2; }
+html[data-catmatch-theme="dark"] body.dog-theme .shelter-featured-card,
+html[data-catmatch-theme="dark"] body.dog-theme .shelter-mini-card,
+html[data-catmatch-theme="dark"] body.dog-theme .shelter-animal-card,
+html[data-catmatch-theme="dark"] body.dog-theme .shelter-filter-panel,
+html[data-catmatch-theme="dark"] body.dog-theme .shelter-contact-card,
+html[data-catmatch-theme="dark"] body.dog-theme .shelter-detail-gallery,
+html[data-catmatch-theme="dark"] body.dog-theme .shelter-detail-content { background: #1b2c46; border-color: rgba(216,196,182,.22); }
+html[data-catmatch-theme="dark"] body.dog-theme .shelter-detail-facts div,
+html[data-catmatch-theme="dark"] body.dog-theme .shelter-traits span { background: #263b59; border-color: rgba(216,196,182,.18); color: #f5efe7; }
+
+@media (max-width: 1000px) {
+  .shelter-home-grid { grid-template-columns: 1fr; }
+  .shelter-mini-list { grid-template-columns: repeat(3,minmax(0,1fr)); grid-template-rows: auto; }
+  .shelter-mini-card { grid-template-columns: 88px minmax(0,1fr); }
+  .shelter-mini-card__arrow { display: none; }
+  .shelter-mini-card img { width: 88px; }
+  .shelter-filter-panel { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .shelter-animal-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+@media (max-width: 720px) {
+  .shelter-home__heading, .shelter-page-hero { display: grid; grid-template-columns: 1fr; align-items: start; }
+  .shelter-featured-card { grid-template-columns: 1fr; }
+  .shelter-featured-card__media { aspect-ratio: 4/3; }
+  .shelter-mini-list { grid-template-columns: 1fr; }
+  .shelter-mini-card { grid-template-columns: 100px minmax(0,1fr) 24px; }
+  .shelter-mini-card img { width: 100px; }
+  .shelter-source-note { text-align: left; }
+  .shelter-filter-panel { grid-template-columns: 1fr; }
+  .shelter-animal-grid { grid-template-columns: 1fr; }
+  .shelter-detail-grid { grid-template-columns: 1fr; }
+  .shelter-detail-gallery { grid-row: auto; }
+  .shelter-contact-card { grid-column: 1; }
+  .shelter-detail-facts { grid-template-columns: 1fr; }
+  .shelter-contact-actions { grid-template-columns: 1fr; }
+  .shelter-contact-actions .shelter-chat-coming { grid-column: 1; }
+}
+
+
+/* Shelter list authentication guard. */
+.shelter-auth-required-page {
+  min-height: 100vh;
+  margin: 0;
+  background: #f8f4ef;
+  color: #263b54;
+}
+.shelter-auth-required-page.dog-theme {
+  background: #f5efe7;
+  color: #213555;
+}
+.shelter-auth-required {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 28px;
+  position: relative;
+  overflow: hidden;
+}
+.shelter-auth-required::before,
+.shelter-auth-required::after {
+  content: "";
+  position: fixed;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  background: rgba(142, 183, 211, .13);
+  filter: blur(3px);
+  pointer-events: none;
+}
+.shelter-auth-required::before { top: -150px; right: -95px; }
+.shelter-auth-required::after { bottom: -170px; left: -110px; }
+.shelter-auth-card {
+  width: min(560px, 100%);
+  padding: clamp(34px, 6vw, 58px);
+  border: 1px solid rgba(70, 105, 133, .18);
+  border-radius: 32px;
+  background: rgba(255, 255, 255, .94);
+  box-shadow: 0 28px 70px rgba(45, 70, 92, .15);
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.dog-theme .shelter-auth-card {
+  background: rgba(245, 239, 231, .96);
+  border-color: rgba(33, 53, 85, .2);
+}
+.shelter-auth-icon {
+  width: 76px;
+  height: 76px;
+  margin: 0 auto 20px;
+  display: grid;
+  place-items: center;
+  border-radius: 24px;
+  background: #edf5fa;
+  font-size: 2.15rem;
+}
+.dog-theme .shelter-auth-icon { background: #d8c4b6; }
+.shelter-auth-card .eyebrow { margin: 0 0 10px; }
+.shelter-auth-card h1 {
+  margin: 0;
+  color: inherit;
+  font-size: clamp(1.9rem, 5vw, 3rem);
+  line-height: 1.22;
+}
+.shelter-auth-card > p:not(.eyebrow) {
+  max-width: 450px;
+  margin: 18px auto 0;
+  color: #6d8090;
+  line-height: 1.75;
+}
+.dog-theme .shelter-auth-card > p:not(.eyebrow) { color: #66778c; }
+.shelter-auth-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 30px;
+}
+.shelter-auth-actions .button { min-width: 145px; }
+.dog-theme .shelter-auth-actions .button-primary { background: #213555; color: #fff; }
+.dog-theme .shelter-auth-actions .button-secondary {
+  background: transparent;
+  border-color: #3e5879;
+  color: #213555;
+}
+.shelter-auth-back {
+  display: inline-flex;
+  margin-top: 24px;
+  color: #547891;
+  font-weight: 800;
+  text-decoration: none;
+}
+.dog-theme .shelter-auth-back { color: #3e5879; }
+html[data-catmatch-theme="dark"] .shelter-auth-required-page { background: #14232e; color: #f5efe7; }
+html[data-catmatch-theme="dark"] .shelter-auth-required-page.dog-theme { background: #14233a; }
+html[data-catmatch-theme="dark"] .shelter-auth-card {
+  background: #20323e;
+  border-color: #3d5362;
+  box-shadow: 0 28px 70px rgba(0, 0, 0, .28);
+}
+html[data-catmatch-theme="dark"] .dog-theme .shelter-auth-card {
+  background: #1d304c;
+  border-color: rgba(216, 196, 182, .25);
+}
+html[data-catmatch-theme="dark"] .shelter-auth-card > p:not(.eyebrow) { color: #c1ccd3; }
+html[data-catmatch-theme="dark"] .shelter-auth-back { color: #c4d8e6; }
+@media (max-width: 560px) {
+  .shelter-auth-required { padding: 18px; }
+  .shelter-auth-card { padding: 34px 22px; border-radius: 26px; }
+  .shelter-auth-actions { display: grid; }
+  .shelter-auth-actions .button { width: 100%; }
+}
+
+
+/* Shelter login warning modal — shared by CatMatch and DogMatch home pages. */
+dialog.shelter-login-dialog {
+  width: min(560px, calc(100vw - 28px));
+  max-width: 560px;
+  margin: auto;
+  padding: clamp(30px, 5vw, 48px);
+  border: 1px solid rgba(84, 113, 137, .20);
+  border-radius: 30px;
+  background: #ffffff;
+  color: #263b54;
+  box-shadow: 0 32px 90px rgba(34, 54, 72, .24);
+  text-align: center;
+  overflow: visible;
+}
+dialog.shelter-login-dialog.is-dog {
+  background: #F5EFE7;
+  color: #213555;
+  border-color: rgba(33, 53, 85, .24);
+}
+dialog.shelter-login-dialog::backdrop {
+  background: rgba(20, 31, 42, .58);
+  backdrop-filter: blur(7px);
+}
+.shelter-login-dialog__close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(84, 113, 137, .10);
+  color: inherit;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.shelter-login-dialog__icon {
+  width: 76px;
+  height: 76px;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 18px;
+  border-radius: 24px;
+  background: #edf5fa;
+  font-size: 2.15rem;
+}
+.shelter-login-dialog.is-dog .shelter-login-dialog__icon { background: #D8C4B6; }
+.shelter-login-dialog h2 {
+  margin: 7px 0 0;
+  color: inherit;
+  font-size: clamp(1.75rem, 4vw, 2.55rem);
+  line-height: 1.25;
+}
+.shelter-login-dialog > p:not(.eyebrow) {
+  max-width: 450px;
+  margin: 16px auto 0;
+  color: #6d8090;
+  line-height: 1.75;
+}
+.shelter-login-dialog.is-dog > p:not(.eyebrow) { color: #617187; }
+.shelter-login-dialog__actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 28px;
+}
+.shelter-login-dialog__actions .button { min-width: 145px; }
+.shelter-login-dialog.is-dog .button-primary { background: #213555 !important; color: #fff !important; }
+.shelter-login-dialog.is-dog .button-secondary { background: #D8C4B6 !important; border-color: #3E5879 !important; color: #213555 !important; }
+html[data-catmatch-theme="dark"] dialog.shelter-login-dialog {
+  background: #20323e;
+  border-color: #425866;
+  color: #f5efe7;
+}
+html[data-catmatch-theme="dark"] dialog.shelter-login-dialog.is-dog {
+  background: #1d304c;
+  border-color: rgba(216, 196, 182, .25);
+}
+html[data-catmatch-theme="dark"] .shelter-login-dialog > p:not(.eyebrow) { color: #c1ccd3; }
+@media (max-width: 560px) {
+  dialog.shelter-login-dialog { padding: 34px 22px 28px; border-radius: 25px; }
+  .shelter-login-dialog__actions { display: grid; }
+  .shelter-login-dialog__actions .button { width: 100%; }
+}
+
+/* Cat shelter detail v2: show the complete uploaded photo instead of cropping it. */
+body.shelter-page[data-species="cat"] .shelter-detail-image {
+  aspect-ratio: 1 / 1;
+  display: grid;
+  place-items: center;
+  padding: 12px;
+  background: #f5efe7;
+}
+
+body.shelter-page[data-species="cat"] .shelter-detail-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center center;
+  border-radius: 16px;
+}
+
+html[data-catmatch-theme="dark"] body.shelter-page[data-species="cat"] .shelter-detail-image {
+  background: #213555;
+}
+
+
+/* Shelter homepage v3: keep the featured area compact on desktop. */
+@media (min-width: 1001px) {
+  .shelter-home .container {
+    width: min(1120px, calc(100% - 48px));
+  }
+  .shelter-home__heading { margin-bottom: 22px; }
+  .shelter-home-grid {
+    grid-template-columns: minmax(0, 1.45fr) minmax(280px, .72fr);
+    gap: 18px;
+    align-items: stretch;
+  }
+  .shelter-home .shelter-featured-card {
+    grid-template-columns: minmax(240px, .86fr) minmax(0, 1.14fr);
+    min-height: 330px;
+    height: 350px;
+    max-height: 350px;
+    border-radius: 26px;
+  }
+  .shelter-home .shelter-featured-card__media {
+    min-width: 0;
+    min-height: 0;
+    height: 100%;
+  }
+  .shelter-home .shelter-featured-card__media img {
+    position: absolute;
+    inset: 0;
+  }
+  .shelter-home .shelter-featured-card__content {
+    min-height: 0;
+    padding: 25px 30px;
+  }
+  .shelter-home .shelter-featured-card h3 {
+    font-size: clamp(2rem, 3vw, 2.8rem);
+  }
+  .shelter-home .shelter-traits { margin: 12px 0; }
+  .shelter-home .shelter-story {
+    margin-bottom: 16px;
+    -webkit-line-clamp: 2;
+  }
+  .shelter-home .shelter-mini-list {
+    gap: 10px;
+  }
+  .shelter-home .shelter-mini-card {
+    min-height: 100px;
+    grid-template-columns: 96px minmax(0, 1fr) 24px;
+    gap: 13px;
+    padding: 9px 13px 9px 9px;
+    border-radius: 18px;
+  }
+  .shelter-home .shelter-mini-card img {
+    width: 96px;
+    height: 84px;
+    min-height: 84px;
+    border-radius: 13px;
+  }
+  .shelter-home .shelter-mini-card__body strong { font-size: 1rem; }
+  .shelter-home .shelter-mini-card__body span { font-size: .78rem; }
+  .shelter-home .shelter-source-note { margin-top: 12px; }
+}
+
+/* Mixed shelter + user stray listings. */
+.shelter-home__actions { display: flex; align-items: center; justify-content: flex-end; gap: 14px; flex-wrap: wrap; }
+.shelter-source-badge {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  z-index: 3;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: .68rem;
+  font-weight: 800;
+  line-height: 1;
+  box-shadow: 0 8px 18px rgba(33,53,85,.16);
+}
+.shelter-source-badge.is-shelter { color: #213555; background: rgba(255,255,255,.94); }
+.shelter-source-badge.is-user { color: #fff; background: #3E5879; }
+.shelter-mini-card__media { position: relative; align-self: stretch; display: block; width: 124px; min-height: 100px; overflow: hidden; border-radius: 16px; }
+.shelter-mini-card__media img { width: 100% !important; height: 100% !important; min-height: 100px; border-radius: 0 !important; object-fit: cover; }
+.shelter-mini-card__media .shelter-source-badge { right: 6px; bottom: 6px; max-width: calc(100% - 12px); padding: 5px 7px; font-size: .56rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.shelter-page-actions { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-top: 18px; }
+.shelter-page-actions > span { color: var(--color-text-soft); font-size: .8rem; }
+.shelter-filter-panel.has-source-filter { grid-template-columns: minmax(210px,1.55fr) repeat(3,minmax(135px,.7fr)) auto auto; }
+.shelter-user-warning { display: grid; gap: 5px; margin-top: 20px; padding: 15px 17px; border: 1px solid rgba(62,88,121,.18); border-radius: 17px; color: #3E5879; background: #f4f8fb; }
+.shelter-user-warning strong { color: #213555; }
+.shelter-user-warning span { line-height: 1.6; font-size: .84rem; }
+.shelter-detail-grid.is-user-listing .shelter-contact-card { border-color: rgba(62,88,121,.28); }
+.shelter-contact-actions:has(.shelter-chat-coming:only-child) { grid-template-columns: 1fr; }
+
+html[data-catmatch-theme="dark"] .shelter-source-badge.is-shelter { color: #F5EFE7; background: #263b4a; }
+html[data-catmatch-theme="dark"] .shelter-source-badge.is-user { color: #213555; background: #D8C4B6; }
+html[data-catmatch-theme="dark"] .shelter-user-warning { color: #d8e5ef; background: #283b48; border-color: #405564; }
+html[data-catmatch-theme="dark"] .shelter-user-warning strong { color: #F5EFE7; }
+
+/* Owner view: replace self-contact actions with a clear management panel. */
+.shelter-contact-card.is-owner-card {
+  border-color: rgba(62, 88, 121, .30);
+  background:
+    radial-gradient(circle at 92% 8%, rgba(216, 196, 182, .34), transparent 30%),
+    linear-gradient(145deg, rgba(255,255,255,.98), rgba(244,248,251,.98));
+}
+.shelter-owner-summary {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+  margin-top: 20px;
+  padding: 14px;
+  border: 1px solid rgba(62, 88, 121, .16);
+  border-radius: 17px;
+  background: rgba(62, 88, 121, .07);
+}
+.shelter-owner-summary > span {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: #fff;
+  background: #3e5879;
+  font-weight: 900;
+}
+.shelter-owner-summary strong,
+.shelter-owner-summary small { display: block; }
+.shelter-owner-summary strong { color: var(--color-text); }
+.shelter-owner-summary small { margin-top: 3px; color: var(--color-text-soft); line-height: 1.5; }
+.shelter-contact-card.is-owner-card .shelter-contact-actions { grid-template-columns: 1fr; }
+
+html[data-catmatch-theme="dark"] .shelter-contact-card.is-owner-card {
+  border-color: rgba(216, 196, 182, .25);
+  background:
+    radial-gradient(circle at 92% 8%, rgba(216, 196, 182, .12), transparent 30%),
+    linear-gradient(145deg, #203441, #1b2d38);
+}
+html[data-catmatch-theme="dark"] .shelter-owner-summary {
+  border-color: #405867;
+  background: #283d4a;
+}
+html[data-catmatch-theme="dark"] .shelter-owner-summary strong { color: #f5efe7; }
+html[data-catmatch-theme="dark"] .shelter-owner-summary small { color: #bdcad2; }
+html[data-catmatch-theme="dark"] .shelter-owner-summary > span { color: #213555; background: #d8c4b6; }
+
+@media (min-width: 1001px) {
+  .shelter-home .shelter-mini-card__media { width: 96px; min-height: 84px; border-radius: 13px; }
+  .shelter-home .shelter-mini-card__media img { min-height: 84px; }
+}
+@media (max-width: 1000px) {
+  .shelter-mini-card__media { width: 88px; }
+  .shelter-filter-panel.has-source-filter { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+@media (max-width: 720px) {
+  .shelter-home__actions { justify-content: flex-start; }
+  .shelter-mini-card__media { width: 100px; }
+  .shelter-filter-panel.has-source-filter { grid-template-columns: 1fr; }
+}
+
+/* Shelter homepage v4 — balanced featured banner with a three-card row underneath. */
+.shelter-home .container {
+  width: min(1180px, calc(100% - 48px));
+}
+.shelter-home__heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 32px;
+  margin-bottom: 28px;
+}
+.shelter-home__heading h2 {
+  max-width: 780px;
+  margin-top: 7px;
+  font-size: clamp(2.35rem, 4.1vw, 4.1rem);
+  line-height: 1.08;
+  text-wrap: balance;
+}
+.shelter-home__intro {
+  max-width: 760px;
+  margin-top: 12px;
+}
+.shelter-home__actions {
+  align-self: end;
+  padding-bottom: 5px;
+}
+@media (min-width: 1001px) {
+  .shelter-home .shelter-home-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+  }
+}
+.shelter-home .shelter-featured-card {
+  display: grid;
+  grid-template-columns: minmax(340px, .92fr) minmax(0, 1.08fr);
+  min-height: 350px;
+  height: auto;
+  max-height: none;
+  border-radius: 30px;
+}
+.shelter-home .shelter-featured-card__media {
+  min-width: 0;
+  min-height: 350px;
+  height: auto;
+}
+.shelter-home .shelter-featured-card__media img {
+  position: absolute;
+  inset: 0;
+}
+.shelter-home .shelter-featured-card__content {
+  min-height: 350px;
+  padding: clamp(28px, 4vw, 46px);
+  justify-content: center;
+}
+.shelter-home .shelter-featured-card h3 {
+  font-size: clamp(2.35rem, 4vw, 3.65rem);
+}
+.shelter-home .shelter-story {
+  max-width: 600px;
+  margin-bottom: 20px;
+  -webkit-line-clamp: 2;
+}
+.shelter-home .shelter-primary-action { margin-top: 2px; }
+.shelter-home .shelter-mini-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: none;
+  gap: 18px;
+}
+.shelter-home .shelter-mini-card {
+  position: relative;
+  min-height: 148px;
+  display: grid;
+  grid-template-columns: 126px minmax(0, 1fr) 34px;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 14px 12px 12px;
+  border-radius: 22px;
+  overflow: hidden;
+}
+.shelter-home .shelter-mini-card__media {
+  width: 126px !important;
+  min-height: 124px !important;
+  height: 124px;
+  border-radius: 16px;
+}
+.shelter-home .shelter-mini-card__media img {
+  min-height: 124px !important;
+}
+.shelter-home .shelter-mini-card__body {
+  align-content: center;
+  gap: 4px;
+}
+.shelter-home .shelter-mini-card__body small {
+  font-size: .75rem;
+}
+.shelter-home .shelter-mini-card__body strong {
+  font-size: 1.18rem;
+  line-height: 1.3;
+}
+.shelter-home .shelter-mini-card__body span {
+  font-size: .8rem;
+  line-height: 1.5;
+}
+.shelter-home .shelter-mini-card__arrow {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(86, 133, 166, .11);
+}
+body.dog-theme .shelter-home .shelter-mini-card__arrow {
+  color: #213555;
+  background: rgba(216, 196, 182, .58);
+}
+.shelter-home .shelter-source-note {
+  margin-top: 14px;
+  text-align: left;
+}
+
+@media (max-width: 1050px) {
+  .shelter-home__heading {
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: 18px;
+  }
+  .shelter-home__actions {
+    justify-content: flex-start;
+    padding-bottom: 0;
+  }
+  .shelter-home .shelter-mini-list {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .shelter-home .shelter-mini-card {
+    grid-template-columns: 112px minmax(0, 1fr) 34px;
+    min-height: 126px;
+  }
+  .shelter-home .shelter-mini-card__media {
+    width: 112px !important;
+    min-height: 102px !important;
+    height: 102px;
+  }
+  .shelter-home .shelter-mini-card__media img { min-height: 102px !important; }
+}
+
+@media (max-width: 760px) {
+  .shelter-home .container {
+    width: min(calc(100% - 30px), 1180px);
+  }
+  .shelter-home__heading h2 {
+    font-size: clamp(2.05rem, 10vw, 3.1rem);
+  }
+  .shelter-home .shelter-featured-card {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+  .shelter-home .shelter-featured-card__media {
+    min-height: 0;
+    height: auto;
+    aspect-ratio: 16 / 10;
+  }
+  .shelter-home .shelter-featured-card__content {
+    min-height: 0;
+    padding: 26px 24px 28px;
+  }
+  .shelter-home .shelter-mini-card {
+    grid-template-columns: 100px minmax(0, 1fr) 28px;
+    gap: 13px;
+    padding: 10px;
+  }
+  .shelter-home .shelter-mini-card__media {
+    width: 100px !important;
+    min-height: 94px !important;
+    height: 94px;
+    border-radius: 14px;
+  }
+  .shelter-home .shelter-mini-card__media img { min-height: 94px !important; }
+  .shelter-home .shelter-mini-card__arrow {
+    width: 27px;
+    height: 27px;
+  }
+}
+
+@media (max-width: 480px) {
+  .shelter-home__actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+  .shelter-home__actions .button,
+  .shelter-home__actions .text-link {
+    justify-content: center;
+    width: 100%;
+  }
+  .shelter-home .shelter-mini-card {
+    grid-template-columns: 86px minmax(0, 1fr);
+  }
+  .shelter-home .shelter-mini-card__media {
+    width: 86px !important;
+    min-height: 86px !important;
+    height: 86px;
+  }
+  .shelter-home .shelter-mini-card__media img { min-height: 86px !important; }
+  .shelter-home .shelter-mini-card__arrow { display: none; }
+}
+
+/* Shelter animal photos v6 — keep the whole dog/cat visible instead of cropping. */
+.shelter-featured-card__media,
+.shelter-mini-card__media,
+.shelter-animal-card__media,
+.shelter-detail-image {
+  background:
+    radial-gradient(circle at 50% 42%, rgba(255,255,255,.96) 0 30%, rgba(238,244,248,.94) 72%, rgba(226,235,241,.96) 100%);
+}
+
+body.dog-theme .shelter-featured-card__media,
+body.dog-theme .shelter-mini-card__media,
+body.dog-theme .shelter-animal-card__media,
+body.dog-theme .shelter-detail-image {
+  background:
+    radial-gradient(circle at 50% 42%, rgba(255,255,255,.96) 0 30%, rgba(245,239,231,.96) 72%, rgba(232,219,207,.98) 100%);
+}
+
+.shelter-featured-card__media img,
+.shelter-mini-card__media img,
+.shelter-animal-card__media img,
+.shelter-detail-image img,
+.shelter-home .shelter-featured-card__media img,
+.shelter-home .shelter-mini-card__media img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  box-sizing: border-box;
+  display: block;
+}
+
+/* Give portrait photos breathing room so ears, paws and tails remain visible. */
+.shelter-featured-card__media img,
+.shelter-detail-image img {
+  padding: clamp(8px, 1vw, 14px);
+}
+
+.shelter-mini-card__media img {
+  padding: 5px;
+  min-height: 0 !important;
+}
+
+.shelter-animal-card__media img {
+  padding: 8px;
+}
+
+/* Apply the complete-photo treatment to details for both species. */
+body.shelter-page .shelter-detail-image {
+  display: grid;
+  place-items: center;
+}
+
+html[data-catmatch-theme="dark"] .shelter-featured-card__media,
+html[data-catmatch-theme="dark"] .shelter-mini-card__media,
+html[data-catmatch-theme="dark"] .shelter-animal-card__media,
+html[data-catmatch-theme="dark"] .shelter-detail-image {
+  background:
+    radial-gradient(circle at 50% 42%, rgba(55,78,94,.98) 0 30%, rgba(35,55,70,.98) 72%, rgba(24,42,55,.98) 100%);
+}
+
+html[data-catmatch-theme="dark"] body.dog-theme .shelter-featured-card__media,
+html[data-catmatch-theme="dark"] body.dog-theme .shelter-mini-card__media,
+html[data-catmatch-theme="dark"] body.dog-theme .shelter-animal-card__media,
+html[data-catmatch-theme="dark"] body.dog-theme .shelter-detail-image {
+  background:
+    radial-gradient(circle at 50% 42%, rgba(53,73,103,.98) 0 30%, rgba(31,52,80,.98) 72%, rgba(21,38,61,.98) 100%);
+}
+
+/* Shelter dark-mode contrast v7. */
+html[data-catmatch-theme="dark"] .shelter-view-all-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 42px;
+  padding: 0 15px;
+  border: 1px solid rgba(245, 239, 231, .38);
+  border-radius: 999px;
+  background: rgba(245, 239, 231, .1);
+  color: #fff7ee !important;
+  text-decoration: none;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, .28);
+}
+html[data-catmatch-theme="dark"] .shelter-view-all-link:hover,
+html[data-catmatch-theme="dark"] .shelter-view-all-link:focus-visible {
+  background: rgba(245, 239, 231, .2);
+  border-color: rgba(245, 239, 231, .62);
+}
+html[data-catmatch-theme="dark"] body.dog-theme .shelter-view-all-link {
+  color: #fff7ee !important;
+  border-color: rgba(216, 196, 182, .5);
+  background: rgba(216, 196, 182, .14);
+}

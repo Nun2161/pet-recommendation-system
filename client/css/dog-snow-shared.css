@@ -1,0 +1,102 @@
+/* DogMatch shared snowfall — copied from dog-index and made reliable on shared pages. */
+html[data-dog-snow="true"] body {
+  position: relative;
+}
+
+html[data-dog-snow="true"] body > .dog-snow-scene {
+  display: block !important;
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  height: 100dvh !important;
+  z-index: 1 !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+html[data-dog-snow="true"] body > .dog-snow-scene .dog-snowflake {
+  display: block !important;
+  position: absolute !important;
+  top: -10vh !important;
+  left: var(--left) !important;
+  width: var(--size) !important;
+  height: var(--size) !important;
+  opacity: clamp(.74, var(--opacity), .96) !important;
+  color: #ffffff !important;
+  background: transparent !important;
+  filter: drop-shadow(0 2px 3px rgba(33,53,85,.52)) !important;
+  animation:
+    dogSharedSnowFall var(--duration) linear infinite,
+    dogSharedSnowSway var(--sway) ease-in-out infinite alternate !important;
+  animation-delay: var(--delay) !important;
+}
+
+html[data-dog-snow="true"] body > .dog-snow-scene .dog-snowflake::before {
+  content: "❄" !important;
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  font-size: calc(var(--size) * 1.45) !important;
+  line-height: 1 !important;
+  transform: translate(-50%, -50%) !important;
+  color: #ffffff !important;
+  text-shadow:
+    0 0 1px #213555,
+    0 0 5px rgba(33,53,85,.58),
+    0 2px 7px rgba(33,53,85,.38) !important;
+}
+
+html[data-dog-snow="true"] body > .dog-snow-scene .dog-snowflake:nth-child(3n)::before {
+  content: "✦" !important;
+  color: #F5EFE7 !important;
+  text-shadow:
+    0 0 1px #213555,
+    0 0 5px rgba(62,88,121,.65),
+    0 2px 7px rgba(33,53,85,.42) !important;
+}
+
+@keyframes dogSharedSnowFall {
+  from { transform: translate3d(0,-12vh,0) rotate(0deg); }
+  to { transform: translate3d(var(--drift),116vh,0) rotate(260deg); }
+}
+@keyframes dogSharedSnowSway {
+  from { margin-left:-14px; }
+  to { margin-left:18px; }
+}
+
+/* Keep snow behind the real UI, but above the page background. */
+html[data-dog-snow="true"] body > :not(.dog-snow-scene) {
+  position: relative;
+  z-index: 2;
+}
+
+html[data-dog-snow="true"] body > .dog-account-snow,
+html[data-dog-snow="true"] body :is(.login-sakura-scene,.register-sakura-scene,.farm-sakura-scene,.reset-sakura-scene) {
+  display: none !important;
+}
+
+/* Auth pages previously painted an opaque background over the snow. */
+html[data-dog-snow="true"][data-auth-species="dog"] body.dog-auth-context :is(
+  .login-main,.register-main,.reset-main
+) {
+  background: transparent !important;
+}
+
+/* Account and assessment page wrappers must not cover the fixed snow layer. */
+html[data-dog-snow="true"] body.dog-account-context main,
+html[data-dog-snow="true"] body.dog-theme :is(.assessment-main,.history-main,.assessment-history-main) {
+  background-color: transparent !important;
+}
+
+/* User explicitly requested snowfall even when OS reduced-motion is enabled. */
+@media (prefers-reduced-motion: reduce) {
+  html[data-dog-snow="true"] body > .dog-snow-scene .dog-snowflake {
+    display: block !important;
+    animation:
+      dogSharedSnowFall var(--duration) linear infinite,
+      dogSharedSnowSway var(--sway) ease-in-out infinite alternate !important;
+    animation-delay: var(--delay) !important;
+  }
+}

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ฟาร์มแมวใกล้คุณ — CatMatch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700;800&family=Zen+Maru+Gothic:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <link rel="stylesheet" href="../css/design-system.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/global-settings.css?v=9">
+  <link rel="stylesheet" href="../css/farm-map.css?v=18">
+  <script src="../js/global-settings.js?v=8"></script>
+  <script src="../js/api-config.js?v=1"></script>
+<link href="../css/chat-nav.css?v=1" rel="stylesheet"/>
+</head>
+<body class="farm-map-page">
+  <a class="skip-link" href="#mapSection">ข้ามไปยังแผนที่</a>
+  <div class="sakura-scene" aria-hidden="true">
+    <div class="falling-petals">
+      <span class="falling-petal petal-1"></span>
+      <span class="falling-petal petal-2"></span>
+      <span class="falling-petal petal-3"></span>
+      <span class="falling-petal petal-4"></span>
+      <span class="falling-petal petal-5"></span>
+      <span class="falling-petal petal-6"></span>
+      <span class="falling-petal petal-7"></span>
+      <span class="falling-petal petal-8"></span>
+      <span class="falling-petal petal-9"></span>
+      <span class="falling-petal petal-10"></span>
+      <span class="falling-petal petal-11"></span>
+      <span class="falling-petal petal-12"></span>
+      <span class="falling-petal petal-13"></span>
+      <span class="falling-petal petal-14"></span>
+      <span class="falling-petal petal-15"></span>
+      <span class="falling-petal petal-16"></span>
+    </div>
+  </div>
+
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-shell">
+      <a class="brand" href="./index.html" aria-label="CatMatch หน้าแรก">
+        <span class="brand-logo" aria-hidden="true">
+          <svg viewBox="0 0 64 64" class="cute-cat-icon">
+            <path d="M17 23 14 11l10 6c5-2 11-2 16 0l10-6-3 12c4 4 6 8 6 14 0 12-9 20-21 20S11 49 11 37c0-6 2-10 6-14Z"/>
+            <path d="M24 33c0 .6-.4 1-1 1s-1-.4-1-1 .4-1 1-1 1 .4 1 1Zm18 0c0 .6-.4 1-1 1s-1-.4-1-1 .4-1 1-1 1 .4 1 1Z"/>
+            <path d="M30 39c1.5 1 2.5 1 4 0M32 35v2M24 40l-7 1M40 40l7 1M23 45l-6 4M41 45l6 4"/>
+          </svg>
+        </span>
+        <span class="brand-text">
+          <strong>CatMatch</strong>
+          <small>แมวที่ใช่ สำหรับคุณ</small>
+        </span>
+      </a>
+
+      <nav class="main-nav" aria-label="เมนูหลัก">
+        <a class="nav-link" href="./index.html">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 11 9-8 9 8M5 10v10h14V10M9 20v-6h6v6"/></svg>
+          <span>หน้าหลัก</span>
+        </a>
+        <a class="nav-link" href="./assessment.html">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h12v16H6z"/><path d="M9 8h6M9 12h6M9 16h4"/><path d="m16 15 1.5 1.5L20 13.5"/></svg>
+          <span>แบบประเมิน</span>
+        </a>
+       <a class="nav-link" href="./cat-breeds.html">
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="cute-cat-nav"><path d="M6.5 9 5 4l4 2.5c2-.8 4-.8 6 0L19 4l-1.5 5c1.7 1.6 2.5 3.4 2.5 5.5C20 18 16.8 20 12 20s-8-2-8-5.5C4 12.4 4.8 10.6 6.5 9Z"/><path d="M9.5 13h.01M14.5 13h.01M10.5 16c1 .8 2.5.8 3.5 0"/></svg>
+          <span>แมวของเรา</span>
+        </a>
+        <a class="nav-link" href="./index.html#about">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="m20 20-4-4"/></svg>
+          <span>เกี่ยวกับเรา</span>
+        </a>
+      </nav>
+
+      <div class="nav-actions auth-nav" id="authNav">
+        <div class="guest-nav-actions" id="guestNavActions">
+          <a class="button button-secondary button-small" href="./login.html">เข้าสู่ระบบ</a>
+          <a class="button button-primary button-small" href="./register.html?fresh=1">สมัครสมาชิก</a>
+        </div>
+
+        <div class="user-nav-actions" id="userNavActions" hidden>
+          <button
+            class="user-menu-trigger"
+            id="userMenuTrigger"
+            type="button"
+            aria-expanded="false"
+            aria-controls="userMenuPanel"
+          >
+            <span class="user-avatar" id="userAvatar" aria-hidden="true">U</span>
+            <span class="user-summary">
+              <strong id="userDisplayName">ผู้ใช้งาน</strong>
+              <small>บัญชีของฉัน</small>
+            </span>
+            <svg class="user-menu-chevron" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="m7 10 5 5 5-5"/>
+            </svg>
+          </button>
+
+          <div class="user-menu-panel" id="userMenuPanel" hidden>
+            <div class="user-menu-account">
+              <span class="user-menu-avatar" id="userMenuAvatar" aria-hidden="true">U</span>
+              <span>
+                <strong id="userMenuName">ผู้ใช้งาน</strong>
+                <small id="userMenuEmail"></small>
+              </span>
+            </div>
+
+           <div class="account-menu-group">
+  <small class="account-menu-label">กิจกรรมของฉัน</small>
+
+<a
+  class="account-menu-item"
+  href="./adoption-requests.html"
+>
+  <span
+    class="account-menu-icon"
+    aria-hidden="true"
+  >
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.6-9.3-8.5C.7 9 2.5 5 6.3 5c2.2 0 3.8 1.2 5.7 3.2C13.9 6.2 15.5 5 17.7 5c3.8 0 5.6 4 3.6 7.5C19 16.4 12 21 12 21Z"/></svg>
+</span>
+
+  <span>
+    <strong>คำขออุปการะของฉัน</strong>
+    <small>ติดตามสถานะคำขอที่ส่งไปยังฟาร์ม</small>
+  </span>
+</a>
+
+<a
+  class="account-menu-item"
+  href="./notifications.html"
+>
+  <span
+    class="account-menu-icon"
+    aria-hidden="true"
+  >
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9Z"/><path d="M10 21h4"/></svg>
+</span>
+
+  <span>
+    <strong>การแจ้งเตือน</strong>
+    <small>ดูการตอบกลับและความเคลื่อนไหวล่าสุด</small>
+  </span>
+</a>
+  <a class="account-menu-item" href="./favorites.html">
+    <span class="account-menu-icon account-menu-heart" aria-hidden="true">
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.6-9.3-8.5C.7 9 2.5 5 6.3 5c2.2 0 3.8 1.2 5.7 3.2C13.9 6.2 15.5 5 17.7 5c3.8 0 5.6 4 3.6 7.5C19 16.4 12 21 12 21Z"/></svg>
+</span>
+    <span>
+      <strong>แมวที่ถูกใจ</strong>
+      <small>สายพันธุ์ที่คุณบันทึกไว้</small>
+    </span>
+  </a>
+</div>
+
+<div class="account-menu-group">
+  <small class="account-menu-label">จัดการบัญชี</small>
+
+  <a class="account-menu-item" id="accountInfoButton" href="./account-info.html">
+    <span class="account-menu-icon" aria-hidden="true">
+<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4.5 21a7.5 7.5 0 0 1 15 0"/></svg>
+</span>
+    <span>
+      <strong>ข้อมูลบัญชี</strong>
+      <small>ชื่อบัญชี อีเมล และข้อมูลส่วนตัว</small>
+    </span>
+  </a>
+
+  <button
+    class="account-menu-item account-menu-button"
+    id="accountSettingsButton"
+    type="button"
+  >
+    <span class="account-menu-icon" aria-hidden="true">
+<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-2.8 2.8-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.6v.2h-4V21a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1L4.2 17l.1-.1a1.7 1.7 0 0 0 .3-1.9A1.7 1.7 0 0 0 3 14H2.8v-4H3a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9L4.2 7 7 4.2l.1.1A1.7 1.7 0 0 0 9 4.6 1.7 1.7 0 0 0 10 3V2.8h4V3a1.7 1.7 0 0 0 1 1.6 1.7 1.7 0 0 0 1.9-.3l.1-.1L19.8 7l-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.6 1h.2v4H21a1.7 1.7 0 0 0-1.6 1Z"/></svg>
+</span>
+    <span>
+      <strong>การตั้งค่า</strong>
+      <small>ตั้งค่าการใช้งาน CatMatch</small>
+    </span>
+  </button>
+</div>
+
+<button class="logout-button" id="logoutButton" type="button">
+  <span aria-hidden="true">↪</span>
+  <span>ออกจากระบบ</span>
+</button>
+          </div>
+        </div>
+      </div>
+
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="เปิดเมนู">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main class="container farm-map-main" id="mapSection">
+    <section class="farm-map-heading">
+      <div>
+        <a class="farm-map-back" id="backToResult" href="./result.html">← กลับไปหน้าผลลัพธ์</a>
+        <p class="farm-map-eyebrow">NEARBY VERIFIED FARMS</p>
+        <h1 id="farmMapTitle">ฟาร์มแมวใกล้คุณ</h1>
+        <p id="breedSummary">กำลังค้นหาฟาร์มที่มีสายพันธุ์ที่คุณเลือก</p>
+      </div>
+      <button class="location-button" id="locateButton" type="button">
+        <span aria-hidden="true">⌖</span> ใช้ตำแหน่งของฉัน
+      </button>
+    </section>
+
+    <section class="breed-picker" id="breedPicker" aria-labelledby="breedPickerTitle" hidden>
+      <div class="breed-picker__copy">
+        <span class="breed-picker__eyebrow">เลือกดูได้ทุกสายพันธุ์</span>
+        <strong id="breedPickerTitle">เลือกสายพันธุ์แมวที่ต้องการค้นหา</strong>
+        <small id="breedPickerHint">เลือกได้ทุกสายพันธุ์ โดยไม่ผูกกับผลแบบประเมิน</small>
+      </div>
+      <label class="breed-picker__field">
+        <span>สายพันธุ์แมว</span>
+        <select id="breedSelect" aria-label="เลือกสายพันธุ์แมว">
+          <option value="">กำลังโหลดสายพันธุ์...</option>
+        </select>
+      </label>
+      <label class="breed-picker__field breed-picker__field--search">
+        <span>ค้นหาชื่อฟาร์ม</span>
+        <div class="farm-name-search">
+          <span aria-hidden="true">⌕</span>
+          <input
+            id="farmNameSearch"
+            type="search"
+            placeholder="พิมพ์ชื่อฟาร์ม เช่น Cat Home"
+            autocomplete="off"
+            aria-label="ค้นหาชื่อฟาร์ม"
+          >
+        </div>
+      </label>
+    </section>
+
+    <div class="location-message" id="locationMessage" role="status">
+      เปิดตำแหน่งเพื่อเรียงฟาร์มจากใกล้ที่สุด หรือดูทุกฟาร์มทั่วประเทศไทยได้ทันที
+    </div>
+
+    <section class="farm-map-layout">
+      <aside class="farm-list-panel" aria-label="รายชื่อฟาร์ม">
+        <div class="farm-list-head">
+          <div>
+            <span>ฟาร์มที่ผ่านการยืนยัน</span>
+            <strong id="farmCount">0 แห่ง</strong>
+          </div>
+          <select id="distanceFilter" aria-label="กรองระยะทาง">
+            <option value="all">ทุกระยะทาง</option>
+            <option value="10">ไม่เกิน 10 กม.</option>
+            <option value="30">ไม่เกิน 30 กม.</option>
+            <option value="50">ไม่เกิน 50 กม.</option>
+            <option value="100">ไม่เกิน 100 กม.</option>
+          </select>
+        </div>
+
+        <div class="farm-list-status" id="farmLoading">กำลังโหลดข้อมูลฟาร์ม...</div>
+        <div class="farm-list-status is-error" id="farmError" hidden></div>
+        <div class="farm-list" id="farmList"></div>
+      </aside>
+
+      <section class="map-panel" aria-label="แผนที่ตำแหน่งฟาร์ม">
+        <div class="map-badge"><span class="map-badge-dot"></span> แผนที่ประเทศไทย</div>
+        <div id="farmMap" class="farm-map-canvas" aria-label="แผนที่ฟาร์มแมว"></div>
+        <div class="map-legend">
+          <span><i class="legend-user"></i> ตำแหน่งคุณ</span>
+          <span><i class="legend-farm">🐾</i> ฟาร์มที่ยืนยันแล้ว</span>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <section
+    class="animal-detail-modal"
+    id="animalDetailModal"
+    role="dialog"
+    aria-modal="true"
+    aria-hidden="true"
+    aria-labelledby="animalDetailName"
+    hidden
+  >
+    <button
+      class="animal-detail-modal__backdrop"
+      id="animalDetailBackdrop"
+      type="button"
+      aria-label="ปิดรายละเอียดแมว"
+      data-animal-modal-close
+    ></button>
+
+    <article class="animal-detail-card">
+      <button
+        class="animal-detail-close"
+        id="animalDetailClose"
+        type="button"
+        aria-label="ปิดรายละเอียดแมว"
+      >×</button>
+
+      <div class="animal-detail-photo">
+        <img id="animalDetailImage" alt="" hidden>
+        <div class="animal-detail-photo__fallback" id="animalDetailImageFallback" aria-hidden="true">🐱</div>
+      </div>
+
+      <div class="animal-detail-content">
+        <p class="animal-detail-eyebrow">CAT PROFILE</p>
+        <h2 id="animalDetailName">รายละเอียดแมว</h2>
+        <p class="animal-detail-breed" id="animalDetailBreed"></p>
+        <div class="animal-detail-meta" id="animalDetailMeta"></div>
+
+        <section class="animal-detail-description" aria-labelledby="animalDetailDescriptionTitle">
+          <h3 id="animalDetailDescriptionTitle">เกี่ยวกับแมวตัวนี้</h3>
+          <p id="animalDetailDescription"></p>
+        </section>
+
+        <div class="animal-detail-farm">
+          <span>ฟาร์มที่ดูแล</span>
+          <strong id="animalDetailFarm"></strong>
+        </div>
+
+        <div class="animal-detail-actions">
+          <a class="animal-detail-action is-primary" id="animalDetailPhone" href="#" hidden>โทรหาฟาร์ม</a>
+          <a class="animal-detail-action is-primary" id="animalDetailChat" href="#">แชทเกี่ยวกับตัวนี้</a>
+          <button class="animal-detail-action" id="animalDetailMap" type="button">ดูตำแหน่งฟาร์ม</button>
+          <button class="animal-detail-action" type="button" data-animal-modal-close>ปิด</button>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section class="farm-profile-modal" id="farmProfileModal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="farmProfileTitle" hidden>
+    <button class="farm-profile-modal__backdrop" id="farmProfileBackdrop" type="button" aria-label="ปิดโปรไฟล์ฟาร์ม"></button>
+    <article class="farm-profile-panel">
+      <button class="farm-profile-close" id="farmProfileClose" type="button" aria-label="ปิดโปรไฟล์ฟาร์ม">×</button>
+      <div id="farmProfileBody"></div>
+    </article>
+  </section>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="../js/thailand-mask.js?v=3"></script>
+  <script src="../js/cat-breed-data.js?v=2"></script>
+  <script src="../js/farm-map.js?v=focus-farm-24"></script>
+  <script src="../js/profile-avatar.js?v=6"></script>
+<script src="../js/chat-api.js?v=6"></script>
+<script src="../js/chat-nav.js?v=7"></script>
+</body>
+</html>

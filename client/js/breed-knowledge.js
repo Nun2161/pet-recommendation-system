@@ -2,34 +2,52 @@
   "use strict";
 
   const DATA = {
-  "1": {
-    "officialName": "",
-    "image": "https://tica.org/wp-content/uploads/2018/08/Ruddy-Aby-Breed-snippet.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/Ruddy-Aby-Breed-snippet-300x200.jpg",
-    "sourceUrl": "https://tica.org/breed/abyssinian/",
-    "origin": "เอธิโอเปีย / สหราชอาณาจักร",
-    "features": [
-      "ขนสั้นแบบ ticking แต่ละเส้นมีหลายแถบสี",
-      "ลำตัวเพรียวแข็งแรงและเคลื่อนไหวคล่อง",
-      "ศีรษะทรงลิ่ม หูใหญ่ตั้งและตาอัลมอนด์"
-    ],
-    "comparisons": [
-      {
-        "id": 2,
-        "difference": "Somali เป็นญาติขนยาวของ Abyssinian ให้ดูหางพวง แผงคอ และขนกึ่งยาว ส่วน Abyssinian ขนสั้นแนบตัวกว่า"
-      }
-    ]
-  },
+ "1": {
+  "officialName": "",
+  "image": "https://thepedigreepaws.b-cdn.net/web/cat-breed/2/1594151825-abyssinian-medium-sized-purebreed-cat.jpg",
+  "thumbnail": "https://thepedigreepaws.b-cdn.net/web/cat-breed/2/1594151825-abyssinian-medium-sized-purebreed-cat.jpg",
+  "sourceUrl": "https://tica.org/breed/abyssinian/",
+  "origin": "เอธิโอเปีย / สหราชอาณาจักร",
+  "features": [
+    "ศีรษะทรงลิ่มมน ใบหูใหญ่ตั้งกว้าง และดวงตารูปอัลมอนด์",
+    "ลำตัวขนาดกลาง เพรียวแข็งแรง มีกล้ามเนื้อและเคลื่อนไหวคล่องตัว",
+    "หางยาวเรียว โคนหางค่อนข้างหนาและปลายหางเรียว",
+    "ขนสั้นแนบลำตัว มีลักษณะ ticking คือขนแต่ละเส้นมีแถบสีหลายระดับ"
+  ],
+  "careNotes": [
+    "เป็นแมวที่มีกิจกรรมสูง ควรมีเวลาเล่น อุปกรณ์ปีน และของเล่นที่ช่วยกระตุ้นการล่าเป็นประจำทุกวัน",
+    "ขนสั้นดูแลไม่ซับซ้อน ควรแปรงขนเป็นครั้งคราวเพื่อนำขนที่หลุดออกและตรวจผิวหนัง",
+    "เหมาะกับบ้านที่มีพื้นที่แนวตั้ง เช่น ชั้นปีนหรือคอนโดแมว ไม่ควรปล่อยให้อยู่โดยไม่มีสิ่งกระตุ้นเป็นเวลานาน",
+    "โดยทั่วไปชอบมีปฏิสัมพันธ์กับคน แต่บางตัวอาจไม่ชอบการถูกอุ้มนาน ควรให้แมวเป็นฝ่ายเข้าหา",
+    "ควรเตรียมงบสำหรับอาหารคุณภาพดี ของเล่นหมุนเวียน อุปกรณ์ปีน วัคซีน และการตรวจสุขภาพประจำปี",
+    "ควรถามผลตรวจภาวะขาดเอนไซม์ PK และโรคจอประสาทตาเสื่อม รวมถึงประวัติสุขภาพของพ่อแม่พันธุ์"
+  ],
+  "comparisons": [
+    {
+      "id": 2,
+      "difference": "Abyssinian และ Somali มีลายขนแบบ ticking และรูปร่างคล่องตัวคล้ายกัน แต่ Abyssinian มีขนสั้นแนบลำตัว หางไม่ฟู และไม่มีแผงคอเด่นเท่า Somali"
+    }
+  ]
+},
   "2": {
     "officialName": "",
-    "image": "https://tica.org/wp-content/uploads/2018/08/Somali-Full-Body.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/Somali-Full-Body-300x210.jpg",
+    "image": "https://cattime.com/wp-content/uploads/sites/14/2011/12/GettyImages-147031347.jpg",
+    "thumbnail": "https://cattime.com/wp-content/uploads/sites/14/2011/12/GettyImages-147031347.jpg",
     "sourceUrl": "https://tica.org/breed/somali/",
     "origin": "สหรัฐอเมริกา",
     "features": [
-      "ขนกึ่งยาวแบบ ticking คล้าย Abyssinian",
-      "หางฟูเป็นพวงและมีขนรอบคอชัด",
-      "ลำตัวเพรียวแข็งแรงและใบหูใหญ่"
+      "ศีรษะทรงลิ่มมน ดวงตารูปอัลมอนด์ และใบหูใหญ่ปลายหูมีพู่ขน",
+      "ลำตัวยาวปานกลาง เพรียวแต่มีกล้ามเนื้อ ขายาวสมส่วนและท่ายืนดูคล่องตัว",
+      "หางยาว โคนหางกว้างและฟูเป็นพวงคล้ายหางสุนัขจิ้งจอก",
+      "ขนกึ่งยาวแบบ ticking แต่ละเส้นมีหลายแถบสี มีแผงคอและขนช่วงกางเกงหลังเด่น"
+    ],
+    "careNotes": [
+      "ต้องมีเวลาเล่นและกิจกรรมปีนป่ายทุกวัน เพราะเป็นแมวฉลาด กระตือรือร้น และเบื่อง่าย",
+      "ควรหวีขนสัปดาห์ละหลายครั้ง โดยเน้นแผงคอ ท้อง กางเกงหลัง และหาง เพื่อป้องกันขนพันกัน",
+      "เหมาะกับบ้านที่มีพื้นที่แนวตั้งและคนคอยมีปฏิสัมพันธ์ ไม่เหมาะกับการปล่อยให้อยู่ลำพังนานเป็นประจำ",
+      "เข้ากับครอบครัวได้ดีเมื่อได้รับการแนะนำอย่างค่อยเป็นค่อยไป เด็กควรเล่นอย่างนุ่มนวลและต้องมีมุมสงบให้แมวถอยพัก",
+      "ควรเตรียมงบสำหรับอาหารคุณภาพดี หวีสำหรับขนกึ่งยาว ของเล่นหมุนเวียน ชั้นปีน วัคซีน และการตรวจสุขภาพประจำปี",
+      "ก่อนรับเลี้ยงควรถามประวัติสุขภาพสายพันธุ์ โดยเฉพาะภาวะขาดเอนไซม์ PK และโรคจอประสาทตาเสื่อมที่อาจพบในสายเลือด"
     ],
     "comparisons": [
       {
@@ -40,8 +58,8 @@
   },
   "3": {
     "officialName": "",
-    "image": "https://tica.org/wp-content/uploads/2018/08/American-Bobtail-Full-Body_.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/American-Bobtail-Full-Body_-300x210.jpg",
+    "image": "https://cfa.org/wp-content/uploads/2024/03/American_bobtail_helmi2.jpg",
+    "thumbnail": "https://cfa.org/wp-content/uploads/2024/03/American_bobtail_helmi2.jpg",
     "sourceUrl": "https://tica.org/breed/american-bobtail/",
     "origin": "สหรัฐอเมริกา",
     "features": [
@@ -58,8 +76,8 @@
   },
   "4": {
     "officialName": "",
-    "image": "https://tica.org/wp-content/uploads/2018/08/American-Bobtail-Shorthair-Full-Body.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/American-Bobtail-Shorthair-Full-Body-300x210.jpg",
+    "image": "https://static.wikia.nocookie.net/kitty/images/b/bb/Cat_amerbobt_SH_lg.jpg/revision/latest?cb=20130121172409&path-prefix=de",
+    "thumbnail": "https://static.wikia.nocookie.net/kitty/images/b/bb/Cat_amerbobt_SH_lg.jpg/revision/latest?cb=20130121172409&path-prefix=de",
     "sourceUrl": "https://tica.org/breed/american-bobtail-shorthair/",
     "origin": "สหรัฐอเมริกา",
     "features": [
@@ -76,9 +94,9 @@
   },
   "5": {
     "officialName": "",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/5/5f/American_curl_kitten.jpg",
-    "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/5/5f/American_curl_kitten.jpg",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:American_curl_kitten.jpg",
+    "image": "https://cfa.org/wp-content/uploads/2024/01/ac-profile2.jpg",
+    "thumbnail": "https://cfa.org/wp-content/uploads/2024/01/ac-profile2.jpg",
+    "sourceUrl": "https://tica.org/breed/american-curl/",
     "origin": "สหรัฐอเมริกา",
     "features": [
       "ปลายใบหูโค้งย้อนด้านหลังอย่างนุ่มนวล",
@@ -94,8 +112,8 @@
   },
   "6": {
     "officialName": "",
-    "image": "https://tica.org/wp-content/uploads/2018/08/American-Curl-Full-Body.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/American-Curl-Full-Body-300x210.jpg",
+    "image": "https://tse2.mm.bing.net/th/id/OIP.JDIU5-IT3lwocn_V9uTZAwHaFL?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "thumbnail": "https://tse2.mm.bing.net/th/id/OIP.JDIU5-IT3lwocn_V9uTZAwHaFL?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
     "sourceUrl": "https://tica.org/breed/american-curl-longhair/",
     "origin": "สหรัฐอเมริกา",
     "features": [
@@ -112,8 +130,8 @@
   },
   "7": {
     "officialName": "",
-    "image": "https://tica.org/wp-content/uploads/2018/08/American-Shorthair-Full-Body.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/American-Shorthair-Full-Body-300x210.jpg",
+    "image": "https://catastic.pet/wp-content/uploads/2023/01/studio-photography-american-shorthair-cat-colored-backgrounds-1.jpg",
+    "thumbnail": "https://catastic.pet/wp-content/uploads/2023/01/studio-photography-american-shorthair-cat-colored-backgrounds-1.jpg",
     "sourceUrl": "https://tica.org/breed/american-shorthair/",
     "origin": "สหรัฐอเมริกา",
     "features": [
@@ -130,8 +148,8 @@
   },
   "8": {
     "officialName": "",
-    "image": "https://tica.org/wp-content/uploads/2018/08/American-Wirehair-Full-Body.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/American-Wirehair-Full-Body-300x210.jpg",
+    "image": "https://www.kimballstock.com/pix/CAT/02/CAT-02-CH0079-01P.JPG",
+    "thumbnail": "https://www.kimballstock.com/pix/CAT/02/CAT-02-CH0079-01P.JPG",
     "sourceUrl": "https://tica.org/breed/american-wirehair/",
     "origin": "สหรัฐอเมริกา",
     "features": [
@@ -148,8 +166,8 @@
   },
   "9": {
     "officialName": "",
-    "image": "https://tica.org/wp-content/uploads/2018/08/Australian-Mist-Full-Body.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/Australian-Mist-Full-Body-300x210.jpg",
+    "image": "https://img.chatsdumonde.com/img/races-de-chats/2064_big-australian-mist.jpg",
+    "thumbnail": "https://img.chatsdumonde.com/img/races-de-chats/2064_big-australian-mist.jpg",
     "sourceUrl": "https://tica.org/breed/australian-mist/",
     "origin": "ออสเตรเลีย",
     "features": [
@@ -161,8 +179,8 @@
   },
   "10": {
     "officialName": "",
-    "image": "https://tica.org/wp-content/uploads/2018/08/Bengal-Full-Body.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/Bengal-Full-Body-300x210.jpg",
+    "image": "https://i.pinimg.com/originals/f3/96/53/f3965351680b70372bac8a7fcfd0ade2.jpg",
+    "thumbnail": "https://i.pinimg.com/originals/f3/96/53/f3965351680b70372bac8a7fcfd0ade2.jpg",
     "sourceUrl": "https://tica.org/breed/bengal/",
     "origin": "สหรัฐอเมริกา",
     "features": [
@@ -179,8 +197,8 @@
   },
   "11": {
     "officialName": "",
-    "image": "https://tica.org/wp-content/uploads/2018/08/Bengal-Longhair-Full-Body.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/Bengal-Longhair-Full-Body-300x210.jpg",
+    "image": "https://th.bing.com/th/id/R.35665e2e0287d964c7740eba12b6694a?rik=qLvbfEMjgk8uiw&riu=http%3a%2f%2fwww.indiancreekbengals.com%2fimg%2fkittens%2fcashmere%2fcashmere8.png&ehk=KdPIP6nXkDgi%2bdsszdt0N%2fxh8g%2fvhc4KHbCuyyTwez8%3d&risl=&pid=ImgRaw&r=0",
+    "thumbnail": "https://th.bing.com/th/id/R.35665e2e0287d964c7740eba12b6694a?rik=qLvbfEMjgk8uiw&riu=http%3a%2f%2fwww.indiancreekbengals.com%2fimg%2fkittens%2fcashmere%2fcashmere8.png&ehk=KdPIP6nXkDgi%2bdsszdt0N%2fxh8g%2fvhc4KHbCuyyTwez8%3d&risl=&pid=ImgRaw&r=0",
     "sourceUrl": "https://tica.org/breed/bengal-longhair/",
     "origin": "สหรัฐอเมริกา",
     "features": [
@@ -197,8 +215,8 @@
   },
   "12": {
     "officialName": "",
-    "image": "https://tica.org/wp-content/uploads/2018/08/Birman-Full-Body.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/Birman-Full-Body-300x210.jpg",
+    "image": "https://i.pinimg.com/736x/a5/7f/02/a57f02f91f6e9d605daa19cbb744a6f4.jpg",
+    "thumbnail": "https://i.pinimg.com/736x/a5/7f/02/a57f02f91f6e9d605daa19cbb744a6f4.jpg",
     "sourceUrl": "https://tica.org/breed/birman/",
     "origin": "เมียนมา / ฝรั่งเศส",
     "features": [
@@ -210,8 +228,8 @@
   },
   "13": {
     "officialName": "",
-    "image": "https://tica.org/wp-content/uploads/2018/08/Burmese-Full-Body.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/Burmese-Full-Body-300x210.jpg",
+    "image": "https://th.bing.com/th/id/R.8542a59a44945f9811519081510ca420?rik=jQer7uLbBNTueg&riu=http%3a%2f%2fburmesecat.org%2fwp-content%2fuploads%2fphoto-gallery%2findex+slider%2fBurmau+Jon+Snow.jpg&ehk=DYv6C4nNijKAn1KP%2b6pmqfV6n7dzTU50Ry3QDmeSTtE%3d&risl=&pid=ImgRaw&r=0",
+    "thumbnail": "https://th.bing.com/th/id/R.8542a59a44945f9811519081510ca420?rik=jQer7uLbBNTueg&riu=http%3a%2f%2fburmesecat.org%2fwp-content%2fuploads%2fphoto-gallery%2findex+slider%2fBurmau+Jon+Snow.jpg&ehk=DYv6C4nNijKAn1KP%2b6pmqfV6n7dzTU50Ry3QDmeSTtE%3d&risl=&pid=ImgRaw&r=0",
     "sourceUrl": "https://tica.org/breed/burmese/",
     "origin": "เมียนมา",
     "features": [
@@ -223,8 +241,8 @@
   },
   "14": {
     "officialName": "",
-    "image": "https://tica.org/wp-content/uploads/2018/08/Bombay-Full-Body3.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/Bombay-Full-Body3-300x210.jpg",
+    "image": "https://www.catbreedselector.com/wp-content/uploads/2017/07/Black-Bombay-Cat.jpg",
+    "thumbnail": "https://www.catbreedselector.com/wp-content/uploads/2017/07/Black-Bombay-Cat.jpg",
     "sourceUrl": "https://tica.org/breed/bombay/",
     "origin": "สหรัฐอเมริกา",
     "features": [
@@ -236,8 +254,8 @@
   },
   "15": {
     "officialName": "",
-    "image": "https://tica.org/wp-content/uploads/2018/08/British-Shorthair-Full-Body.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/British-Shorthair-Full-Body-300x210.jpg",
+    "image": "https://glurgang.com/wp-content/uploads/2023/04/Pros-and-Cons-of-Breeding-British-Shorthair-Cats.jpg",
+    "thumbnail": "https://glurgang.com/wp-content/uploads/2023/04/Pros-and-Cons-of-Breeding-British-Shorthair-Cats.jpg",
     "sourceUrl": "https://tica.org/breed/british-shorthair/",
     "origin": "สหราชอาณาจักร",
     "features": [
@@ -254,8 +272,8 @@
   },
   "16": {
     "officialName": "",
-    "image": "https://tica.org/wp-content/uploads/2018/08/British-Longhair-Full-Body.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/British-Longhair-Full-Body-300x210.jpg",
+    "image": "https://tse4.mm.bing.net/th/id/OIP.Etqw14WMSnrsBzYzMeac2AHaFL?r=0&w=1024&h=717&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "thumbnail": "https://tse4.mm.bing.net/th/id/OIP.Etqw14WMSnrsBzYzMeac2AHaFL?r=0&w=1024&h=717&rs=1&pid=ImgDetMain&o=7&rm=3",
     "sourceUrl": "https://tica.org/breed/british-longhair/",
     "origin": "สหราชอาณาจักร",
     "features": [
@@ -272,8 +290,8 @@
   },
   "17": {
     "officialName": "",
-    "image": "https://tica.org/wp-content/uploads/2018/08/Burmilla-Full-Body.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/Burmilla-Full-Body-300x210.jpg",
+    "image": "https://geomedia.top/wp-content/uploads/2016/06/Burmilla-korotkosherstnaya.jpg",
+    "thumbnail": "https://geomedia.top/wp-content/uploads/2016/06/Burmilla-korotkosherstnaya.jpg",
     "sourceUrl": "https://tica.org/breed/burmilla/",
     "origin": "สหราชอาณาจักร",
     "features": [
@@ -290,8 +308,8 @@
   },
   "18": {
     "officialName": "",
-    "image": "https://tica.org/wp-content/uploads/2018/08/Burmilla-Longhair-Full-Body.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/Burmilla-Longhair-Full-Body-300x210.jpg",
+    "image": "https://tse2.mm.bing.net/th/id/OIP.giIHlG8rAysuhjOOxzr_GAAAAA?r=0&w=422&h=500&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "thumbnail": "https://tse2.mm.bing.net/th/id/OIP.giIHlG8rAysuhjOOxzr_GAAAAA?r=0&w=422&h=500&rs=1&pid=ImgDetMain&o=7&rm=3",
     "sourceUrl": "https://tica.org/breed/burmilla-longhair/",
     "origin": "สหราชอาณาจักร",
     "features": [
@@ -308,8 +326,8 @@
   },
   "19": {
     "officialName": "",
-    "image": "https://tica.org/wp-content/uploads/2018/08/Chartreux-Full-Body.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/Chartreux-Full-Body-300x210.jpg",
+    "image": "https://media.istockphoto.com/id/1216940988/photo/british-shorthair.jpg?s=170667a&w=0&k=20&c=_Jjj-pE2OO8GXNLBtq5-vnV40eoHjmx6CNptrA6tuSM=",
+    "thumbnail": "https://media.istockphoto.com/id/1216940988/photo/british-shorthair.jpg?s=170667a&w=0&k=20&c=_Jjj-pE2OO8GXNLBtq5-vnV40eoHjmx6CNptrA6tuSM=",
     "sourceUrl": "https://tica.org/breed/chartreux/",
     "origin": "ฝรั่งเศส",
     "features": [
@@ -321,8 +339,8 @@
   },
   "20": {
     "officialName": "",
-    "image": "https://tica.org/wp-content/uploads/2018/08/Chausie-Full-Body.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/Chausie-Full-Body-300x210.jpg",
+    "image": "https://articles.hepper.com/wp-content/uploads/2021/09/F1-chausie-cat-kitten-on-a-dark-background_JMax-Studio-Shutterstock_715600909.webp",
+    "thumbnail": "https://articles.hepper.com/wp-content/uploads/2021/09/F1-chausie-cat-kitten-on-a-dark-background_JMax-Studio-Shutterstock_715600909.webp",
     "sourceUrl": "https://tica.org/breed/chausie/",
     "origin": "สหรัฐอเมริกา",
     "features": [
@@ -334,8 +352,8 @@
   },
   "21": {
     "officialName": "",
-    "image": "https://tica.org/wp-content/uploads/2018/08/Ragdoll-Full-Body.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/Ragdoll-Full-Body-300x210.jpg",
+    "image": "https://wallpapercave.com/wp/wp8541259.jpg",
+    "thumbnail": "https://wallpapercave.com/wp/wp8541259.jpg",
     "sourceUrl": "https://tica.org/breed/ragdoll/",
     "origin": "สหรัฐอเมริกา",
     "features": [
@@ -352,8 +370,8 @@
   },
   "22": {
     "officialName": "",
-    "image": "https://tica.org/wp-content/uploads/2025/05/Cherubim-breedpic.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2025/05/Cherubim-breedpic-300x202.jpg",
+    "image": "https://tse2.mm.bing.net/th/id/OIP.wLmBWy9RlklWl7tBporxwgAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "thumbnail": "https://tse2.mm.bing.net/th/id/OIP.wLmBWy9RlklWl7tBporxwgAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
     "sourceUrl": "https://tica.org/breed/cherubim/",
     "origin": "สหรัฐอเมริกา",
     "features": [
@@ -370,8 +388,8 @@
   },
   "23": {
     "officialName": "",
-    "image": "https://tica.org/wp-content/uploads/2018/08/Cornish-Rex-Full-Body.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/Cornish-Rex-Full-Body-300x210.jpg",
+    "image": "https://tse3.mm.bing.net/th/id/OIP.ykEhQ500Ldt4RQfEDhHTbwHaFE?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "thumbnail": "https://tse3.mm.bing.net/th/id/OIP.ykEhQ500Ldt4RQfEDhHTbwHaFE?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
     "sourceUrl": "https://tica.org/breed/cornish-rex/",
     "origin": "สหราชอาณาจักร",
     "features": [
@@ -383,8 +401,8 @@
   },
   "24": {
     "officialName": "",
-    "image": "https://tica.org/wp-content/uploads/2018/08/Manx-Full-Body.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/Manx-Full-Body-300x210.jpg",
+    "image": "https://tse3.mm.bing.net/th/id/OIP.EgByu79XPhvLT3epOZ1V9wHaGF?r=0&w=827&h=679&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "thumbnail": "https://tse3.mm.bing.net/th/id/OIP.EgByu79XPhvLT3epOZ1V9wHaGF?r=0&w=827&h=679&rs=1&pid=ImgDetMain&o=7&rm=3",
     "sourceUrl": "https://tica.org/breed/manx/",
     "origin": "เกาะแมน",
     "features": [
@@ -401,8 +419,8 @@
   },
   "25": {
     "officialName": "",
-    "image": "https://tica.org/wp-content/uploads/2018/08/Cymric-Full-Body.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/Cymric-Full-Body-300x210.jpg",
+    "image": "https://tse4.mm.bing.net/th/id/OIP.4soOp7SJLlCbwiMpL-mifwHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "thumbnail": "https://tse4.mm.bing.net/th/id/OIP.4soOp7SJLlCbwiMpL-mifwHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
     "sourceUrl": "https://tica.org/breed/cymric/",
     "origin": "เกาะแมน / แคนาดา",
     "features": [
@@ -419,8 +437,8 @@
   },
   "26": {
     "officialName": "",
-    "image": "https://tica.org/wp-content/uploads/2018/08/Devon-Rex-Full-Body.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/Devon-Rex-Full-Body-300x210.jpg",
+    "image": "https://tse3.mm.bing.net/th/id/OIP.yDXz_t6roZ45moJcp_ozIgHaFj?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "thumbnail": "https://tse3.mm.bing.net/th/id/OIP.yDXz_t6roZ45moJcp_ozIgHaFj?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
     "sourceUrl": "https://tica.org/breed/devon-rex/",
     "origin": "สหราชอาณาจักร",
     "features": [
@@ -432,8 +450,8 @@
   },
   "27": {
     "officialName": "Havana Brown",
-    "image": "https://tica.org/wp-content/uploads/2018/08/Havana-Full-Body.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/Havana-Full-Body-300x210.jpg",
+    "image": "https://www.044.eu/media/posts/177/HavanaBrownCatsSophisticatedAffectionate002.jpg",
+    "thumbnail": "https://www.044.eu/media/posts/177/HavanaBrownCatsSophisticatedAffectionate002.jpg",
     "sourceUrl": "https://tica.org/breed/havana/",
     "origin": "สหราชอาณาจักร",
     "features": [
@@ -445,8 +463,8 @@
   },
   "28": {
     "officialName": "Highlander Shorthair",
-    "image": "https://tica.org/wp-content/uploads/2018/08/Highlander-Shorthair-Full-Body.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/Highlander-Shorthair-Full-Body-300x210.jpg",
+    "image": "https://tse3.mm.bing.net/th/id/OIP.sWnoShlszx9ifcrSthwIHwAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "thumbnail": "https://tse3.mm.bing.net/th/id/OIP.sWnoShlszx9ifcrSthwIHwAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
     "sourceUrl": "https://tica.org/breed/highlander-shorthair/",
     "origin": "สหรัฐอเมริกา",
     "features": [
@@ -463,8 +481,8 @@
   },
   "29": {
     "officialName": "Highlander Longhair",
-    "image": "https://tica.org/wp-content/uploads/2018/08/Highlander-Longhair-Full-Body.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/Highlander-Longhair-Full-Body-300x210.jpg",
+    "image": "https://pic2.zhimg.com/v2-2e9cf63e0356bcb64293218eecafafbd_1440w.jpg",
+    "thumbnail": "https://pic2.zhimg.com/v2-2e9cf63e0356bcb64293218eecafafbd_1440w.jpg",
     "sourceUrl": "https://tica.org/breed/highlander/",
     "origin": "สหรัฐอเมริกา",
     "features": [
@@ -481,8 +499,8 @@
   },
   "30": {
     "officialName": "",
-    "image": "https://tica.org/wp-content/uploads/2018/08/Himalayan-Full-Body.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/Himalayan-Full-Body-300x210.jpg",
+    "image": "https://pofoto.club/uploads/posts/2022-09/1663435336_10-pofoto-club-p-gimalaiskii-kolor-point-13.jpg",
+    "thumbnail": "https://pofoto.club/uploads/posts/2022-09/1663435336_10-pofoto-club-p-gimalaiskii-kolor-point-13.jpg",
     "sourceUrl": "https://tica.org/breed/himalayan/",
     "origin": "สหรัฐอเมริกา / สหราชอาณาจักร",
     "features": [
@@ -494,8 +512,8 @@
   },
   "31": {
     "officialName": "Household Pet Shorthair",
-    "image": "https://tica.org/wp-content/uploads/2018/08/Household-Pet-Shorthair-Full-Body.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/Household-Pet-Shorthair-Full-Body-300x210.jpg",
+    "image": "https://tse3.mm.bing.net/th/id/OIP.V-pKgL4mJOzJTFlsl6DWmwHaFL?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "thumbnail": "https://tse3.mm.bing.net/th/id/OIP.V-pKgL4mJOzJTFlsl6DWmwHaFL?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
     "sourceUrl": "https://tica.org/breed/household-pet-kitten/",
     "origin": "ไม่ใช่สายพันธุ์แท้",
     "features": [
@@ -507,8 +525,8 @@
   },
   "32": {
     "officialName": "",
-    "image": "https://tica.org/wp-content/uploads/2018/08/Japanese-Bobtail-Full-Body.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/Japanese-Bobtail-Full-Body-300x210.jpg",
+    "image": "https://cattime.com/wp-content/uploads/sites/14/2011/12/GettyImages-1217156544.jpg",
+    "thumbnail": "https://cattime.com/wp-content/uploads/sites/14/2011/12/GettyImages-1217156544.jpg",
     "sourceUrl": "https://tica.org/breed/japanese-bobtail/",
     "origin": "ญี่ปุ่น",
     "features": [
@@ -525,8 +543,8 @@
   },
   "33": {
     "officialName": "",
-    "image": "https://tica.org/wp-content/uploads/2018/08/Japanese-Bobtail-Longhair-Full-Body.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/Japanese-Bobtail-Longhair-Full-Body-300x210.jpg",
+    "image": "https://tse3.mm.bing.net/th/id/OIP.dOmoivuDzWsliVsgk9KjqwHaFL?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "thumbnail": "https://tse3.mm.bing.net/th/id/OIP.dOmoivuDzWsliVsgk9KjqwHaFL?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
     "sourceUrl": "https://tica.org/breed/japanese-bobtail-longhair/",
     "origin": "ญี่ปุ่น",
     "features": [
@@ -543,8 +561,8 @@
   },
   "34": {
     "officialName": "Khao Manee",
-    "image": "https://tica.org/wp-content/uploads/2018/08/Khaomanee-Full-Body.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/Khaomanee-Full-Body-300x210.jpg",
+    "image": "https://www.races-de-chat.fr/wp-content/uploads/2019/11/chat_khao-manee.jpg",
+    "thumbnail": "https://www.races-de-chat.fr/wp-content/uploads/2019/11/chat_khao-manee.jpg",
     "sourceUrl": "https://tica.org/breed/khaomanee/",
     "origin": "ประเทศไทย",
     "features": [
@@ -556,8 +574,8 @@
   },
   "35": {
     "officialName": "",
-    "image": "https://tica.org/wp-content/uploads/2018/08/Donskoy-Full-Body.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/Donskoy-Full-Body-300x210.jpg",
+    "image": "https://th.bing.com/th/id/R.cfc67fda8d58d204f3809669d7aae5b5?rik=%2bwp%2fVPZ%2fVZIB5Q&riu=http%3a%2f%2fwww.catbreedselector.com%2fwp-content%2fuploads%2f2015%2f06%2fDonskoy-Cat-Pictures.jpg&ehk=2zu4DHc9xzFhGyE6fDsZPfHDv%2bpBVj36hs0J13sK0A4%3d&risl=&pid=ImgRaw&r=0",
+    "thumbnail": "https://th.bing.com/th/id/R.cfc67fda8d58d204f3809669d7aae5b5?rik=%2bwp%2fVPZ%2fVZIB5Q&riu=http%3a%2f%2fwww.catbreedselector.com%2fwp-content%2fuploads%2f2015%2f06%2fDonskoy-Cat-Pictures.jpg&ehk=2zu4DHc9xzFhGyE6fDsZPfHDv%2bpBVj36hs0J13sK0A4%3d&risl=&pid=ImgRaw&r=0",
     "sourceUrl": "https://tica.org/breed/donskoy/",
     "origin": "รัสเซีย",
     "features": [
@@ -578,8 +596,8 @@
   },
   "36": {
     "officialName": "",
-    "image": "https://tica.org/wp-content/uploads/2018/08/Egyptian-Mau-Full-Body.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/Egyptian-Mau-Full-Body-300x210.jpg",
+    "image": "https://www.litter-robot.com/media/magefan_blog/2019/10/Egyptian-Mau.jpg",
+    "thumbnail": "https://www.litter-robot.com/media/magefan_blog/2019/10/Egyptian-Mau.jpg",
     "sourceUrl": "https://tica.org/breed/egyptian-mau/",
     "origin": "อียิปต์",
     "features": [
@@ -600,8 +618,8 @@
   },
   "37": {
     "officialName": "",
-    "image": "https://tica.org/wp-content/uploads/2018/08/Exotic-Shorthair-Full-Body.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/Exotic-Shorthair-Full-Body-300x210.jpg",
+    "image": "https://res.cloudinary.com/wuuff/image/upload/v1624292884/odlnoix9oplj1cbfxwey.jpg",
+    "thumbnail": "https://res.cloudinary.com/wuuff/image/upload/v1624292884/odlnoix9oplj1cbfxwey.jpg",
     "sourceUrl": "https://tica.org/breed/exotic-shorthair/",
     "origin": "สหรัฐอเมริกา",
     "features": [
@@ -613,8 +631,8 @@
   },
   "38": {
     "officialName": "",
-    "image": "https://tica.org/wp-content/uploads/2018/08/Maine-Coon-Full-Body.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/Maine-Coon-Full-Body-300x210.jpg",
+    "image": "https://www.thehappycatsite.com/wp-content/uploads/2017/12/orange2.jpg",
+    "thumbnail": "https://www.thehappycatsite.com/wp-content/uploads/2017/12/orange2.jpg",
     "sourceUrl": "https://tica.org/breed/maine-coon/",
     "origin": "สหรัฐอเมริกา",
     "features": [
@@ -631,8 +649,8 @@
   },
   "39": {
     "officialName": "",
-    "image": "https://tica.org/wp-content/uploads/2018/08/Maine-Coon-Polydactyl-Full-Body.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/Maine-Coon-Polydactyl-Full-Body-300x210.jpg",
+    "image": "https://tse2.mm.bing.net/th/id/OIP.o5NfgFd9khebzDzljcrCBQHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "thumbnail": "https://tse2.mm.bing.net/th/id/OIP.o5NfgFd9khebzDzljcrCBQHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
     "sourceUrl": "https://tica.org/breed/maine-coon-polydactyl/",
     "origin": "สหรัฐอเมริกา",
     "features": [
@@ -649,8 +667,8 @@
   },
   "40": {
     "officialName": "",
-    "image": "https://tica.org/wp-content/uploads/2018/08/Munchkin-Full-Body.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/Munchkin-Full-Body-300x210.jpg",
+    "image": "https://tse2.mm.bing.net/th/id/OIP.jAN1kai6bqm4pcBuM-QxxwHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "thumbnail": "https://tse2.mm.bing.net/th/id/OIP.jAN1kai6bqm4pcBuM-QxxwHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
     "sourceUrl": "https://tica.org/breed/munchkin/",
     "origin": "สหรัฐอเมริกา",
     "features": [
@@ -662,8 +680,8 @@
   },
   "41": {
     "officialName": "",
-    "image": "https://tica.org/wp-content/uploads/2018/08/Nebelung-Body-Shot.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/Nebelung-Body-Shot-300x210.jpg",
+    "image": "https://www.purina.co.uk/sites/default/files/styles/square_medium_440x440/public/2022-06/Nebelung.jpg?itok=ZCqIBoQb",
+    "thumbnail": "https://www.purina.co.uk/sites/default/files/styles/square_medium_440x440/public/2022-06/Nebelung.jpg?itok=ZCqIBoQb",
     "sourceUrl": "https://tica.org/breed/nebelung/",
     "origin": "สหรัฐอเมริกา",
     "features": [
@@ -680,8 +698,8 @@
   },
   "42": {
     "officialName": "Norwegian Forest Cat",
-    "image": "https://tica.org/wp-content/uploads/2018/08/Norwegian-Forest-Full-Body.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/Norwegian-Forest-Full-Body-300x210.jpg",
+    "image": "https://img.freepik.com/premium-photo/norwegian-forest-cat_87557-24808.jpg",
+    "thumbnail": "https://img.freepik.com/premium-photo/norwegian-forest-cat_87557-24808.jpg",
     "sourceUrl": "https://tica.org/breed/norwegian-forest/",
     "origin": "นอร์เวย์",
     "features": [
@@ -702,8 +720,8 @@
   },
   "43": {
     "officialName": "",
-    "image": "https://tica.org/wp-content/uploads/2018/08/Ocicat-Full-Body.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/Ocicat-Full-Body-300x210.jpg",
+    "image": "https://cdn-fastly.petguide.com/media/2022/02/15/8202694/ocicat.jpg?size=720x845&nocrop=1",
+    "thumbnail": "https://cdn-fastly.petguide.com/media/2022/02/15/8202694/ocicat.jpg?size=720x845&nocrop=1",
     "sourceUrl": "https://tica.org/breed/ocicat/",
     "origin": "สหรัฐอเมริกา",
     "features": [
@@ -724,8 +742,8 @@
   },
   "44": {
     "officialName": "",
-    "image": "https://tica.org/wp-content/uploads/2026/06/korat.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2026/06/korat-300x200.jpg",
+    "image": "https://i.pinimg.com/736x/11/4f/4a/114f4a8aa121823eeb3d48d7c14b88db.jpg",
+    "thumbnail": "https://i.pinimg.com/736x/11/4f/4a/114f4a8aa121823eeb3d48d7c14b88db.jpg",
     "sourceUrl": "https://tica.org/breed/korat/",
     "origin": "ประเทศไทย",
     "features": [
@@ -737,8 +755,8 @@
   },
   "45": {
     "officialName": "",
-    "image": "https://tica.org/wp-content/uploads/2018/08/laperm-550x350-1.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/laperm-550x350-1-300x210.jpg",
+    "image": "https://www.catster.com/wp-content/uploads/2023/11/Laperm-chocolate-silver-tortie-tabby-on-black-background_Linn-Currie-Shutterstock-scaled.jpg",
+    "thumbnail": "https://www.catster.com/wp-content/uploads/2023/11/Laperm-chocolate-silver-tortie-tabby-on-black-background_Linn-Currie-Shutterstock-scaled.jpg",
     "sourceUrl": "https://tica.org/breed/laperm/",
     "origin": "สหรัฐอเมริกา",
     "features": [
@@ -750,8 +768,8 @@
   },
   "46": {
     "officialName": "",
-    "image": "https://tica.org/wp-content/uploads/2018/08/Lykoi-Full-Body.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/Lykoi-Full-Body-300x210.jpg",
+    "image": "https://tse4.mm.bing.net/th/id/OIP.emKs3fDaCWqWripxL_IzDgHaFr?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "thumbnail": "https://tse4.mm.bing.net/th/id/OIP.emKs3fDaCWqWripxL_IzDgHaFr?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
     "sourceUrl": "https://tica.org/breed/lykoi/",
     "origin": "สหรัฐอเมริกา",
     "features": [
@@ -763,8 +781,8 @@
   },
   "47": {
     "officialName": "",
-    "image": "https://tica.org/wp-content/uploads/2018/08/Selkirk-Rex-Full-Body.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/Selkirk-Rex-Full-Body-300x210.jpg",
+    "image": "https://media.graphassets.com/resize=height:404,width:938/output=format:webp/VuQMVlkdTI8hWZlPR8tJ?width=938",
+    "thumbnail": "https://media.graphassets.com/resize=height:404,width:938/output=format:webp/VuQMVlkdTI8hWZlPR8tJ?width=938",
     "sourceUrl": "https://tica.org/breed/selkirk-rex/",
     "origin": "สหรัฐอเมริกา",
     "features": [
@@ -776,8 +794,8 @@
   },
   "48": {
     "officialName": "",
-    "image": "https://tica.org/wp-content/uploads/2018/08/Serengeti-Full-Body.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/Serengeti-Full-Body-300x210.jpg",
+    "image": "https://i.pinimg.com/736x/99/b5/3f/99b53f7337b58a650303cc68580a6463.jpg",
+    "thumbnail": "https://i.pinimg.com/736x/99/b5/3f/99b53f7337b58a650303cc68580a6463.jpg",
     "sourceUrl": "https://tica.org/breed/serengeti/",
     "origin": "สหรัฐอเมริกา",
     "features": [
@@ -789,8 +807,8 @@
   },
   "49": {
     "officialName": "",
-    "image": "https://tica.org/wp-content/uploads/2018/08/Siamese-Full-Body.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/Siamese-Full-Body-300x210.jpg",
+    "image": "https://tse3.mm.bing.net/th/id/OIP.3a3VG-gQTpfh49M5gSDCkgHaFX?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "thumbnail": "https://tse3.mm.bing.net/th/id/OIP.3a3VG-gQTpfh49M5gSDCkgHaFX?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
     "sourceUrl": "https://tica.org/breed/siamese/",
     "origin": "ประเทศไทย",
     "features": [
@@ -811,8 +829,8 @@
   },
   "50": {
     "officialName": "",
-    "image": "https://tica.org/wp-content/uploads/2018/08/Persian-Full-Body.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/Persian-Full-Body-300x210.jpg",
+    "image": "https://www.thesprucepets.com/thmb/5OSN_p9hUfPssKsJORQDGnAz_tQ=/1963x0/filters:no_upscale():strip_icc()/GettyImages-181861505-4e63227ed0a14dc9bfe86848ef54caf3.jpg",
+    "thumbnail": "https://www.thesprucepets.com/thmb/5OSN_p9hUfPssKsJORQDGnAz_tQ=/1963x0/filters:no_upscale():strip_icc()/GettyImages-181861505-4e63227ed0a14dc9bfe86848ef54caf3.jpg",
     "sourceUrl": "https://tica.org/breed/persian/",
     "origin": "อิหร่าน / สหราชอาณาจักร",
     "features": [
@@ -833,8 +851,8 @@
   },
   "51": {
     "officialName": "",
-    "image": "https://tica.org/wp-content/uploads/2018/08/Peterbald-Full-Body.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/Peterbald-Full-Body-300x210.jpg",
+    "image": "https://howlonglive.com/wp-content/uploads/2023/10/image-2.png",
+    "thumbnail": "https://howlonglive.com/wp-content/uploads/2023/10/image-2.png",
     "sourceUrl": "https://tica.org/breed/peterbald/",
     "origin": "รัสเซีย",
     "features": [
@@ -855,8 +873,8 @@
   },
   "52": {
     "officialName": "",
-    "image": "https://tica.org/wp-content/uploads/2018/08/Pixiebob-Full-Body.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/Pixiebob-Full-Body-300x210.jpg",
+    "image": "https://tse3.mm.bing.net/th/id/OIP.cAxN8SER2pcSU5cXNS5_nQHaFL?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "thumbnail": "https://tse3.mm.bing.net/th/id/OIP.cAxN8SER2pcSU5cXNS5_nQHaFL?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
     "sourceUrl": "https://tica.org/breed/pixiebob/",
     "origin": "สหรัฐอเมริกา",
     "features": [
@@ -868,8 +886,8 @@
   },
   "53": {
     "officialName": "",
-    "image": "https://tica.org/wp-content/uploads/2018/08/Russian-Blue-Full-Body.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/Russian-Blue-Full-Body-300x210.jpg",
+    "image": "https://a-z-animals.com/media/2019/11/Russian-Blue-on-basket.jpg",
+    "thumbnail": "https://a-z-animals.com/media/2019/11/Russian-Blue-on-basket.jpg",
     "sourceUrl": "https://tica.org/breed/russian-blue/",
     "origin": "รัสเซีย",
     "features": [
@@ -886,8 +904,8 @@
   },
   "54": {
     "officialName": "",
-    "image": "https://tica.org/wp-content/uploads/2018/08/Savannah-Full-Body.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/Savannah-Full-Body-300x210.jpg",
+    "image": "https://i.pinimg.com/originals/de/ce/b9/deceb9aaff74b8b7da5882b53d24d50c.jpg",
+    "thumbnail": "https://i.pinimg.com/originals/de/ce/b9/deceb9aaff74b8b7da5882b53d24d50c.jpg",
     "sourceUrl": "https://tica.org/breed/savannah/",
     "origin": "สหรัฐอเมริกา",
     "features": [
@@ -908,8 +926,8 @@
   },
   "55": {
     "officialName": "Scottish Fold",
-    "image": "https://tica.org/wp-content/uploads/2018/08/Scottish-Fold-Full-Body.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/Scottish-Fold-Full-Body-300x210.jpg",
+    "image": "https://tse2.mm.bing.net/th/id/OIP.uUIXqpH9OSXgmZ9ptZFOywHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "thumbnail": "https://tse2.mm.bing.net/th/id/OIP.uUIXqpH9OSXgmZ9ptZFOywHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
     "sourceUrl": "https://tica.org/breed/scottish-fold/",
     "origin": "สกอตแลนด์",
     "features": [
@@ -926,8 +944,8 @@
   },
   "56": {
     "officialName": "Scottish Straight Shorthair",
-    "image": "https://tica.org/wp-content/uploads/2018/08/Scottish-Straight-Full-Body.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/Scottish-Straight-Full-Body-300x210.jpg",
+    "image": "https://welovecatz.hu/media/images/2024_08_scottish-straight-macska-4-1024x535.original.jpg",
+    "thumbnail": "https://welovecatz.hu/media/images/2024_08_scottish-straight-macska-4-1024x535.original.jpg",
     "sourceUrl": "https://tica.org/breed/scottish-straight/",
     "origin": "สกอตแลนด์",
     "features": [
@@ -944,8 +962,8 @@
   },
   "57": {
     "officialName": "",
-    "image": "https://tica.org/wp-content/uploads/2018/08/Thai-Full-Body.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/Thai-Full-Body-300x210.jpg",
+    "image": "https://tse2.mm.bing.net/th/id/OIP.SAstFVmdbAiLO6X6m8b5AgHaE8?r=0&w=1000&h=667&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "thumbnail": "https://tse2.mm.bing.net/th/id/OIP.SAstFVmdbAiLO6X6m8b5AgHaE8?r=0&w=1000&h=667&rs=1&pid=ImgDetMain&o=7&rm=3",
     "sourceUrl": "https://tica.org/breed/thai/",
     "origin": "ประเทศไทย",
     "features": [
@@ -966,8 +984,8 @@
   },
   "58": {
     "officialName": "",
-    "image": "https://tica.org/wp-content/uploads/2018/08/Tonkinese-Full-Body.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/Tonkinese-Full-Body-300x210.jpg",
+    "image": "https://i.pinimg.com/736x/cc/30/14/cc3014d7b1db7a5a9ed1de7d85a11fd7.jpg",
+    "thumbnail": "https://i.pinimg.com/736x/cc/30/14/cc3014d7b1db7a5a9ed1de7d85a11fd7.jpg",
     "sourceUrl": "https://tica.org/breed/tonkinese/",
     "origin": "สหรัฐอเมริกา / แคนาดา",
     "features": [
@@ -988,8 +1006,8 @@
   },
   "59": {
     "officialName": "",
-    "image": "https://tica.org/wp-content/uploads/2018/08/Toyger-Full-Body.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/Toyger-Full-Body-300x210.jpg",
+    "image": "https://tse1.mm.bing.net/th/id/OIP.LOyV3LkrCUTF7TlQYPe28QHaEW?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "thumbnail": "https://tse1.mm.bing.net/th/id/OIP.LOyV3LkrCUTF7TlQYPe28QHaEW?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
     "sourceUrl": "https://tica.org/breed/toyger/",
     "origin": "สหรัฐอเมริกา",
     "features": [
@@ -1001,8 +1019,8 @@
   },
   "60": {
     "officialName": "",
-    "image": "https://tica.org/wp-content/uploads/2018/08/Turkish-Angora-Full-Body.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/Turkish-Angora-Full-Body-300x210.jpg",
+    "image": "https://petflair.co/wp-content/uploads/2024/08/Turkish-Angora-Cat-1.jpg",
+    "thumbnail": "https://petflair.co/wp-content/uploads/2024/08/Turkish-Angora-Cat-1.jpg",
     "sourceUrl": "https://tica.org/breed/turkish-angora/",
     "origin": "ตุรกี",
     "features": [
@@ -1014,8 +1032,8 @@
   },
   "61": {
     "officialName": "",
-    "image": "https://tica.org/wp-content/uploads/2018/08/Siberian-Full-Body.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/Siberian-Full-Body-300x210.jpg",
+    "image": "https://tse4.mm.bing.net/th/id/OIP.w5DlqY-PxqM6uVxf1qjZRwHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "thumbnail": "https://tse4.mm.bing.net/th/id/OIP.w5DlqY-PxqM6uVxf1qjZRwHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
     "sourceUrl": "https://tica.org/breed/siberian/",
     "origin": "รัสเซีย",
     "features": [
@@ -1036,8 +1054,8 @@
   },
   "62": {
     "officialName": "",
-    "image": "https://tica.org/wp-content/uploads/2018/08/Singapura-Full-Body.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/Singapura-Full-Body-300x210.jpg",
+    "image": "https://tse3.mm.bing.net/th/id/OIP.ldWFAGYB4M952F65cEP3wQHaE9?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "thumbnail": "https://tse3.mm.bing.net/th/id/OIP.ldWFAGYB4M952F65cEP3wQHaE9?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
     "sourceUrl": "https://tica.org/breed/singapura/",
     "origin": "สิงคโปร์",
     "features": [
@@ -1049,8 +1067,8 @@
   },
   "63": {
     "officialName": "",
-    "image": "https://tica.org/wp-content/uploads/2018/08/Snowshoe-Full-Body.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/Snowshoe-Full-Body-300x210.jpg",
+    "image": "https://tse2.mm.bing.net/th/id/OIP.2jLltkmYhDa1g3pumVJJ_gHaE6?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "thumbnail": "https://tse2.mm.bing.net/th/id/OIP.2jLltkmYhDa1g3pumVJJ_gHaE6?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
     "sourceUrl": "https://tica.org/breed/snowshoe/",
     "origin": "สหรัฐอเมริกา",
     "features": [
@@ -1062,8 +1080,8 @@
   },
   "64": {
     "officialName": "",
-    "image": "https://tica.org/wp-content/uploads/2018/08/Sphynx-Full-Body.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/Sphynx-Full-Body-300x210.jpg",
+    "image": "https://tse3.mm.bing.net/th/id/OIP.es9_7A4h7KsRyP6_kJ3lWgHaFj?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "thumbnail": "https://tse3.mm.bing.net/th/id/OIP.es9_7A4h7KsRyP6_kJ3lWgHaFj?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
     "sourceUrl": "https://tica.org/breed/sphynx/",
     "origin": "แคนาดา",
     "features": [
@@ -1082,23 +1100,32 @@
       }
     ]
   },
-  "65": {
-    "officialName": "",
-    "image": "https://tica.org/wp-content/uploads/2024/07/Tennessee-Rex-Full-Body.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2024/07/Tennessee-Rex-Full-Body-300x210.jpg",
-    "sourceUrl": "https://tica.org/breed/tennessee-rex/",
-    "origin": "สหรัฐอเมริกา",
-    "features": [
-      "ขนหยิกเป็นลอนและมีประกาย satin หรือ glitter",
-      "หนวดอาจเป็นคลื่นและขนนุ่มกว่าลักษณะ wirehair",
-      "ลำตัวขนาดกลางและหูใหญ่"
-    ],
-    "comparisons": []
-  },
+ "65": {
+  "officialName": "",
+  "image": "https://pangovet.com/wp-content/uploads/2022/11/long-curly-haired-cat-Linn-Currie-Shutterstock-800x534.jpg",
+  "thumbnail": "https://pangovet.com/wp-content/uploads/2022/11/long-curly-haired-cat-Linn-Currie-Shutterstock-800x534.jpg",
+  "sourceUrl": "https://tica.org/breed/tennessee-rex/",
+  "origin": "สหรัฐอเมริกา",
+  "features": [
+    "ศีรษะมีรูปทรงโค้งมน ใบหูขนาดปานกลางถึงใหญ่ และดวงตาดูเด่น",
+    "ลำตัวขนาดกลาง มีโครงสร้างสมส่วนและมีกล้ามเนื้อในระดับพอเหมาะ",
+    "หางยาวสมส่วนกับลำตัว และมีขนเป็นลอนต่อเนื่องไปตามแนวหาง",
+    "ขนหยิกหรือเป็นลอน มีลักษณะเงาคล้าย satin และอาจเห็นประกายเมื่อกระทบแสง"
+  ],
+  "careNotes": [
+    "ควรมีเวลาเล่นทุกวันในระดับพอเหมาะ พร้อมของเล่นและพื้นที่ให้ปีนหรือสำรวจ",
+    "การดูแลขนลอนควรใช้หวีหรือแปรงอย่างเบามือ ไม่ดึงหรือแปรงแรงจนทำให้ลอนขนเสียรูป",
+    "ควรตรวจผิวหนัง ใบหู และบริเวณที่ขนหนาเป็นประจำ เพราะความมันและสิ่งสกปรกอาจสะสมได้",
+    "เหมาะกับบ้านที่สามารถให้ความสนใจและจัดพื้นที่พักที่เงียบสงบได้",
+    "ควรเตรียมงบสำหรับอุปกรณ์ดูแลขน อาหาร วัคซีน การตรวจสุขภาพ และอุปกรณ์ภายในบ้าน",
+    "ก่อนรับเลี้ยงควรถามประวัติสุขภาพ พ่อแม่พันธุ์ และข้อมูลการดูแลขนเฉพาะของแมวแต่ละตัว"
+  ],
+  "comparisons": []
+},
   "66": {
     "officialName": "",
-    "image": "https://tica.org/wp-content/uploads/2018/08/Turkish-Van-Full-Body.jpg",
-    "thumbnail": "https://tica.org/wp-content/uploads/2018/08/Turkish-Van-Full-Body-300x210.jpg",
+    "image": "https://i.pinimg.com/originals/18/4c/3e/184c3e43e4c6fd23877c25e4dbc6b9d6.jpg",
+    "thumbnail": "https://i.pinimg.com/originals/18/4c/3e/184c3e43e4c6fd23877c25e4dbc6b9d6.jpg",
     "sourceUrl": "https://tica.org/breed/turkish-van/",
     "origin": "ตุรกี",
     "features": [

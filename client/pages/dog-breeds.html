@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700;800&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/design-system.css">
+  <link rel="stylesheet" href="../css/components.css?v=3">
+  <link rel="stylesheet" href="../css/home.css?v=24">
+  <link rel="stylesheet" href="../css/cat-breeds.css">
+  <link rel="stylesheet" href="../css/global-settings.css?v=9">
+  <link rel="stylesheet" href="../css/dog-theme.css?v=20">
+  <script src="../js/global-settings.js?v=6"></script>
+  <script src="../js/api-config.js?v=2"></script>
+  <title>หมาของเรา — DogMatch</title>
+  <meta name="description" content="ค้นหาและเรียนรู้ข้อมูลสายพันธุ์สุนัขในระบบ DogMatch">
+<link href="../css/chat-nav.css?v=1" rel="stylesheet"/>
+</head>
+<body class="dog-theme dog-breeds-page" data-species="dog">
+  <a class="skip-link" href="#main-content">ข้ามไปยังเนื้อหาหลัก</a>
+  <div class="dog-snow-scene" aria-hidden="true">
+    <span class="dog-snowflake" style="--left:9%;--size:8px;--opacity:0.57;--duration:14s;--sway:3.6s;--delay:-1s;--drift:-33px"></span><span class="dog-snowflake" style="--left:15%;--size:10px;--opacity:0.69;--duration:16s;--sway:4.2s;--delay:-2s;--drift:41px"></span><span class="dog-snowflake" style="--left:21%;--size:12px;--opacity:0.81;--duration:18s;--sway:4.8s;--delay:-3s;--drift:-49px"></span><span class="dog-snowflake" style="--left:27%;--size:14px;--opacity:0.45;--duration:20s;--sway:5.4s;--delay:-4s;--drift:57px"></span><span class="dog-snowflake" style="--left:33%;--size:6px;--opacity:0.57;--duration:22s;--sway:3.0s;--delay:-5s;--drift:-65px"></span><span class="dog-snowflake" style="--left:39%;--size:8px;--opacity:0.69;--duration:24s;--sway:3.6s;--delay:-6s;--drift:25px"></span><span class="dog-snowflake" style="--left:45%;--size:10px;--opacity:0.81;--duration:12s;--sway:4.2s;--delay:-7s;--drift:-33px"></span><span class="dog-snowflake" style="--left:51%;--size:12px;--opacity:0.45;--duration:14s;--sway:4.8s;--delay:-8s;--drift:41px"></span><span class="dog-snowflake" style="--left:57%;--size:14px;--opacity:0.57;--duration:16s;--sway:5.4s;--delay:-9s;--drift:-49px"></span><span class="dog-snowflake" style="--left:63%;--size:6px;--opacity:0.69;--duration:18s;--sway:3.0s;--delay:-10s;--drift:57px"></span><span class="dog-snowflake" style="--left:69%;--size:8px;--opacity:0.81;--duration:20s;--sway:3.6s;--delay:-11s;--drift:-65px"></span><span class="dog-snowflake" style="--left:75%;--size:10px;--opacity:0.45;--duration:22s;--sway:4.2s;--delay:-12s;--drift:25px"></span><span class="dog-snowflake" style="--left:81%;--size:12px;--opacity:0.57;--duration:24s;--sway:4.8s;--delay:-0s;--drift:-33px"></span><span class="dog-snowflake" style="--left:87%;--size:14px;--opacity:0.69;--duration:12s;--sway:5.4s;--delay:-1s;--drift:41px"></span><span class="dog-snowflake" style="--left:93%;--size:6px;--opacity:0.81;--duration:14s;--sway:3.0s;--delay:-2s;--drift:-49px"></span><span class="dog-snowflake" style="--left:1%;--size:8px;--opacity:0.45;--duration:16s;--sway:3.6s;--delay:-3s;--drift:57px"></span><span class="dog-snowflake" style="--left:7%;--size:10px;--opacity:0.57;--duration:18s;--sway:4.2s;--delay:-4s;--drift:-65px"></span><span class="dog-snowflake" style="--left:13%;--size:12px;--opacity:0.69;--duration:20s;--sway:4.8s;--delay:-5s;--drift:25px"></span>
+  </div>
+  <header class="site-header" id="siteHeader">
+<div class="container nav-shell">
+<a aria-label="DogMatch หน้าแรก" class="brand" href="./dog-index.html">
+<span aria-hidden="true" class="brand-logo">
+<svg aria-label="โลโก้สุนัขหน้ากลมของ DogMatch" class="cute-dog-icon dogmatch-round-dog" role="img" viewbox="0 0 64 64">
+<path class="dog-logo-ear" d="M20.2 22.2C16.5 18.7 11.4 19.1 9.8 25.1c-2 7.5.6 14.8 6.3 18 2.6 1.5 5.2.5 6.6-2.1 1.5-2.9.7-6.8.2-10.2-.5-3.4-.7-6.3-2.7-8.6Z"></path>
+<path class="dog-logo-ear" d="M43.8 22.2c3.7-3.5 8.8-3.1 10.4 2.9 2 7.5-.6 14.8-6.3 18-2.6 1.5-5.2.5-6.6-2.1-1.5-2.9-.7-6.8-.2-10.2.5-3.4.7-6.3 2.7-8.6Z"></path>
+<path class="dog-logo-face" d="M32 12.5c-10.5 0-17.4 7.4-17.4 19 0 12.8 7 21.2 17.4 21.2s17.4-8.4 17.4-21.2c0-11.6-6.9-19-17.4-19Z"></path>
+<path class="dog-logo-ear-line" d="M18.9 23.8c-1.8 3.6-2.1 8.4-1.1 12.3"></path>
+<path class="dog-logo-ear-line" d="M45.1 23.8c1.8 3.6 2.1 8.4 1.1 12.3"></path>
+<circle class="dog-logo-eye" cx="27.4" cy="31.9" r="1.55"></circle>
+<circle class="dog-logo-eye" cx="36.6" cy="31.9" r="1.55"></circle>
+<circle class="dog-logo-cheek" cx="22.7" cy="37.8" r="2.35"></circle>
+<circle class="dog-logo-cheek" cx="41.3" cy="37.8" r="2.35"></circle>
+<path class="dog-logo-nose" d="M29.5 37.5c1.6-1.15 3.4-1.15 5 0-1 1.7-1.7 2.45-2.5 2.45s-1.5-.75-2.5-2.45Z"></path>
+<path class="dog-logo-mouth" d="M32 39.9v1.25"></path>
+<path class="dog-logo-mouth" d="M32 41.1c-1.2 2.8-4.4 4-6.8 1.2"></path>
+<path class="dog-logo-mouth" d="M32 41.1c1.2 2.8 4.4 4 6.8 1.2"></path>
+</svg>
+</span>
+<span class="brand-text">
+<strong>DogMatch</strong>
+<small>สุนัขที่ใช่ สำหรับคุณ</small>
+</span>
+</a>
+<nav aria-label="เมนูหลัก" class="main-nav" id="mainNav">
+<a class="nav-link" href="./dog-index.html">
+<svg aria-hidden="true" viewbox="0 0 24 24"><path d="m3 11 9-8 9 8M5 10v10h14V10M9 20v-6h6v6"></path></svg>
+<span>หน้าหลัก</span>
+</a>
+<a class="nav-link" href="./dog-assessment.html?species=dog">
+<svg aria-hidden="true" viewbox="0 0 24 24"><path d="M6 4h12v16H6z"></path><path d="M9 8h6M9 12h6M9 16h4"></path><path d="m16 15 1.5 1.5L20 13.5"></path></svg>
+<span>แบบประเมิน</span>
+</a>
+<a aria-current="page" class="nav-link is-active" href="./dog-breeds.html">
+<svg aria-hidden="true" class="dogmatch-round-dog-nav" viewBox="0 0 64 64">
+<path class="dog-logo-ear" d="M20.2 22.2C16.5 18.7 11.4 19.1 9.8 25.1c-2 7.5.6 14.8 6.3 18 2.6 1.5 5.2.5 6.6-2.1 1.5-2.9.7-6.8.2-10.2-.5-3.4-.7-6.3-2.7-8.6Z"></path>
+<path class="dog-logo-ear" d="M43.8 22.2c3.7-3.5 8.8-3.1 10.4 2.9 2 7.5-.6 14.8-6.3 18-2.6 1.5-5.2.5-6.6-2.1-1.5-2.9-.7-6.8-.2-10.2.5-3.4.7-6.3 2.7-8.6Z"></path>
+<path class="dog-logo-face" d="M32 12.5c-10.5 0-17.4 7.4-17.4 19 0 12.8 7 21.2 17.4 21.2s17.4-8.4 17.4-21.2c0-11.6-6.9-19-17.4-19Z"></path>
+<path class="dog-logo-ear-line" d="M18.9 23.8c-1.8 3.6-2.1 8.4-1.1 12.3"></path>
+<path class="dog-logo-ear-line" d="M45.1 23.8c1.8 3.6 2.1 8.4 1.1 12.3"></path>
+<circle class="dog-logo-eye" cx="27.4" cy="31.9" r="1.55"></circle>
+<circle class="dog-logo-eye" cx="36.6" cy="31.9" r="1.55"></circle>
+<circle class="dog-logo-cheek" cx="22.7" cy="37.8" r="2.35"></circle>
+<circle class="dog-logo-cheek" cx="41.3" cy="37.8" r="2.35"></circle>
+<path class="dog-logo-nose" d="M29.5 37.5c1.6-1.15 3.4-1.15 5 0-1 1.7-1.7 2.45-2.5 2.45s-1.5-.75-2.5-2.45Z"></path>
+<path class="dog-logo-mouth" d="M32 39.9v1.25"></path>
+<path class="dog-logo-mouth" d="M32 41.1c-1.2 2.8-4.4 4-6.8 1.2"></path>
+<path class="dog-logo-mouth" d="M32 41.1c1.2 2.8 4.4 4 6.8 1.2"></path>
+</svg>
+<span>หมาของเรา</span>
+</a>
+<a class="nav-link" href="./about.html">
+<svg aria-hidden="true" viewbox="0 0 24 24"><circle cx="11" cy="11" r="6"></circle><path d="m20 20-4-4"></path></svg>
+<span>เกี่ยวกับเรา</span>
+</a>
+</nav>
+<div class="nav-actions auth-nav" id="authNav">
+<div class="guest-nav-actions" id="guestNavActions">
+<a class="button button-secondary button-small" href="./login.html?return=dog-breeds&species=dog">เข้าสู่ระบบ</a>
+<a class="button button-primary button-small" href="./register.html?fresh=1&species=dog">สมัครสมาชิก</a>
+</div>
+<div class="user-nav-actions" hidden="" id="userNavActions">
+<button aria-controls="userMenuPanel" aria-expanded="false" class="user-menu-trigger" id="userMenuTrigger" type="button">
+<span aria-hidden="true" class="user-avatar" id="userAvatar">U</span>
+<span class="user-summary">
+<strong id="userDisplayName">ผู้ใช้งาน</strong>
+<small>บัญชีของฉัน</small>
+</span>
+<svg aria-hidden="true" class="user-menu-chevron" viewbox="0 0 24 24">
+<path d="m7 10 5 5 5-5"></path>
+</svg>
+</button>
+<div class="user-menu-panel" hidden="" id="userMenuPanel">
+<div class="user-menu-account">
+<span aria-hidden="true" class="user-menu-avatar" id="userMenuAvatar">U</span>
+<span>
+<strong id="userMenuName">ผู้ใช้งาน</strong>
+<small id="userMenuEmail"></small>
+</span>
+</div>
+<div class="account-menu-group">
+<small class="account-menu-label">กิจกรรมของฉัน</small>
+<a class="account-menu-item" href="./adoption-requests.html">
+<span aria-hidden="true" class="account-menu-icon">
+<svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 21s-7-4.6-9.3-8.5C.7 9 2.5 5 6.3 5c2.2 0 3.8 1.2 5.7 3.2C13.9 6.2 15.5 5 17.7 5c3.8 0 5.6 4 3.6 7.5C19 16.4 12 21 12 21Z"></path></svg>
+</span>
+<span>
+<strong>คำขออุปการะของฉัน</strong>
+<small>ติดตามสถานะคำขอที่ส่งไปยังฟาร์ม</small>
+</span>
+</a>
+<a class="account-menu-item" href="./notifications.html">
+<span aria-hidden="true" class="account-menu-icon">
+<svg aria-hidden="true" viewbox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9Z"></path><path d="M10 21h4"></path></svg>
+</span>
+<span>
+<strong>การแจ้งเตือน</strong>
+<small>ดูการตอบกลับและความเคลื่อนไหวล่าสุด</small>
+</span>
+</a>
+<a class="account-menu-item" href="./favorites.html?species=dog">
+<span aria-hidden="true" class="account-menu-icon account-menu-heart">
+<svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 21s-7-4.6-9.3-8.5C.7 9 2.5 5 6.3 5c2.2 0 3.8 1.2 5.7 3.2C13.9 6.2 15.5 5 17.7 5c3.8 0 5.6 4 3.6 7.5C19 16.4 12 21 12 21Z"></path></svg>
+</span>
+<span>
+<strong>สุนัขที่ถูกใจ</strong>
+<small>สายพันธุ์ที่คุณบันทึกไว้</small>
+</span>
+</a>
+</div>
+<div class="account-menu-group">
+<small class="account-menu-label">จัดการบัญชี</small>
+<a class="account-menu-item" href="./account-info.html" id="accountInfoButton">
+<span aria-hidden="true" class="account-menu-icon">
+<svg aria-hidden="true" viewbox="0 0 24 24"><circle cx="12" cy="8" r="4"></circle><path d="M4.5 21a7.5 7.5 0 0 1 15 0"></path></svg>
+</span>
+<span>
+<strong>ข้อมูลบัญชี</strong>
+<small>ชื่อบัญชี อีเมล และข้อมูลส่วนตัว</small>
+</span>
+</a>
+<button class="account-menu-item account-menu-button" id="accountSettingsButton" type="button">
+<span aria-hidden="true" class="account-menu-icon">
+<svg aria-hidden="true" viewbox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-2.8 2.8-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.6v.2h-4V21a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1L4.2 17l.1-.1a1.7 1.7 0 0 0 .3-1.9A1.7 1.7 0 0 0 3 14H2.8v-4H3a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9L4.2 7 7 4.2l.1.1A1.7 1.7 0 0 0 9 4.6 1.7 1.7 0 0 0 10 3V2.8h4V3a1.7 1.7 0 0 0 1 1.6 1.7 1.7 0 0 0 1.9-.3l.1-.1L19.8 7l-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.6 1h.2v4H21a1.7 1.7 0 0 0-1.6 1Z"></path></svg>
+</span>
+<span>
+<strong>การตั้งค่า</strong>
+<small>ตั้งค่าการใช้งาน DogMatch</small>
+</span>
+</button>
+</div>
+<button class="logout-button" id="logoutButton" type="button">
+<span aria-hidden="true">↪</span>
+<span>ออกจากระบบ</span>
+</button>
+</div>
+</div>
+</div>
+<button aria-label="เปิดเมนู" class="menu-toggle" id="menuToggle" type="button">
+<span></span><span></span><span></span>
+</button>
+</div>
+</header>
+  <main id="main-content">
+    <section class="breed-hero">
+      <div class="container breed-hero-grid">
+        <div class="breed-hero-copy reveal is-visible">
+          <p class="eyebrow">คลังความรู้สายพันธุ์สุนัข</p>
+          <h1>
+            เรียนรู้หมาแต่ละสายพันธุ์
+            <br>
+            <span>ก่อนเลือกเพื่อนซี้ตัวใหม่</span>
+          </h1>
+          <p class="breed-hero-description">
+            ค้นหาลักษณะนิสัย ระดับกิจกรรม การดูแล และความเหมาะสมในการเลี้ยง
+            เพื่อช่วยให้คุณเข้าใจสุนัขแต่ละสายพันธุ์ได้ง่ายขึ้นในสไตล์เดียวกับฝั่งแมว
+          </p>
+          <div class="hero-summary" aria-label="ข้อมูลสรุปสายพันธุ์สุนัข">
+            <div>
+              <strong id="heroBreedTotal">—</strong>
+              <span>สายพันธุ์ในระบบ</span>
+            </div>
+            <div>
+              <strong id="heroBeginnerTotal">—</strong>
+              <span>เหมาะสำหรับผู้เลี้ยงครั้งแรก</span>
+            </div>
+            <div>
+              <strong id="heroApartmentTotal">—</strong>
+              <span>เหมาะกับพื้นที่จำกัด</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="breed-hero-card reveal is-visible" aria-hidden="true">
+          <div class="hero-cat-frame">
+            <img
+              src="https://th.bing.com/th/id/R.11d5b114a3dcf4e5f0de2f6788aa5ee4?rik=%2fodWeOsr6jTlfg&amp;riu=http%3a%2f%2fcdn.wallpapersafari.com%2f54%2f42%2fqkVj2Z.jpg&amp;ehk=G8w2LIzVMSf6g9An7zcBMB9R%2fxgyLQ9wEGXs%2fIg1PpE%3d&amp;risl=&amp;pid=ImgRaw&amp;r=0"
+              alt="สุนัข Australian Shepherd"
+              loading="eager"
+              decoding="async"
+              referrerpolicy="no-referrer"
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="breed-library section">
+      <div class="container">
+        <div class="library-heading reveal is-visible">
+          <div>
+            <p class="eyebrow">ค้นหาสายพันธุ์ที่สนใจ</p>
+            <h2>สำรวจข้อมูลสุนัขทั้งหมด</h2>
+          </div>
+          <p>
+            ค้นหาจากชื่อสายพันธุ์ภาษาอังกฤษ และใช้ตัวกรองเพื่อเลือกสุนัข
+            ที่เหมาะกับไลฟ์สไตล์ บ้าน และประสบการณ์ของคุณ
+          </p>
+        </div>
+
+        <div class="filter-panel reveal is-visible">
+          <div class="search-field">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+            <input
+              id="dogBreedSearch"
+              type="search"
+              placeholder="ค้นหาชื่อภาษาไทยหรืออังกฤษ เช่น ชิบะ อินุ, บีเกิล, Golden Retriever"
+              autocomplete="off"
+              aria-label="ค้นหาชื่อสายพันธุ์สุนัขภาษาไทยหรือภาษาอังกฤษ"
+            >
+          </div>
+
+          <div class="filter-row">
+            <label class="select-field">
+              <span>ความต้องการกิจกรรม</span>
+              <select id="dogActivityFilter">
+                <option value="all">ทุกระดับกิจกรรม</option>
+                <option value="low">กิจกรรมน้อย</option>
+                <option value="medium">กิจกรรมพอเหมาะ</option>
+                <option value="high">กิจกรรมสูง</option>
+              </select>
+            </label>
+
+            <label class="select-field">
+              <span>เหมาะกับรูปแบบการเลี้ยง</span>
+              <select id="dogHomeFilter">
+                <option value="all">ทั้งหมด</option>
+                <option value="apartment">พื้นที่จำกัดหรือคอนโด</option>
+                <option value="family">ครอบครัวและเด็ก</option>
+                <option value="first-time">ผู้เลี้ยงครั้งแรก</option>
+              </select>
+            </label>
+
+            <button class="reset-filter" id="dogResetFilters" type="button">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.3-5.7L4 8.5"/><path d="M4 4v4.5h4.5"/></svg>
+              ล้างตัวกรอง
+            </button>
+          </div>
+        </div>
+
+        <div class="results-toolbar reveal is-visible">
+          <p>พบ <strong id="dogBreedCount">0</strong> สายพันธุ์</p>
+          <a class="text-link" href="./dog-assessment.html?species=dog">ทำแบบประเมินสุนัข →</a>
+        </div>
+
+        <div class="dog-active-tag-filter" id="dogActiveTagFilter" role="status" hidden>
+          <span>กำลังแสดงสุนัขที่มีแท็ก</span>
+          <strong id="dogActiveTagLabel"></strong>
+          <button id="dogClearTagFilter" type="button" aria-label="ยกเลิกการกรองด้วยแท็ก">แสดงทั้งหมด ×</button>
+        </div>
+
+        <div class="dog-breed-grid breed-grid" id="dogBreedGrid" aria-live="polite"></div>
+
+        <div class="empty-state dog-empty-state" id="dogBreedEmpty" hidden>
+          <span class="empty-icon" aria-hidden="true">
+            <svg viewBox="0 0 64 64"><path d="M20 25 11 12c-2 11 1 20 10 26M44 25l9-13c2 11-1 20-10 26"/><path d="M20 25c3-9 7-14 12-14s9 5 12 14c5 14-1 27-12 34-11-7-17-20-12-34Z"/><path d="M26 33h.01M38 33h.01M29 40c2-2 4-2 6 0"/></svg>
+          </span>
+          <h3>ยังไม่พบสายพันธุ์ที่ตรงกับตัวกรอง</h3>
+          <p>ลองเปลี่ยนคำค้นหาหรือล้างตัวกรองเพื่อดูสายพันธุ์ทั้งหมด</p>
+          <button class="button button-primary" id="dogEmptyReset" type="button">ดูสายพันธุ์ทั้งหมด</button>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer" id="about">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="./dog-index.html">
+          <span class="brand-logo" aria-hidden="true">
+            <svg viewBox="0 0 64 64" class="cute-dog-icon dogmatch-round-dog" role="img" aria-label="โลโก้สุนัขหน้ากลมของ DogMatch">
+            <path class="dog-logo-ear" d="M20.2 22.2C16.5 18.7 11.4 19.1 9.8 25.1c-2 7.5.6 14.8 6.3 18 2.6 1.5 5.2.5 6.6-2.1 1.5-2.9.7-6.8.2-10.2-.5-3.4-.7-6.3-2.7-8.6Z"/>
+            <path class="dog-logo-ear" d="M43.8 22.2c3.7-3.5 8.8-3.1 10.4 2.9 2 7.5-.6 14.8-6.3 18-2.6 1.5-5.2.5-6.6-2.1-1.5-2.9-.7-6.8-.2-10.2.5-3.4.7-6.3 2.7-8.6Z"/>
+            <path class="dog-logo-face" d="M32 12.5c-10.5 0-17.4 7.4-17.4 19 0 12.8 7 21.2 17.4 21.2s17.4-8.4 17.4-21.2c0-11.6-6.9-19-17.4-19Z"/>
+            <path class="dog-logo-ear-line" d="M18.9 23.8c-1.8 3.6-2.1 8.4-1.1 12.3"/>
+            <path class="dog-logo-ear-line" d="M45.1 23.8c1.8 3.6 2.1 8.4 1.1 12.3"/>
+            <circle class="dog-logo-eye" cx="27.4" cy="31.9" r="1.55"/>
+            <circle class="dog-logo-eye" cx="36.6" cy="31.9" r="1.55"/>
+            <circle class="dog-logo-cheek" cx="22.7" cy="37.8" r="2.35"/>
+            <circle class="dog-logo-cheek" cx="41.3" cy="37.8" r="2.35"/>
+            <path class="dog-logo-nose" d="M29.5 37.5c1.6-1.15 3.4-1.15 5 0-1 1.7-1.7 2.45-2.5 2.45s-1.5-.75-2.5-2.45Z"/>
+            <path class="dog-logo-mouth" d="M32 39.9v1.25"/>
+            <path class="dog-logo-mouth" d="M32 41.1c-1.2 2.8-4.4 4-6.8 1.2"/>
+            <path class="dog-logo-mouth" d="M32 41.1c1.2 2.8 4.4 4 6.8 1.2"/>
+          </svg>
+          </span>
+          <span class="brand-text"><strong>DogMatch</strong><small>สุนัขที่ใช่ สำหรับคุณ</small></span>
+        </a>
+        <p>เราช่วยให้การค้นหาสุนัขที่เข้ากับไลฟ์สไตล์ของคุณ เป็นเรื่องง่ายและเป็นระบบ</p>
+      </div>
+
+      <div>
+        <h3>บริการ</h3>
+        <a href="./dog-assessment.html?species=dog">แบบประเมิน</a>
+       <a href="./dog-breeds.html">สุนัขของเรา</a>
+       <a href="./dog-farm-map.html?species=dog">ค้นหาฟาร์ม</a>
+      </div>
+
+      <div>
+        <h3>ช่วยเหลือ</h3>
+        <a href="./faq.html">คำถามที่พบบ่อย</a>
+        <a href="./privacy.html">นโยบายความเป็นส่วนตัว</a>
+        <a href="./terms.html">ข้อกำหนดการใช้งาน</a>
+      </div>
+
+      <div>
+        <h3>อัปเดตข้อมูล</h3>
+        <p>รับข่าวสารเกี่ยวกับสุนัขและการดูแลที่เหมาะสม</p>
+        <form class="newsletter-form" novalidate>
+          <label class="visually-hidden" for="newsletterEmail">อีเมล</label>
+          <input id="newsletterEmail" name="email" type="email" placeholder="Example@gmail.com" autocomplete="email" inputmode="email" required>
+          <button class="icon-button submit" type="submit" aria-label="สมัครรับข่าวสาร">→</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <span>© 2026 DogMatch</span>
+      <span>โครงการแนะนำสายพันธุ์สุนัขและค้นหาฟาร์ม</span>
+    </div>
+  </footer>
+  <script src="../js/dog-breed-data.js?v=1"></script>
+  <script src="../js/dog-shared.js?v=1"></script>
+  <script src="../js/dog-breeds.js?v=23"></script>
+  <script src="../js/profile-avatar.js?v=6"></script>
+  <script src="../js/dog-header.js?v=3"></script>
+<script src="../js/chat-api.js?v=6"></script>
+<script src="../js/chat-nav.js?v=7"></script>
+</body>
+</html>

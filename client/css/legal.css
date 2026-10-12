@@ -169,3 +169,104 @@
     font-size: 0.86rem;
   }
 }
+
+.legal-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}.legal-action-primary,.legal-action-secondary{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:11px 18px;border-radius:14px;font-weight:800}.legal-action-primary{background:#68add1;color:#fff;box-shadow:0 10px 24px rgba(74,145,181,.22)}.legal-action-secondary{border:1px solid rgba(109,135,155,.22);background:rgba(255,255,255,.8);color:var(--color-text)}.faq-list details{border:1px solid rgba(109,135,155,.16);border-radius:18px;background:rgba(255,255,255,.72);margin-bottom:12px;overflow:hidden}.faq-list summary{cursor:pointer;padding:18px 20px;font-weight:800;color:var(--color-text);list-style:none}.faq-list summary::-webkit-details-marker{display:none}.faq-list summary::after{content:"＋";float:right;color:var(--summer-blue-deep)}.faq-list details[open] summary::after{content:"−"}.faq-list details p{margin:0;padding:0 20px 20px;color:var(--color-text-soft);line-height:1.8}[data-theme="dark"] .legal-page{background:linear-gradient(180deg,#17202a,#111922)}[data-theme="dark"] .legal-card,[data-theme="dark"] .faq-list details{background:#202c38;border-color:#3b4b5b}[data-theme="dark"] .legal-hero{background:linear-gradient(135deg,#293747,#223241)}[data-theme="dark"] .legal-brand-mark,[data-theme="dark"] .legal-back,[data-theme="dark"] .legal-action-secondary{background:#263543;border-color:#455767;color:#f2f6f8}[data-theme="dark"] .legal-intro{background:#263847;border-color:#405668}[data-theme="dark"] .legal-section,[data-theme="dark"] .legal-card{color:#f3f7fa}[data-theme="dark"] .legal-section p,[data-theme="dark"] .legal-section li,[data-theme="dark"] .legal-intro,[data-theme="dark"] .legal-updated,[data-theme="dark"] .faq-list details p{color:#c8d4dc}
+
+
+/* About / legal pages: complete dark mode for CatMatch and DogMatch. */
+html[data-catmatch-theme="dark"] body .legal-page {
+  color: #F5EFE7;
+  background:
+    radial-gradient(circle at 14% 8%, rgba(62,88,121,.22), transparent 34%),
+    radial-gradient(circle at 86% 16%, rgba(216,196,182,.08), transparent 30%),
+    #17253B;
+}
+
+html[data-catmatch-theme="dark"] body :is(.legal-nav,.legal-card) {
+  background: rgba(33,53,85,.96) !important;
+  border-color: rgba(216,196,182,.20) !important;
+  box-shadow: 0 22px 56px rgba(0,0,0,.28) !important;
+}
+
+html[data-catmatch-theme="dark"] body :is(
+  .legal-brand strong,.legal-hero h1,.legal-section h2
+) {
+  color: #F5EFE7 !important;
+}
+
+html[data-catmatch-theme="dark"] body :is(
+  .legal-brand small,.legal-updated,.legal-content p,.legal-content li
+) {
+  color: #D8C4B6 !important;
+}
+
+html[data-catmatch-theme="dark"] body .legal-section {
+  border-color: rgba(216,196,182,.18) !important;
+}
+
+html[data-catmatch-theme="dark"] body .legal-back,
+html[data-catmatch-theme="dark"] body .legal-action-secondary {
+  color: #F5EFE7 !important;
+  background: rgba(62,88,121,.46) !important;
+  border-color: rgba(216,196,182,.24) !important;
+}
+
+
+/* =========================================================
+   About page dark readability v3 — CatMatch and DogMatch.
+   ========================================================= */
+html[data-catmatch-theme="dark"] body .legal-page {
+  min-height: 100vh;
+  color: #F5EFE7 !important;
+  background:
+    radial-gradient(circle at 14% 8%, rgba(62, 88, 121, .24), transparent 34%),
+    radial-gradient(circle at 86% 16%, rgba(216, 196, 182, .08), transparent 30%),
+    #17253B !important;
+}
+
+html[data-catmatch-theme="dark"] body :is(
+  .legal-nav,
+  .legal-card,
+  .legal-hero,
+  .legal-intro,
+  .legal-section,
+  .faq-list details
+) {
+  color: #F5EFE7 !important;
+  background: #253A59 !important;
+  border-color: rgba(216, 196, 182, .22) !important;
+  box-shadow: 0 18px 44px rgba(0, 0, 0, .18) !important;
+}
+
+html[data-catmatch-theme="dark"] body :is(
+  .legal-brand strong,
+  .legal-hero h1,
+  .legal-section h2,
+  .faq-list summary
+) {
+  color: #F5EFE7 !important;
+}
+
+html[data-catmatch-theme="dark"] body :is(
+  .legal-brand small,
+  .legal-kicker,
+  .legal-updated,
+  .legal-intro,
+  .legal-content p,
+  .legal-content li,
+  .faq-list details p
+) {
+  color: #D8C4B6 !important;
+}
+
+html[data-catmatch-theme="dark"] body .legal-hero {
+  background:
+    radial-gradient(circle at 90% 12%, rgba(216, 196, 182, .10), transparent 28%),
+    linear-gradient(135deg, #253A59, #1D304C) !important;
+}
+
+html[data-catmatch-theme="dark"] body :is(.legal-back,.legal-action-secondary) {
+  color: #F5EFE7 !important;
+  background: #3E5879 !important;
+  border-color: rgba(216, 196, 182, .24) !important;
+}

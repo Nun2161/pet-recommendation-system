@@ -631,3 +631,175 @@
     gap: 10px;
   }
 }
+
+/* Firebase Authentication: Google is the primary sign-in method. */
+.login-google-button {
+  margin-bottom: 0;
+  color: #3c4043;
+  background: #ffffff;
+  border: 1px solid #dadce0;
+  box-shadow: 0 10px 26px rgba(77, 98, 116, .12);
+}
+
+.login-google-button::before {
+  content: "G";
+  display: inline-grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  margin-right: 10px;
+  border-radius: 50%;
+  color: #4285f4;
+  background: #f7f9ff;
+  font-weight: 900;
+}
+
+.login-google-button:hover:not(:disabled) {
+  background: #f8fbff;
+  border-color: #c9d4e7;
+}
+/* แก้ปุ่มแสดงรหัสผ่านหน้า Login */
+.login-page .password-input-shell.password-visibility-shell {
+  position: relative;
+  width: 100%;
+}
+
+.login-page .password-input-shell.password-visibility-shell > input {
+  width: 100%;
+  padding-right: 70px !important;
+}
+
+.login-page .password-input-shell .password-visibility-toggle {
+  position: absolute;
+  top: 50%;
+  right: 9px;
+  z-index: 5;
+  transform: translateY(-50%);
+}
+.farm-register-entry {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px;
+  margin-top: 18px;
+  padding: 15px;
+  border: 1px solid rgba(108, 162, 207, 0.24);
+  border-radius: 20px;
+  background:
+    radial-gradient(
+      circle at 8% 12%,
+      rgba(248, 221, 166, 0.22),
+      transparent 38%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(245, 251, 255, 0.96),
+      rgba(255, 247, 249, 0.96)
+    );
+  box-shadow: 0 12px 28px rgba(77, 98, 116, 0.08);
+}
+
+.farm-register-entry__icon {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  color: #6ca2cf;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 8px 20px rgba(77, 98, 116, 0.08);
+}
+
+.farm-register-entry__icon svg {
+  width: 25px;
+  height: 25px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.farm-register-entry__content {
+  min-width: 0;
+}
+
+.farm-register-entry__content strong,
+.farm-register-entry__content span {
+  display: block;
+}
+
+.farm-register-entry__content strong {
+  margin-bottom: 3px;
+  color: #34383b;
+  font-size: 0.96rem;
+}
+
+.farm-register-entry__content span {
+  color: #73777a;
+  font-size: 0.78rem;
+  line-height: 1.55;
+}
+
+.farm-register-entry__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0 16px;
+  border: 1px solid rgba(108, 162, 207, 0.28);
+  border-radius: 999px;
+  color: #477d9f;
+  background: #ffffff;
+  font-size: 0.84rem;
+  font-weight: 800;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.farm-register-entry__button:hover,
+.farm-register-entry__button:focus-visible {
+  color: #356c8e;
+  background: #f5fbff;
+  box-shadow: 0 10px 22px rgba(77, 98, 116, 0.12);
+  transform: translateY(-1px);
+  outline: none;
+}
+
+.farm-register-note {
+  margin: 9px 4px 0;
+  color: #8a777d;
+  font-size: 0.75rem;
+  line-height: 1.55;
+  text-align: center;
+}
+
+@media (max-width: 560px) {
+  .farm-register-entry {
+    grid-template-columns: 44px minmax(0, 1fr);
+  }
+
+  .farm-register-entry__icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .farm-register-entry__button {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+}
+.farm-login-hint {
+  display: block;
+  margin-top: 6px;
+  color: #98727f;
+  font-size: 0.72rem;
+  line-height: 1.5;
+  font-weight: 600;
+}
+/* LOGIN V8 — GOOGLE SUCCESS SAKURA */
+.login-success-modal[hidden]{display:none!important}.login-success-modal{position:fixed;inset:0;z-index:1200;display:grid;place-items:center;padding:24px;overflow:hidden}.login-success-backdrop{position:absolute;inset:0;background:rgba(255,250,247,.84);backdrop-filter:blur(12px)}.login-success-card{position:relative;z-index:3;width:min(480px,100%);padding:42px 30px;border:1px solid rgba(132,158,180,.2);border-radius:32px;text-align:center;background:#fff;box-shadow:0 28px 80px rgba(77,98,116,.2);animation:loginCardPop .5s cubic-bezier(.2,.8,.2,1) both}.login-success-icon{width:70px;height:70px;display:grid;place-items:center;margin:0 auto 16px;border-radius:50%;color:#fff;background:#70a58f;font-size:2rem;font-weight:900}.login-success-card p{margin:0;color:#6ca2cf;font-weight:800}.login-success-card h2{margin:6px 0 8px;font-size:2.4rem}.login-success-card>span{color:#777}.login-success-burst{position:absolute;left:50%;top:50%;z-index:2}.login-burst-petal{position:absolute;width:16px;height:12px;border-radius:75% 25% 70% 30%;opacity:0;background:linear-gradient(135deg,#ffdce8,#e985aa)}.login-success-modal.is-celebrating .login-burst-petal{animation:loginPetalBurst 1.15s cubic-bezier(.15,.75,.2,1) both}.login-burst-petal-1{--x:-280px;--y:-210px;--r:-130deg}.login-burst-petal-2{--x:-160px;--y:-300px;--r:110deg}.login-burst-petal-3{--x:0px;--y:-330px;--r:210deg}.login-burst-petal-4{--x:170px;--y:-290px;--r:80deg}.login-burst-petal-5{--x:290px;--y:-180px;--r:180deg}.login-burst-petal-6{--x:330px;--y:0px;--r:260deg}.login-burst-petal-7{--x:280px;--y:190px;--r:140deg}.login-burst-petal-8{--x:140px;--y:290px;--r:300deg}.login-burst-petal-9{--x:-20px;--y:320px;--r:190deg}.login-burst-petal-10{--x:-180px;--y:270px;--r:90deg}.login-burst-petal-11{--x:-300px;--y:150px;--r:250deg}.login-burst-petal-12{--x:-330px;--y:-40px;--r:130deg}@keyframes loginPetalBurst{0%{opacity:0;transform:translate(-50%,-50%) scale(.2)}20%{opacity:1}100%{opacity:0;transform:translate(calc(-50% + var(--x)),calc(-50% + var(--y))) rotate(var(--r)) scale(1.2)}}@keyframes loginCardPop{from{opacity:0;transform:translateY(22px) scale(.95)}to{opacity:1;transform:none}}@media(prefers-reduced-motion:reduce){.login-success-modal *{animation:none!important}}

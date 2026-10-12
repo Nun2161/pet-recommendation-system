@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ส่งคำขอสำเร็จ — CatMatch</title>
+  <meta name="description" content="CatMatch ได้รับคำขอลงทะเบียนฟาร์มแล้ว">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700;800&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/design-system.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/farm-register.css?v=1">
+  <link rel="stylesheet" href="../css/global-settings.css?v=1">
+  <script src="../js/global-settings.js?v=1"></script>
+  <script src="../js/api-config.js?v=1"></script>
+</head>
+<body class="farm-success-page">
+  <main class="farm-success-main">
+    <section class="farm-success-card" aria-labelledby="farmSuccessTitle">
+      <div class="farm-success-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 5 3 8 7 10 4-2 7-5 7-10V6l-7-3Z"/><path d="m9 12 2 2 4-5"/></svg>
+      </div>
+      <p class="farm-eyebrow">ส่งข้อมูลเรียบร้อย</p>
+      <h1 id="farmSuccessTitle">คำขอลงทะเบียนฟาร์ม<br>อยู่ระหว่างตรวจสอบ</h1>
+      <p>
+        CatMatch ได้รับข้อมูลของ <strong id="successFarmName">ฟาร์มของคุณ</strong> แล้ว
+        ผู้ดูแลระบบจะตรวจสอบข้อมูลและหลักฐานก่อนเปิดใช้งานบัญชี
+      </p>
+
+      <div class="farm-success-status">
+        <span>สถานะปัจจุบัน</span>
+        <strong>รอผู้ดูแลระบบอนุมัติ</strong>
+      </div>
+
+      <div class="farm-success-steps">
+        <article class="is-complete"><span>✓</span><div><strong>ส่งคำขอแล้ว</strong><small>ข้อมูลถูกบันทึกในระบบเรียบร้อย</small></div></article>
+        <article><span>2</span><div><strong>ตรวจสอบข้อมูล</strong><small>ผู้ดูแลระบบตรวจชื่อฟาร์ม ที่อยู่ และหลักฐาน</small></div></article>
+        <article><span>3</span><div><strong>เข้าสู่ระบบหลังอนุมัติ</strong><small>ใช้บัญชีอีเมลและรหัสผ่านที่ลงทะเบียนไว้</small></div></article>
+      </div>
+
+      <div class="farm-success-note">
+        ระหว่างรอตรวจสอบ บัญชีฟาร์มจะยังไม่สามารถเข้าใช้งานระบบจัดการฟาร์มได้
+      </div>
+
+      <div class="farm-success-actions">
+        <a class="button button-primary" href="./login.html">ไปหน้าเข้าสู่ระบบ</a>
+        <a class="button button-secondary" href="./index.html">กลับหน้าหลัก</a>
+      </div>
+    </section>
+  </main>
+  <script src="../js/farm-register-success.js?v=1"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+.admin-stray-summary { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 14px; margin-bottom: 20px; }
+.admin-stray-summary article { padding: 20px; border: 1px solid rgba(62,88,121,.14); border-radius: 20px; background: #fff; }
+.admin-stray-summary span { color: #718398; font-size: .8rem; font-weight: 800; }
+.admin-stray-summary strong { display: block; margin-top: 7px; color: #213555; font-size: 2rem; }
+.admin-stray-list { display: grid; gap: 16px; }
+.admin-stray-card { display: grid; grid-template-columns: 190px minmax(0,1fr) auto; gap: 20px; padding: 14px; border: 1px solid rgba(62,88,121,.14); border-radius: 24px; background: #fff; box-shadow: 0 15px 38px rgba(33,53,85,.07); }
+.admin-stray-card__media { position: relative; min-height: 180px; overflow: hidden; border-radius: 18px; background: #f5efe7; }
+.admin-stray-card__media img { width: 100%; height: 100%; object-fit: cover; }
+.admin-stray-status { position: absolute; top: 10px; left: 10px; padding: 6px 10px; border-radius: 999px; font-size: .7rem; font-weight: 800; }
+.admin-stray-status.is-pending { color: #825f16; background: #fff2cf; }
+.admin-stray-status.is-approved { color: #28694c; background: #e3f6ec; }
+.admin-stray-status.is-rejected { color: #963f38; background: #ffe6e2; }
+.admin-stray-card__content { align-self: center; }
+.admin-stray-kicker { margin: 0; color: #6888a2; font-size: .72rem; font-weight: 800; letter-spacing: .05em; }
+.admin-stray-card h3 { margin: 5px 0; color: #213555; font-size: 1.65rem; }
+.admin-stray-card__content > p { color: #718398; }
+.admin-stray-traits { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0; }
+.admin-stray-traits span { padding: 5px 8px; border-radius: 999px; color: #3e5879; background: #f5efe7; font-size: .7rem; font-weight: 800; }
+.admin-stray-card dl { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 8px 16px; margin: 12px 0 0; }
+.admin-stray-card dl div { min-width: 0; }
+.admin-stray-card dt { color: #8190a2; font-size: .68rem; font-weight: 800; }
+.admin-stray-card dd { margin: 3px 0 0; color: #354b61; font-size: .82rem; overflow-wrap: anywhere; }
+.admin-stray-reason { padding: 10px 12px; border-radius: 12px; color: #963f38 !important; background: #fff2f0; }
+.admin-stray-card__actions { display: flex; flex-direction: column; justify-content: center; gap: 8px; }
+.admin-stray-review-dialog { width: min(1120px, calc(100vw - 34px)); max-width: none; }
+.admin-stray-review-grid { display: grid; grid-template-columns: minmax(300px,.8fr) minmax(0,1.2fr); gap: 24px; }
+.admin-stray-review-image { width: 100%; max-height: 650px; object-fit: contain; border-radius: 20px; background: #f5efe7; }
+.admin-stray-review-info { display: grid; align-content: start; gap: 14px; }
+.admin-stray-review-info h2 { margin: 0; color: #213555; font-size: 2.4rem; }
+.admin-stray-review-info > p { margin: 0; color: #718398; }
+.admin-stray-review-box { padding: 14px; border: 1px solid rgba(62,88,121,.14); border-radius: 16px; background: #f8fafc; }
+.admin-stray-review-box strong, .admin-stray-review-box span { display: block; }
+.admin-stray-review-box span { margin-top: 4px; color: #617589; line-height: 1.6; overflow-wrap: anywhere; }
+.admin-stray-review-detail { display: grid; gap: 10px; }
+.admin-stray-review-detail div { padding: 13px; border-radius: 14px; background: #f8fafc; }
+.admin-stray-review-detail strong { color: #213555; }
+.admin-stray-review-detail p { margin: 5px 0 0; color: #617589; line-height: 1.65; white-space: pre-wrap; }
+.admin-stray-reason-field textarea { resize: none; min-height: 110px; }
+html[data-theme="dark"] .admin-stray-summary article, html[data-theme="dark"] .admin-stray-card, body.dark-mode .admin-stray-summary article, body.dark-mode .admin-stray-card { background: #1d3148; border-color: rgba(216,196,182,.18); }
+html[data-theme="dark"] .admin-stray-summary strong, html[data-theme="dark"] .admin-stray-card h3, body.dark-mode .admin-stray-summary strong, body.dark-mode .admin-stray-card h3 { color: #f5efe7; }
+html[data-theme="dark"] .admin-stray-card dd, html[data-theme="dark"] .admin-stray-review-info h2, body.dark-mode .admin-stray-card dd, body.dark-mode .admin-stray-review-info h2 { color: #f5efe7; }
+html[data-theme="dark"] .admin-stray-review-box, html[data-theme="dark"] .admin-stray-review-detail div, body.dark-mode .admin-stray-review-box, body.dark-mode .admin-stray-review-detail div { background: #17283b; border-color: rgba(216,196,182,.18); }
+@media (max-width: 900px) { .admin-stray-summary { grid-template-columns: 1fr; } .admin-stray-card { grid-template-columns: 1fr; } .admin-stray-card__media { min-height: 280px; } .admin-stray-card__actions { flex-direction: row; justify-content: flex-start; } .admin-stray-review-grid { grid-template-columns: 1fr; } }
+@media (max-width: 600px) { .admin-stray-card dl { grid-template-columns: 1fr; } }

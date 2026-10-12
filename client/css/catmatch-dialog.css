@@ -1,0 +1,265 @@
+.catmatch-dialog-root {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  font-family: "Noto Sans Thai", sans-serif;
+}
+
+.catmatch-dialog-root[hidden] {
+  display: none;
+}
+
+.catmatch-dialog-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(31, 47, 60, 0.5);
+  backdrop-filter: blur(9px);
+  animation: catmatchDialogFade 0.2s ease both;
+}
+
+.catmatch-dialog-card {
+  position: relative;
+  width: min(94vw, 480px);
+  overflow: hidden;
+  padding: 34px 30px 30px;
+  border: 1px solid rgba(113, 164, 204, 0.24);
+  border-radius: 30px;
+  background:
+    radial-gradient(circle at 88% 8%, rgba(244, 168, 194, 0.2), transparent 28%),
+    linear-gradient(145deg, #ffffff, #fff9fb);
+  box-shadow: 0 32px 90px rgba(40, 61, 78, 0.28);
+  text-align: center;
+  outline: none;
+  animation: catmatchDialogPop 0.28s cubic-bezier(0.2, 0.9, 0.25, 1.14) both;
+}
+
+.catmatch-dialog-card::after {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.78);
+  border-radius: 22px;
+  pointer-events: none;
+}
+
+.catmatch-dialog-icon {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: 74px;
+  height: 74px;
+  margin: 0 auto 17px;
+  place-items: center;
+  border: 1px solid rgba(113, 164, 204, 0.18);
+  border-radius: 24px;
+  color: #4f8bb7;
+  background: linear-gradient(145deg, #eaf6ff, #fff0f5);
+  box-shadow: 0 14px 32px rgba(100, 153, 193, 0.2);
+  font-size: 31px;
+  font-weight: 900;
+}
+
+.catmatch-dialog-card h2 {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 10px;
+  color: #304d62;
+  font-size: clamp(1.35rem, 4vw, 1.62rem);
+  line-height: 1.35;
+}
+
+.catmatch-dialog-card p {
+  position: relative;
+  z-index: 1;
+  max-width: 390px;
+  margin: 0 auto;
+  color: #6a7c89;
+  font-size: 0.98rem;
+  line-height: 1.8;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+
+.catmatch-dialog-input {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  min-height: 52px;
+  margin-top: 18px;
+  padding: 13px 15px;
+  border: 1px solid #dce8f0;
+  border-radius: 16px;
+  background: #ffffff;
+  color: #304d62;
+  font: inherit;
+  resize: vertical;
+  outline: none;
+}
+
+.catmatch-dialog-input:focus {
+  border-color: #76acd3;
+  box-shadow: 0 0 0 4px rgba(108, 162, 207, 0.13);
+}
+
+.catmatch-dialog-actions {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 25px;
+}
+
+.catmatch-dialog-button {
+  min-width: 124px;
+  min-height: 48px;
+  padding: 0 21px;
+  border-radius: 999px;
+  font: 800 0.92rem/1 "Noto Sans Thai", sans-serif;
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+}
+
+.catmatch-dialog-button:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.02);
+}
+
+.catmatch-dialog-button:focus-visible {
+  outline: 3px solid rgba(108, 162, 207, 0.28);
+  outline-offset: 3px;
+}
+
+.catmatch-dialog-button.secondary {
+  border: 1px solid #dce6ed;
+  color: #566c7c;
+  background: #ffffff;
+}
+
+.catmatch-dialog-button.primary {
+  border: 0;
+  color: #ffffff;
+  background: linear-gradient(135deg, #66a2cc, #7eb7dc);
+  box-shadow: 0 11px 26px rgba(93, 150, 193, 0.28);
+}
+
+.catmatch-dialog-button.danger {
+  border: 0;
+  color: #ffffff;
+  background: linear-gradient(135deg, #d96f8f, #e78ca7);
+  box-shadow: 0 11px 26px rgba(217, 111, 143, 0.25);
+}
+
+.catmatch-dialog-petals span {
+  position: absolute;
+  z-index: 2;
+  width: 11px;
+  height: 8px;
+  border-radius: 75% 25% 70% 30%;
+  background: #ec8eae;
+  opacity: 0.78;
+  animation: catmatchPetal 1.05s ease-out both;
+  pointer-events: none;
+}
+
+.catmatch-dialog-petals span:nth-child(1) { left: 20%; top: 20%; --x: -55px; --y: -55px; }
+.catmatch-dialog-petals span:nth-child(2) { left: 36%; top: 14%; --x: -20px; --y: -75px; }
+.catmatch-dialog-petals span:nth-child(3) { right: 35%; top: 14%; --x: 25px; --y: -72px; }
+.catmatch-dialog-petals span:nth-child(4) { right: 20%; top: 22%; --x: 58px; --y: -48px; }
+.catmatch-dialog-petals span:nth-child(5) { left: 18%; bottom: 25%; --x: -62px; --y: 35px; }
+.catmatch-dialog-petals span:nth-child(6) { right: 18%; bottom: 25%; --x: 62px; --y: 38px; }
+
+html[data-catmatch-theme="dark"] .catmatch-dialog-backdrop {
+  background: rgba(5, 13, 19, 0.68);
+}
+
+html[data-catmatch-theme="dark"] .catmatch-dialog-card {
+  border-color: rgba(161, 202, 228, 0.2);
+  background:
+    radial-gradient(circle at 88% 8%, rgba(221, 117, 154, 0.15), transparent 28%),
+    linear-gradient(145deg, #23323d, #1d2a34);
+  box-shadow: 0 32px 90px rgba(0, 0, 0, 0.45);
+}
+
+html[data-catmatch-theme="dark"] .catmatch-dialog-card::after {
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+html[data-catmatch-theme="dark"] .catmatch-dialog-icon {
+  color: #b9dcf1;
+  border-color: rgba(161, 202, 228, 0.16);
+  background: linear-gradient(145deg, #304958, #3a3547);
+}
+
+html[data-catmatch-theme="dark"] .catmatch-dialog-card h2 {
+  color: #f2f7fa;
+}
+
+html[data-catmatch-theme="dark"] .catmatch-dialog-card p {
+  color: #c3d0d8;
+}
+
+html[data-catmatch-theme="dark"] .catmatch-dialog-button.secondary {
+  border-color: rgba(180, 207, 224, 0.2);
+  color: #dce9f0;
+  background: #2b3b46;
+}
+
+@keyframes catmatchDialogFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes catmatchDialogPop {
+  from { opacity: 0; transform: translateY(18px) scale(0.94); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes catmatchPetal {
+  0% { opacity: 0; transform: translate(0, 0) rotate(0) scale(0.4); }
+  25% { opacity: 0.9; }
+  100% { opacity: 0; transform: translate(var(--x), var(--y)) rotate(290deg) scale(1.2); }
+}
+
+@media (max-width: 520px) {
+  .catmatch-dialog-root { padding: 16px; }
+  .catmatch-dialog-card { padding: 28px 19px 23px; border-radius: 24px; }
+  .catmatch-dialog-actions { flex-direction: column-reverse; }
+  .catmatch-dialog-button { width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .catmatch-dialog-backdrop,
+  .catmatch-dialog-card,
+  .catmatch-dialog-petals span {
+    animation: none;
+  }
+
+  .catmatch-dialog-button {
+    transition: none;
+  }
+}
+
+
+/* V22 — viewport portal for confirmation dialogs on scaled Admin/Farm pages. */
+html > .catmatch-dialog-root {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 2147483200 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  max-width: none !important;
+  max-height: none !important;
+  margin: 0 !important;
+  transform: none !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+}
+html > .catmatch-dialog-root > .catmatch-dialog-card {
+  align-self: center !important;
+  justify-self: center !important;
+}

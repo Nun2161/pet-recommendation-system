@@ -11,9 +11,85 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700;800&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="../css/design-system.css">
-  <link rel="stylesheet" href="../css/components.css">
-  <link rel="stylesheet" href="../css/cat-breeds.css">
+  <link rel="stylesheet" href="../css/components.css?v=3">
+  <link rel="stylesheet" href="../css/cat-breeds.css?v=4">
   <link rel="stylesheet" href="../css/sakura-background.css">
+  <style>
+  /* บนคอมและแท็บเล็ตแนวนอน: ข้อความซ้าย รูปแมวขวา */
+  @media (min-width: 701px) {
+    .breed-hero-grid {
+      display: grid !important;
+      grid-template-columns:
+        minmax(0, 1.15fr)
+        minmax(320px, 0.85fr) !important;
+      align-items: center !important;
+      gap: clamp(32px, 4vw, 64px) !important;
+    }
+
+    .breed-hero-copy {
+      grid-column: 1 !important;
+      grid-row: 1 !important;
+      min-width: 0 !important;
+    }
+
+    .breed-hero-copy h1 {
+      max-width: 760px !important;
+      font-size: clamp(2.8rem, 5vw, 5rem) !important;
+      line-height: 1.08 !important;
+    }
+
+    .breed-hero-card {
+      grid-column: 2 !important;
+      grid-row: 1 !important;
+      width: 100% !important;
+      max-width: 470px !important;
+      min-height: 470px !important;
+      display: grid !important;
+      place-items: center !important;
+      margin: 0 0 0 auto !important;
+    }
+
+    .hero-cat-frame {
+      position: relative !important;
+      inset: auto !important;
+      width: min(100%, 470px) !important;
+      aspect-ratio: 1 / 1 !important;
+      margin: 0 !important;
+    }
+
+    .hero-cat-frame img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      object-position: center !important;
+    }
+  }
+
+  /* เฉพาะมือถือจึงให้รูปลงด้านล่าง */
+  @media (max-width: 700px) {
+    .breed-hero-grid {
+      display: grid !important;
+      grid-template-columns: 1fr !important;
+    }
+
+    .breed-hero-copy {
+      grid-column: 1 !important;
+      grid-row: 1 !important;
+    }
+
+    .breed-hero-card {
+      grid-column: 1 !important;
+      grid-row: 2 !important;
+      width: 100% !important;
+      max-width: 470px !important;
+      margin-inline: auto !important;
+    }
+  }
+</style>
+  <link rel="stylesheet" href="../css/global-settings.css?v=9">
+  <script src="../js/global-settings.js?v=6"></script>
+  <script src="../js/api-config.js?v=1"></script>
+<link href="../css/chat-nav.css?v=1" rel="stylesheet"/>
 </head>
 <body class="cat-breeds-page">
   <a class="skip-link" href="#main-content">ข้ามไปยังเนื้อหาหลัก</a>
@@ -60,21 +136,221 @@
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 9 5 4l4 2.5c2-.8 4-.8 6 0L19 4l-1.5 5c1.7 1.6 2.5 3.4 2.5 5.5C20 18 16.8 20 12 20s-8-2-8-5.5C4 12.4 4.8 10.6 6.5 9Z"/><path d="M9.5 13h.01M14.5 13h.01M10.5 16c1 .8 2.5.8 3.5 0"/></svg>
           <span>แมวของเรา</span>
         </a>
-        <a class="nav-link" href="./articles.html">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14v16H5z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
-          <span>บทความ</span>
-        </a>
-        <a class="nav-link" href="./about.html">
+        <a class="nav-link" href="./index.html#about">
           <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="m20 20-4-4"/></svg>
           <span>เกี่ยวกับเรา</span>
         </a>
       </nav>
 
-      <div class="nav-actions">
-        <a class="button button-secondary button-small" href="./login.html">เข้าสู่ระบบ</a>
-        <a class="button button-primary button-small" href="./register.html">สมัครสมาชิก</a>
+      <div
+  class="nav-actions auth-nav"
+  id="authNav"
+>
+  <div
+    class="guest-nav-actions"
+    id="guestNavActions"
+  >
+    <a
+      class="button button-secondary button-small"
+      href="./login.html"
+    >
+      เข้าสู่ระบบ
+    </a>
+
+    <a
+      class="button button-primary button-small"
+      href="./register.html?fresh=1"
+    >
+      สมัครสมาชิก
+    </a>
+  </div>
+
+  <div
+    class="user-nav-actions"
+    id="userNavActions"
+    hidden
+  >
+    <button
+      class="user-menu-trigger"
+      id="userMenuTrigger"
+      type="button"
+      aria-expanded="false"
+      aria-controls="userMenuPanel"
+    >
+      <span
+        class="user-avatar"
+        id="userAvatar"
+        aria-hidden="true"
+      >
+        U
+      </span>
+
+      <span class="user-summary">
+        <strong id="userDisplayName">
+          ผู้ใช้งาน
+        </strong>
+
+        <small>บัญชีของฉัน</small>
+      </span>
+
+      <svg
+        class="user-menu-chevron"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path d="m7 10 5 5 5-5"/>
+      </svg>
+    </button>
+
+    <div
+      class="user-menu-panel"
+      id="userMenuPanel"
+      hidden
+    >
+      <div class="user-menu-account">
+        <span
+          class="user-menu-avatar"
+          id="userMenuAvatar"
+          aria-hidden="true"
+        >
+          U
+        </span>
+
+        <span>
+          <strong id="userMenuName">
+            ผู้ใช้งาน
+          </strong>
+
+          <small id="userMenuEmail"></small>
+        </span>
       </div>
 
+      <div class="account-menu-group">
+        <small class="account-menu-label">
+          กิจกรรมของฉัน
+        </small>
+
+        <a
+          class="account-menu-item"
+          href="./adoption-requests.html"
+        >
+          <span
+            class="account-menu-icon"
+            aria-hidden="true"
+          >
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.6-9.3-8.5C.7 9 2.5 5 6.3 5c2.2 0 3.8 1.2 5.7 3.2C13.9 6.2 15.5 5 17.7 5c3.8 0 5.6 4 3.6 7.5C19 16.4 12 21 12 21Z"/></svg>
+</span>
+
+          <span>
+            <strong>
+              คำขออุปการะของฉัน
+            </strong>
+
+            <small>
+              ติดตามสถานะคำขอที่ส่งไปยังฟาร์ม
+            </small>
+          </span>
+        </a>
+
+        <a
+          class="account-menu-item"
+          href="./notifications.html"
+        >
+          <span
+            class="account-menu-icon"
+            aria-hidden="true"
+          >
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9Z"/><path d="M10 21h4"/></svg>
+</span>
+
+          <span>
+            <strong>การแจ้งเตือน</strong>
+
+            <small>
+              ดูการตอบกลับและความเคลื่อนไหวล่าสุด
+            </small>
+          </span>
+        </a>
+
+        <a
+          class="account-menu-item"
+          href="./favorites.html"
+        >
+          <span
+            class="account-menu-icon account-menu-heart"
+            aria-hidden="true"
+          >
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.6-9.3-8.5C.7 9 2.5 5 6.3 5c2.2 0 3.8 1.2 5.7 3.2C13.9 6.2 15.5 5 17.7 5c3.8 0 5.6 4 3.6 7.5C19 16.4 12 21 12 21Z"/></svg>
+</span>
+
+          <span>
+            <strong>แมวที่ถูกใจ</strong>
+
+            <small>
+              สายพันธุ์ที่คุณบันทึกไว้
+            </small>
+          </span>
+        </a>
+      </div>
+
+      <div class="account-menu-group">
+        <small class="account-menu-label">
+          จัดการบัญชี
+        </small>
+
+        <a
+          class="account-menu-item"
+          id="accountInfoButton"
+          href="./account-info.html"
+        >          <span
+            class="account-menu-icon"
+            aria-hidden="true"
+          >
+<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4.5 21a7.5 7.5 0 0 1 15 0"/></svg>
+</span>
+
+          <span>
+            <strong>ข้อมูลบัญชี</strong>
+
+            <small>
+              ชื่อบัญชี อีเมล และข้อมูลส่วนตัว
+            </small>
+          </span>
+        </a>
+
+        <button
+          class="account-menu-item account-menu-button"
+          id="accountSettingsButton"
+          type="button"
+        >
+          <span
+            class="account-menu-icon"
+            aria-hidden="true"
+          >
+<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-2.8 2.8-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.6v.2h-4V21a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1L4.2 17l.1-.1a1.7 1.7 0 0 0 .3-1.9A1.7 1.7 0 0 0 3 14H2.8v-4H3a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9L4.2 7 7 4.2l.1.1A1.7 1.7 0 0 0 9 4.6 1.7 1.7 0 0 0 10 3V2.8h4V3a1.7 1.7 0 0 0 1 1.6 1.7 1.7 0 0 0 1.9-.3l.1-.1L19.8 7l-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.6 1h.2v4H21a1.7 1.7 0 0 0-1.6 1Z"/></svg>
+</span>
+
+          <span>
+            <strong>การตั้งค่า</strong>
+
+            <small>
+              ตั้งค่าการใช้งาน CatMatch
+            </small>
+          </span>
+        </button>
+      </div>
+
+      <button
+        class="logout-button"
+        id="logoutButton"
+        type="button"
+      >
+        <span aria-hidden="true">↪</span>
+        <span>ออกจากระบบ</span>
+      </button>
+    </div>
+  </div>
+</div>
       <button class="menu-toggle" id="menuToggle" type="button" aria-label="เปิดเมนู" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -82,45 +358,65 @@
   </header>
 
   <main id="main-content">
-    <section class="breed-hero">
-      <div class="container breed-hero-grid">
-        <div class="breed-hero-copy reveal">
-          <p class="eyebrow">คลังความรู้สายพันธุ์แมว</p>
-          <h1>เรียนรู้แมวแต่ละสายพันธุ์<br><span>ก่อนเลือกเพื่อนตัวใหม่</span></h1>
-          <p class="breed-hero-description">
-            ค้นหาข้อมูลนิสัย ระดับกิจกรรม การดูแล และรูปแบบการอยู่อาศัยที่เหมาะสม
-            เพื่อช่วยให้คุณเข้าใจแมวแต่ละสายพันธุ์ได้ง่ายขึ้น
-          </p>
-          <div class="hero-summary" aria-label="สรุปข้อมูลสายพันธุ์">
-            <div><strong id="heroBreedTotal">—</strong><span>สายพันธุ์ในระบบ</span></div>
-            <div><strong>20</strong><span>หัวข้อเปรียบเทียบ</span></div>
-            <div><strong>1–5</strong><span>ระดับข้อมูลเพื่อการดูแล</span></div>
-          </div>
+   <section class="breed-hero">
+  <div class="container breed-hero-grid">
+
+    <!-- ฝั่งซ้าย: ข้อความ -->
+    <div class="breed-hero-copy reveal">
+      <p class="eyebrow">คลังความรู้สายพันธุ์แมว</p>
+
+      <h1>
+        เรียนรู้แมวแต่ละสายพันธุ์
+        <br>
+        <span>ก่อนเลือกเพื่อนตัวใหม่</span>
+      </h1>
+
+      <p class="breed-hero-description">
+        ค้นหาข้อมูลนิสัย ระดับกิจกรรม การดูแล
+        และรูปแบบการอยู่อาศัยที่เหมาะสม
+        เพื่อช่วยให้คุณเข้าใจแมวแต่ละสายพันธุ์ได้ง่ายขึ้น
+      </p>
+
+      <div
+        class="hero-summary"
+        aria-label="ข้อมูลที่ช่วยในการเลือกสายพันธุ์"
+      >
+        <div>
+          <strong id="heroBreedTotal">—</strong>
+          <span>สายพันธุ์ในระบบ</span>
         </div>
 
-        <div class="breed-hero-card reveal" aria-hidden="true">
-          <div class="hero-cat-frame">
-            <!-- รูปเรียกจาก URL ในโค้ดเท่านั้น ไม่เพิ่มไฟล์รูปลง assets -->
-            <img
-              src="https://content.tvf.media/uploads/2016/02/11/sub/75603-large-293813.jpg"
-              data-fallback="https://upload.wikimedia.org/wikipedia/commons/e/e4/Cymric_-_Norwegian_forest_cat_presentation_show_Kotka_2009-02-01_IMG_0687.JPG"
-              alt="แมวสายพันธุ์ Cymric สีขาวในภาพถ่ายจริง"
-              loading="eager"
-              decoding="async"
-              onerror="this.onerror=null; this.src=this.dataset.fallback;"
-              style="object-fit: cover; object-position: center; background: #ece8ef;"
-            >
-          </div>
-          <div class="floating-note note-top">
-            <span class="note-icon"><svg viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 5 3 8 7 10 4-2 7-5 7-10V6l-7-3Z"/><path d="m9 12 2 2 4-5"/></svg></span>
-            <span><strong>ข้อมูลอ่านง่าย</strong><small>สรุปประเด็นสำคัญ</small></span>
-          </div>
-          <div class="floating-note note-bottom">
-            <span class="note-icon"><svg viewBox="0 0 24 24"><path d="M4 12h16M12 4v16"/></svg></span>
-            <span><strong>เปรียบเทียบได้</strong><small>ดูความแตกต่างของสายพันธุ์</small></span>
-          </div>
+        <div>
+          <strong id="heroBeginnerTotal">—</strong>
+          <span>เหมาะสำหรับผู้เลี้ยงครั้งแรก</span>
+        </div>
+
+        <div>
+          <strong id="heroApartmentTotal">—</strong>
+          <span>เหมาะกับพื้นที่จำกัด</span>
         </div>
       </div>
+    </div>
+    <!-- ปิดฝั่งข้อความ -->
+
+    <!-- ฝั่งขวา: รูปแมว -->
+    <div class="breed-hero-card reveal" aria-hidden="true">
+      <div class="hero-cat-frame">
+        <img
+          src="https://media.gettyimages.com/id/1809460549/video/cat-lying-down-and-looking-camera.jpg?s=640x640&amp;k=20&amp;c=W9NhaasZRQf6oZFfKYITQtr8FduW9Mox9n96FCc9ecc="
+          alt="แมวนอนมองกล้อง"
+          loading="eager"
+          decoding="async"
+          referrerpolicy="no-referrer"
+          data-breed-name="Ragdoll"
+          data-image-stage="full"
+          onerror="window.CatMatchBreedImages?.repairHeroImage?.(this)"
+        >
+      </div>
+    </div>
+    <!-- ปิดฝั่งรูปแมว -->
+
+  </div>
     </section>
 
     <section class="breed-library section">
@@ -130,25 +426,35 @@
             <p class="eyebrow">ค้นหาสายพันธุ์ที่สนใจ</p>
             <h2>สำรวจข้อมูลแมวทั้งหมด</h2>
           </div>
-          <p>ค้นหาด้วยชื่อ หรือกรองตามนิสัยและความเหมาะสมในการเลี้ยง</p>
+         <p>
+  ค้นหาจากชื่อสายพันธุ์ภาษาไทยหรือภาษาอังกฤษ
+  และใช้ตัวกรองเพื่อเลือกแมวที่เหมาะกับรูปแบบการเลี้ยงของคุณ
+</p>
         </div>
 
         <div class="filter-panel reveal">
           <div class="search-field">
             <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
-            <input id="breedSearch" type="search" placeholder="ค้นหาชื่อสายพันธุ์ เช่น British Shorthair" autocomplete="off">
+           <input
+  id="breedSearch"
+  type="search"
+  placeholder="ค้นหาชื่อสายพันธุ์ เช่น อบิส, โซมาลี, Abyssinian"
+  autocomplete="off"
+  aria-label="ค้นหาชื่อสายพันธุ์แมวภาษาไทยหรือภาษาอังกฤษ"
+>
           </div>
 
           <div class="filter-row">
-            <label class="select-field">
-              <span>ระดับกิจกรรม</span>
-              <select id="activityFilter">
-                <option value="all">ทั้งหมด</option>
-                <option value="low">สงบ</option>
-                <option value="medium">ปานกลาง</option>
-                <option value="high">กระฉับกระเฉง</option>
-              </select>
-            </label>
+           <label class="select-field">
+  <span>ความต้องการกิจกรรม</span>
+
+  <select id="activityFilter">
+    <option value="all">ทุกระดับกิจกรรม</option>
+    <option value="low">ต้องการกิจกรรมน้อย</option>
+    <option value="medium">ต้องการกิจกรรมพอเหมาะ</option>
+    <option value="high">ต้องการกิจกรรมเป็นประจำ</option>
+  </select>
+</label>
 
             <label class="select-field">
               <span>ความยาวขน</span>
@@ -177,16 +483,84 @@
             </button>
           </div>
 
-          <div class="quick-filters" aria-label="ตัวกรองด่วน">
-            <button class="quick-chip is-active" data-quick="all" type="button">ทั้งหมด</button>
-            <button class="quick-chip" data-quick="apartment" type="button">เหมาะกับคอนโด</button>
-            <button class="quick-chip" data-quick="playful" type="button">ขี้เล่น</button>
-            <button class="quick-chip" data-quick="calm" type="button">นิสัยสงบ</button>
-            <button class="quick-chip" data-quick="easy-care" type="button">ดูแลง่าย</button>
-            <button class="quick-chip" data-quick="first-time" type="button">เหมาะกับมือใหม่</button>
-          </div>
-        </div>
+       <div
+  class="quick-filters"
+  aria-label="ตัวกรองด่วนตามความเหมาะสมในการเลี้ยง"
+>
+  <button
+    class="quick-chip is-active"
+    data-quick="all"
+    type="button"
+  >
+    แสดงทั้งหมด
+  </button>
 
+  <button
+    class="quick-chip"
+    data-quick="apartment"
+    type="button"
+  >
+    เหมาะกับพื้นที่จำกัด
+  </button>
+
+  <button
+    class="quick-chip"
+    data-quick="active"
+    type="button"
+  >
+    ชอบกิจกรรมและการเล่น
+  </button>
+
+  <button
+    class="quick-chip"
+    data-quick="calm"
+    type="button"
+  >
+    บุคลิกสุขุม
+  </button>
+
+  <button
+    class="quick-chip"
+    data-quick="low-grooming"
+    type="button"
+  >
+    ดูแลขนไม่ซับซ้อน
+  </button>
+
+  <button
+    class="quick-chip"
+    data-quick="first-time"
+    type="button"
+  >
+    เหมาะสำหรับผู้เลี้ยงครั้งแรก
+  </button>
+
+  <button
+    class="quick-chip"
+    data-quick="family"
+    type="button"
+  >
+    เหมาะกับครอบครัว
+  </button>
+
+  <button
+    class="quick-chip"
+    data-quick="child-friendly"
+    type="button"
+  >
+    เข้ากับเด็กได้ดี
+  </button>
+
+  <button
+    class="quick-chip"
+    data-quick="independent"
+    type="button"
+  >
+    มีความเป็นอิสระ
+  </button>
+</div>
+
+</div>
         <div class="results-toolbar reveal">
           <p>พบ <strong id="resultCount">0</strong> สายพันธุ์</p>
           <label class="sort-field">
@@ -198,6 +572,12 @@
               <option value="easy-care">ดูแลง่ายที่สุด</option>
             </select>
           </label>
+        </div>
+
+        <div class="cat-active-tag-filter" id="catActiveTagFilter" role="status" hidden>
+          <span>กำลังแสดงแมวที่มีแท็ก</span>
+          <strong id="catActiveTagLabel"></strong>
+          <button id="catClearTagFilter" type="button" aria-label="ยกเลิกการกรองด้วยแท็ก">แสดงทั้งหมด ×</button>
         </div>
 
         <div class="breed-grid" id="breedGrid" aria-live="polite">
@@ -232,8 +612,12 @@
   </footer>
 
   <script src="../js/cat-breed-data.js"></script>
-  <script src="../js/breed-knowledge.js"></script>
-  <script src="../js/breed-image-resolver.js"></script>
-  <script src="../js/cat-breeds.js"></script>
+  <script src="../js/breed-knowledge.js?v=3"></script>
+  <script src="../js/breed-image-resolver.js?v=6"></script>
+  <script src="../js/catmatch-dialog.js?v=21"></script>
+  <script src="../js/cat-breeds.js?v=25"></script>
+  <script src="../js/profile-avatar.js?v=6"></script>
+<script src="../js/chat-api.js?v=6"></script>
+<script src="../js/chat-nav.js?v=7"></script>
 </body>
 </html>

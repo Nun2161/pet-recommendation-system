@@ -1,21 +1,34 @@
+"use strict";
+
 const mysql = require("mysql2");
 require("dotenv").config();
 
 const pool = mysql.createPool({
-  host: process.env.DB_HOST,
-  port: Number(process.env.DB_PORT),
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
+  host: process.env.DB_HOST || "127.0.0.1",
+  port: Number(process.env.DB_PORT || 3306),
+  user: process.env.DB_USER || "root",
+  password: process.env.DB_PASSWORD || "",
   database: process.env.DB_NAME,
+
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0,
+
   charset: "utf8mb4",
+  connectTimeout: 10000,
+
+  enableKeepAlive: true,
+  keepAliveInitialDelay: 0,
 });
 
 pool.getConnection((error, connection) => {
   if (error) {
-    console.error("MySQL connection failed:", error.message);
+    console.error(
+      "MySQL connection failed:",
+      error.code,
+      error.message
+    );
+
     return;
   }
 
@@ -23,7 +36,4 @@ pool.getConnection((error, connection) => {
   connection.release();
 });
 
-/*
-ทำให้ db.query() รองรับ await
-*/
 module.exports = pool.promise();

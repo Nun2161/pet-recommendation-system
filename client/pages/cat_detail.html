@@ -14,6 +14,10 @@
   <link rel="stylesheet" href="../css/components.css">
   <link rel="stylesheet" href="../css/cat-detail.css">
   <link rel="stylesheet" href="../css/sakura-background.css">
+  <link rel="stylesheet" href="../css/global-settings.css?v=4">
+  <script src="../js/global-settings.js?v=1"></script>
+  <script src="../js/api-config.js?v=1"></script>
+<link href="../css/chat-nav.css?v=1" rel="stylesheet"/>
 </head>
 <body>
   <div id="pageFallback" class="page-fallback" role="status">
@@ -60,11 +64,7 @@
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 9 5 4l4 2.5c2-.8 4-.8 6 0L19 4l-1.5 5c1.7 1.6 2.5 3.4 2.5 5.5C20 18 16.8 20 12 20s-8-2-8-5.5C4 12.4 4.8 10.6 6.5 9Z"/><path d="M9.5 13h.01M14.5 13h.01M10.5 16c1 .8 2.5.8 3.5 0"/></svg>
           <span>แมวของเรา</span>
         </a>
-        <a class="nav-link" href="./articles.html">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14v16H5z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
-          <span>บทความ</span>
-        </a>
-        <a class="nav-link" href="./about.html">
+        <a class="nav-link" href="./index.html#about">
           <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="m20 20-4-4"/></svg>
           <span>เกี่ยวกับเรา</span>
         </a>
@@ -155,14 +155,21 @@
             <div class="care-grid" id="careGrid"></div>
           </section>
 
-          <section class="detail-panel score-panel">
-            <div class="section-heading compact">
-              <p class="eyebrow">ข้อมูลสำหรับการเปรียบเทียบ</p>
-              <h2>ระดับข้อมูลเพื่อการดูแล 1–5</h2>
-              <p>ตัวเลข 1–5 ใช้เปรียบเทียบความต้องการด้านกิจกรรม การเข้าสังคม การดูแล และสภาพแวดล้อมที่เหมาะสมของแต่ละสายพันธุ์ได้ง่ายขึ้น</p>
-            </div>
-            <div class="trait-detail-grid" id="traitDetailGrid"></div>
-          </section>
+          <<section class="detail-panel score-panel">
+  <div class="section-heading compact">
+    <p class="eyebrow">ภาพรวมความเหมาะสมในการเลี้ยง</p>
+
+    <h2>บุคลิก การใช้ชีวิต และการดูแล</h2>
+
+    <p>
+      เปรียบเทียบข้อมูลสำคัญของแต่ละสายพันธุ์จากค่าคุณลักษณะในระบบ
+      แถบที่เต็มมากหมายถึงลักษณะนั้นเด่นหรือมีความต้องการมากขึ้น
+      ควรพิจารณาร่วมกับสภาพแวดล้อมและบุคลิกของแมวแต่ละตัว
+    </p>
+  </div>
+
+  <div class="trait-detail-grid" id="traitDetailGrid"></div>
+</section>
         </article>
 
         <section id="detailError" class="detail-error" hidden>
@@ -186,9 +193,11 @@
     </div>
   </footer>
 
-  <script defer src="../js/cat-breed-data.js"></script>
+  <script defer src="../js/cat-breed-data.js?v=2"></script>
   <script defer src="../js/breed-knowledge.js"></script>
   <script defer src="../js/breed-image-resolver.js"></script>
-  <script defer src="../js/cat-detail.js"></script>
+  <script defer src="../js/cat-detail.js?v=2"></script>
+<script src="../js/chat-api.js?v=6"></script>
+<script src="../js/chat-nav.js?v=7"></script>
 </body>
 </html>

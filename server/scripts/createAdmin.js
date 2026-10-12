@@ -1,4 +1,4 @@
-require("dotenv").config();
+﻿require("dotenv").config();
 
 const bcrypt = require("bcryptjs");
 const db = require("../config/db");
@@ -6,7 +6,13 @@ const db = require("../config/db");
 const createAdmin = async () => {
   try {
     const email = "admin@example.com";
-    const password = "12345678";
+    const password = process.env.ADMIN_PASSWORD;
+
+    if (!password) {
+      throw new Error(
+        "กรุณากำหนด ADMIN_PASSWORD ใน Environment ก่อน"
+      );
+    }
 
     const hashedPassword = await bcrypt.hash(password, 12);
 
@@ -20,21 +26,16 @@ const createAdmin = async () => {
         )
         VALUES (?, ?, ?, 'active')
       `,
-      [
-        "System Admin",
-        email,
-        hashedPassword,
-      ]
+      ["System Admin", email, hashedPassword]
     );
 
     console.log("สร้าง Admin สำเร็จ");
     console.log(`Email: ${email}`);
-    console.log(`Password: ${password}`);
 
     process.exit(0);
   } catch (error) {
-    console.error("Create admin error:", error);
-    process.exit(1);
+    console.error("Create admin error:", error.message);
+    process.exitCode = 1;
   }
 };
 

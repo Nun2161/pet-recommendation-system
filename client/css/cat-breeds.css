@@ -98,7 +98,7 @@ main,
 .hero-summary strong { font-size: 1.5rem; font-family: var(--font-heading); }
 .hero-summary span { color: var(--color-text-soft); font-size: 0.88rem; }
 
-.breed-hero-card { position: relative; min-height: 440px; }
+.breed-hero-card { position: relative; min-height: 520px; }
 
 .hero-cat-frame {
   position: absolute;
@@ -414,7 +414,7 @@ body.modal-open { overflow: hidden; }
 
 @media (max-width: 980px) {
   .breed-hero-grid { grid-template-columns: 1fr; }
-  .breed-hero-card { min-height: 390px; max-width: 620px; width: 100%; margin-inline: auto; }
+  .breed-hero-card { min-height: 460px; max-width: 700px; width: 100%; margin-inline: auto; }
   .library-heading { align-items: start; flex-direction: column; }
   .library-heading > p { text-align: left; }
   .breed-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -441,7 +441,7 @@ body.modal-open { overflow: hidden; }
   .hero-summary > div { min-width: 0; padding: 12px 10px; text-align: center; }
   .hero-summary strong { font-size: 1.25rem; }
   .hero-summary span { font-size: .72rem; }
-  .breed-hero-card { min-height: 330px; }
+  .breed-hero-card { min-height: 390px; }
   .hero-cat-frame { inset-inline: 4px; }
   .floating-note { min-width: 175px; padding: 10px 12px; }
   .note-top { right: -2px; }
@@ -519,3 +519,913 @@ body.modal-open { overflow: hidden; }
 .card-feature-list li + li { margin-top: 4px; }
 .detail-btn { margin-top: 18px; }
 @media (max-width: 640px) { .breed-image { height: 245px; } }
+
+/* ป้ายข้อความลอยถูกนำออกตามดีไซน์ใหม่ */
+.floating-note { display: none !important; }
+
+
+/* รอบแก้ไข: กรอบรูปหน้าคลังเป็นสัดส่วนจัตุรัส เพื่อไม่ตัดตัวแมวนอน */
+.breed-hero-card {
+  min-height: 470px;
+  display: grid;
+  place-items: center;
+}
+
+.hero-cat-frame {
+  position: relative;
+  inset: auto;
+  width: min(100%, 470px);
+  aspect-ratio: 1 / 1;
+  border: 12px solid rgba(255, 255, 255, .94);
+  border-radius: 42px;
+  background: #eef5f7;
+}
+
+.hero-cat-frame::after { display: none; }
+
+.hero-cat-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  background: #eef5f7;
+}
+
+@media (max-width: 620px) {
+  .breed-hero-card { min-height: 350px; }
+  .hero-cat-frame {
+    width: min(100%, 350px);
+    border-width: 9px;
+    border-radius: 30px;
+  }
+}
+.hero-summary {
+  align-items: stretch;
+}
+
+.hero-summary > div {
+  flex: 1 1 175px;
+  min-width: 175px;
+}
+
+.hero-summary strong {
+  color: var(--color-text);
+}
+
+.hero-summary span {
+  margin-top: 3px;
+  line-height: 1.45;
+}
+
+/* ตัวกรองด่วนที่เพิ่มขึ้น */
+.quick-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 9px;
+}
+
+.quick-chip {
+  min-height: 40px;
+  padding: 8px 15px;
+  line-height: 1.35;
+  white-space: normal;
+}
+
+/* =========================================================
+   แถบข้อมูลย่อยบนการ์ดสายพันธุ์
+   ========================================================= */
+
+.mini-scores {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+  margin: 18px 0 4px;
+}
+
+.mini-score {
+  min-width: 0;
+  min-height: 68px;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-content: space-between;
+  gap: 9px;
+  padding: 10px 11px;
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  color: var(--color-text);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.96),
+      rgba(248, 252, 255, 0.9)
+    );
+}
+
+.mini-score > span {
+  display: block;
+  min-width: 0;
+  color: var(--color-text-soft);
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+/* แถบ 5 ช่อง */
+.mini-segments {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 4px;
+}
+
+.mini-segments i {
+  display: block;
+  width: 100%;
+  height: 7px;
+  border-radius: 999px;
+  background: #e6edf2;
+}
+
+/* ช่องที่มีค่า */
+.mini-segments i.is-active {
+  background:
+    linear-gradient(
+      90deg,
+      var(--summer-blue),
+      var(--summer-blue-deep)
+    );
+  box-shadow: 0 2px 7px rgba(104, 167, 213, 0.22);
+}
+
+/*
+ * ปิดรูปแบบแถบเก่า เผื่อเบราว์เซอร์ยังเก็บ HTML เดิมไว้ชั่วคราว
+ */
+.mini-track,
+.mini-fill,
+.mini-score > strong {
+  display: none;
+}
+
+/* การ์ดมีข้อมูลมากขึ้น จึงจัดปุ่มให้อยู่ช่วงล่างอย่างเป็นระเบียบ */
+.breed-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.breed-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.breed-body .detail-btn {
+  margin-top: auto;
+  padding-top: 0;
+}
+
+/* รายการจุดสังเกตไม่ให้สูงต่างกันมากเกินไป */
+.card-feature-list {
+  margin-bottom: 2px;
+}
+
+/* =========================================================
+   Responsive
+   ========================================================= */
+
+@media (max-width: 1080px) {
+  .hero-summary > div {
+    min-width: 155px;
+  }
+}
+
+@media (max-width: 640px) {
+  .quick-filters {
+    gap: 8px;
+  }
+
+  .quick-chip {
+    min-height: 38px;
+    padding: 7px 12px;
+    font-size: 0.82rem;
+  }
+
+  .mini-scores {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .mini-score {
+    min-height: 64px;
+    padding: 9px 10px;
+  }
+
+  .mini-score > span {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 390px) {
+  .mini-scores {
+    grid-template-columns: 1fr;
+  }
+
+  .mini-score {
+    min-height: 58px;
+  }
+}
+/* =========================================================
+   CATMATCH — คืนตำแหน่ง Hero และการ์ดแบบกระชับ
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   1. รูปแมว Hero กลับไปอยู่ด้านขวา
+   --------------------------------------------------------- */
+
+.breed-hero-grid {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1.08fr)
+    minmax(340px, 0.72fr);
+  align-items: center;
+  gap: clamp(42px, 6vw, 88px);
+}
+
+.breed-hero-card {
+  position: relative;
+  display: block;
+  width: 100%;
+  min-height: 500px;
+  margin: 0;
+}
+
+.hero-cat-frame {
+  position: absolute;
+  inset: 10px 20px;
+  width: auto;
+  aspect-ratio: auto;
+  overflow: hidden;
+  border: 12px solid rgba(255, 255, 255, 0.94);
+  border-radius: 44% 44% 34px 34px;
+  background: #eef5f7;
+  box-shadow: 0 30px 80px rgba(92, 115, 137, 0.18);
+}
+
+.hero-cat-frame::after {
+  content: "";
+  display: block;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      180deg,
+      transparent 60%,
+      rgba(45, 43, 42, 0.12)
+    );
+}
+
+.hero-cat-frame img {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  object-fit: cover;
+  object-position: center;
+  background: #eef5f7;
+}
+
+/*
+ * ช่วงหน้าจอแท็บเล็ตหรือหน้าต่างเบราว์เซอร์ไม่กว้างมาก
+ * ยังคงรูปไว้ด้านขวา ไม่ตกลงไปอยู่ด้านล่าง
+ */
+@media (min-width: 821px) and (max-width: 980px) {
+  .breed-hero-grid {
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(310px, 0.72fr);
+    gap: 34px;
+  }
+
+  .breed-hero-card {
+    min-height: 430px;
+    max-width: none;
+  }
+
+  .hero-cat-frame {
+    inset: 8px;
+    border-width: 10px;
+    border-radius: 40% 40% 30px 30px;
+  }
+
+  .hero-summary {
+    gap: 8px;
+  }
+
+  .hero-summary > div {
+    min-width: 120px;
+    padding: 12px 13px;
+  }
+
+  .hero-summary span {
+    font-size: 0.78rem;
+  }
+}
+
+/*
+ * โทรศัพท์เท่านั้นที่ให้รูปลงด้านล่าง
+ */
+@media (max-width: 820px) {
+  .breed-hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .breed-hero-card {
+    width: min(100%, 520px);
+    min-height: 430px;
+    margin-inline: auto;
+  }
+
+  .hero-cat-frame {
+    inset: 8px 18px;
+  }
+}
+
+@media (max-width: 520px) {
+  .breed-hero-card {
+    min-height: 350px;
+  }
+
+  .hero-cat-frame {
+    inset: 5px;
+    border-width: 8px;
+    border-radius: 34% 34% 26px 26px;
+  }
+}
+
+/* ---------------------------------------------------------
+   2. คืนข้อมูลบนการ์ดเป็นแถบ 3 แถวแบบเดิม
+   --------------------------------------------------------- */
+
+.mini-scores {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 9px;
+  margin: 18px 0;
+}
+
+.mini-score {
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr) 22px;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  color: var(--color-text-soft);
+  background: transparent;
+  font-size: 0.76rem;
+}
+
+.mini-score > span {
+  overflow: hidden;
+  color: var(--color-text-soft);
+  font-size: 0.76rem;
+  font-weight: 600;
+  line-height: 1.35;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mini-track {
+  display: block;
+  width: 100%;
+  height: 7px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #edf0f3;
+}
+
+.mini-fill {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background:
+    linear-gradient(
+      90deg,
+      var(--summer-blue),
+      var(--summer-blue-deep)
+    );
+}
+
+.mini-score > strong {
+  display: block;
+  color: var(--color-text);
+  font-size: 0.78rem;
+  text-align: right;
+}
+
+/* ปิดแถบแบ่งช่องที่มาจากดีไซน์ก่อนหน้า */
+.mini-segments {
+  display: none;
+}
+
+/* ---------------------------------------------------------
+   3. ลดความรกของการ์ด
+   --------------------------------------------------------- */
+
+.breed-body {
+  padding: 20px;
+}
+
+.trait-tags {
+  min-height: 31px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.trait-tag {
+  max-width: 100%;
+  padding: 5px 9px;
+  overflow: hidden;
+  border-radius: 999px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  line-height: 1.35;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/*
+ * หน้า JS จำกัดไว้สูงสุด 3 แท็กแล้ว
+ * ซ่อนเผื่อมี HTML เก่าค้างเกิน 3 รายการ
+ */
+.trait-tag:nth-child(n + 4) {
+  display: none;
+}
+
+.card-observe-label {
+  margin: 15px 0 7px;
+}
+
+.card-feature-list {
+  min-height: 74px;
+  margin-bottom: 2px;
+}
+
+@media (max-width: 390px) {
+  .mini-score {
+    grid-template-columns: 66px minmax(0, 1fr) 20px;
+  }
+}
+@media (min-width: 901px) {
+  .breed-hero-grid {
+    display: grid !important;
+    grid-template-columns:
+      minmax(0, 1.12fr)
+      minmax(360px, 0.88fr) !important;
+    align-items: center !important;
+    gap: clamp(38px, 5vw, 78px) !important;
+  }
+
+  .breed-hero-copy {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    min-width: 0;
+  }
+
+  .breed-hero-card {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+    width: 100% !important;
+    max-width: 500px !important;
+    min-height: 500px !important;
+    display: grid !important;
+    place-items: center !important;
+    margin: 0 0 0 auto !important;
+    align-self: center !important;
+  }
+
+  .hero-cat-frame {
+    position: relative !important;
+    inset: auto !important;
+    width: min(100%, 470px) !important;
+    aspect-ratio: 1 / 1 !important;
+    margin: 0 !important;
+  }
+
+  .breed-hero-copy h1 {
+    max-width: 760px;
+    font-size: clamp(3rem, 4.6vw, 5.2rem);
+    line-height: 1.08;
+  }
+
+  .hero-summary {
+    max-width: 760px;
+  }
+}
+
+/* จอแท็บเล็ตและมือถือค่อยเรียงลงด้านล่าง */
+@media (max-width: 900px) {
+  .breed-hero-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .breed-hero-copy,
+  .breed-hero-card {
+    grid-column: 1 !important;
+  }
+
+  .breed-hero-copy {
+    grid-row: 1 !important;
+  }
+
+  .breed-hero-card {
+    grid-row: 2 !important;
+    width: 100% !important;
+    max-width: 620px !important;
+    margin-inline: auto !important;
+  }
+}
+
+/* =========================================================
+   Compact clickable trait tags — CatMatch
+   ========================================================= */
+.trait-tags {
+  align-items: flex-start;
+}
+
+.trait-tags:not(.is-expanded) {
+  min-height: 70px;
+}
+
+.trait-tag {
+  appearance: none;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  min-height: 31px;
+  max-width: 100%;
+  margin: 0;
+  padding: 6px 10px;
+  border: 1px solid rgba(207, 98, 142, .16);
+  border-radius: 999px;
+  color: #5d5356;
+  background: #fff1f5;
+  font: inherit;
+  font-size: .76rem;
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: center;
+  white-space: normal;
+  cursor: pointer;
+  transition: transform .18s ease, border-color .18s ease, background .18s ease, box-shadow .18s ease, color .18s ease;
+}
+
+.trait-tag:nth-child(2) {
+  background: #edf8fb;
+  border-color: rgba(108, 158, 200, .16);
+}
+
+.trait-tag:nth-child(3) {
+  background: #fff7dc;
+  border-color: rgba(209, 171, 62, .16);
+}
+
+/* ยกเลิกกฎเดิมที่ซ่อนแท็กลำดับ 4 เป็นต้นไป เพราะ JS จัดการย่อ/ขยายแล้ว */
+.trait-tag:nth-child(n + 4) {
+  display: inline-flex !important;
+}
+
+.trait-tag:hover {
+  transform: translateY(-1px);
+  border-color: rgba(104, 167, 213, .42);
+  background: #fff;
+  box-shadow: 0 7px 16px rgba(82, 95, 109, .09);
+}
+
+.trait-tag:focus-visible,
+.cat-tag-more:focus-visible,
+.cat-active-tag-filter button:focus-visible {
+  outline: 3px solid rgba(104, 167, 213, .28);
+  outline-offset: 2px;
+}
+
+.trait-tag.is-active {
+  border-color: var(--summer-blue-deep);
+  background: linear-gradient(135deg, var(--summer-blue), var(--summer-blue-deep));
+  color: #fff;
+  box-shadow: 0 8px 18px rgba(104, 167, 213, .18);
+}
+
+.cat-tag-more {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 31px;
+  padding: 6px 11px;
+  border: 1px dashed rgba(104, 167, 213, .42);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .78);
+  color: var(--summer-blue-deep);
+  font: inherit;
+  font-size: .76rem;
+  font-weight: 800;
+  line-height: 1.25;
+  cursor: pointer;
+  transition: transform .18s ease, border-color .18s ease, background .18s ease, color .18s ease;
+}
+
+.cat-tag-more:hover {
+  transform: translateY(-1px);
+  border-color: var(--summer-blue-deep);
+  background: #edf8fb;
+}
+
+.trait-tags.is-expanded {
+  padding: 10px;
+  border: 1px solid rgba(108, 158, 200, .13);
+  border-radius: 16px;
+  background: rgba(239, 248, 251, .48);
+}
+
+.cat-active-tag-filter {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 9px;
+  margin: 0 0 22px;
+  padding: 13px 16px;
+  border: 1px solid rgba(108, 158, 200, .22);
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(255, 241, 245, .78), rgba(237, 248, 251, .82));
+  color: var(--color-text-soft);
+}
+
+.cat-active-tag-filter[hidden] {
+  display: none !important;
+}
+
+.cat-active-tag-filter strong {
+  color: var(--summer-blue-deep);
+}
+
+.cat-active-tag-filter button {
+  appearance: none;
+  margin-left: auto;
+  padding: 7px 12px;
+  border: 1px solid rgba(108, 158, 200, .30);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--summer-blue-deep);
+  font: inherit;
+  font-size: .79rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.cat-active-tag-filter button:hover {
+  border-color: var(--summer-blue-deep);
+  background: #edf8fb;
+}
+
+html[data-catmatch-theme="dark"] .trait-tag {
+  border-color: rgba(247, 217, 228, .20);
+  background: rgba(247, 217, 228, .10);
+  color: #f8edf2;
+}
+
+html[data-catmatch-theme="dark"] .trait-tag:nth-child(2) {
+  border-color: rgba(133, 168, 194, .24);
+  background: rgba(133, 168, 194, .12);
+}
+
+html[data-catmatch-theme="dark"] .trait-tag:nth-child(3) {
+  border-color: rgba(247, 232, 168, .22);
+  background: rgba(247, 232, 168, .10);
+}
+
+html[data-catmatch-theme="dark"] .trait-tag:hover {
+  border-color: rgba(247, 217, 228, .48);
+  background: rgba(247, 217, 228, .18);
+}
+
+html[data-catmatch-theme="dark"] .trait-tag.is-active {
+  border-color: #f7d9e4;
+  background: linear-gradient(135deg, #f7d9e4, #85a8c2);
+  color: #263747;
+}
+
+html[data-catmatch-theme="dark"] .cat-tag-more {
+  border-color: rgba(133, 168, 194, .38);
+  background: rgba(133, 168, 194, .08);
+  color: #d9ebf5;
+}
+
+html[data-catmatch-theme="dark"] .trait-tags.is-expanded {
+  border-color: rgba(133, 168, 194, .16);
+  background: rgba(133, 168, 194, .06);
+}
+
+html[data-catmatch-theme="dark"] .cat-active-tag-filter {
+  border-color: rgba(247, 217, 228, .18);
+  background: linear-gradient(135deg, rgba(247, 217, 228, .08), rgba(133, 168, 194, .08));
+}
+
+html[data-catmatch-theme="dark"] .cat-active-tag-filter strong {
+  color: #f8edf2;
+}
+
+html[data-catmatch-theme="dark"] .cat-active-tag-filter button {
+  border-color: rgba(133, 168, 194, .30);
+  background: rgba(31, 45, 58, .92);
+  color: #f8edf2;
+}
+
+@media (max-width: 620px) {
+  .cat-active-tag-filter button {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .trait-tag,
+  .cat-tag-more {
+    min-height: 34px;
+    font-size: .78rem;
+  }
+}
+
+
+/* =========================================================
+   Cat breed cards — compact layout matching DogMatch cards
+   ========================================================= */
+.breed-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.cat-compact-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, .95);
+}
+
+.cat-compact-card .breed-image {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(247, 217, 228, .28), rgba(191, 231, 234, .30));
+}
+
+.cat-compact-card .breed-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cat-compact-card .breed-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.cat-compact-card .breed-body h3 {
+  margin: 0 0 6px;
+  color: var(--color-text);
+  font-size: 1.16rem;
+  line-height: 1.35;
+}
+
+.cat-card-summary {
+  min-height: 48px;
+  margin: 0 0 15px;
+  color: var(--color-text-soft);
+  font-size: .94rem;
+  line-height: 1.55;
+}
+
+.cat-compact-card .trait-tags {
+  min-height: 68px;
+  align-content: flex-start;
+  margin-bottom: 14px;
+}
+
+.cat-compact-card .trait-tags.is-expanded {
+  min-height: 0;
+  margin-bottom: 14px;
+}
+
+.cat-compact-card .detail-btn {
+  min-height: 46px;
+  margin-top: auto;
+  border-radius: 999px;
+  color: #fff;
+  border-color: transparent;
+  background: linear-gradient(135deg, var(--summer-blue), var(--summer-blue-deep));
+  box-shadow: 0 12px 24px rgba(104, 167, 213, .22);
+}
+
+.cat-compact-card .detail-btn:hover {
+  transform: translateY(-1px);
+  color: #fff;
+  box-shadow: 0 16px 30px rgba(104, 167, 213, .28);
+}
+
+/* Remove the extra card rows from the older CatMatch layout. */
+.cat-compact-card .coat-badge,
+.cat-compact-card .breed-thai-name,
+.cat-compact-card .card-observe-label,
+.cat-compact-card .card-feature-list,
+.cat-compact-card .mini-scores {
+  display: none !important;
+}
+
+html[data-catmatch-theme="dark"] .cat-compact-card {
+  background: rgba(30, 44, 57, .94);
+}
+
+html[data-catmatch-theme="dark"] .cat-card-summary {
+  color: #cbd8e2;
+}
+
+@media (max-width: 980px) {
+  .breed-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .breed-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cat-compact-card .breed-image {
+    aspect-ratio: 4 / 3;
+  }
+
+  .cat-card-summary {
+    min-height: 0;
+  }
+}
+
+/* Professional two-line breed summaries on cat library cards */
+.cat-compact-card .cat-card-summary {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  text-overflow: ellipsis;
+}
+
+/* Cat cards — readable, non-white surfaces in dark mode. */
+html[data-catmatch-theme="dark"] body.cat-breeds-page .breed-card.cat-compact-card {
+  color: #EAF1F4 !important;
+  background: #1E2C36 !important;
+  border-color: rgba(170,204,224,.22) !important;
+  box-shadow: 0 18px 44px rgba(0,0,0,.30) !important;
+}
+
+html[data-catmatch-theme="dark"] body.cat-breeds-page .breed-card.cat-compact-card:hover {
+  border-color: rgba(170,204,224,.38) !important;
+  box-shadow: 0 24px 54px rgba(0,0,0,.38) !important;
+}
+
+html[data-catmatch-theme="dark"] body.cat-breeds-page .cat-compact-card .breed-body,
+html[data-catmatch-theme="dark"] body.cat-breeds-page .cat-compact-card .breed-image {
+  background: #1E2C36 !important;
+}
+
+html[data-catmatch-theme="dark"] body.cat-breeds-page .cat-compact-card .breed-body h3 {
+  color: #F5EFE7 !important;
+}
+
+html[data-catmatch-theme="dark"] body.cat-breeds-page .cat-compact-card .cat-card-summary {
+  color: #C8D7DF !important;
+}
+
+html[data-catmatch-theme="dark"] body.cat-breeds-page .cat-compact-card :is(.trait-tag,.cat-tag-more) {
+  color: #DCE8ED !important;
+  background: #2A3B46 !important;
+  border-color: rgba(170,204,224,.18) !important;
+}
+
+html[data-catmatch-theme="dark"] body.cat-breeds-page .cat-compact-card .detail-btn {
+  color: #F5EFE7 !important;
+  background: #35566F !important;
+  border-color: rgba(170,204,224,.24) !important;
+  box-shadow: 0 12px 24px rgba(0,0,0,.22) !important;
+}
+
+html[data-catmatch-theme="dark"] body.cat-breeds-page .cat-compact-card .favorite-btn {
+  color: #DCE8ED !important;
+  background: rgba(30,44,54,.92) !important;
+  border-color: rgba(170,204,224,.24) !important;
+}

@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ข้อความ — CatMatch</title>
+  <script>
+    (() => {
+      const species = new URLSearchParams(location.search).get("species") === "dog" ? "dog" : "cat";
+      document.documentElement.dataset.chatSpecies = species;
+      document.title = `ข้อความ — ${species === "dog" ? "DogMatch" : "CatMatch"}`;
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/global-settings.css?v=10">
+  <link rel="stylesheet" href="../css/chat-nav.css?v=1">
+  <link rel="stylesheet" href="../css/chat.css?v=18">
+  <script src="../js/global-settings.js?v=6"></script>
+</head>
+<body class="chat-page">
+  <header class="chat-page-header">
+    <a class="chat-page-brand" id="chatBrandLink" href="./index.html" aria-label="CatMatch หน้าแรก">
+      <span class="chat-brand-logo" id="chatBrandIcon" aria-hidden="true">
+        <svg class="cute-cat-icon chat-brand-cat" viewBox="0 0 64 64">
+          <path d="M17 23 14 11l10 6c5-2 11-2 16 0l10-6-3 12c4 4 6 8 6 14 0 12-9 20-21 20S11 49 11 37c0-6 2-10 6-14Z"></path>
+          <path d="M24 33c0 .6-.4 1-1 1s-1-.4-1-1 .4-1 1-1 1 .4 1 1Zm18 0c0 .6-.4 1-1 1s-1-.4-1-1 .4-1 1-1 1 .4 1 1Z"></path>
+          <path d="M30 39c1.5 1 2.5 1 4 0M32 35v2M24 40l-7 1M40 40l7 1M23 45l-6 4M41 45l6 4"></path>
+        </svg>
+        <svg class="cute-dog-icon dogmatch-round-dog chat-brand-dog" viewBox="0 0 64 64">
+          <path class="dog-logo-ear" d="M20.2 22.2C16.5 18.7 11.4 19.1 9.8 25.1c-2 7.5.6 14.8 6.3 18 2.6 1.5 5.2.5 6.6-2.1 1.5-2.9.7-6.8.2-10.2-.5-3.4-.7-6.3-2.7-8.6Z"></path>
+          <path class="dog-logo-ear" d="M43.8 22.2c3.7-3.5 8.8-3.1 10.4 2.9 2 7.5-.6 14.8-6.3 18-2.6 1.5-5.2.5-6.6-2.1-1.5-2.9-.7-6.8-.2-10.2.5-3.4.7-6.3 2.7-8.6Z"></path>
+          <path class="dog-logo-face" d="M32 12.5c-10.5 0-17.4 7.4-17.4 19 0 12.8 7 21.2 17.4 21.2s17.4-8.4 17.4-21.2c0-11.6-6.9-19-17.4-19Z"></path>
+          <path class="dog-logo-ear-line" d="M18.9 23.8c-1.8 3.6-2.1 8.4-1.1 12.3M45.1 23.8c1.8 3.6 2.1 8.4 1.1 12.3"></path>
+          <circle class="dog-logo-eye" cx="27.4" cy="31.9" r="1.55"></circle>
+          <circle class="dog-logo-eye" cx="36.6" cy="31.9" r="1.55"></circle>
+          <circle class="dog-logo-cheek" cx="22.7" cy="37.8" r="2.35"></circle>
+          <circle class="dog-logo-cheek" cx="41.3" cy="37.8" r="2.35"></circle>
+          <path class="dog-logo-nose" d="M29.5 37.5c1.6-1.15 3.4-1.15 5 0-1 1.7-1.7 2.45-2.5 2.45s-1.5-.75-2.5-2.45Z"></path>
+          <path class="dog-logo-mouth" d="M32 39.9v1.25M32 41.1c-1.2 2.8-4.4 4-6.8 1.2M32 41.1c1.2 2.8 4.4 4 6.8 1.2"></path>
+        </svg>
+      </span>
+      <span class="chat-brand-text">
+        <strong><span class="chat-brand-cat">CatMatch</span><span class="chat-brand-dog">DogMatch</span></strong>
+        <small><span class="chat-brand-cat">แมวที่ใช่ สำหรับคุณ</span><span class="chat-brand-dog">สุนัขที่ใช่ สำหรับคุณ</span></small>
+      </span>
+    </a>
+
+    <nav class="main-nav chat-top-nav" aria-label="เมนูหลัก"></nav>
+
+    <a class="chat-header-account" id="chatAccountLink" href="./account-info.html?species=cat" aria-label="ข้อมูลบัญชี">
+      <span class="chat-header-avatar" data-chat-header-avatar>U</span>
+    </a>
+  </header>
+
+  <main class="chat-page-main">
+    <div class="realtime-chat" data-chat-app data-chat-role="user" data-species="">
+      <aside class="chat-sidebar">
+        <div class="chat-sidebar-head">
+          <div><p class="chat-kicker">MESSAGES</p><h1>ข้อความ</h1><p>สนทนาทั้งหมดของคุณ</p></div>
+          <button class="chat-admin-button" data-chat-admin type="button" title="ติดต่อผู้ดูแลระบบ">
+            <span aria-hidden="true">✦</span><span>แอดมิน</span>
+          </button>
+        </div>
+        <div class="chat-quick-actions" aria-label="เริ่มบทสนทนาใหม่">
+          <a href="./farm-map.html" data-chat-farm-link><span aria-hidden="true">⌂</span><strong>ฟาร์ม</strong></a>
+          <a href="./cat-shelter-animals.html" data-chat-listing-link><span aria-hidden="true">♡</span><strong>ช่วยหาบ้าน</strong></a>
+          <button data-chat-admin type="button"><span aria-hidden="true">✦</span><strong>แอดมิน</strong></button>
+        </div>
+        <label class="chat-search-wrap">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"></circle><path d="m20 20-4-4"></path></svg>
+          <input data-chat-search type="search" placeholder="ค้นหาชื่อหรือบทสนทนา">
+        </label>
+        <div class="chat-conversation-list" data-chat-conversations></div>
+      </aside>
+
+      <section class="chat-main">
+        <div class="chat-error" data-chat-error role="alert" hidden></div>
+        <div class="chat-empty-state" data-chat-empty>
+          <div class="chat-empty-illustration" aria-hidden="true"><span>💬</span></div>
+          <div><h2>เลือกบทสนทนา</h2><p>เลือกชื่อทางด้านซ้ายเพื่อเริ่มพูดคุย หรือเริ่มบทสนทนาใหม่กับฟาร์ม ผู้ช่วยหาบ้าน และแอดมิน</p></div>
+        </div>
+        <div class="chat-active" data-chat-active hidden>
+          <header class="chat-active-header">
+            <button class="chat-mobile-back" data-chat-mobile-back type="button" aria-label="กลับไปรายการข้อความ">←</button>
+            <span class="chat-active-avatar" data-chat-avatar>?</span>
+            <div class="chat-active-header-body"><h2 data-chat-name>บทสนทนา</h2><div class="chat-active-subject" data-chat-subject></div><span class="chat-active-status" data-chat-status>ออฟไลน์</span></div>
+          </header>
+          <div class="chat-message-list" data-chat-messages></div>
+          <div class="chat-typing" data-chat-typing hidden></div>
+          <div class="chat-attachment-preview" data-chat-preview hidden></div>
+          <form class="chat-composer" data-chat-form>
+            <button class="chat-attach-button" data-chat-attach type="button" aria-label="แนบรูปหรือวิดีโอ">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m8 12 6.5-6.5a3 3 0 0 1 4.2 4.2L10 18.4a5 5 0 0 1-7-7l8.4-8.4"></path></svg>
+            </button>
+            <input data-chat-file type="file" accept="image/jpeg,image/png,image/webp,video/mp4,video/webm,video/quicktime" hidden>
+            <div class="chat-input-shell">
+              <textarea data-chat-input rows="1" maxlength="4000" placeholder="พิมพ์ข้อความ..."></textarea>
+              
+            </div>
+            <button class="chat-send-button" data-chat-send type="submit" aria-label="ส่งข้อความ">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m3 11 17-8-6 18-3-7-8-3Z"></path><path d="m11 14 9-11"></path></svg>
+            </button>
+          </form>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="../js/api-config.js?v=2"></script>
+  <script src="../js/user-session.js?v=7"></script>
+  <script src="../js/profile-avatar.js?v=7"></script>
+  <script src="../js/cat-breed-data.js?v=2"></script>
+  <script src="../js/dog-breed-data.js?v=1"></script>
+  <script src="../js/chat-api.js?v=6"></script>
+  <script src="../js/chat-ui.js?v=13"></script>
+  <script src="../js/chat-nav.js?v=7"></script>
+  <script src="../js/chat-page.js?v=5"></script>
+</body>
+</html>

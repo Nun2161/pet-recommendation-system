@@ -1,0 +1,450 @@
+/* DogMatch Login / Register theme — active only with ?species=dog */
+html[data-auth-species="dog"] {
+  --dog-auth-navy: #213555;
+  --dog-auth-blue: #3E5879;
+  --dog-auth-beige: #D8C4B6;
+  --dog-auth-ivory: #F5EFE7;
+  --dog-auth-ice: #E9F2F8;
+}
+
+html[data-auth-species="dog"] body.dog-auth-context {
+  color: var(--dog-auth-navy) !important;
+  background:
+    radial-gradient(circle at 8% 5%, rgba(216,196,182,.66), transparent 28%),
+    radial-gradient(circle at 92% 8%, rgba(62,88,121,.16), transparent 30%),
+    linear-gradient(150deg, #F5EFE7 0%, #EEF4F7 100%) !important;
+}
+
+html[data-auth-species="dog"] body.dog-auth-context .site-header {
+  background: rgba(245,239,231,.94) !important;
+  border-bottom-color: rgba(62,88,121,.22) !important;
+  box-shadow: 0 12px 32px rgba(33,53,85,.08) !important;
+}
+
+html[data-auth-species="dog"] body.dog-auth-context .brand-logo {
+  color: #F5EFE7 !important;
+  background: #213555 !important;
+  box-shadow: 0 10px 24px rgba(33,53,85,.22) !important;
+}
+
+html[data-auth-species="dog"] body.dog-auth-context .dogmatch-round-dog {
+  width: 100%;
+  height: 100%;
+}
+
+html[data-auth-species="dog"] body.dog-auth-context .dog-logo-ear,
+html[data-auth-species="dog"] body.dog-auth-context .dog-logo-face {
+  fill: #F5EFE7;
+  stroke: #F5EFE7;
+}
+
+html[data-auth-species="dog"] body.dog-auth-context .dog-logo-ear-line,
+html[data-auth-species="dog"] body.dog-auth-context .dog-logo-mouth {
+  fill: none;
+  stroke: #3E5879;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+}
+
+html[data-auth-species="dog"] body.dog-auth-context .dog-logo-eye,
+html[data-auth-species="dog"] body.dog-auth-context .dog-logo-nose {
+  fill: #213555;
+}
+
+html[data-auth-species="dog"] body.dog-auth-context .dog-logo-cheek {
+  fill: #D8C4B6;
+  opacity: .78;
+}
+
+html[data-auth-species="dog"] body.dog-auth-context .nav-link:hover,
+html[data-auth-species="dog"] body.dog-auth-context .nav-link.is-current,
+html[data-auth-species="dog"] body.dog-auth-context .nav-link[aria-current="page"] {
+  color: #213555 !important;
+  background: rgba(216,196,182,.58) !important;
+}
+
+html[data-auth-species="dog"] body.dog-auth-context :is(.login-main,.register-main) {
+  background:
+    radial-gradient(circle at 8% 12%, rgba(216,196,182,.48), transparent 24%),
+    radial-gradient(circle at 92% 14%, rgba(62,88,121,.14), transparent 25%),
+    linear-gradient(145deg, rgba(245,239,231,.98), rgba(237,244,248,.98)) !important;
+}
+
+html[data-auth-species="dog"] body.dog-auth-context :is(.login-card,.register-card,.login-success-card,.success-card) {
+  color: #213555 !important;
+  background: rgba(255,255,255,.94) !important;
+  border-color: rgba(62,88,121,.22) !important;
+  box-shadow: 0 28px 70px rgba(33,53,85,.16) !important;
+}
+
+html[data-auth-species="dog"] body.dog-auth-context :is(.login-photo-frame,.intro-visual) {
+  background: rgba(216,196,182,.44) !important;
+  border-color: rgba(62,88,121,.22) !important;
+  box-shadow: 0 24px 62px rgba(33,53,85,.14) !important;
+}
+
+html[data-auth-species="dog"] body.dog-auth-context :is(.login-photo-frame img,.intro-photo-frame img,.intro-dog-photo) {
+  object-fit: cover !important;
+  object-position: center !important;
+}
+
+html[data-auth-species="dog"] body.dog-auth-context :is(.login-eyebrow,.eyebrow,.form-heading .eyebrow) {
+  color: #3E5879 !important;
+}
+
+html[data-auth-species="dog"] body.dog-auth-context :is(.login-intro-copy h1,.intro-copy h1,.login-card-heading h2,.form-heading h2) {
+  color: #213555 !important;
+}
+
+html[data-auth-species="dog"] body.dog-auth-context :is(.login-feature-list span,.intro-benefits li,.trust-panel,.register-account-type-note,.account-notice-card,.personal-data-note,.location-note) {
+  color: #213555 !important;
+  background: rgba(245,239,231,.88) !important;
+  border-color: rgba(62,88,121,.20) !important;
+}
+
+html[data-auth-species="dog"] body.dog-auth-context :is(.benefit-icon,.trust-icon,.form-badge,.account-notice-icon,.input-icon) {
+  color: #3E5879 !important;
+  background: #E9F2F8 !important;
+  border-color: rgba(62,88,121,.18) !important;
+}
+
+html[data-auth-species="dog"] body.dog-auth-context :is(.button-primary,.login-submit,.form-next,.form-submit,.success-login-button) {
+  color: #FFFFFF !important;
+  background: linear-gradient(135deg,#3E5879,#213555) !important;
+  border-color: #213555 !important;
+  box-shadow: 0 12px 28px rgba(33,53,85,.22) !important;
+}
+
+html[data-auth-species="dog"] body.dog-auth-context :is(.button-secondary,.form-back) {
+  color: #213555 !important;
+  background: #F5EFE7 !important;
+  border-color: rgba(62,88,121,.34) !important;
+}
+
+html[data-auth-species="dog"] body.dog-auth-context :is(input,select,textarea,.input-shell,.phone-composite) {
+  color: #213555 !important;
+  background: #FFFFFF !important;
+  border-color: rgba(62,88,121,.24) !important;
+}
+
+html[data-auth-species="dog"] body.dog-auth-context :is(input,select,textarea):focus {
+  border-color: #3E5879 !important;
+  box-shadow: 0 0 0 4px rgba(62,88,121,.12) !important;
+}
+
+html[data-auth-species="dog"] body.dog-auth-context :is(.login-divider,.stepper-progress,.strength-track) {
+  --register-pink: #D8C4B6;
+  --register-pink-strong: #3E5879;
+}
+
+html[data-auth-species="dog"] body.dog-auth-context :is(.login-footer,.register-footer) {
+  color: #3E5879 !important;
+  background: rgba(245,239,231,.94) !important;
+  border-color: rgba(62,88,121,.16) !important;
+}
+
+/* Turn the existing sakura particles into soft snow without changing the page structure. */
+html[data-auth-species="dog"] body.dog-auth-context :is(.login-falling-petal,.register-falling-petal,.login-burst-petal,.burst-petal) {
+  width: var(--petal-size, 10px) !important;
+  height: var(--petal-size, 10px) !important;
+  border-radius: 50% !important;
+  background: rgba(255,255,255,.94) !important;
+  box-shadow: 0 0 8px rgba(62,88,121,.28), 0 0 2px #FFFFFF !important;
+  filter: none !important;
+}
+
+html[data-auth-species="dog"] body.dog-auth-context :is(.login-falling-petal,.register-falling-petal,.login-burst-petal,.burst-petal)::after {
+  inset: 0 !important;
+  border-radius: 50% !important;
+  background: transparent !important;
+}
+
+html[data-auth-species="dog"][data-catmatch-theme="dark"] body.dog-auth-context {
+  color: #F5EFE7 !important;
+  background: #17273E !important;
+}
+
+html[data-auth-species="dog"][data-catmatch-theme="dark"] body.dog-auth-context :is(.site-header,.login-footer,.register-footer) {
+  color: #F5EFE7 !important;
+  background: rgba(23,39,62,.96) !important;
+  border-color: rgba(216,196,182,.20) !important;
+}
+
+html[data-auth-species="dog"][data-catmatch-theme="dark"] body.dog-auth-context :is(.login-main,.register-main) {
+  background:
+    radial-gradient(circle at 8% 10%, rgba(216,196,182,.10), transparent 26%),
+    radial-gradient(circle at 92% 8%, rgba(62,88,121,.24), transparent 30%),
+    #17273E !important;
+}
+
+html[data-auth-species="dog"][data-catmatch-theme="dark"] body.dog-auth-context :is(.login-card,.register-card,.login-success-card,.success-card,.login-feature-list span,.intro-benefits li,.trust-panel,.register-account-type-note,.account-notice-card,.personal-data-note,.location-note) {
+  color: #F5EFE7 !important;
+  background: #213555 !important;
+  border-color: rgba(216,196,182,.22) !important;
+}
+
+html[data-auth-species="dog"][data-catmatch-theme="dark"] body.dog-auth-context :is(.login-intro-copy h1,.intro-copy h1,.login-card-heading h2,.form-heading h2,.brand-text strong,.nav-link) {
+  color: #F5EFE7 !important;
+}
+
+html[data-auth-species="dog"][data-catmatch-theme="dark"] body.dog-auth-context :is(input,select,textarea,.input-shell,.phone-composite) {
+  color: #F5EFE7 !important;
+  background: #182A43 !important;
+  border-color: rgba(216,196,182,.24) !important;
+}
+
+
+/* DogMatch auth flow v4 — exact dog-index snowfall and extended pages. */
+.dog-auth-snow-scene { display: none; }
+html[data-auth-species="dog"] body.dog-auth-context .dog-auth-snow-scene {
+  display: block;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+html[data-auth-species="dog"] body.dog-auth-context .dog-auth-snow-scene .dog-snowflake {
+  position: absolute;
+  top: -10vh;
+  left: var(--left);
+  width: var(--size);
+  height: var(--size);
+  opacity: var(--opacity);
+  color: #ffffff;
+  background: transparent;
+  filter: drop-shadow(0 2px 3px rgba(33,53,85,.52));
+  animation: dogAuthSnowFall var(--duration) linear infinite, dogAuthSnowSway var(--sway) ease-in-out infinite alternate;
+  animation-delay: var(--delay);
+}
+
+html[data-auth-species="dog"] body.dog-auth-context .dog-auth-snow-scene .dog-snowflake::before {
+  content: "❄";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  color: #ffffff;
+  font-size: calc(var(--size) * 1.35);
+  line-height: 1;
+  transform: translate(-50%,-50%);
+  text-shadow: 0 0 1px #213555, 0 0 5px rgba(62,88,121,.88), 0 2px 7px rgba(33,53,85,.38);
+}
+
+html[data-auth-species="dog"] body.dog-auth-context .dog-auth-snow-scene .dog-snowflake:nth-child(3n)::before {
+  content: "✦";
+  color: #F5EFE7;
+  text-shadow: 0 0 1px #213555, 0 0 5px rgba(62,88,121,.92), 0 2px 7px rgba(33,53,85,.42);
+}
+
+@keyframes dogAuthSnowFall {
+  from { transform: translate3d(0,-12vh,0) rotate(0deg); }
+  to { transform: translate3d(var(--drift),116vh,0) rotate(260deg); }
+}
+@keyframes dogAuthSnowSway {
+  from { margin-left:-14px; }
+  to { margin-left:18px; }
+}
+
+html[data-auth-species="dog"] body.dog-auth-context :is(
+  .login-sakura-scene,.register-sakura-scene,.reset-sakura-scene,.farm-sakura-scene
+) { display:none !important; }
+
+html[data-auth-species="dog"] body.dog-auth-context :is(
+  .site-header,.reset-header,.login-main,.register-main,.reset-main,
+  .login-footer,.register-footer
+) {
+  position: relative;
+  z-index: 2;
+}
+
+html[data-auth-species="dog"] body.dog-auth-context .reset-header {
+  color: #213555 !important;
+  background: rgba(245,239,231,.95) !important;
+  border-bottom: 1px solid rgba(62,88,121,.20) !important;
+  box-shadow: 0 12px 32px rgba(33,53,85,.08) !important;
+}
+html[data-auth-species="dog"] body.dog-auth-context .reset-brand,
+html[data-auth-species="dog"] body.dog-auth-context .reset-header-link,
+html[data-auth-species="dog"] body.dog-auth-context .reset-back-link {
+  color: #213555 !important;
+}
+html[data-auth-species="dog"] body.dog-auth-context .reset-main {
+  min-height: calc(100vh - 82px);
+  color: #213555 !important;
+  background:
+    radial-gradient(circle at 8% 12%, rgba(216,196,182,.48), transparent 24%),
+    radial-gradient(circle at 92% 14%, rgba(62,88,121,.14), transparent 25%),
+    linear-gradient(145deg, rgba(245,239,231,.98), rgba(237,244,248,.98)) !important;
+}
+html[data-auth-species="dog"] body.dog-auth-context :is(
+  .reset-card,.reset-guide-card,.reset-process li,.reset-status-box,
+  .farm-register-card,.farm-section-note,.farm-trust-note
+) {
+  color: #213555 !important;
+  background: rgba(255,255,255,.95) !important;
+  border-color: rgba(62,88,121,.22) !important;
+  box-shadow: 0 22px 58px rgba(33,53,85,.12) !important;
+}
+html[data-auth-species="dog"] body.dog-auth-context :is(
+  .reset-eyebrow,.farm-eyebrow,.reset-card h2,.reset-intro h1,
+  .farm-register-card h2,.farm-intro-copy h1
+) { color:#213555 !important; }
+html[data-auth-species="dog"] body.dog-auth-context :is(
+  .reset-field input,.farm-input-shell,.farm-plain-input,.farm-select,
+  .farm-field input,.farm-field select,.farm-field textarea
+) {
+  color:#213555 !important;
+  background:#FFFFFF !important;
+  border-color:rgba(62,88,121,.26) !important;
+}
+html[data-auth-species="dog"] body.dog-auth-context :is(
+  .reset-button,.farm-submit-button,.farm-form-actions .button-primary
+) {
+  color:#FFFFFF !important;
+  background:#213555 !important;
+  border-color:#213555 !important;
+  box-shadow:0 12px 28px rgba(33,53,85,.22) !important;
+}
+
+html[data-auth-species="dog"][data-catmatch-theme="dark"] body.dog-auth-context .reset-header {
+  color:#F5EFE7 !important;
+  background:rgba(23,39,62,.97) !important;
+  border-color:rgba(216,196,182,.18) !important;
+}
+html[data-auth-species="dog"][data-catmatch-theme="dark"] body.dog-auth-context :is(
+  .reset-brand,.reset-header-link,.reset-back-link,.reset-eyebrow,
+  .reset-card h2,.reset-intro h1,.farm-eyebrow,.farm-register-card h2,
+  .farm-intro-copy h1
+) { color:#F5EFE7 !important; }
+html[data-auth-species="dog"][data-catmatch-theme="dark"] body.dog-auth-context .reset-main {
+  background:#17273E !important;
+  color:#F5EFE7 !important;
+}
+html[data-auth-species="dog"][data-catmatch-theme="dark"] body.dog-auth-context :is(
+  .reset-card,.reset-guide-card,.reset-process li,.reset-status-box,
+  .farm-register-card,.farm-section-note,.farm-trust-note
+) {
+  color:#F5EFE7 !important;
+  background:#213555 !important;
+  border-color:rgba(216,196,182,.22) !important;
+}
+html[data-auth-species="dog"][data-catmatch-theme="dark"] body.dog-auth-context :is(
+  .reset-field input,.farm-input-shell,.farm-plain-input,.farm-select,
+  .farm-field input,.farm-field select,.farm-field textarea
+) {
+  color:#F5EFE7 !important;
+  background:#182A43 !important;
+  border-color:rgba(216,196,182,.24) !important;
+}
+
+@media (max-width:620px) {
+  html[data-auth-species="dog"] body.dog-auth-context .dog-auth-snow-scene .dog-snowflake:nth-child(n+11) { display:none; }
+}
+@media (prefers-reduced-motion:reduce) {
+  html[data-auth-species="dog"] body.dog-auth-context .dog-auth-snow-scene .dog-snowflake { display:none !important; animation:none !important; }
+}
+
+
+/* V5 — DogMatch farm-pending page and exact DogMatch navigation colors. */
+html[data-auth-species="dog"] body.dog-auth-context .site-header :is(.brand-text strong,.nav-link) {
+  color: #213555 !important;
+}
+html[data-auth-species="dog"] body.dog-auth-context .site-header :is(.brand-text small) {
+  color: #3E5879 !important;
+}
+html[data-auth-species="dog"] body.farm-pending-page.dog-auth-context {
+  color: #213555 !important;
+  background:
+    radial-gradient(circle at 8% 6%, rgba(216,196,182,.56), transparent 28%),
+    radial-gradient(circle at 92% 8%, rgba(62,88,121,.15), transparent 30%),
+    linear-gradient(145deg,#F5EFE7,#EEF4F7) !important;
+}
+html[data-auth-species="dog"] body.farm-pending-page.dog-auth-context .pending-header {
+  background: rgba(245,239,231,.94) !important;
+  border-color: rgba(62,88,121,.20) !important;
+}
+html[data-auth-species="dog"] body.farm-pending-page.dog-auth-context :is(.pending-hero-card,.pending-card) {
+  color: #213555 !important;
+  background: rgba(255,255,255,.94) !important;
+  border-color: rgba(62,88,121,.22) !important;
+  box-shadow: 0 22px 58px rgba(33,53,85,.13) !important;
+}
+html[data-auth-species="dog"] body.farm-pending-page.dog-auth-context :is(.pending-hero-card h1,.pending-card h2,.pending-steps strong,.pending-feature-list strong) { color:#213555 !important; }
+html[data-auth-species="dog"] body.farm-pending-page.dog-auth-context :is(.pending-lead,.pending-note,.pending-steps small,.pending-feature-list small) { color:#3E5879 !important; }
+html[data-auth-species="dog"] body.farm-pending-page.dog-auth-context :is(.pending-status-icon,.pending-card-icon) {
+  color:#3E5879 !important; background:linear-gradient(145deg,#E9F2F8,#F5EFE7) !important;
+}
+html[data-auth-species="dog"] body.farm-pending-page.dog-auth-context :is(.pending-status-icon svg,.pending-card-icon svg) { stroke:#3E5879 !important; }
+html[data-auth-species="dog"] body.farm-pending-page.dog-auth-context .pending-eyebrow { color:#3E5879 !important; }
+html[data-auth-species="dog"] body.farm-pending-page.dog-auth-context .pending-sakura span {
+  width:10px; height:10px; border-radius:50%; background:#fff !important;
+  box-shadow:0 0 7px rgba(62,88,121,.32);
+}
+
+
+/* V6 — match the DogMatch header spacing/colour on login, register and farm-register. */
+html[data-auth-species="dog"] body.dog-auth-context .site-header .nav-link {
+  color: #213555 !important;
+  gap: 8px !important;
+  padding: 11px 14px !important;
+  border-radius: 999px !important;
+  font-weight: 700 !important;
+}
+html[data-auth-species="dog"] body.dog-auth-context .site-header .nav-link > svg {
+  width: 20px !important;
+  height: 20px !important;
+  color: #213555 !important;
+  stroke: currentColor !important;
+}
+html[data-auth-species="dog"] body.dog-auth-context .site-header .main-nav {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  white-space: nowrap;
+}
+html[data-auth-species="dog"] body.dog-auth-context .site-header .brand {
+  gap: 13px !important;
+}
+html[data-auth-species="dog"] body.dog-auth-context .site-header .brand-text strong {
+  color: #213555 !important;
+}
+html[data-auth-species="dog"] body.dog-auth-context .site-header .brand-text small {
+  color: #3E5879 !important;
+}
+@media (min-width: 1081px) {
+  html[data-auth-species="dog"] body.dog-auth-context .site-header .nav-shell.dog-index-header-copy {
+    width: min(1320px, calc(100% - 48px)) !important;
+    min-height: 92px !important;
+    margin-inline: auto !important;
+    display: grid !important;
+    grid-template-columns: minmax(230px, 1fr) auto minmax(230px, 1fr) !important;
+    align-items: center !important;
+    column-gap: clamp(32px, 4vw, 76px) !important;
+  }
+  html[data-auth-species="dog"] body.dog-auth-context .site-header .nav-shell.dog-index-header-copy .brand { justify-self: start; }
+  html[data-auth-species="dog"] body.dog-auth-context .site-header .nav-shell.dog-index-header-copy .main-nav { justify-self: center; }
+  html[data-auth-species="dog"] body.dog-auth-context .site-header .nav-shell.dog-index-header-copy .nav-actions { justify-self: end; }
+}
+
+/* DogMatch forgot-password: remove the frosted frames while preserving the form. */
+html[data-auth-species="dog"] body.dog-auth-context .reset-card {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+html[data-auth-species="dog"] body.dog-auth-context .reset-process li {
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+html[data-auth-species="dog"] body.dog-auth-context .reset-process span {
+  background: #D8C4B6 !important;
+  color: #213555 !important;
+  box-shadow: none !important;
+}

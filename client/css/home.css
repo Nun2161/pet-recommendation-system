@@ -1085,3 +1085,773 @@
 }
 
 .hero-sakura-backdrop { display: none; }
+.breed-grid {
+  align-items: stretch;
+}
+
+.breed-card {
+  min-width: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.breed-card-image {
+  flex: 0 0 auto;
+}
+
+.breed-card-body {
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+/*
+ * ชื่อแมวรองรับได้ไม่เกิน 2 บรรทัด
+ * ป้องกันการ์ดบางใบสูงกว่าการ์ดอื่นมากเกินไป
+ */
+.breed-card-body h3 {
+  min-height: 3.1rem;
+  display: -webkit-box;
+  margin: 0 0 12px;
+  overflow: hidden;
+  font-size: 1.18rem;
+  line-height: 1.42;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+/* ---------------------------------------------------------
+   แท็กหน้าแรก
+   --------------------------------------------------------- */
+
+.homepage-trait-tags {
+  min-height: 70px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-items: flex-start;
+  gap: 7px;
+  margin: 0;
+}
+
+/*
+ * ใช้ class เฉพาะหน้าแรก
+ * จึงไม่กระทบแท็กในหน้าอื่น
+ */
+.homepage-trait-tag {
+  position: relative;
+  max-width: 100%;
+  min-height: 31px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 5px 9px;
+  overflow: hidden;
+  border: 1px solid rgba(213, 165, 183, 0.2);
+  border-radius: var(--radius-pill);
+  color: #6e5660;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(247, 217, 228, 0.72),
+      rgba(247, 232, 168, 0.5)
+    );
+  font-size: 0.74rem;
+  font-weight: 700;
+  line-height: 1.3;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition:
+    transform 0.18s ease,
+    color 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+/* ลูกศรเล็กบอกว่าแท็กกดได้ */
+.homepage-trait-tag::after {
+  content: "›";
+  flex: 0 0 auto;
+  color: var(--summer-blue-deep);
+  font-size: 0.9rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.homepage-trait-tag:hover {
+  transform: translateY(-1px);
+  border-color: rgba(108, 158, 200, 0.38);
+  color: var(--summer-blue-deep);
+  box-shadow: 0 6px 15px rgba(89, 108, 126, 0.1);
+}
+
+.homepage-trait-tag:focus-visible {
+  outline: 3px solid rgba(108, 158, 200, 0.22);
+  outline-offset: 2px;
+}
+
+/* สลับสีเพียงเล็กน้อย ไม่ให้หน้าเว็บดูรก */
+.homepage-trait-tag:nth-child(3n + 2) {
+  border-color: rgba(108, 158, 200, 0.18);
+  background:
+    linear-gradient(
+      135deg,
+      rgba(237, 248, 251, 0.96),
+      rgba(239, 249, 255, 0.78)
+    );
+}
+
+.homepage-trait-tag:nth-child(3n + 3) {
+  border-color: rgba(213, 187, 111, 0.2);
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 247, 220, 0.95),
+      rgba(255, 250, 235, 0.8)
+    );
+}
+
+/*
+ * JavaScript จำกัดไว้ 3 แท็กแล้ว
+ * ส่วนนี้ป้องกันกรณีมี HTML เก่าหรือข้อมูลผิดพลาด
+ */
+.homepage-trait-tag:nth-child(n + 4) {
+  display: none;
+}
+
+/* ดันส่วนความเหมาะสมลงด้านล่างให้ตรงกันทุกการ์ด */
+.breed-card .match-block {
+  margin-top: auto;
+  padding-top: 16px;
+}
+
+/* ความสูงข้อความก่อนทำแบบประเมินเท่ากัน */
+.breed-card .match-placeholder {
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+  line-height: 1.45;
+}
+
+/* ส่วนท้ายอยู่ระดับเดียวกัน */
+.breed-card-footer {
+  min-height: 29px;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.breed-card-footer > span {
+  color: var(--color-text-soft);
+  font-size: 0.83rem;
+}
+
+/* ---------------------------------------------------------
+   Responsive
+   --------------------------------------------------------- */
+
+@media (max-width: 1120px) {
+  .homepage-trait-tags {
+    min-height: 64px;
+  }
+
+  .homepage-trait-tag {
+    font-size: 0.76rem;
+  }
+}
+
+@media (max-width: 580px) {
+  .breed-card-body h3 {
+    min-height: auto;
+  }
+
+  .homepage-trait-tags {
+    min-height: auto;
+  }
+
+  .homepage-trait-tag {
+    min-height: 32px;
+    padding: 6px 10px;
+    font-size: 0.78rem;
+  }
+
+  .breed-card .match-block {
+    margin-top: 16px;
+  }
+}
+
+/* =========================================================
+   FARM REGISTRATION STATUS — SAKURA MODAL
+   ========================================================= */
+.farm-request-modal[hidden]{display:none!important}.farm-request-modal{position:fixed;inset:0;z-index:1400;display:grid;place-items:center;padding:24px;overflow:hidden}.farm-request-backdrop{position:absolute;inset:0;background:rgba(255,250,247,.84);backdrop-filter:blur(13px)}.farm-request-card{position:relative;z-index:3;width:min(590px,100%);padding:42px 36px 34px;border:1px solid rgba(108,162,207,.22);border-radius:34px;text-align:center;background:linear-gradient(180deg,#fff,#fffaf8);box-shadow:0 30px 100px rgba(77,98,116,.22);animation:farmRequestCardIn .55s cubic-bezier(.2,.8,.2,1) both}.farm-request-icon{width:78px;height:78px;display:grid;place-items:center;margin:0 auto 16px;border-radius:25px;color:#6ca2cf;background:linear-gradient(145deg,#eef7ff,#fff0f5);box-shadow:0 14px 34px rgba(108,162,207,.16)}.farm-request-icon svg{width:48px;fill:none;stroke:currentColor;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}.farm-request-card h2{margin:6px 0 12px;font-size:clamp(2rem,5vw,3rem);line-height:1.15}.farm-request-card>p:not(.eyebrow){color:#707579;line-height:1.75}.farm-request-progress{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:25px 0;text-align:left}.farm-request-progress article{display:flex;gap:10px;align-items:flex-start;padding:14px 12px;border:1px solid #e4edf4;border-radius:18px;background:#f9fcff}.farm-request-progress article>span{flex:0 0 30px;height:30px;display:grid;place-items:center;border-radius:50%;font-weight:800;color:#7c858c;background:#e9eef2}.farm-request-progress .is-complete>span{color:#fff;background:#6ca2cf}.farm-request-progress .is-current{border-color:#f0c8d8;background:#fff8fb}.farm-request-progress .is-current>span{color:#6e5a45;background:#f7dca6}.farm-request-progress strong,.farm-request-progress small{display:block}.farm-request-progress strong{font-size:.86rem}.farm-request-progress small{margin-top:3px;color:#8a8f93;font-size:.72rem;line-height:1.45}.farm-request-note{padding:12px 16px;border-radius:15px;color:#8b6874;background:#fff2f6;font-size:.82rem}.farm-request-actions{display:flex;justify-content:center;gap:12px;margin-top:22px}.farm-request-celebration{position:absolute;left:50%;top:50%;z-index:2;width:1px;height:1px}.farm-request-ring,.farm-request-petal{position:absolute;left:0;top:0;opacity:0}.farm-request-ring{width:72px;height:72px;border:2px solid rgba(233,133,170,.42);border-radius:50%;transform:translate(-50%,-50%)}.farm-request-modal.is-celebrating .ring-one{animation:farmRequestRing 1s ease-out both}.farm-request-modal.is-celebrating .ring-two{animation:farmRequestRing 1.25s .08s ease-out both}.farm-request-petal{width:17px;height:12px;border-radius:75% 25% 70% 30%;background:linear-gradient(135deg,#ffdce8,#e985aa);transform:translate(-50%,-50%)}.farm-request-modal.is-celebrating .farm-request-petal{animation:farmRequestPetal 1.35s var(--d,0s) cubic-bezier(.15,.75,.2,1) both}.petal-a{--x:-330px;--y:-220px;--r:-120deg}.petal-b{--x:-210px;--y:-330px;--r:150deg;--d:.03s}.petal-c{--x:-60px;--y:-360px;--r:240deg}.petal-d{--x:120px;--y:-335px;--r:90deg;--d:.04s}.petal-e{--x:300px;--y:-230px;--r:210deg}.petal-f{--x:360px;--y:-50px;--r:310deg}.petal-g{--x:325px;--y:180px;--r:150deg;--d:.05s}.petal-h{--x:170px;--y:315px;--r:70deg}.petal-i{--x:-15px;--y:350px;--r:260deg}.petal-j{--x:-190px;--y:300px;--r:110deg}.petal-k{--x:-330px;--y:170px;--r:330deg}.petal-l{--x:-365px;--y:-40px;--r:190deg}@keyframes farmRequestPetal{0%{opacity:0;transform:translate(-50%,-50%) scale(.2)}15%{opacity:1}100%{opacity:0;transform:translate(calc(-50% + var(--x)),calc(-50% + var(--y))) scale(1.1) rotate(var(--r))}}@keyframes farmRequestRing{0%{opacity:.8;scale:.3}100%{opacity:0;scale:8}}@keyframes farmRequestCardIn{from{opacity:0;transform:translateY(26px) scale(.94)}to{opacity:1;transform:none}}@media(max-width:680px){.farm-request-card{padding:34px 20px 28px}.farm-request-progress{grid-template-columns:1fr}.farm-request-actions{flex-direction:column}.farm-request-actions .button{width:100%}.farm-request-celebration{transform:scale(.72)}}
+
+/* Farm registration status on homepage */
+.farm-status-banner[hidden]{display:none!important}
+.farm-status-banner{position:relative;z-index:40;padding:14px 0;background:linear-gradient(90deg,#fffaf2,#fff7fa 52%,#f2f9ff);border-bottom:1px solid rgba(112,158,192,.18);box-shadow:0 10px 28px rgba(90,122,148,.07)}
+.farm-status-banner__inner{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:14px}
+.farm-status-banner__icon{display:grid;place-items:center;width:46px;height:46px;border-radius:15px;background:#edf7ff;color:#6398bf;box-shadow:0 8px 20px rgba(99,152,191,.12)}
+.farm-status-banner__icon svg{width:26px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.farm-status-banner__content{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:10px;align-items:center;min-width:0}
+.farm-status-banner__badge{grid-row:1/3;display:inline-flex;align-items:center;justify-content:center;padding:6px 10px;border-radius:999px;background:#fff0d4;color:#926724;font-size:.74rem;font-weight:800;white-space:nowrap}
+.farm-status-banner__content strong{display:block;color:#3d5f77;font-size:.95rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.farm-status-banner__content small{display:block;margin-top:2px;color:#7f8f9c;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.farm-status-banner__action{display:inline-flex;align-items:center;gap:7px;padding:10px 14px;border:1px solid #d8e6f0;border-radius:999px;background:#fff;color:#4f7fa3;font-size:.85rem;font-weight:800;text-decoration:none;white-space:nowrap;transition:transform .2s ease,box-shadow .2s ease}
+.farm-status-banner__action:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(79,127,163,.12)}
+.farm-status-banner.is-approved{background:linear-gradient(90deg,#f0fbf6,#f7fffb 55%,#eef8ff);border-bottom-color:#cde8da}
+.farm-status-banner.is-approved .farm-status-banner__icon{background:#e3f6ed;color:#4f8e76}
+.farm-status-banner.is-approved .farm-status-banner__badge{background:#dff3e9;color:#3f7c64}
+.farm-status-banner.is-approved .farm-status-banner__action{border-color:#cde6d9;color:#417d66}
+.farm-status-banner.is-rejected,.farm-status-banner.is-inactive{background:linear-gradient(90deg,#fff5f5,#fff8fa 55%,#f7fbff)}
+.farm-status-banner.is-rejected .farm-status-banner__badge,.farm-status-banner.is-inactive .farm-status-banner__badge{background:#ffe3e6;color:#a65461}
+.farm-request-modal.is-approved .farm-request-icon{color:#55927a;background:linear-gradient(145deg,#e6f8ef,#fff5f8)}
+.farm-request-modal.is-approved .farm-request-note{color:#4f7d69;background:#edf9f3}
+.farm-request-progress article.is-complete{border-color:#cfe7dc;background:#f3fbf7}
+.farm-request-progress article.is-complete>span{color:#fff;background:#5f9a82}
+@media(max-width:760px){.farm-status-banner__inner{grid-template-columns:auto 1fr}.farm-status-banner__content{grid-template-columns:1fr}.farm-status-banner__badge{grid-row:auto;justify-self:start;margin-bottom:4px}.farm-status-banner__content strong,.farm-status-banner__content small{white-space:normal}.farm-status-banner__action{grid-column:1/-1;justify-self:stretch;justify-content:center}}
+#breedGrid .breed-card {
+  transition:
+    opacity 0.22s ease,
+    transform 0.22s ease;
+}
+
+#breedGrid.is-changing-breeds .breed-card {
+  opacity: 0;
+  transform: translateX(-32px);
+}
+
+#breedGrid.is-entering-breeds .breed-card {
+  animation:
+    homepage-breed-slide-in
+    0.42s
+    cubic-bezier(.22, .75, .24, 1)
+    both;
+}
+
+#breedGrid.is-entering-breeds .breed-card:nth-child(2) {
+  animation-delay: 0.04s;
+}
+
+#breedGrid.is-entering-breeds .breed-card:nth-child(3) {
+  animation-delay: 0.08s;
+}
+
+#breedGrid.is-entering-breeds .breed-card:nth-child(4) {
+  animation-delay: 0.12s;
+}
+
+@keyframes homepage-breed-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(32px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+#breedGrid .match-fill {
+  transition:
+    width 0.65s
+    cubic-bezier(.22, .75, .24, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #breedGrid .breed-card,
+  #breedGrid .match-fill {
+    transition: none;
+    animation: none;
+  }
+}
+
+
+/* =========================================================
+   FARM MAP PREVIEW — Thailand-only live map
+   ========================================================= */
+:root {
+  --thailand-map-surface: #f7fbfd;
+}
+
+html[data-catmatch-theme="dark"] {
+  --thailand-map-surface: #1d2a33;
+}
+
+.farm-map-preview {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 270px;
+  overflow: hidden;
+  border: 1px solid rgba(108, 158, 200, 0.18);
+  border-radius: var(--radius-md);
+  background: var(--thailand-map-surface);
+  isolation: isolate;
+}
+
+.farm-map-preview__map {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 270px;
+  background: var(--thailand-map-surface);
+}
+
+.farm-map-preview__label {
+  position: absolute;
+  z-index: 700;
+  top: 14px;
+  left: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 13px;
+  border: 1px solid rgba(108, 158, 200, 0.16);
+  border-radius: 999px;
+  color: #466276;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 8px 22px rgba(50, 86, 110, 0.14);
+  backdrop-filter: blur(10px);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+html[data-catmatch-theme="dark"] .farm-map-preview__label {
+  color: #e6f1f6;
+  background: rgba(31, 45, 55, 0.94);
+  border-color: rgba(170, 204, 224, 0.18);
+}
+
+.farm-map-preview__dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #76b4df;
+  box-shadow: 0 0 0 5px rgba(118, 180, 223, 0.18);
+}
+
+.farm-map-preview .leaflet-control-container {
+  display: none;
+}
+
+.farm-map-preview .leaflet-tile-container canvas {
+  display: block;
+}
+
+.farm-map-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #67a8d5;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.farm-map-link:hover {
+  color: #468dbf;
+  gap: 12px;
+}
+
+@media (max-width: 780px) {
+  .farm-map-preview,
+  .farm-map-preview__map {
+    min-height: 280px;
+  }
+}
+
+/* CatMatch article cards — homepage */
+.article-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  border: 1px solid rgba(221, 207, 212, .9);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, .94);
+  box-shadow: 0 14px 38px rgba(82, 71, 77, .08);
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+}
+.article-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(220, 143, 171, .7);
+  box-shadow: 0 22px 48px rgba(82, 71, 77, .13);
+}
+.article-card__image-link { display: block; overflow: hidden; }
+.article-card__image-link img { transition: transform .35s ease; }
+.article-card:hover .article-card__image-link img { transform: scale(1.04); }
+.article-card__body { display: flex; flex: 1; flex-direction: column; padding: 19px 19px 20px; }
+.article-card__meta { display: flex; justify-content: space-between; gap: 12px; color: var(--color-text-soft); font-size: .76rem; }
+.article-card__meta span { color: #a15b75; font-weight: 800; }
+.article-card h3 { margin: 11px 0 9px; font-size: 1.15rem; line-height: 1.45; }
+.article-card h3 a { color: var(--color-text); text-decoration: none; }
+.article-card p { margin: 0; color: var(--color-text-soft); font-size: .88rem; line-height: 1.7; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.article-card__link { align-self: flex-start; margin-top: auto; padding-top: 16px; }
+.article-empty { grid-column: 1 / -1; padding: 30px; border: 1px dashed var(--color-border); border-radius: 20px; color: var(--color-text-soft); text-align: center; }
+[data-theme="dark"] .article-card { background: #202c37; border-color: #3c4e5d; }
+[data-theme="dark"] .article-card h3 a { color: #f3f7fa; }
+[data-theme="dark"] .article-card p, [data-theme="dark"] .article-card__meta { color: #bdcad3; }
+
+/* =========================================================
+   INDEX FARM MAP — full-width anchored layout
+   ========================================================= */
+.farm-map-section {
+  position: relative;
+  padding-top: clamp(34px, 5vw, 70px);
+  padding-bottom: clamp(56px, 7vw, 96px);
+}
+
+.farm-map-showcase {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(300px, 0.78fr) minmax(460px, 1.22fr);
+  align-items: stretch;
+  min-height: 430px;
+  overflow: hidden;
+  border: 1px solid rgba(111, 158, 190, 0.22);
+  border-radius: 32px;
+  background: #fffdfc;
+  box-shadow: 0 20px 60px rgba(62, 87, 105, 0.10);
+}
+
+.farm-map-showcase::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 7px;
+  background: linear-gradient(180deg, var(--sakura-pink-strong), var(--summer-blue-deep));
+}
+
+.farm-map-showcase__content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(34px, 5vw, 64px);
+  background:
+    radial-gradient(circle at 18% 15%, rgba(255, 219, 230, 0.36), transparent 34%),
+    linear-gradient(145deg, #fffdfc 0%, #fff9f7 100%);
+}
+
+.farm-map-showcase__content h2 {
+  max-width: 540px;
+  margin: 8px 0 16px;
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  line-height: 1.2;
+  letter-spacing: -0.035em;
+}
+
+.farm-map-showcase__description {
+  max-width: 590px;
+  margin: 0;
+  color: var(--color-text-soft);
+  font-size: 1rem;
+  line-height: 1.85;
+}
+
+.farm-map-benefits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 25px 0 28px;
+}
+
+.farm-map-benefits span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 12px;
+  border: 1px solid rgba(108, 158, 200, 0.18);
+  border-radius: 999px;
+  color: #526f82;
+  background: rgba(243, 250, 255, 0.82);
+  font-size: 0.78rem;
+  font-weight: 750;
+}
+
+.farm-map-benefits svg {
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.farm-map-showcase__button {
+  align-self: flex-start;
+  min-height: 48px;
+  padding-inline: 20px;
+}
+
+.farm-map-showcase__visual {
+  position: relative;
+  min-width: 0;
+  padding: 18px 18px 18px 0;
+  background: linear-gradient(135deg, #edf7fb, #f6fbfd);
+}
+
+.farm-map-showcase__visual::after {
+  content: "";
+  position: absolute;
+  right: 22px;
+  bottom: 20px;
+  z-index: 650;
+  width: 84px;
+  height: 84px;
+  border: 1px solid rgba(255, 255, 255, 0.68);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  pointer-events: none;
+}
+
+.farm-map-showcase .farm-map-preview,
+.farm-map-showcase .farm-map-preview__map {
+  min-height: 394px;
+}
+
+.farm-map-showcase .farm-map-preview {
+  height: 100%;
+  border-color: rgba(82, 131, 164, 0.20);
+  border-radius: 24px;
+  background: #f7fbfd;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.72);
+}
+
+.farm-map-showcase .farm-map-preview__map {
+  background: #f7fbfd;
+}
+
+.farm-map-showcase .farm-map-preview__label,
+html[data-catmatch-theme="dark"] .farm-map-showcase .farm-map-preview__label {
+  top: 18px;
+  left: 18px;
+  color: #466276;
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(108, 158, 200, 0.18);
+}
+
+html[data-catmatch-theme="dark"] .farm-map-showcase {
+  border-color: rgba(169, 202, 221, 0.18);
+  background: #202d37;
+  box-shadow: 0 22px 65px rgba(3, 10, 15, 0.30);
+}
+
+html[data-catmatch-theme="dark"] .farm-map-showcase__content {
+  background:
+    radial-gradient(circle at 18% 15%, rgba(196, 91, 131, 0.12), transparent 36%),
+    linear-gradient(145deg, #202d37 0%, #263641 100%);
+}
+
+html[data-catmatch-theme="dark"] .farm-map-showcase__content h2 {
+  color: #f4f8fa;
+}
+
+html[data-catmatch-theme="dark"] .farm-map-showcase__description {
+  color: #c4d0d8;
+}
+
+html[data-catmatch-theme="dark"] .farm-map-benefits span {
+  color: #d4e4ed;
+  border-color: rgba(169, 202, 221, 0.20);
+  background: rgba(50, 72, 87, 0.74);
+}
+
+html[data-catmatch-theme="dark"] .farm-map-showcase__visual {
+  background: linear-gradient(135deg, #24343f, #2a3b47);
+}
+
+@media (max-width: 1040px) {
+  .farm-map-showcase {
+    grid-template-columns: 1fr;
+  }
+
+  .farm-map-showcase__content {
+    padding-bottom: 38px;
+  }
+
+  .farm-map-showcase__visual {
+    padding: 0 22px 22px;
+  }
+
+  .farm-map-showcase .farm-map-preview,
+  .farm-map-showcase .farm-map-preview__map {
+    min-height: 380px;
+  }
+}
+
+@media (max-width: 620px) {
+  .farm-map-section {
+    padding-top: 28px;
+    padding-bottom: 58px;
+  }
+
+  .farm-map-showcase {
+    min-height: 0;
+    border-radius: 24px;
+  }
+
+  .farm-map-showcase::before {
+    inset: 0 0 auto;
+    width: auto;
+    height: 6px;
+  }
+
+  .farm-map-showcase__content {
+    padding: 34px 22px 28px;
+  }
+
+  .farm-map-showcase__content h2 {
+    font-size: clamp(1.75rem, 9vw, 2.35rem);
+  }
+
+  .farm-map-benefits {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-block: 21px 24px;
+  }
+
+  .farm-map-benefits span {
+    justify-content: flex-start;
+  }
+
+  .farm-map-showcase__button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .farm-map-showcase__visual {
+    padding: 0 12px 12px;
+  }
+
+  .farm-map-showcase .farm-map-preview,
+  .farm-map-showcase .farm-map-preview__map {
+    min-height: 310px;
+  }
+
+  .farm-map-showcase .farm-map-preview {
+    border-radius: 18px;
+  }
+}
+
+/* Keep the newsletter field contained inside the footer column. */
+.site-footer .newsletter-form {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.site-footer .newsletter-form input {
+  flex: 1 1 0;
+  width: 0;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.site-footer .newsletter-form .submit {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+}
+
+@media (max-width: 620px) {
+  .site-footer .newsletter-form .submit {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* =========================================================
+   DogMatch portal logo — same round coded dog, no navy background.
+   ========================================================= */
+.dog-future-icon {
+  background: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.dog-future-icon svg.dogmatch-round-dog-portal {
+  display: block;
+  width: 40px;
+  height: 40px;
+  overflow: visible;
+  fill: none;
+  stroke: none;
+}
+
+.dog-future-icon .dogmatch-round-dog-portal .dog-logo-ear,
+.dog-future-icon .dogmatch-round-dog-portal .dog-logo-face {
+  fill: #fffaf4;
+  stroke: #4f7fa8;
+  stroke-width: 2.1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.dog-future-icon .dogmatch-round-dog-portal .dog-logo-ear-line {
+  fill: none;
+  stroke: #6c9ac0;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  opacity: .82;
+}
+
+.dog-future-icon .dogmatch-round-dog-portal .dog-logo-eye,
+.dog-future-icon .dogmatch-round-dog-portal .dog-logo-nose {
+  fill: #315f86;
+  stroke: none;
+}
+
+.dog-future-icon .dogmatch-round-dog-portal .dog-logo-cheek {
+  fill: #ecd9cf;
+  stroke: none;
+  opacity: .92;
+}
+
+.dog-future-icon .dogmatch-round-dog-portal .dog-logo-mouth {
+  fill: none;
+  stroke: #315f86;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+
+/* =========================================================
+   DogMatch portal navigation reliability fix.
+   Keep the full portal card clickable above decorative layers.
+   ========================================================= */
+.home-page .hero-copy {
+  position: relative;
+  z-index: 20;
+}
+
+.home-page .dog-future-link {
+  position: relative;
+  z-index: 21;
+  pointer-events: auto !important;
+  cursor: pointer;
+  touch-action: manipulation;
+  isolation: isolate;
+}
+
+.home-page .dog-future-link > * {
+  pointer-events: none;
+}
+
+.home-page .dog-future-link::before,
+.home-page .dog-future-link::after {
+  pointer-events: none;
+}

@@ -127,8 +127,9 @@ const updateFarmAdoptionStatus = async (req, res) => {
           ar.animal_id,
           ar.status,
           ar.managed_by,
-          a.farm_id,
-          a.status AS animal_status
+         a.farm_id,
+a.animal_name,
+a.status AS animal_status
         FROM adoption_request AS ar
         INNER JOIN animal AS a
           ON a.animal_id = ar.animal_id
@@ -151,6 +152,8 @@ const updateFarmAdoptionStatus = async (req, res) => {
     }
 
     const adoptionRequest = requestRows[0];
+    let otherPendingRequests = [];
+
 
     if (adoptionRequest.status !== "pending") {
       await connection.rollback();
@@ -178,39 +181,147 @@ const updateFarmAdoptionStatus = async (req, res) => {
     await connection.query(
       `
         UPDATE adoption_request
-        SET status = ?
-        WHERE request_id = ?
-          AND managed_by = ?
+SET
+  status = ?,
+  updated_at = NOW()
+WHERE request_id = ?
+  AND managed_by = ?
       `,
       [status, requestId, farmId]
     );
 
-    if (status === "approved") {
-      await connection.query(
-        `
-          UPDATE animal
-          SET status = 'adopted'
-          WHERE animal_id = ?
-            AND farm_id = ?
-        `,
-        [adoptionRequest.animal_id, farmId]
-      );
+  if (status === "approved") {
+  /*
+   * เก็บคำขออื่นก่อนเปลี่ยนสถานะ
+   * เพื่อส่งการแจ้งเตือนให้ผู้ใช้เหล่านั้น
+   */
+  const [otherRequestRows] =
+    await connection.query(
+      `
+        SELECT
+          request_id,
+          user_id
+        FROM adoption_request
+        WHERE animal_id = ?
+          AND request_id <> ?
+          AND status = 'pending'
+        FOR UPDATE
+      `,
+      [
+        adoptionRequest.animal_id,
+        requestId,
+      ]
+    );
 
-      await connection.query(
-        `
-          UPDATE adoption_request
-          SET status = 'rejected'
-          WHERE animal_id = ?
-            AND request_id <> ?
-            AND status = 'pending'
-        `,
-        [
-          adoptionRequest.animal_id,
-          requestId,
-        ]
-      );
-    }
+  otherPendingRequests =
+    otherRequestRows;
 
+  await connection.query(
+    `
+      UPDATE animal
+      SET status = 'adopted'
+      WHERE animal_id = ?
+        AND farm_id = ?
+    `,
+    [
+      adoptionRequest.animal_id,
+      farmId,
+    ]
+  );
+
+ await connection.query(
+  `
+    UPDATE adoption_request
+    SET
+      status = 'rejected',
+      updated_at = NOW()
+    WHERE animal_id = ?
+      AND request_id <> ?
+      AND status = 'pending'
+  `,
+  [
+    adoptionRequest.animal_id,
+    requestId,
+  ]
+);
+}
+/*
+ * สร้างการแจ้งเตือนให้เจ้าของคำขอ
+ */
+const primaryNotification =
+  status === "approved"
+    ? {
+        type: "adoption_approved",
+        title:
+          "คำขออุปการะได้รับการอนุมัติ",
+        message:
+          `ฟาร์มอนุมัติคำขออุปการะ` +
+          ` ${adoptionRequest.animal_name || "แมวที่คุณสนใจ"}` +
+          ` แล้ว กรุณาติดต่อฟาร์มเพื่อดำเนินการขั้นต่อไป`,
+      }
+    : {
+        type: "adoption_rejected",
+        title:
+          "คำขออุปการะไม่ได้รับการอนุมัติ",
+        message:
+          `ฟาร์มไม่อนุมัติคำขออุปการะ` +
+          ` ${adoptionRequest.animal_name || "แมวที่คุณสนใจ"}` +
+          ` คุณยังสามารถเลือกดูแมวตัวอื่นในระบบได้`,
+      };
+
+await connection.query(
+  `
+    INSERT INTO notifications (
+      user_id,
+      notification_type,
+      title,
+      message,
+      related_request_id,
+      is_read
+    )
+    VALUES (?, ?, ?, ?, ?, 0)
+  `,
+  [
+    adoptionRequest.user_id,
+    primaryNotification.type,
+    primaryNotification.title,
+    primaryNotification.message,
+    requestId,
+  ]
+);
+
+/*
+ * เมื่อคำขอหนึ่งได้รับการอนุมัติ
+ * คำขออื่นของแมวตัวเดียวกันจะถูกปฏิเสธอัตโนมัติ
+ */
+for (
+  const otherRequest of
+  otherPendingRequests
+) {
+  await connection.query(
+    `
+      INSERT INTO notifications (
+        user_id,
+        notification_type,
+        title,
+        message,
+        related_request_id,
+        is_read
+      )
+      VALUES (?, ?, ?, ?, ?, 0)
+    `,
+    [
+      otherRequest.user_id,
+      "adoption_rejected",
+      "คำขออุปการะไม่ได้รับการอนุมัติ",
+      `แมว ${
+        adoptionRequest.animal_name ||
+        "ที่คุณสนใจ"
+      } มีผู้ได้รับสิทธิ์อุปการะแล้ว คุณยังสามารถเลือกดูแมวตัวอื่นในระบบได้`,
+      otherRequest.request_id,
+    ]
+  );
+}
     await connection.commit();
 
     return res.status(200).json({

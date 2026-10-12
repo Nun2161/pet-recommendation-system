@@ -1,0 +1,255 @@
+.google-onboarding-page .google-form-badge,
+.google-onboarding-page .trust-icon {
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(66, 133, 244, 0.18);
+  background: #ffffff;
+  color: #4285f4;
+  font-family: Arial, sans-serif;
+  font-weight: 800;
+}
+
+.google-account-panel {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: center;
+  padding: 16px;
+  margin-bottom: 24px;
+  border: 1px solid rgba(112, 145, 172, 0.2);
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(239, 247, 255, 0.92), rgba(255, 247, 249, 0.94));
+}
+
+.google-avatar {
+  width: 54px;
+  height: 54px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 8px 22px rgba(96, 104, 119, 0.14);
+  color: #4285f4;
+  font: 800 22px/1 Arial, sans-serif;
+}
+
+.google-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.google-account-panel strong,
+.google-account-panel small {
+  display: block;
+}
+
+.google-account-panel strong {
+  color: var(--register-ink, #343638);
+}
+
+.google-account-panel small {
+  margin-top: 3px;
+  color: #777b7e;
+  word-break: break-all;
+}
+
+.google-connected-badge {
+  padding: 7px 11px;
+  border-radius: 999px;
+  background: #e9f7f2;
+  color: #4e8578;
+  font-size: 0.78rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.google-onboarding-page .readonly-input-shell {
+  background: #f7f8fa;
+}
+
+.google-onboarding-page .readonly-input-shell input[readonly] {
+  color: #687078;
+  cursor: default;
+}
+
+.google-onboarding-page .availability {
+  display: block;
+  min-height: 1.25em;
+  margin-top: 5px;
+  font-size: 0.78rem;
+}
+
+.google-onboarding-page .availability.is-available { color: #568d7f; }
+.google-onboarding-page .availability.is-unavailable { color: #c85f67; }
+.google-onboarding-page .availability.is-checking { color: #8c8588; }
+
+.google-onboarding-page .benefit-icon {
+  display: grid;
+  place-items: center;
+  color: #6d9e90;
+  font-weight: 800;
+}
+
+/* เมนูด้านบนใช้สี ระยะห่าง และขนาดเดียวกับหน้าสมัครสมาชิก */
+.google-onboarding-page .main-nav { gap: 8px; }
+.google-onboarding-page .main-nav .nav-link {
+  gap: 8px;
+  padding: 11px 14px;
+}
+.google-onboarding-page .main-nav .nav-link svg {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 auto;
+  fill: none;
+  stroke: var(--summer-blue-deep);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Give the phone control the same full-width pattern as register.html. */
+.google-onboarding-page .personal-contact-grid {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.google-onboarding-page .phone-composite {
+  display: grid;
+  grid-template-columns: minmax(185px, 0.72fr) minmax(320px, 1.55fr);
+  gap: 12px;
+  align-items: stretch;
+  width: 100%;
+}
+
+.google-onboarding-page .phone-country-select,
+.google-onboarding-page .phone-number-shell {
+  width: 100%;
+  min-height: 64px;
+}
+
+.google-onboarding-page .phone-number-shell {
+  display: flex;
+  min-width: 0;
+}
+
+.google-onboarding-page .phone-number-shell input {
+  position: relative;
+  z-index: 1;
+  flex: 1 1 auto;
+  width: 100%;
+  min-width: 190px;
+  font-size: 1rem;
+  pointer-events: auto;
+}
+
+
+
+.google-onboarding-page .account-notice-card {
+  min-height: 100%;
+}
+
+.google-onboarding-page .suggestion-box .suggestion-item {
+  font: inherit;
+}
+
+@media (max-width: 760px) {
+  .google-onboarding-page .phone-composite {
+    grid-template-columns: 1fr;
+  }
+
+  .google-onboarding-page .phone-number-shell input {
+    min-width: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .google-account-panel {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .google-connected-badge {
+    grid-column: 1 / -1;
+    justify-self: start;
+  }
+}
+
+.google-onboarding-page .birth-field { position: relative; z-index: 30; }
+.google-onboarding-page .birth-picker-popover { z-index: 500; }
+
+
+/* แสดง validation ให้ชัดเจนเหมือนหน้าสมัครสมาชิก */
+.google-onboarding-page .field-error:not(:empty) {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  min-height: 0;
+  padding: 8px 10px;
+  border: 1px solid rgba(215, 115, 107, .18);
+  border-radius: 10px;
+  background: rgba(215, 115, 107, .07);
+  color: #ad504a;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.google-onboarding-page .field-error:not(:empty)::before {
+  content: "!";
+  flex: 0 0 18px;
+  width: 18px;
+  height: 18px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #d7736b;
+  color: #fff;
+  font: 700 12px/1 Arial, sans-serif;
+}
+
+.google-onboarding-page .input-shell.is-invalid,
+.google-onboarding-page textarea.is-invalid,
+.google-onboarding-page .consent-check.is-invalid {
+  border-color: #d7736b !important;
+  box-shadow: 0 0 0 4px rgba(215, 115, 107, .10) !important;
+}
+
+.google-onboarding-page #email[readonly] {
+  opacity: 1;
+  -webkit-text-fill-color: #59616a;
+}
+
+
+/* Validation ของหน้า Google ใช้แพตเทิร์นเดียวกับหน้าสมัครสมาชิก */
+.google-onboarding-page .field-error,
+.google-onboarding-page .field-error:not(:empty) {
+  display: block;
+  min-height: 18px;
+  margin-top: 6px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--hanko-red, #d7736b);
+  font-size: .78rem;
+  font-weight: 400;
+  line-height: 1.45;
+}
+
+.google-onboarding-page .field-error:not(:empty)::before {
+  content: none;
+  display: none;
+}
+
+.google-onboarding-page .form-status.is-error {
+  display: block;
+  border: 1px solid rgba(215, 115, 107, .22);
+  background: rgba(215, 115, 107, .08);
+  color: #a2504a;
+}
+
+.google-onboarding-page #email[readonly] {
+  color: #59616a;
+  opacity: 1;
+  -webkit-text-fill-color: #59616a;
+}

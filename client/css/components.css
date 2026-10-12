@@ -756,3 +756,358 @@
   opacity: 1;
   transform: translate(-50%, 0);
 }
+.trait-tags,
+.detail-tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.trait-tag[data-tag] {
+  --tag-background: #f7f8f9;
+  --tag-border: #e1e6e9;
+  --tag-text: #625d60;
+
+  min-height: 32px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 5px !important;
+
+  padding: 6px 11px !important;
+
+  border: 1px solid var(--tag-border) !important;
+  border-radius: 999px !important;
+
+  color: var(--tag-text) !important;
+  background: var(--tag-background) !important;
+
+  font-size: 0.78rem !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
+  text-decoration: none !important;
+  white-space: nowrap;
+
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease !important;
+}
+
+/* ขนสั้น — ฟ้า */
+.trait-tag[data-tag="coat-short"] {
+  --tag-background: #eaf6ff;
+  --tag-border: #bdddf2;
+  --tag-text: #426e88;
+}
+
+/* ขนปานกลาง — เขียวมินต์ */
+.trait-tag[data-tag="coat-medium"] {
+  --tag-background: #eaf8f1;
+  --tag-border: #bfe3d1;
+  --tag-text: #47725e;
+}
+
+/* ขนยาว — เหลืองครีม */
+.trait-tag[data-tag="coat-long"] {
+  --tag-background: #fff5d8;
+  --tag-border: #ecd99a;
+  --tag-text: #796536;
+}
+
+/* ขนหยิกหรือขนลอน — ม่วงลาเวนเดอร์ */
+.trait-tag[data-tag="coat-curly"] {
+  --tag-background: #f2ecff;
+  --tag-border: #d7c7f0;
+  --tag-text: #695985;
+}
+
+/* ไม่มีขน — ชมพูกุหลาบ */
+.trait-tag[data-tag="coat-hairless"] {
+  --tag-background: #ffedf1;
+  --tag-border: #efc7d1;
+  --tag-text: #825667;
+}
+
+/* เข้ากับคนง่าย — ฟ้าอมเขียว */
+.trait-tag[data-tag="friendly"] {
+  --tag-background: #e7f7f9;
+  --tag-border: #b9e1e6;
+  --tag-text: #426f75;
+}
+
+/* ชอบปฏิสัมพันธ์ — ชมพูซากุระ */
+.trait-tag[data-tag="affectionate"] {
+  --tag-background: #fff0f6;
+  --tag-border: #f0c9dc;
+  --tag-text: #7b5368;
+}
+
+/* ชอบกิจกรรม — ส้มพีช */
+.trait-tag[data-tag="active"] {
+  --tag-background: #fff0e3;
+  --tag-border: #edc9a8;
+  --tag-text: #7c5b3f;
+}
+
+/* บุคลิกสุขุม — ฟ้าอมม่วง */
+.trait-tag[data-tag="calm"] {
+  --tag-background: #eef2ff;
+  --tag-border: #cad6f1;
+  --tag-text: #58678e;
+}
+
+/* มีความเป็นอิสระ — ม่วงอ่อน */
+.trait-tag[data-tag="independent"] {
+  --tag-background: #f3eef9;
+  --tag-border: #d9ccea;
+  --tag-text: #695e7c;
+}
+
+/* เหมาะกับพื้นที่จำกัด — เขียวฟ้าอ่อน */
+.trait-tag[data-tag="apartment"] {
+  --tag-background: #eaf7f5;
+  --tag-border: #bde0da;
+  --tag-text: #48716b;
+}
+
+/* เหมาะกับครอบครัว — ชมพูพีช */
+.trait-tag[data-tag="family"] {
+  --tag-background: #fff0ec;
+  --tag-border: #efcdc1;
+  --tag-text: #805f55;
+}
+
+/* เข้ากับเด็กได้ดี — เหลืองพีช */
+.trait-tag[data-tag="child-friendly"] {
+  --tag-background: #fff7e7;
+  --tag-border: #efd9a8;
+  --tag-text: #7d693d;
+}
+
+/* เหมาะสำหรับผู้เลี้ยงครั้งแรก — ครีมน้ำตาล */
+.trait-tag[data-tag="first-time"] {
+  --tag-background: #f8f1dd;
+  --tag-border: #e4d19b;
+  --tag-text: #756339;
+}
+
+/* ดูแลขนไม่ซับซ้อน — เขียวพาสเทล */
+.trait-tag[data-tag="low-grooming"] {
+  --tag-background: #edf8ee;
+  --tag-border: #c3e1c6;
+  --tag-text: #4e7353;
+}
+
+/* แท็กที่ยังไม่มีคีย์ */
+.trait-tag[data-tag="default"] {
+  --tag-background: #f3f5f6;
+  --tag-border: #dce2e5;
+  --tag-text: #626a6e;
+}
+
+.trait-tag[data-tag]:hover {
+  transform: translateY(-1px) !important;
+  border-color: var(--summer-blue-deep) !important;
+  box-shadow: 0 6px 15px rgba(89, 108, 126, 0.12) !important;
+}
+
+.trait-tag[data-tag]::after,
+.trait-tag[data-tag] .tag-arrow {
+  color: currentColor !important;
+}
+
+.detail-tags .trait-tag {
+  padding: 8px 13px !important;
+  font-size: 0.84rem !important;
+}
+.user-menu-panel {
+  width: min(360px, calc(100vw - 28px));
+  padding: 12px;
+}
+
+.account-menu-group {
+  padding: 6px 0;
+}
+
+.account-menu-group + .account-menu-group {
+  margin-top: 4px;
+  border-top: 1px solid rgba(132, 158, 180, 0.14);
+}
+
+.account-menu-label {
+  display: block;
+  padding: 6px 12px 5px;
+  color: var(--color-text-soft);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.user-menu-panel .account-menu-item {
+  width: 100%;
+  min-height: 58px;
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr);
+  align-items: center;
+  gap: 11px;
+  padding: 9px 11px;
+  border: 0;
+  border-radius: 15px;
+  color: var(--color-text);
+  background: transparent;
+  font: inherit;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background 0.18s ease,
+    transform 0.18s ease;
+}
+
+.user-menu-panel .account-menu-item:hover,
+.user-menu-panel .account-menu-item:focus-visible {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(248, 217, 228, 0.38),
+      rgba(227, 244, 255, 0.68)
+    );
+  transform: translateX(2px);
+  outline: none;
+}
+
+.account-menu-icon {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(108, 158, 200, 0.18);
+  border-radius: 12px;
+  color: var(--summer-blue-deep);
+  background: rgba(238, 248, 255, 0.8);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.account-menu-heart {
+  color: #c95e75;
+  background: rgba(255, 235, 241, 0.85);
+}
+
+.account-menu-item > span:last-child {
+  min-width: 0;
+}
+
+.account-menu-item strong,
+.account-menu-item small {
+  display: block;
+}
+
+.account-menu-item strong {
+  font-size: 0.9rem;
+}
+
+.account-menu-item small {
+  margin-top: 2px;
+  overflow: hidden;
+  color: var(--color-text-soft);
+  font-size: 0.7rem;
+  font-weight: 400;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.user-menu-panel .logout-button {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 7px;
+  padding: 0 13px;
+  border-top: 1px solid rgba(132, 158, 180, 0.14);
+}
+
+.favorite-button.is-active {
+  color: #c95e75;
+  border-color: rgba(201, 94, 117, 0.3);
+  background: #fff0f4;
+}
+
+.favorite-button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+/* V3 — unified account menu line icons */
+.account-menu-icon svg {
+  width: 21px;
+  height: 21px;
+  display: block;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.account-menu-heart svg { fill: none; }
+
+/* V9 — stable three-zone desktop header across CatMatch and DogMatch. */
+@media (min-width: 1081px) {
+  html body .site-header > .container.nav-shell {
+    width: calc(100% - 48px) !important;
+    max-width: none !important;
+    margin-inline: auto !important;
+    grid-template-columns: minmax(210px, 1fr) max-content minmax(210px, 1fr) !important;
+    column-gap: clamp(24px, 3vw, 56px) !important;
+    align-items: center !important;
+  }
+
+  html body .site-header > .container.nav-shell > .brand {
+    min-width: 0 !important;
+    margin: 0 !important;
+    justify-self: start !important;
+  }
+
+  html body .site-header > .container.nav-shell > .main-nav {
+    width: max-content !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    justify-self: center !important;
+    justify-content: center !important;
+    gap: clamp(2px, .55vw, 9px) !important;
+  }
+
+  html body .site-header > .container.nav-shell > :is(
+    .nav-actions,
+    .auth-nav,
+    .user-nav-actions,
+    .assessment-account,
+    .assessment-user-nav
+  ) {
+    margin: 0 !important;
+    justify-self: end !important;
+  }
+
+  html body .site-header > .container.nav-shell > .menu-toggle {
+    justify-self: end !important;
+  }
+}
+
+@media (min-width: 1081px) and (max-width: 1240px) {
+  html body .site-header > .container.nav-shell {
+    width: calc(100% - 32px) !important;
+    grid-template-columns: minmax(180px, 1fr) max-content minmax(180px, 1fr) !important;
+    column-gap: 18px !important;
+  }
+
+  html body .site-header > .container.nav-shell > .main-nav {
+    gap: 1px !important;
+  }
+
+  html body .site-header > .container.nav-shell > .main-nav .nav-link {
+    padding-inline: 9px !important;
+  }
+}
